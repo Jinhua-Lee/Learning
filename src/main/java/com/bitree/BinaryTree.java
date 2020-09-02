@@ -5,28 +5,13 @@ package com.bitree;
  * @author Jinhua
  */
 public class BinaryTree {
-	class Node {
-		int value;
-		Node left;
-		Node right;
 
-		Node(int value) {
-			this.value = value;
-		}
-
-		public int getValue() {
-			return value;
-		}
-
-		@Override
-		public String toString() {
-			return String.valueOf(value);
-		}
-	}
-
+	/**
+	 * 根节点
+	 */
 	private Node root = null;
 
-	BinaryTree(int value) {
+	public BinaryTree(int value) {
 		root = new Node(value);
 		root.left = null;
 		root.right = null;
@@ -59,7 +44,7 @@ public class BinaryTree {
 	 * @param value 值
 	 * @return 返回节点，若未找到则返回空
 	 */
-	public Node findkey(int value) {
+	public Node findKey(int value) {
 		Node cur = root;
 		while (true) {
 			if (value == cur.value) {
@@ -77,6 +62,9 @@ public class BinaryTree {
 		}
 	}
 
+	/**
+	 * 先序遍历
+	 */
 	public void preOrderTraverse() {
 		System.out.println("先序遍历：");
 		preOrderTraverse(root);
@@ -96,6 +84,9 @@ public class BinaryTree {
 		preOrderTraverse(node.right);
 	}
 
+	/**
+	 * 中序遍历
+	 */
 	public void inOrderTraverse() {
 		System.out.println("中序遍历：");
 		inOrderTraverse(root);
@@ -115,7 +106,9 @@ public class BinaryTree {
 		inOrderTraverse(node.right);
 	}
 
-
+	/**
+	 * 后序遍历
+	 */
 	public void postOrderTraverse() {
 		System.out.println("后序遍历：");
 		inOrderTraverse(root);
