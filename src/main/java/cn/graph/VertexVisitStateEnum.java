@@ -2,9 +2,9 @@ package cn.graph;
 
 /**
  * 节点访问状态枚举类
- * @Author Jinhua
- * @Date 2020/8/19 13:38
- * @Version 1.0
+ * @author Jinhua
+ * @date 2020/8/19 13:38
+ * @version 1.0
  */
 public enum VertexVisitStateEnum {
     /**

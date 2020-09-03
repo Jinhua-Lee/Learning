@@ -5,7 +5,7 @@ import java.util.*;
 /**
  *  深度优先遍历基本信息及执行类
  *
- * @Author Jinhua
+ * @author Jinhua
  * @date 2020/8/17 15:17
  * @version 1.2
  *  更新内容：
@@ -85,9 +85,8 @@ public class DepthFirstSearch {
      * @param v 要遍历的开始顶点下标
      */
     private void dfs (MyGraph g, int v) {
-        /**
+        /*
          * 访问顶点并且标记访问
-         * 已经访问的个数自增1
          */
         visit(g.getVertices()[v]);
         visited.put(g.getVertices()[v], VertexVisitStateEnum.VisitedOnce);
@@ -130,7 +129,7 @@ public class DepthFirstSearch {
         Vertex<?> currentVertex = g.getVertices()[v];
 
         // 用于存：当前节点的所有流出节点的迭代
-        Vertex<?> currentRelatedVertex = null;
+        Vertex<?> currentRelatedVertex;
         // 执行访问，则执行压栈，更新访问状态
         visit(currentVertex);
         visitStack.push(currentVertex);

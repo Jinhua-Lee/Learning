@@ -1,9 +1,9 @@
 package cn.graph;
 
 /**
- * @Author Jinhua
- * @Date 2020/8/26 11:13
- * @Version 1.0
+ * @author Jinhua
+ * @date 2020/8/26 11:13
+ * @version 1.0
  */
 public enum DegreeTypeEnum {
 

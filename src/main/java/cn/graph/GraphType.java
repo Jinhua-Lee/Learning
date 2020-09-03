@@ -6,7 +6,15 @@ package cn.graph;
  * @version 1.0
  */
 public enum GraphType {
+
+    /**
+     * 有向图
+     */
     Directed(1, "有向图"),
+
+    /**
+     * 无向图
+     */
     Undirected(2, "无向图");
 
     Integer value;

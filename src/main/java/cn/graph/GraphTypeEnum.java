@@ -2,9 +2,9 @@ package cn.graph;
 
 /**
  * 图的有向和无向类型枚举
- * @Author Jinhua
- * @Date 2020/8/17 9:43
- * @Version 1.1 重命名类
+ * @author Jinhua
+ * @date 2020/8/17 9:43
+ * @version 1.1 重命名类
  */
 public enum GraphTypeEnum {
 

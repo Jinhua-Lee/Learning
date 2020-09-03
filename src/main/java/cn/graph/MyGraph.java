@@ -7,9 +7,9 @@ import java.util.Map;
 
 /**
  * 用邻接矩阵来描述图
- * @Author Jinhua
- * @Date 2020/8/17 9:30
- * @Version 1.2 加入根据入度和出度判断是否为起始节点、末端节点的方法
+ * @author Jinhua
+ * @date 2020/8/17 9:30
+ * @version 1.2 加入根据入度和出度判断是否为起始节点、末端节点的方法
  */
 public class MyGraph {
 
