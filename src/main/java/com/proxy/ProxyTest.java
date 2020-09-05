@@ -5,8 +5,15 @@ import java.lang.reflect.Proxy;
 import java.util.Arrays;
 import java.util.Random;
 
+/**
+ * @author Jinhua
+ */
 public class ProxyTest {
 	public static void main(String[] args) {
+		testProxy();
+	}
+
+	static void testProxy() {
 		Object[] elements = new Object[1000];
 		for (int i = 0; i < elements.length; i++) {
 			Integer value = i + 1;
@@ -14,11 +21,12 @@ public class ProxyTest {
 			Object proxy = Proxy.newProxyInstance(null, new Class[] {Comparable.class}, handler);
 			elements[i] = proxy;
 		}
-		
+
 		Integer key = new Random().nextInt(elements.length) + 1;
 		int result = Arrays.binarySearch(elements, key);
-		
-		if(result > 0)
+
+		if(result > 0) {
 			System.out.println(elements[result]);
+		}
 	}
 }
