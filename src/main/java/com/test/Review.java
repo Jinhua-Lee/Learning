@@ -21,14 +21,6 @@ public class Review {
 
     @Test
     public void test() {
-//		System.out.println(getDayCoefficient(1600153200000L));
-
-//        LocalDate today = LocalDate.now();
-//        LocalDate lastDay = today.with(TemporalAdjusters.lastDayOfMonth());
-//        System.out.println(lastDay.getDayOfMonth());
-
-//		System.out.println(getMonthCoefficient(1600153200000L));
-
         double activePower = 807.0;
         double powerFactor = 230.0;
         double ratedCapacity = 20.0;
