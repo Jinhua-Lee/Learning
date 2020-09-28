@@ -8,18 +8,8 @@ package com.jvm;
  */
 public class InstructionTest {
 
-    public static InstructionTest instructionTest;
-
-    public static InstructionTest getInstance() {
-        if (instructionTest == null) {
-            return new InstructionTest();
-        } else {
-            return instructionTest;
-        }
-    }
-
     public static void main(String[] args) {
-        InstructionTest.getInstance().testSingle();
+
     }
 
     /**
