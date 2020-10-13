@@ -97,4 +97,32 @@ public class ClassLoaderTest {
         ClassLoader classLoader1 = CurveDB.class.getClassLoader();
         System.out.println("classLoader1 = " + classLoader1);
     }
+
+
+    /**
+     * 4种获取类加载器的方式
+     *      1. 获取当前类的ClassLoader；
+     *      2. 获取当前线程上下文的ClassLoader；
+     *      3. 获取系统默认的ClassLoader；
+     *      4. 获取调用者的ClassLoader；
+     */
+    public void func3() throws ClassNotFoundException {
+        /*
+         * 1. 获取当前类的ClassLoader；
+         */
+        ClassLoader c1 = Class.forName("java.sql.Connection").getClassLoader();
+        System.out.println("c1 = " + c1);
+
+        /*
+         * 2. 获取当前线程上下文的ClassLoader；
+         */
+        ClassLoader c2 = Thread.currentThread().getContextClassLoader();
+        System.out.println("c2 = " + c2);
+
+        /*
+         * 3. 获取系统默认的ClassLoader；
+         */
+        ClassLoader c3 = ClassLoader.getSystemClassLoader();
+        System.out.println("c3 = " + c3);
+    }
 }
