@@ -1,5 +1,6 @@
 package com.test;
 
+import lombok.SneakyThrows;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -15,8 +16,13 @@ import java.util.stream.Stream;
  */
 public class Review {
 
+    @SneakyThrows
     public static void main(String[] args) {
-
+        Object obj = new Object();
+        double pi = Math.PI;
+        int abs = Math.abs(-5);
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        List<Integer> integers = new ArrayList<>();
     }
 
     @Test
