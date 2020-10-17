@@ -1,11 +1,11 @@
 /*
  * Copyright (c)    2020 Jinhua, Inc. All rights reserved.
  * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/jvm/ParentAndChildInitTest.java
- * LastModified:    2020/9/30 下午11:04
+ * PathName:    D:/IdeaProjects/Learning/src/main/java/com/jvm/classload/ParentAndChildInitTest.java
+ * LastModified:    2020/9/30 下午11:21
  */
 
-package com.jvm;
+package com.jvm.classload;
 
 /**
  * 父类和子类加载的<clinit>方法前后关系

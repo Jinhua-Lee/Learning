@@ -1,11 +1,11 @@
 /*
  * Copyright (c)    2020 Jinhua, Inc. All rights reserved.
  * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/jvm/StringTest.java
- * LastModified:    2020/10/13 下午10:49
+ * PathName:    D:/IdeaProjects/Learning/src/main/java/com/jvm/classload/StringTest.java
+ * LastModified:    2020/10/13 下午11:19
  */
 
-package com.jvm;
+package com.jvm.classload;
 
 /**
  * 双亲委派机制的模拟

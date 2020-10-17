@@ -1,4 +1,11 @@
-package com.jvm;
+/*
+ * Copyright (c)    2020 Jinhua, Inc. All rights reserved.
+ * Author:    Jinhua
+ * PathName:    D:/IdeaProjects/Learning/src/main/java/com/jvm/classload/InstructionTest.java
+ * LastModified:    2020/9/28 下午10:18
+ */
+
+package com.jvm.classload;
 
 /**
  * JVM 指令操作模拟

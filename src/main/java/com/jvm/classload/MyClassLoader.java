@@ -1,11 +1,11 @@
 /*
  * Copyright (c)    2020 Jinhua, Inc. All rights reserved.
  * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/jvm/MyClassLoader.java
- * LastModified:    2020/10/13 下午9:52
+ * PathName:    D:/IdeaProjects/Learning/src/main/java/com/jvm/classload/MyClassLoader.java
+ * LastModified:    2020/10/13 下午10:38
  */
 
-package com.jvm;
+package com.jvm.classload;
 
 /**
  * 自定义用户类加载器

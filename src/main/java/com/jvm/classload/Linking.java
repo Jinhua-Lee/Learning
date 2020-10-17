@@ -1,11 +1,11 @@
 /*
  * Copyright (c)    2020 Jinhua, Inc. All rights reserved.
  * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/jvm/Linking.java
- * LastModified:    2020/9/29 下午10:32
+ * PathName:    D:/IdeaProjects/Learning/src/main/java/com/jvm/classload/Linking.java
+ * LastModified:    2020/9/29 下午10:37
  */
 
-package com.jvm;
+package com.jvm.classload;
 
 /**
  * 链接过程模拟

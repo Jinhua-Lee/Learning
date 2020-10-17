@@ -1,11 +1,11 @@
 /*
  * Copyright (c)    2020 Jinhua, Inc. All rights reserved.
  * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/jvm/DeadThreadTest.java
- * LastModified:    2020/10/12 下午10:20
+ * PathName:    D:/IdeaProjects/Learning/src/main/java/com/jvm/classload/DeadThreadTest.java
+ * LastModified:    2020/10/12 下午10:46
  */
 
-package com.jvm;
+package com.jvm.classload;
 
 /**
  * 一个线程对某个类进行部分加载，另一个线程是否可以进入(单例模式参考)

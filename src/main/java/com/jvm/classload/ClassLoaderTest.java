@@ -1,11 +1,11 @@
 /*
  * Copyright (c)    2020 Jinhua, Inc. All rights reserved.
  * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/jvm/ClassLoaderTest.java
- * LastModified:    2020/10/12 下午11:00
+ * PathName:    D:/IdeaProjects/Learning/src/main/java/com/jvm/classload/ClassLoaderTest.java
+ * LastModified:    2020/10/13 下午10:46
  */
 
-package com.jvm;
+package com.jvm.classload;
 
 import sun.misc.Launcher;
 import sun.security.ec.CurveDB;
