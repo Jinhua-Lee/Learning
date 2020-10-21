@@ -10,6 +10,8 @@ package com.jvm.runtime.stack;
 import java.util.Date;
 
 /**
+ * 局部变量表测试：
+ *      通过jClassLib工具查看
  * @author Jinhua
  * @date 2020/10/19 22:17
  */
@@ -28,8 +30,13 @@ public class LocalVariablesTest {
         System.out.println(date + str);
     }
 
+    /**
+     * 各种类型的数据所占slot
+     * @param dateP date类型参数
+     * @param nameP String类型参数
+     * @return String返回值
+     */
     private String test2(Date dateP, String nameP) {
-
         dateP = null;
         nameP = "ljh";
         double weight = 130.5;
@@ -37,10 +44,20 @@ public class LocalVariablesTest {
         return dateP + nameP;
     }
 
+    /**
+     * 类的实例方法，包含this局部变量
+     */
     private void test3() {
         count++;
     }
 
+    /**
+     * 过期的局部变量可能复用之前的局部变量的Slot
+     *      1. this
+     *      2. a
+     *      3. b -> 在局部代码块有效
+     *      4. c
+     */
     private void test4() {
         int a = 0;
         {
