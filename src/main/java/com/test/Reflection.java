@@ -53,14 +53,16 @@ public class Reflection {
 			String name = c.getName();
 			System.out.print("	");
 			String modifiers =Modifier.toString(c.getModifiers());
-			if(modifiers.length() > 0)
+			if(modifiers.length() > 0) {
 				System.out.print(modifiers + "(");
+			}
 
 			// 打印参数类型
 			Class[] paramTypes = c.getParameterTypes();
 			for (int i = 0; i < paramTypes.length; i++) {
-				if (i > 0)
+				if (i > 0) {
 					System.out.print(", ");
+				}
 				System.out.print(paramTypes[i].getName());
 			}
 			System.out.println(");");
@@ -77,14 +79,16 @@ public class Reflection {
 
 			System.out.print("	");
 			String modifiers = Modifier.toString(m.getModifiers());
-			if(modifiers.length() > 0)
+			if(modifiers.length() > 0) {
 				System.out.print(modifiers + "	");
+			}
 			System.out.print(retType.getName() + " " + "(");
 
 			Class<?>[] paramTypes = m.getParameterTypes();
 			for (int i = 0; i < paramTypes.length; i++) {
-				if (i > 0)
+				if (i > 0) {
 					System.out.print(", ");
+				}
 				System.out.print(paramTypes[i].getName());
 			}
 			System.out.println(");");
@@ -103,8 +107,9 @@ public class Reflection {
 			String name = f.getName();
 			System.out.print("	");
 			String modifiers  = Modifier.toString(f.getModifiers());
-			if(modifiers.length() > 0)
+			if(modifiers.length() > 0) {
 				System.out.print(modifiers + " ");
+			}
 			System.out.println(type.getName() + " "+ name + ";");
 		}
 	}

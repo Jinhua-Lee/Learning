@@ -27,20 +27,15 @@ public class Review {
 
     @Test
     public void test() {
-        double activePower = 807.0;
-        double powerFactor = 230.0;
-        double ratedCapacity = 20.0;
-        double loadRateValue = BigDecimal.valueOf(activePower / (powerFactor * ratedCapacity)
-        ).setScale(5, BigDecimal.ROUND_HALF_UP).doubleValue();
-
-        System.out.println(loadRateValue);
+        double monthCoefficient = getMonthCoefficient(1603152000000L, 1601481600000L);
     }
 
 
     /**
      * 获取日偏移系数
-     * @param logTime
-     * @return
+     * @param logTime 记录时间
+     * @param energyPoi 能耗POI时间
+     * @return 日偏移系数
      */
     public double getDayCoefficient(long energyPoi, long logTime) {
         // logTime所在天
@@ -56,13 +51,17 @@ public class Review {
         LocalDateTime thenStartDay = then.toLocalDate().atStartOfDay();
         long thenStartStamp = getDefaultTimeStamp(thenStartDay);
         System.out.println("thenStartDay: " + thenStartDay);
+        System.out.println("thenStartStamp = " + thenStartStamp);
 
         LocalDateTime thenEndDay = then.toLocalDate().plusDays(1).atStartOfDay();
         long thenEndStamp = getDefaultTimeStamp(thenEndDay);
         System.out.println("thenEndDay: " + thenEndDay);
+        System.out.println("thenEndStamp = " + thenEndStamp);
 
         double dayCoefficient = BigDecimal.valueOf((double) (energyPoi - logTime) / (thenEndStamp - thenStartStamp))
                 .setScale(5, BigDecimal.ROUND_HALF_UP).doubleValue();
+        System.out.println("energyPoi - logTime = " + (energyPoi - logTime));
+        System.out.println("thenEndStamp - thenStartStamp = " + (thenEndStamp - thenStartStamp));
         System.out.println(dayCoefficient);
         return dayCoefficient;
     }
@@ -73,8 +72,9 @@ public class Review {
 
     /**
      * 获取月偏移系数
-     * @param logTime
-     * @return
+     * @param energyPoi 能耗POI
+     * @param logTime 记录时间
+     * @return 月偏移系数
      */
     public double getMonthCoefficient(long energyPoi, long logTime) {
 
@@ -84,15 +84,19 @@ public class Review {
         LocalDate thenStartMonth = LocalDate.of(then.getYear(), then.getMonth(), 1);
         long thenStartStamp = getDefaultTimeStamp(thenStartMonth.atStartOfDay());
         System.out.println("thenStartMonth: " + thenStartMonth);
+        System.out.println("thenStartStamp = " + thenStartStamp);
 
 
         LocalDate thenEndMonth = thenStartMonth.plusMonths(1);
         long thenEndStamp = getDefaultTimeStamp(thenEndMonth.atStartOfDay());
         System.out.println("thenEndMonth: " + thenEndMonth);
+        System.out.println("thenEndStamp = " + thenEndStamp);
 
         double monthCoefficient = BigDecimal.valueOf(
                 (double) ( energyPoi - logTime) / (thenEndStamp - thenStartStamp)
         ).setScale(5, BigDecimal.ROUND_HALF_UP).doubleValue();
+        System.out.println("energyPoi - logTime = " + (energyPoi - logTime));
+        System.out.println("thenEndStamp - thenStartStamp = " + (thenEndStamp - thenStartStamp));
         System.out.println(monthCoefficient);
 
         return monthCoefficient;
