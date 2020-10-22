@@ -16,12 +16,13 @@ import java.util.Date;
  * @date 2020/10/19 22:17
  */
 public class LocalVariablesTest {
+
     private int count = 0;
 
     public static void main(String[] args) {
         LocalVariablesTest lvt = new LocalVariablesTest();
         int num = 10;
-        lvt.test1();
+        lvt.test4();
     }
 
     private void test1() {
@@ -64,6 +65,7 @@ public class LocalVariablesTest {
             int b = 0;
             b = a + 1;
         }
+        // 变量c使用已经销毁的变量b的slot的位置
         int c = a + 1;
     }
 }

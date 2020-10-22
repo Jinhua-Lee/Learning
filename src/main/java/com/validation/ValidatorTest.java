@@ -9,6 +9,9 @@ package com.validation;
 
 import org.junit.Test;
 
+/**
+ * @author Jinhua
+ */
 public class ValidatorTest {
 
     @Test
