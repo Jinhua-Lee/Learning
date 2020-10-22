@@ -1,6 +1,7 @@
 package com.test;
 
 import lombok.SneakyThrows;
+import org.apache.commons.lang3.time.StopWatch;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -18,11 +19,14 @@ public class Review {
 
     @SneakyThrows
     public static void main(String[] args) {
+        StopWatch stopWatch = StopWatch.createStarted();
         Object obj = new Object();
         double pi = Math.PI;
         int abs = Math.abs(-5);
         Class.forName("com.mysql.cj.jdbc.Driver");
         List<Integer> integers = new ArrayList<>();
+        stopWatch.stop();
+        System.out.println(stopWatch.getTime());
     }
 
     @Test
@@ -133,7 +137,7 @@ public class Review {
                 map.put(ch, ++i);
             }
         }
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         Set<Character> set = map.keySet();
         for (Character key : set) {
             Integer value = map.get(key);
@@ -157,9 +161,9 @@ public class Review {
 
     /**
      * 求两整数数相除的余数
-     * @param x
-     * @param s
-     * @return
+     * @param x 被除数
+     * @param s 除数
+     * @return 余数
      */
     public int f(int x, int s){
         int n = 1;
@@ -175,7 +179,7 @@ public class Review {
      * 文件读取
      * @param fileDir 文件路径
      * @param fileEncoding 文件编码
-     * @throws IOException
+     * @throws IOException IO异常
      */
     public void myFileRead(String fileDir, String fileEncoding) throws IOException {
         Scanner sc = new Scanner(Paths.get(fileDir), fileEncoding);
@@ -202,19 +206,6 @@ public class Review {
         }
         sc.close();
         System.out.println(Collections.max(list));
-    }
-
-    public void listTest() {
-        List<Double> list = new ArrayList(10);
-        Random r = new Random();
-        for(int i =0; i < 10; i++) {
-            list.add(r.nextDouble() * 20);
-        }
-
-        Iterator<Double> it = list.iterator();
-        while (it.hasNext()) {
-            System.out.println(it.next());
-        }
     }
 
     @Test
