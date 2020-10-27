@@ -1,11 +1,11 @@
 /*
  * Copyright (c)    2020 Jinhua, Inc. All rights reserved.
  * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/jvm/runtime/stack/InvokeDynamicTest.java
- * LastModified:    2020/10/25 下午11:13
+ * PathName:    D:/IdeaProjects/Learning/src/main/java/com/jvm/runtime/stack/dl/InvokeDynamicTest.java
+ * LastModified:    2020/10/25 下午11:39
  */
 
-package com.jvm.runtime.stack;
+package com.jvm.runtime.stack.dl;
 
 /**
  * 动态方法调用举例

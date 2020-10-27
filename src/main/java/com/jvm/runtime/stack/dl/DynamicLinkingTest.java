@@ -1,11 +1,11 @@
 /*
  * Copyright (c)    2020 Jinhua, Inc. All rights reserved.
  * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/jvm/runtime/stack/DynamicLinkingTest.java
- * LastModified:    2020/10/25 上午12:27
+ * PathName:    D:/IdeaProjects/Learning/src/main/java/com/jvm/runtime/stack/dl/DynamicLinkingTest.java
+ * LastModified:    2020/10/25 上午12:33
  */
 
-package com.jvm.runtime.stack;
+package com.jvm.runtime.stack.dl;
 
 /**
  * 动态链接演示

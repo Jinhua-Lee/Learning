@@ -1,11 +1,11 @@
 /*
  * Copyright (c)    2020 Jinhua, Inc. All rights reserved.
  * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/jvm/runtime/PcRegisterTest.java
- * LastModified:    2020/10/17 下午4:09
+ * PathName:    D:/IdeaProjects/Learning/src/main/java/com/jvm/runtime/pc/PcRegisterTest.java
+ * LastModified:    2020/10/23 下午10:31
  */
 
-package com.jvm.runtime;
+package com.jvm.runtime.pc;
 
 /**
  * PC程序计数器测试

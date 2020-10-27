@@ -1,11 +1,11 @@
 /*
  * Copyright (c)    2020 Jinhua, Inc. All rights reserved.
  * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/jvm/runtime/stack/AnimalTest.java
- * LastModified:    2020/10/25 下午4:39
+ * PathName:    D:/IdeaProjects/Learning/src/main/java/com/jvm/runtime/stack/dl/AnimalTest.java
+ * LastModified:    2020/10/25 下午4:49
  */
 
-package com.jvm.runtime.stack;
+package com.jvm.runtime.stack.dl;
 
 /**
  * 早期绑定和晚期绑定的例子
