@@ -11,8 +11,9 @@ public class Bank {
 	}
 
 	public void transfer(int from, int to, double amount) {
-		if (accounts[from] < amount)
+		if (accounts[from] < amount) {
 			return;
+		}
 		System.out.println(Thread.currentThread());
 		accounts[from] -= amount;
 		System.out.printf("%10.2f from %d to %d\t", amount, from, to);

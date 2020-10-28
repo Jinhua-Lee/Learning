@@ -14,7 +14,8 @@ public class LockBank extends Bank{
 		sufficientFunds = bankLock.newCondition();
 	}
 
-	public void transfer(int from, int to, double amount) {
+	@Override
+    public void transfer(int from, int to, double amount) {
 		bankLock.lock();
 		try {
 			super.transfer(from, to, amount);
@@ -24,6 +25,7 @@ public class LockBank extends Bank{
 		}
 	}
 
+	@Override
 	public double getTotalBalance() {
 		bankLock.lock();
 		try {

@@ -34,7 +34,7 @@ public class Delivery implements Callable<String> {
 	/**
 	 * Callable 作为参数传递给 FutureTask，FutureTask 再作为参数传递给 Thread（类似 Runnable），然后就可以在子线程执行
 	 *
-	 * @param args
+	 * @param args 主函数入参
 	 */
 	public static void main(String[] args) {
 		List<FutureTask<String>> futureTasks = new ArrayList<>(4);

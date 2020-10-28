@@ -14,9 +14,9 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
 /**
+ * 电影院售票模拟
  * @author Jinhua
- * @description
- * @date: 2020/8/15 17:56
+ * @date  2020/8/15 17:56
  */
 public class MovieTicketCallable implements Callable<String> {
 
