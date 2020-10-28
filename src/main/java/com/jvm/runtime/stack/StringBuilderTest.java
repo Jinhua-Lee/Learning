@@ -37,8 +37,10 @@ public class StringBuilderTest {
      */
     public static void method2(StringBuilder s2) {
         for (int i = 0; i < Byte.MAX_VALUE; i++) {
-            s2.append("a");
-            System.out.print("a");
+            synchronized (s2) {
+                s2.append("a");
+                System.out.print("a");
+            }
         }
     }
 
@@ -75,8 +77,10 @@ public class StringBuilderTest {
 
         Thread t2 = new Thread(() -> {
             for (int i = 0; i < Byte.MAX_VALUE; i++) {
-                sb.append("b");
-                System.out.print("b");
+                synchronized (sb) {
+                    sb.append("b");
+                    System.out.print("b");
+                }
             }
         });
 
