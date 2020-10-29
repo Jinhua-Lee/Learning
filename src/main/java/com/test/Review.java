@@ -1,7 +1,6 @@
 package com.test;
 
 import lombok.SneakyThrows;
-import org.apache.commons.lang3.time.StopWatch;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -19,15 +18,26 @@ public class Review {
 
     @SneakyThrows
     public static void main(String[] args) {
-        StopWatch stopWatch = StopWatch.createStarted();
-        Object obj = new Object();
-        double pi = Math.PI;
-        int abs = Math.abs(-5);
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        List<Integer> integers = new ArrayList<>();
-        stopWatch.stop();
-        System.out.println(stopWatch.getTime());
+        printSystemProperties();
+        printSystemEnv();
     }
+
+    /**
+     * 打印系统属性
+     */
+    public static void printSystemProperties() {
+        Set<Map.Entry<Object, Object>> entries = System.getProperties().entrySet();
+        entries.forEach(en -> System.out.println("properties:    " + en.getKey() + " ---- " + en.getValue()));
+    }
+
+    /**
+     * 打印系统环境
+     */
+    public static void printSystemEnv() {
+        Set<Map.Entry<String, String>> envs = System.getenv().entrySet();
+        envs.forEach(e -> System.out.println("env:    " + e.getKey() + " ---- " + e.getValue()));
+    }
+
 
     @Test
     public void test() {
