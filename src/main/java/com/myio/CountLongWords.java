@@ -1,11 +1,15 @@
 package com.myio;
 
+import org.junit.Test;
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * 统计长的单词
@@ -31,5 +35,23 @@ public class CountLongWords {
 
 		count = words.parallelStream().filter(s -> s.length() > 4).count();
 		System.out.println(count);
+	}
+
+	@Test
+	public void testStream() {
+		List<String> words = new ArrayList<String>();
+		words.add("your");
+		words.add("name");
+
+		Stream<Stream<Character>> result = words.stream().map(CountLongWords::characterStream);
+		Stream<Character> letters = words.stream().flatMap(CountLongWords::characterStream);
+	}
+
+	public static Stream<Character> characterStream(String s){
+		List<Character> result = new ArrayList<>();
+		for (char c : s.toCharArray()) {
+			result.add(c);
+		}
+		return result.stream();
 	}
 }
