@@ -11,11 +11,11 @@ public class MySort {
 	public void test() {
 		int[] a = {32, 43, 23, 13, 5};
 //		insertSort(a);
-//		bubbleSort(a);
+		bubbleSort(a);
 //		quickSort(a, 0, a.length - 1);
-		swapSort(a);
+//		swapSort(a);
 		for (int i : a) {
-			System.out.println(i);
+			System.out.printf("%-4d", i);
 		}
 	}
 
@@ -46,14 +46,22 @@ public class MySort {
 	 */
 	public void bubbleSort(int[] a) {
 		int temp;
-		for (int i = 1; i < a.length; i++) {
-			for (int j = 0; j < a.length - 1; j++) {
+        // 外层表示循环次数，循环 length - 1次
+		for (int i = 0; i < a.length - 1; i++) {
+            // 该轮是否排交换过的标志变量，若没改变，则表示没进行过排序，已经排好
+		    boolean swap =false;
+            // 每一轮排序（外层），会将大的值排到数组末端， 所以内层每轮到的数组位置是越来越小（length - i - 1）
+            for (int j = 0; j < a.length - i - 1; j++) {
 				if (a[j] > a[j+1]) {
+				    swap = true;
 					temp = a[j];
 					a[j] = a[j+1];
 					a[j+1] = temp;
 				}
 			}
+			if (!swap) {
+			    break;
+            }
 		}
 	}
 
@@ -63,18 +71,18 @@ public class MySort {
 	 */
 	public void selectSort(int[] a) {
 		int len = a.length;
-		// 循环次数
+        // 外层循环：i即可表示，如果产生小值要放入的位置。
 		for(int i = 0; i < len ; i++){
 			int value = a[i];
 			int position = i;
-			// 找到最小的值和位置
+            // 选出小的值，记录小值的位置
 			for(int j = i+1; j < len; j++){
 				if(a[j] < value){
 					value = a[j];
 					position = j;
 				}
 			}
-			// 进行交换
+            // 交换最小值和当前外层遍历的位置
 			a[position] = a[i];
 			a[i] = value;
 		}
