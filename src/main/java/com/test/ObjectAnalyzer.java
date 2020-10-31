@@ -7,6 +7,10 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 类分析模拟。Java反射包下的相关类
+ * @author Jinhua
+ */
 public class ObjectAnalyzer {
 	private ArrayList<Object> visited = new ArrayList<>();
 
