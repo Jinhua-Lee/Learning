@@ -17,11 +17,12 @@ public class MySort {
 
     public void test() {
         int[] arr = {32, 43, 23, 13, 5};
-//		insertSort(arr);
 //        bubbleSort(arr);
-//		quickSort(arr, 0, arr.length - 1);
-//		swapSort(arr);
-        shellSort(arr);
+//        selectSort(arr);
+//        insertSort(arr);
+//        shellSort(arr);
+		quickSort(arr, 0, arr.length - 1);
+
         for (int i : arr) {
             System.out.printf("%-4d", i);
         }
@@ -148,26 +149,39 @@ public class MySort {
     public void quickSort(int[] arr, int start, int end) {
         if (start < end) {
             // 选基准值
-            int baseNum= arr[start];
-            // 记录中间值
-            int midNum;
-            int i=start;
-            int j=end;
-            do {
-                while((arr[i] < baseNum) && i < end) {
+            int baseNum = arr[start];
+            // 交换的中间值
+            int tempNum;
+            int i = start;
+            int j = end;
+            // 当两个游标没有重合
+            while (i < j)
+            {
+                // 从左开始找大于于基准值的下标
+                while (arr[i] < baseNum && i < end)
+                {
                     i++;
                 }
-                while((arr[j] > baseNum) && j > start) {
+                // 从右边开始找小于基准值的下标
+                while (arr[j] > baseNum && j > start)
+                {
                     j--;
                 }
-                if(i <= j){
-                    midNum = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = midNum;
+                if (i <= j)
+                {
+                    // 两个值做交换（位置相等时候不用换）
+                    if (i < j)
+                    {
+                        tempNum = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = tempNum;
+                    }
+                    // 从下一个位置开始继续找
                     i++;
                     j--;
                 }
-            } while (i<=j);
+            }
+            // 利用用递归，开始分治
             if (start < j) {
                 quickSort(arr, start, j);
             }
@@ -176,7 +190,6 @@ public class MySort {
             }
         }
     }
-
 
 
 }
