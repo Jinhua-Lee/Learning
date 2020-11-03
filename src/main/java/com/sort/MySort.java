@@ -16,12 +16,13 @@ public class MySort {
     }
 
     public void test() {
-        int[] arr = {32, 43, 23, 13, 5};
+        int[] arr = {17, 13, 2, 5, 11, 3, 7, 23};
 //        bubbleSort(arr);
 //        selectSort(arr);
 //        insertSort(arr);
 //        shellSort(arr);
-		quickSort(arr, 0, arr.length - 1);
+//		quickSort(arr, 0, arr.length - 1);
+        heapSort(arr);
 
         for (int i : arr) {
             System.out.printf("%-4d", i);
@@ -187,7 +188,7 @@ public class MySort {
                     j--;
                 }
             }
-            // 利用用递归，开始分治
+            // 利用递归，开始分治
             if (start < j) {
                 quickSort(arr, start, j);
             }
@@ -198,12 +199,61 @@ public class MySort {
     }
 
     /**
-     * 06_堆排序
+     * 06_堆排序 -> 改进的对简单选择排序；
+     *      1) 最后一个非叶子节点下标
+     *          a) 按数组长度
+     *              lastNonLeaf = length / 2 - 1;
+     *          b) 按下标
+     *              lastNonLeaf = (length - 1) / 2;
+     *      2) 按大顶堆的结构，二叉树父节点的值大于左右孩子节点的值。
+     *          a) 需要在每次构建堆，保证节点与子节点构成大顶堆
+     *          b) 最大元素向堆顶（最小）移动，所以必须从最后一个非叶子节点开始
+     *      3) 每个节点构建完堆，则将堆尾值与堆顶值的最大值交换。
      * @param arr 待排序数组
-     * @param length 数组长度
      */
-    public void heapSort(int[] arr, int length) {
+    public void heapSort(int[] arr) {
+        int length = arr.length;
 
+        // 循环必须从后往前，因为要将大的元素向堆顶移动，堆顶索引最小
+        for (int last = length - 1; last >= 0; last--) {
+            // 构建大顶堆每次进入循环last自减一，去除最大的堆尾节点
+            buildTopMaxHeap(arr, last);
+            // 将堆顶的最大值与堆尾元素交换
+            swapInt(arr, 0, last);
+        }
+
+    }
+
+    /**
+     * 将指定位置的元素构建成大顶堆
+     * @param arr 待建为大顶堆的数组
+     * @param lastIndex 结束索引（可取到）
+     */
+    private void buildTopMaxHeap(int[] arr, int lastIndex) {
+        // 最后一个非叶子节点下标
+        int lastNonLeaf = (lastIndex - 1) / 2;
+        for (int cur = lastNonLeaf; cur >= 0; cur--) {
+
+            // 若当前节点有孩子
+            if (cur * 2 + 1 <= lastIndex ) {
+
+                // 存储左右节点孩子中较大的一个的下标，初始为左孩子
+                int biggerIndex = cur * 2 + 1;
+
+                // 若存在右孩子
+                if (biggerIndex < lastIndex) {
+                    // 如果右孩子值更大
+                    if (arr[biggerIndex] < arr[biggerIndex + 1]) {
+                        biggerIndex++;
+                    }
+                }
+
+                // 如果父节点的值更小
+                if (arr[cur] < arr[biggerIndex]) {
+                    swapInt(arr, cur, biggerIndex);
+                }
+            }
+        }
     }
 
 }
