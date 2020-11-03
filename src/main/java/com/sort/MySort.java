@@ -30,6 +30,17 @@ public class MySort {
     }
 
     /**
+     * 交换指定下标的两个数
+     * @param index1 第一个数下标
+     * @param index2 第二个数下标
+     */
+    private void swapInt(int[] arr, int index1, int index2) {
+        int temp = arr[index1];
+        arr[index1] = arr[index2];
+        arr[index2] = temp;
+    }
+
+    /**
      * 01_冒泡排序
      *      1) 每轮会选出最大的元素到末端
      *      2) 改进：增加一个变量标记该轮是否有交换过元素，若没有交换，则已经排好序
@@ -45,9 +56,7 @@ public class MySort {
             for (int j = 0; j < arr.length - i - 1; j++) {
                 if (arr[j] > arr[j+1]) {
                     swap = true;
-                    temp = arr[j];
-                    arr[j] = arr[j+1];
-                    arr[j+1] = temp;
+                    swapInt(arr, j, j + 1);
                 }
             }
             if (!swap) {
@@ -149,9 +158,8 @@ public class MySort {
     public void quickSort(int[] arr, int start, int end) {
         if (start < end) {
             // 选基准值
-            int baseNum = arr[start];
-            // 交换的中间值
-            int tempNum;
+            int baseNum = arr[ start + Math.round(end - start) ];
+
             int i = start;
             int j = end;
             // 当两个游标没有重合
@@ -172,9 +180,7 @@ public class MySort {
                     // 两个值做交换（位置相等时候不用换）
                     if (i < j)
                     {
-                        tempNum = arr[i];
-                        arr[i] = arr[j];
-                        arr[j] = tempNum;
+                        swapInt(arr, i, j);
                     }
                     // 从下一个位置开始继续找
                     i++;
@@ -191,5 +197,13 @@ public class MySort {
         }
     }
 
+    /**
+     * 06_堆排序
+     * @param arr 待排序数组
+     * @param length 数组长度
+     */
+    public void heapSort(int[] arr, int length) {
+
+    }
 
 }
