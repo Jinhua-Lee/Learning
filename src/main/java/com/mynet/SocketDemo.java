@@ -3,6 +3,7 @@ package com.mynet;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 
@@ -18,16 +19,18 @@ public class SocketDemo {
 			InputStream is = s.getInputStream();
 			OutputStream os = s.getOutputStream();
 			Scanner sc = new Scanner(is, "UTF-8");
-			PrintWriter pw = new PrintWriter(new OutputStreamWriter
-					(os, "UTF-8"), true);
+			PrintWriter pw = new PrintWriter(
+					new OutputStreamWriter(os, StandardCharsets.UTF_8),
+					true);
 			pw.print("Hello~ Enter bye to EXIT");
 
 			boolean done = false;
 			while (!done && sc.hasNextLine()) {
 				String line = sc.nextLine();
 				pw.print("输出：" + line);
-				if (line.trim().equalsIgnoreCase("bye"))
+				if ("bye".equalsIgnoreCase(line.trim())) {
 					done = true;
+				}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
