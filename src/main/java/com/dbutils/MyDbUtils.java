@@ -7,7 +7,7 @@ import java.util.*;
  * 数据库JDBC工具类封装
  * @author 子期
  */
-public class MyDBUtils {
+public class MyDbUtils {
 	/**
 	 * 定义连接数据库的常量
 	 */
@@ -156,12 +156,14 @@ public class MyDBUtils {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			try {
-				rs.close();
-				pst.close();
-				closeConnection();
-			} catch (SQLException e) {
-				e.printStackTrace();
+			if (rs != null) {
+				try {
+					rs.close();
+					pst.close();
+					closeConnection();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 		// 返回构建好的集合
@@ -170,12 +172,11 @@ public class MyDBUtils {
 
 	public static void main(String[] args) {
 		String sql = "Select * From Usr";
-		MyDBUtils.getConnection();
+		MyDbUtils.getConnection();
 		// 获取结果的List集合（可看作一个表）
-		List<Map<String, Object>> table = MyDBUtils.executeQuery(sql);
+		List<Map<String, Object>> table = MyDbUtils.executeQuery(sql);
 
-		for (int i = 0; i < table.size(); i++) {
-			Map<String, Object> row = table.get(i);
+		for (Map<String, Object> row : table) {
 			ArrayList<String> rowNames = new ArrayList<>(row.keySet());
 			for (String name : rowNames) {
 				System.out.print(row.get(name) + "\t");
