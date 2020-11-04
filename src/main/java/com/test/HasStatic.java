@@ -8,22 +8,23 @@
 package com.test;
 
 /**
+ * 对象引用所属类的静态变量测试
+ *
  * @author Jinhua
- * @description
- * @date: 2020/8/15 22:24
+ * @date 2020/8/15 22:24
  */
-public class HasStatic{
+public class HasStatic {
 
-    private static int x=100;
+    private static int x = 100;
 
-    public static void main(String args[]){
-        HasStatic hs1=new HasStatic();
+    public static void main(String args[]) {
+        HasStatic hs1 = new HasStatic();
         hs1.x++;
-        HasStatic  hs2=new HasStatic();
+        HasStatic hs2 = new HasStatic();
         hs2.x++;
-        hs1=new HasStatic();
+        hs1 = new HasStatic();
         hs1.x++;
         HasStatic.x--;
-        System.out.println("x="+x);
+        System.out.println("x=" + x);
     }
 }

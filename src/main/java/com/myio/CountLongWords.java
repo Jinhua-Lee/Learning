@@ -13,6 +13,7 @@ import java.util.stream.Stream;
 
 /**
  * 统计长的单词
+ *
  * @author Jinhua
  */
 public class CountLongWords {
@@ -24,7 +25,7 @@ public class CountLongWords {
 
         long count = 0;
         for (String s : words) {
-            if(s.length() > 4) {
+            if (s.length() > 4) {
                 count++;
             }
         }
@@ -39,7 +40,7 @@ public class CountLongWords {
 
     @Test
     public void testStream() {
-        List<String> words = new ArrayList<String>();
+        List<String> words = new ArrayList<>();
         words.add("your");
         words.add("name");
 
@@ -47,7 +48,7 @@ public class CountLongWords {
         Stream<Character> letters = words.stream().flatMap(CountLongWords::characterStream);
     }
 
-    public static Stream<Character> characterStream(String s){
+    public static Stream<Character> characterStream(String s) {
         List<Character> result = new ArrayList<>();
         for (char c : s.toCharArray()) {
             result.add(c);

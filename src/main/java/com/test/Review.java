@@ -47,7 +47,8 @@ public class Review {
 
     /**
      * 获取日偏移系数
-     * @param logTime 记录时间
+     *
+     * @param logTime   记录时间
      * @param energyPoi 能耗POI时间
      * @return 日偏移系数
      */
@@ -86,8 +87,9 @@ public class Review {
 
     /**
      * 获取月偏移系数
+     *
      * @param energyPoi 能耗POI
-     * @param logTime 记录时间
+     * @param logTime   记录时间
      * @return 月偏移系数
      */
     public double getMonthCoefficient(long energyPoi, long logTime) {
@@ -107,7 +109,7 @@ public class Review {
         System.out.println("thenEndStamp = " + thenEndStamp);
 
         double monthCoefficient = BigDecimal.valueOf(
-                (double) ( energyPoi - logTime) / (thenEndStamp - thenStartStamp)
+                (double) (energyPoi - logTime) / (thenEndStamp - thenStartStamp)
         ).setScale(5, BigDecimal.ROUND_HALF_UP).doubleValue();
         System.out.println("energyPoi - logTime = " + (energyPoi - logTime));
         System.out.println("thenEndStamp - thenStartStamp = " + (thenEndStamp - thenStartStamp));
@@ -118,14 +120,14 @@ public class Review {
 
     /**
      * 求阶乘
+     *
      * @param num 待求阶乘的数
      * @return 返回阶乘
      */
     public BigInteger function(Integer num) {
         if (num == 1) {
             return BigInteger.valueOf(num);
-        }
-        else {
+        } else {
             return function(num - 1).multiply(BigInteger.valueOf(num));
         }
     }
@@ -137,13 +139,12 @@ public class Review {
         String s = "aababcabcdabcde";
         char[] chs = s.toCharArray();
         Map<Character, Integer> map = new HashMap<>(chs.length);
-        for(char ch: chs) {
+        for (char ch : chs) {
             // 从map中取值
             Integer i = map.get(ch);
-            if(i == null) {
+            if (i == null) {
                 map.put(ch, 1);
-            }
-            else {
+            } else {
                 map.put(ch, ++i);
             }
         }
@@ -158,12 +159,13 @@ public class Review {
 
     /**
      * 集合与流操作
+     *
      * @param s
      * @return
      */
     public Stream<String> letters(String s) {
         List<String> result = new ArrayList<>();
-        for(int i = 0; i < s.length(); i++) {
+        for (int i = 0; i < s.length(); i++) {
             result.add(s.substring(i, i + 1));
         }
         return result.stream();
@@ -171,14 +173,15 @@ public class Review {
 
     /**
      * 求两整数数相除的余数
+     *
      * @param x 被除数
      * @param s 除数
      * @return 余数
      */
-    public int f(int x, int s){
+    public int f(int x, int s) {
         int n = 1;
         int result = 0;
-        while(x / n % s != 0){
+        while (x / n % s != 0) {
             result += x / n % s;
             n *= s;
         }
@@ -187,7 +190,8 @@ public class Review {
 
     /**
      * 文件读取
-     * @param fileDir 文件路径
+     *
+     * @param fileDir      文件路径
      * @param fileEncoding 文件编码
      * @throws IOException IO异常
      */
@@ -203,34 +207,18 @@ public class Review {
         }
     }
 
-    public void listTest2() {
-        System.out.println("????");
-        Scanner sc = new Scanner(System.in);
-        ArrayList<Integer> list = new ArrayList<>();
-        while(true) {
-            int temp = sc.nextInt();
-            if(temp == 0) {
-                break;
-            }
-            list.add(temp);
-        }
-        sc.close();
-        System.out.println(Collections.max(list));
-    }
-
     @Test
     public void guess() {
         System.out.println("猜数字");
         System.out.println("请输入1-100的数字：");
-        int lucky = (int)(Math.random() * 100) + 1;
+        int lucky = (int) (Math.random() * 100) + 1;
         Scanner sc = new Scanner(System.in);
         int guess = sc.nextInt();
 
-        while(guess != lucky) {
+        while (guess != lucky) {
             if (guess > lucky) {
                 System.out.println("猜大了！");
-            }
-            else {
+            } else {
                 System.out.println("猜小了！");
             }
             guess = sc.nextInt();
@@ -248,10 +236,10 @@ public class Review {
         for (int i = 10000; i < 100000; i++) {
             a = i / 10000;
             b = i / 1000 % 10;
-            c = i / 100 %  10;
+            c = i / 100 % 10;
             d = i / 10 % 10;
             e = i % 10;
-            if(c == a + b + d + e) {
+            if (c == a + b + d + e) {
                 System.out.print(i);
                 System.out.print("\t");
             }
@@ -282,8 +270,8 @@ public class Review {
 
     public void f5(int N) {
         int i = 0, j = 0;
-        while(i < N) {
-            while(j <= i) {
+        while (i < N) {
+            while (j <= i) {
                 System.out.print("*");
                 j++;
             }
@@ -295,8 +283,8 @@ public class Review {
 
     public void f6(int n) {
         int i = 1, j = 1;
-        while(j <= n) {
-            while(i <= n && i <= j) {
+        while (j <= n) {
+            while (i <= n && i <= j) {
                 System.out.print(i + " * " + j + " = " + i * j + "    ");
                 i++;
             }
@@ -309,10 +297,10 @@ public class Review {
     public void f7() {
         int day = 0;
         double money = 0;
-        while(money < 100) {
+        while (money < 100) {
             day++;
             money += 2.5;
-            if(day % 5 == 0 && money >= 6) {
+            if (day % 5 == 0 && money >= 6) {
                 money -= 6;
             }
         }

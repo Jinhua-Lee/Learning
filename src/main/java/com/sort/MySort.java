@@ -32,6 +32,7 @@ public class MySort {
 
     /**
      * 交换指定下标的两个数
+     *
      * @param index1 第一个数下标
      * @param index2 第二个数下标
      */
@@ -43,8 +44,9 @@ public class MySort {
 
     /**
      * 01_冒泡排序
-     *      1) 每轮会选出最大的元素到末端
-     *      2) 改进：增加一个变量标记该轮是否有交换过元素，若没有交换，则已经排好序
+     * 1) 每轮会选出最大的元素到末端
+     * 2) 改进：增加一个变量标记该轮是否有交换过元素，若没有交换，则已经排好序
+     *
      * @param arr 待排序数组
      */
     public void bubbleSort(int[] arr) {
@@ -52,10 +54,10 @@ public class MySort {
         // 外层表示循环次数，循环 length - 1次
         for (int i = 0; i < arr.length - 1; i++) {
             // 该轮是否排交换过的标志变量，若没改变，则表示没进行过交换，已经排好
-            boolean swap =false;
+            boolean swap = false;
             // 每一轮排序（外层），会将大的值排到数组末端， 所以内层每轮到的数组位置是越来越小（length - i - 1）
             for (int j = 0; j < arr.length - i - 1; j++) {
-                if (arr[j] > arr[j+1]) {
+                if (arr[j] > arr[j + 1]) {
                     swap = true;
                     swapInt(arr, j, j + 1);
                 }
@@ -68,17 +70,18 @@ public class MySort {
 
     /**
      * 02_简单选择排序
+     *
      * @param arr 待排序数组
      */
     public void selectSort(int[] arr) {
         int len = arr.length;
         // 外层循环：i即可表示，如果产生小值要放入的位置。
-        for(int i = 0; i < len ; i++){
+        for (int i = 0; i < len; i++) {
             int value = arr[i];
             int position = i;
             // 选出小的值，记录小值的位置
-            for(int j = i+1; j < len; j++){
-                if(arr[j] < value){
+            for (int j = i + 1; j < len; j++) {
+                if (arr[j] < value) {
                     value = arr[j];
                     position = j;
                 }
@@ -91,7 +94,8 @@ public class MySort {
 
     /**
      * 03_直接插入排序
-     * @param arr  待排序数组
+     *
+     * @param arr 待排序数组
      */
     public void insertSort(int[] arr) {
         int length = arr.length;
@@ -113,21 +117,22 @@ public class MySort {
 
     /**
      * 04_希尔排序
-     *		1) 改进的直接插入排序；
-     *		2) 增加了分组。按增量进行分组，组内仍使用直接插入排序
-     *		3) 组内的直接插入排序找前一个元素，从固定移动1，改为指定步长
+     * 1) 改进的直接插入排序；
+     * 2) 增加了分组。按增量进行分组，组内仍使用直接插入排序
+     * 3) 组内的直接插入排序找前一个元素，从固定移动1，改为指定步长
+     *
      * @param arr 待排序数组
      */
-    public void shellSort(int[] arr){
+    public void shellSort(int[] arr) {
         // 单独把数组长度拿出来，提高效率
         int length = arr.length;
-        while(length > 0){
+        while (length > 0) {
             // 增量公式，简单折半
             length = length / 2;
             // 第一层，是分组，每组执行插入排序
-            for(int i = 0; i < length; i++){
+            for (int i = 0; i < length; i++) {
                 //	每组从第二个元素开始，按增量确定该组的元素
-                for(int j = i + length; j < arr.length; j+= length){
+                for (int j = i + length; j < arr.length; j += length) {
                     // 要插入的元素
                     int value = arr[j];
                     // k为有序序列最后一位的位数
@@ -138,7 +143,7 @@ public class MySort {
                     }*/
 
                     // 从后往前，如果大于待插入值，则该值向后移动
-                    while(k >= 0 && arr[k] > value) {
+                    while (k >= 0 && arr[k] > value) {
                         arr[k + length] = arr[k];
                         // 按步长向前移动
                         k -= length;
@@ -152,35 +157,31 @@ public class MySort {
 
     /**
      * 05_快速排序
-     * @param arr 待排序数组
+     *
+     * @param arr   待排序数组
      * @param start 开始下标
-     * @param end 结束下标
+     * @param end   结束下标
      */
     public void quickSort(int[] arr, int start, int end) {
         if (start < end) {
             // 选基准值
-            int baseNum = arr[ start + Math.round(end - start) ];
+            int baseNum = arr[start + Math.round(end - start)];
 
             int i = start;
             int j = end;
             // 当两个游标没有重合
-            while (i < j)
-            {
+            while (i < j) {
                 // 从左开始找大于于基准值的下标
-                while (arr[i] < baseNum && i < end)
-                {
+                while (arr[i] < baseNum && i < end) {
                     i++;
                 }
                 // 从右边开始找小于基准值的下标
-                while (arr[j] > baseNum && j > start)
-                {
+                while (arr[j] > baseNum && j > start) {
                     j--;
                 }
-                if (i <= j)
-                {
+                if (i <= j) {
                     // 两个值做交换（位置相等时候不用换）
-                    if (i < j)
-                    {
+                    if (i < j) {
                         swapInt(arr, i, j);
                     }
                     // 从下一个位置开始继续找
@@ -192,7 +193,7 @@ public class MySort {
             if (start < j) {
                 quickSort(arr, start, j);
             }
-            if (end > i){
+            if (end > i) {
                 quickSort(arr, i, end);
             }
         }
@@ -200,15 +201,16 @@ public class MySort {
 
     /**
      * 06_堆排序 -> 改进的对简单选择排序；
-     *      1) 最后一个非叶子节点下标
-     *          a) 按数组长度
-     *              lastNonLeaf = length / 2 - 1;
-     *          b) 按下标
-     *              lastNonLeaf = (length - 1) / 2;
-     *      2) 按大顶堆的结构，二叉树父节点的值大于左右孩子节点的值。
-     *          a) 需要在每次构建堆，保证节点与子节点构成大顶堆
-     *          b) 最大元素向堆顶（最小）移动，所以必须从最后一个非叶子节点开始
-     *      3) 每个节点构建完堆，则将堆尾值与堆顶值的最大值交换。
+     * 1) 最后一个非叶子节点下标
+     * a) 按数组长度
+     * lastNonLeaf = length / 2 - 1;
+     * b) 按下标
+     * lastNonLeaf = (length - 1) / 2;
+     * 2) 按大顶堆的结构，二叉树父节点的值大于左右孩子节点的值。
+     * a) 需要在每次构建堆，保证节点与子节点构成大顶堆
+     * b) 最大元素向堆顶（最小）移动，所以必须从最后一个非叶子节点开始
+     * 3) 每个节点构建完堆，则将堆尾值与堆顶值的最大值交换。
+     *
      * @param arr 待排序数组
      */
     public void heapSort(int[] arr) {
@@ -226,7 +228,8 @@ public class MySort {
 
     /**
      * 将指定位置的元素构建成大顶堆
-     * @param arr 待建为大顶堆的数组
+     *
+     * @param arr       待建为大顶堆的数组
      * @param lastIndex 结束索引（可取到）
      */
     private void buildTopMaxHeap(int[] arr, int lastIndex) {
@@ -235,7 +238,7 @@ public class MySort {
         for (int cur = lastNonLeaf; cur >= 0; cur--) {
 
             // 若当前节点有孩子
-            if (cur * 2 + 1 <= lastIndex ) {
+            if (cur * 2 + 1 <= lastIndex) {
 
                 // 存储左右节点孩子中较大的一个的下标，初始为左孩子
                 int biggerIndex = cur * 2 + 1;

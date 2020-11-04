@@ -8,9 +8,10 @@
 package com.mythread.learn.stopthreaddemo;
 
 /**
+ * 测试volatile是否将修改后的值立即写入主存中
+ *
  * @author Jinhua
- * @description 测试volatile是否将修改后的值立即写入主存中
- * @date: 2020/8/17 22:38
+ * @date 2020/8/17 22:38
  */
 public class StopThreadDemo {
 

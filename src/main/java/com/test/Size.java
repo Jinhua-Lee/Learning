@@ -8,6 +8,8 @@
 package com.test;
 
 /**
+ * 尺寸枚举类
+ *
  * @author Jinhua
  */
 public enum Size {
@@ -31,7 +33,7 @@ public enum Size {
     /**
      * 缩写
      */
-    private String abbreviation;
+    private final String abbreviation;
 
     Size(String abbreviation) {
         this.abbreviation = abbreviation;

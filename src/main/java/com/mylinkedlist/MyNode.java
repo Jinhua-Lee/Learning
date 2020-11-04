@@ -1,17 +1,27 @@
 package com.mylinkedlist;
 
 /**
+ * 节点信息
+ *
  * @author Jinhua
  */
 public class MyNode {
-	int value;
-	MyNode next = null;
 
-	MyNode(int value) {
-		this.value = value;
-	}
+    /**
+     * 节点值
+     */
+    int value;
 
-	public void setNext(MyNode next) {
-		this.next = next;
-	}
+    /**
+     * 指向的下一个节点
+     */
+    MyNode next = null;
+
+    MyNode(int value) {
+        this.value = value;
+    }
+
+    public void setNext(MyNode next) {
+        this.next = next;
+    }
 }

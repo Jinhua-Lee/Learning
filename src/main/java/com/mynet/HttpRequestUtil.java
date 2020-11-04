@@ -17,6 +17,7 @@ import java.util.Map;
 
 /**
  * Http请求测试工具
+ *
  * @author Jinhua
  */
 public class HttpRequestUtil {
@@ -26,13 +27,14 @@ public class HttpRequestUtil {
 
     /**
      * URL编码
+     *
      * @param source 源串
      * @return 编码后的串
      */
-    public static String urlEncode(String source,String encode) {
+    public static String urlEncode(String source, String encode) {
         String result = null;
         try {
-            result = java.net.URLEncoder.encode(source,encode);
+            result = java.net.URLEncoder.encode(source, encode);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
             return "0";
@@ -43,7 +45,7 @@ public class HttpRequestUtil {
     public static String urlEncodeGBK(String source) {
         String result = null;
         try {
-            result = java.net.URLEncoder.encode(source,"GBK");
+            result = java.net.URLEncoder.encode(source, "GBK");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
             return "0";
@@ -53,6 +55,7 @@ public class HttpRequestUtil {
 
     /**
      * 发起http请求获取返回结果
+     *
      * @param reqUrl 请求地址
      * @return 响应信息
      */
@@ -92,6 +95,7 @@ public class HttpRequestUtil {
 
     /**
      * 发送http请求取得返回的输入流
+     *
      * @param requestUrl 请求地址
      * @return InputStream
      */
@@ -115,10 +119,8 @@ public class HttpRequestUtil {
     /**
      * 向指定URL发送GET方法的请求
      *
-     * @param url
-     *   发送请求的URL
-     * @param param
-     *   请求参数，请求参数应该是 name1=value1&name2=value2 的形式。
+     * @param url   发送请求的URL
+     * @param param 请求参数，请求参数应该是 name1=value1&name2=value2 的形式。
      * @return URL 所代表远程资源的响应结果
      */
     public static String sendGet(String url, String param) {
@@ -213,15 +215,12 @@ public class HttpRequestUtil {
     /**
      * 向指定 URL 发送POST方法的请求
      *
-     * @param url
-     *   发送请求的 URL
-     * @param param
-     *   请求参数，请求参数应该是 name1=value1&name2=value2 的形式。
-     * @param isproxy
-     *    是否使用代理模式
+     * @param url     发送请求的 URL
+     * @param param   请求参数，请求参数应该是 name1=value1&name2=value2 的形式。
+     * @param isproxy 是否使用代理模式
      * @return 所代表远程资源的响应结果
      */
-    public static String sendPost(String url, String param,boolean isproxy) {
+    public static String sendPost(String url, String param, boolean isproxy) {
         OutputStreamWriter out = null;
         BufferedReader in = null;
         StringBuilder result = new StringBuilder();
@@ -229,11 +228,11 @@ public class HttpRequestUtil {
             URL realUrl = new URL(url);
             HttpURLConnection conn;
             // 使用代理模式
-            if(isproxy){
+            if (isproxy) {
                 @SuppressWarnings("static-access")
                 Proxy proxy = new Proxy(Proxy.Type.DIRECT.HTTP, new InetSocketAddress(proxyHost, proxyPort));
                 conn = (HttpURLConnection) realUrl.openConnection(proxy);
-            }else{
+            } else {
                 conn = (HttpURLConnection) realUrl.openConnection();
             }
             // 打开和URL之间的连接
@@ -268,20 +267,19 @@ public class HttpRequestUtil {
                 result.append(line);
             }
         } catch (Exception e) {
-            System.out.println("发送 POST 请求出现异常！"+e);
+            System.out.println("发送 POST 请求出现异常！" + e);
             e.printStackTrace();
         }
         //使用finally块来关闭输出流、输入流
-        finally{
-            try{
-                if(out!=null){
+        finally {
+            try {
+                if (out != null) {
                     out.close();
                 }
-                if(in!=null){
+                if (in != null) {
                     in.close();
                 }
-            }
-            catch(IOException ex){
+            } catch (IOException ex) {
                 ex.printStackTrace();
             }
         }
@@ -321,8 +319,8 @@ public class HttpRequestUtil {
             @Override
             public void run() {
                 Long t0 = System.currentTimeMillis();
-                String sr = HttpRequestUtil.sendPost(url,para,isproxy);
-                Long t1 =System.currentTimeMillis();
+                String sr = HttpRequestUtil.sendPost(url, para, isproxy);
+                Long t1 = System.currentTimeMillis();
                 long t = t1 - t0;
                 System.out.println("所花时间：" + t);
                 System.out.println(sr);

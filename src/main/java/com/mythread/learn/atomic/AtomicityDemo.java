@@ -14,9 +14,10 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
+ * volatile原子性测试
+ *
  * @author Jinhua
- * @description volatile原子性测试
- * @date: 2020/8/17 23:22
+ * @date 2020/8/17 23:22
  */
 public class AtomicityDemo {
 
@@ -26,9 +27,9 @@ public class AtomicityDemo {
     private volatile int inc = 0;
     private volatile int inc1 = 0;
     private volatile int inc2 = 0;
-    public  AtomicInteger inc3 = new AtomicInteger();
+    public AtomicInteger inc3 = new AtomicInteger();
 
-    private  int x;
+    private int x;
     private int y;
     volatile boolean flag;
 
@@ -81,11 +82,11 @@ public class AtomicityDemo {
     public static void main(String[] args) {
         final AtomicityDemo test = new AtomicityDemo();
         // 开十个线程
-        for(int i = 0; i < 10; i++){
+        for (int i = 0; i < 10; i++) {
             new Thread() {
                 @Override
                 public void run() {
-                    for(int j=0; j < 50;j++) {
+                    for (int j = 0; j < 50; j++) {
                         test.increase();
                         test.increase1();
                         test.increase2();
@@ -96,7 +97,7 @@ public class AtomicityDemo {
         }
 
         //保证前面的线程都执行完
-        while(Thread.activeCount()>1) {
+        while (Thread.activeCount() > 1) {
             Thread.yield();
         }
         // 主线程输出inc的值

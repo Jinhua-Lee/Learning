@@ -4,16 +4,21 @@ import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 /**
+ * kettle配置文件读取
+ *
  * @author Jinhua
  * @version 1.0
  * @date 2020/11/4 13:58
  */
 public class KettlePropertiesResolver {
 
+    /**
+     * 资源绑定，懒汉式单例，内部使用
+     */
     private static ResourceBundle bundle;
 
     static {
-       bundle = ResourceBundle.getBundle("kettle");
+        bundle = ResourceBundle.getBundle("kettle");
     }
 
     public static String getProperty(String key) throws MissingResourceException {

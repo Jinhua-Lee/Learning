@@ -9,8 +9,7 @@ package com.mythread.learn.reorderdemo;
 
 /**
  * @author Jinhua
- * @description
- * @date: 2020/8/17 0:02
+ * @date 2020/8/17 0:02
  */
 public class R1 extends ReorderDemo implements Runnable {
     private ReorderDemo reOrderDemo = null;

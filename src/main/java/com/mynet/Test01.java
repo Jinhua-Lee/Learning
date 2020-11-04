@@ -9,6 +9,7 @@ import java.net.Socket;
 
 /**
  * 模拟Tomcat服务器
+ *
  * @author Jinhua
  */
 public class Test01 {
@@ -20,7 +21,7 @@ public class Test01 {
             BufferedReader br = new BufferedReader(new InputStreamReader(s.getInputStream()));
             StringBuffer sb = new StringBuffer();
             String string = "";
-            while((string = br.readLine()) != null && string.length() > 0) {
+            while ((string = br.readLine()) != null && string.length() > 0) {
                 sb.append(string).append(System.lineSeparator());
             }
             System.out.println(sb);

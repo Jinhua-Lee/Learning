@@ -9,12 +9,11 @@ package com.mythread.learn.stopthreaddemo;
 
 /**
  * @author Jinhua
- * @description
- * @date: 2020/8/17 22:41
+ * @date 2020/8/17 22:41
  */
 public class S1 extends StopThreadDemo implements Runnable {
 
-    private StopThreadDemo stopThreadDemo;
+    private final StopThreadDemo stopThreadDemo;
 
     public S1(StopThreadDemo stopThreadDemo) {
         this.stopThreadDemo = stopThreadDemo;
