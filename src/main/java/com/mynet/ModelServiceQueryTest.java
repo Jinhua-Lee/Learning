@@ -1,6 +1,5 @@
 package com.mynet;
 
-import com.cet.eem.common.model.Result;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
 import org.apache.http.HttpEntity;
@@ -85,7 +84,7 @@ public class ModelServiceQueryTest {
     @Test
     public void restTemplateTest() throws URISyntaxException {
         String modelLabel = "building";
-        Result result = restTemplate.getForObject(buildUri(modelLabel), Result.class);
+        Result<?> result = restTemplate.getForObject(buildUri(modelLabel), Result.class);
         assert result != null;
         System.out.println(result.getCode());
     }
