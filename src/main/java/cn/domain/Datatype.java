@@ -11,14 +11,17 @@ import lombok.Data;
 
 /**
  * Datatype_id对应的数据类型
+ * @author Jinhua
  */
 @Data
 public class Datatype {
 
 
-    private Integer datatype_id;
+    private Integer datatypeId;
 
-    // 表示数据类型的字符串，如"string", "int"
+    /**
+     * 表示数据类型的字符串，如"string", "int"
+     */
     private String datatype;
 
 

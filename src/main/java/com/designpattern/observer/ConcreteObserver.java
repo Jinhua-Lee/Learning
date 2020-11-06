@@ -9,11 +9,19 @@ package com.designpattern.observer;
 
 /**
  * 实际的观察者
+ *
+ * @author Jinhua
  */
 public class ConcreteObserver implements Observer {
 
-    private String name;
+    /**
+     * 姓名
+     */
+    private final String name;
 
+    /**
+     * 消息
+     */
     private String message;
 
     public ConcreteObserver(String name) {
@@ -27,7 +35,7 @@ public class ConcreteObserver implements Observer {
     }
 
     public void read() {
-        System.out.println( name + "收到推送消息：" + message);
+        System.out.println(name + "收到推送消息：" + message);
     }
 
     public static void main(String[] args) {

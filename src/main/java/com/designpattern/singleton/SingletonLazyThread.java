@@ -9,21 +9,23 @@ package com.designpattern.singleton;
 
 /**
  * 懒汉模式单例（线程安全）
+ *
  * @author Jinhua
  * @date 2020/8/22 22:52
  */
-public class SingletonLazyThread {
+public class SingletonLazyThread implements MySingleton {
 
     private static SingletonLazyThread instance;
 
-    private SingletonLazyThread(){
+    private SingletonLazyThread() {
 
     }
 
     /**
      * 测试多线程环境下线程安全的懒汉实现单例
+     *
      * @return 单例对象
-     * @throws InterruptedException
+     * @throws InterruptedException 中断异常
      */
     public static synchronized SingletonLazyThread getInstance() throws InterruptedException {
         if (instance == null) {
@@ -31,5 +33,10 @@ public class SingletonLazyThread {
             instance = new SingletonLazyThread();
         }
         return instance;
+    }
+
+    @Override
+    public void doSomething() {
+        System.out.println(this + "\t线程安全的懒汉单例模式.");
     }
 }

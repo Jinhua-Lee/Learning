@@ -10,49 +10,59 @@ package com.designpattern.dynamicproxy;
 import java.lang.reflect.*;
 
 /**
+ * 动态代理类模拟
+ *
  * @author Jinhua
  */
 public class MyInvocationHandler implements InvocationHandler {
-	private Object target;
 
-	public MyInvocationHandler() {
-		super();
-	}
+    /**
+     * 被代理对象的引用
+     */
+    private Object target;
 
-	public MyInvocationHandler(Object target) {
-		super();
-		this.target = target;
-	}
+    public MyInvocationHandler() {
+        super();
+    }
 
-	/**
-	 * 产生代理对象的方法
-	 * @param proxy 代理对象
-	 * @param method 原有要增强的方法
-	 * @param args 方法的参数
-	 * @return 返回动态代理类对象
-	 * @throws Throwable 反射可能抛出的异常
-	 */
-	@Override
-	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-		// 添加了代理方法
-		if("getName".equals(method.getName())){
-			System.out.println("s++++++before " + method.getName() + "++++++");
-			Object result = method.invoke(target, args);
-			System.out.println("++++++after " + method.getName() + "++++++");
-			return result;
-		} else {	// 未添加代理方法
-			Object result = method.invoke(target, args);
-			return result;
-		}
-	}
+    /**
+     * 拿到被代理对象
+     * @param target 被代理对象
+     */
+    public MyInvocationHandler(Object target) {
+        super();
+        this.target = target;
+    }
 
-	public static void main(String[] args) {
-		UserService userService = new UserServiceImpl();
-		InvocationHandler ih = new MyInvocationHandler(userService);
-		// 代理对象
-		UserService usp = (UserService) Proxy.newProxyInstance
-				(userService.getClass().getClassLoader(),
-						userService.getClass().getInterfaces(), ih);
-		System.out.println(usp.getName(1) + "---" + usp.getAge(1));
-	}
+    /**
+     * 产生代理对象的方法
+     *
+     * @param proxy  代理对象
+     * @param method 原有要增强的方法
+     * @param args   方法的参数
+     * @return 返回动态代理类对象
+     * @throws Throwable 反射可能抛出的异常
+     */
+    @Override
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        // 添加了代理方法
+        if ("getName".equals(method.getName())) {
+            System.out.println("s++++++before " + method.getName() + "++++++");
+            Object result = method.invoke(target, args);
+            System.out.println("++++++after " + method.getName() + "++++++");
+            return result;
+        } else {    // 未添加代理方法
+            return method.invoke(target, args);
+        }
+    }
+
+    public static void main(String[] args) {
+        UserService userService = new UserServiceImpl();
+        InvocationHandler ih = new MyInvocationHandler(userService);
+        // 代理对象
+        UserService usp = (UserService) Proxy.newProxyInstance
+                (userService.getClass().getClassLoader(),
+                        userService.getClass().getInterfaces(), ih);
+        System.out.println(usp.getName(1) + "---" + usp.getAge(1));
+    }
 }

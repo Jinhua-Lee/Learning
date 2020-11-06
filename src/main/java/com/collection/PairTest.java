@@ -2,7 +2,11 @@ package com.collection;
 
 import java.time.LocalDate;
 
+/**
+ * @author Jinhua
+ */
 public class PairTest {
+
 	public static void main(String[] args) {
 		LocalDate[] birthdays =
 			{

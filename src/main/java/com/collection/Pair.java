@@ -1,7 +1,22 @@
 package com.collection;
 
+import lombok.Data;
+
+/**
+ * 两个同类对象组成的实体类
+ * @author Jinhua
+ */
+@Data
 public class Pair<T> {
+
+	/**
+	 * first object
+	 */
 	private T first;
+
+	/**
+	 * second object
+	 */
 	private T second;
 
 	public Pair() {
@@ -13,16 +28,5 @@ public class Pair<T> {
 		this.first = first;
 		this.second = second;
 	}
-	public T getFirst() {
-		return first;
-	}
-	public void setFirst(T first) {
-		this.first = first;
-	}
-	public T getSecond() {
-		return second;
-	}
-	public void setSecond(T second) {
-		this.second = second;
-	}
+
 }

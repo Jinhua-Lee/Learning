@@ -9,18 +9,27 @@ package com.designpattern.singleton;
 
 /**
  * 饿汉式实现单例模式
+ *
  * @author Jinhua
  * @date 2020/8/22 22:47
  */
-public class SingletonHungry {
+public class SingletonHungry implements MySingleton {
 
-    private static SingletonHungry instance = new SingletonHungry();
+    /**
+     * 类加载准备阶段的时候就进行初始化
+     */
+    private static final SingletonHungry INSTANCE = new SingletonHungry();
 
-    private SingletonHungry(){
+    private SingletonHungry() {
 
     }
 
     public static SingletonHungry getInstance() {
-        return instance;
+        return INSTANCE;
+    }
+
+    @Override
+    public void doSomething() {
+        System.out.println(this + "\t饿汉实现单例模式");
     }
 }

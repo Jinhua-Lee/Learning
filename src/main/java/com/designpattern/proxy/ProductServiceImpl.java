@@ -8,23 +8,24 @@
 package com.designpattern.proxy;
 
 /**
- * 实现类
+ * 产品相关方法的实现
+ *
  * @author Jinhua
  */
 public class ProductServiceImpl implements ProductService {
-	/**
-	 * 定义添加商品的方法
-	 */
-	@Override
+    /**
+     * 定义添加商品的方法
+     */
+    @Override
     public void addPro() {
-		System.out.println("添加商品");
-	}
+        System.out.println("添加商品");
+    }
 
-	/**
-	 * 定义删除商品的方法
-	 */
-	@Override
-	public void delPro() {
-		System.out.println("删除商品");
-	}
+    /**
+     * 定义删除商品的方法
+     */
+    @Override
+    public void delPro() {
+        System.out.println("删除商品");
+    }
 }

@@ -2,8 +2,8 @@ package cn.graph;
 
 /**
  * @author Jinhua
- * @date 2020/8/17 9:43
  * @version 1.0
+ * @date 2020/8/17 9:43
  */
 public enum GraphType {
 

@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
+ * JDBC 连接池模拟
  * @author Jinhua
  */
 public class JdbcUtils {

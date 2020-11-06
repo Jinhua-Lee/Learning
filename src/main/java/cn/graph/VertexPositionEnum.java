@@ -2,9 +2,10 @@ package cn.graph;
 
 /**
  * 节点在流向图中的位置枚举类
+ *
  * @author Jinhua
- * @date 2020/8/21 14:23
  * @version 1.1 修改枚举类名称
+ * @date 2020/8/21 14:23
  */
 public enum VertexPositionEnum {
 

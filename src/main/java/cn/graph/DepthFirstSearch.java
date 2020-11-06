@@ -3,21 +3,21 @@ package cn.graph;
 import java.util.*;
 
 /**
- *  深度优先遍历基本信息及执行类
+ * 深度优先遍历基本信息及执行类
  *
  * @author Jinhua
- * @date 2020/8/17 15:17
  * @version 1.2
- *  更新内容：
- *      兼容外部传参作为开始节点，增加对应构造方法；提供所有属性的Getter；
- *      优化访问状态枚举；
- *      实现判断构成环的逻辑。
+ * 更新内容：
+ * 兼容外部传参作为开始节点，增加对应构造方法；提供所有属性的Getter；
+ * 优化访问状态枚举；
+ * 实现判断构成环的逻辑。
+ * @date 2020/8/17 15:17
  */
 public class DepthFirstSearch {
 
     /**
      * 标记是否被访问的映射
-     *      标记枚举值：0：未被访问；-1：被访问过一次；1：所有后代都被访问
+     * 标记枚举值：0：未被访问；-1：被访问过一次；1：所有后代都被访问
      */
     private final Map<Vertex<?>, VertexVisitStateEnum> visited;
 
@@ -43,9 +43,10 @@ public class DepthFirstSearch {
 
     /**
      * 构造方法，通过传入图的顶点数构建标记数组
-     * @param g	传入的图
+     *
+     * @param g 传入的图
      */
-    public DepthFirstSearch (MyGraph g) {
+    public DepthFirstSearch(MyGraph g) {
         this.graph = g;
         visited = new HashMap<>();
         withCircle = new VisitStackAndCircle(false, null);
@@ -58,7 +59,8 @@ public class DepthFirstSearch {
 
     /**
      * 提供遍历开始节点的构造方法
-     * @param g 构造的图
+     *
+     * @param g     构造的图
      * @param start 开始节点
      */
     public DepthFirstSearch(MyGraph g, Integer start) {
@@ -68,7 +70,7 @@ public class DepthFirstSearch {
 
     /**
      * 提供给对外执行的DFS遍历方法
-     *    读取标记所有节点是否被访问的映射，对未访问的节点执行深度优先遍历，访问过程中也会更新映射中对应节点的状态
+     * 读取标记所有节点是否被访问的映射，对未访问的节点执行深度优先遍历，访问过程中也会更新映射中对应节点的状态
      */
     public void executeDfs() {
         dfs(graph, start);
@@ -81,10 +83,11 @@ public class DepthFirstSearch {
 
     /**
      * 执行DFS深度优先遍历算法
+     *
      * @param g 传入的图
      * @param v 要遍历的开始顶点下标
      */
-    private void dfs (MyGraph g, int v) {
+    private void dfs(MyGraph g, int v) {
         /*
          * 访问顶点并且标记访问
          */
@@ -103,7 +106,8 @@ public class DepthFirstSearch {
 
     /**
      * 提供给外部判断是否有环的方法
-     *      此处提供有向图判断，无向图可扩展
+     * 此处提供有向图判断，无向图可扩展
+     *
      * @return 是否有环
      */
     public VisitStackAndCircle judgeWithCircle() {
@@ -119,9 +123,10 @@ public class DepthFirstSearch {
 
     /**
      * 改进的dfs，判断有向图是否有环
-     *      如果存在环，则更新标记字段，记录路径并退出
-     *      判断逻辑是：对于当前访问节点到关联节点的边的状态作判断（状态在枚举类中给出）
-     *          如果第一次访问（u, v）时，v被访问过一次，则（u,v）为反向边，该图存在环
+     * 如果存在环，则更新标记字段，记录路径并退出
+     * 判断逻辑是：对于当前访问节点到关联节点的边的状态作判断（状态在枚举类中给出）
+     * 如果第一次访问（u, v）时，v被访问过一次，则（u,v）为反向边，该图存在环
+     *
      * @param g 有向图
      * @param v 顶点
      */
@@ -153,7 +158,8 @@ public class DepthFirstSearch {
 
     /**
      * 对结点的访问方法
-     *      访问过的节点添加到DVisit数组中
+     * 访问过的节点添加到DVisit数组中
+     *
      * @param v 要访问的结点
      */
     private void visit(Vertex<?> v) {

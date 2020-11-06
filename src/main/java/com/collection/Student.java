@@ -1,86 +1,81 @@
 package com.collection;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import java.util.*;
 
+/**
+ * 学生类
+ * 测试TreeSet的有序性和唯一性
+ *
+ * @author Jinhua
+ */
+@Data
+@EqualsAndHashCode
 public class Student {
-	private String name;
-	private int age;
-	private String sex;
-	private int classNo;
-	public Student(String name, int age, String sex, int classNo) {
-		super();
-		this.name = name;
-		this.age = age;
-		this.sex = sex;
-		this.classNo = classNo;
-	}
 
-	public String getName() {
-		return name;
-	}
+    /**
+     * 姓名
+     */
+    private String name;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    /**
+     * 年龄
+     */
+    private int age;
 
-	public int getAge() {
-		return age;
-	}
+    /**
+     * 性别
+     */
+    private String sex;
 
-	public void setAge(int age) {
-		this.age = age;
-	}
+    /**
+     * 班级号
+     */
+    private int classNo;
 
-	public String getSex() {
-		return sex;
-	}
 
-	public void setSex(String sex) {
-		this.sex = sex;
-	}
+    public Student(String name, int age, String sex, int classNo) {
+        super();
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+        this.classNo = classNo;
+    }
 
-	public int getClassNo() {
-		return classNo;
-	}
+    public static void main(String[] args) {
+        Set<Student> set = new TreeSet<>((s1, s2) -> {
+            // 先名字升序
+            int num1 = s1.getName().compareTo(s2.getName());
+            // 其次班级号升序
+            int num2 = num1 == 0 ? s1.getClassNo() - s2.getClassNo() : num1;
+            // 再其次性别升序
+            int num3 = num2 == 0 ? s1.getSex().compareTo(s2.getSex()) : num2;
+            // 最后年纪升序
+            return num3 == 0 ? s1.getAge() - s2.getAge() : num3;
+        });
+        set.add(new Student("李金华", 21, "男", 1503));
+        set.add(new Student("李文凯", 21, "男", 1501));
+        set.add(new Student("高亚文", 20, "女", 1502));
 
-	public void setClassNo(int classNo) {
-		this.classNo = classNo;
-	}
+        for (Student student : set) {
+            System.out.println(student.getName() + "-----" + student.getAge()
+                    + "-----" + student.getSex() + "-----" + student.getClassNo());
+        }
 
-	public static void main(String[] args) {
-		Set<Student> set = new TreeSet<>(new Comparator<Student>() {
-			public int compare(Student s1, Student s2) {
-				// 先名字升序
-				int num1 = s1.getName().compareTo(s2.getName());
-				// 其次班级号升序
-				int num2 = num1 == 0 ? s1.getClassNo() - s2.getClassNo() : num1;
-				// 再其次性别升序
-				int num3 = num2 == 0 ? s1.getSex().compareTo(s2.getSex()) : num2;
-				// 最后年纪升序
-				int num4 = num3 == 0 ? s1.getAge() - s2.getAge() : num3;
-				return num4;
-			}
-		});
-		set.add(new Student("李金华", 21, "男", 1503));
-		set.add(new Student("李文凯", 21, "男", 1501));
-		set.add(new Student("高亚文", 20, "女", 1502));
-		for (Student student : set) {
-			System.out.println(student.getName() + "-----" + student.getAge()
-				+ "-----" + student.getSex() + "-----" + student.getClassNo());
-		}
+        Map<Integer, Student> is = new HashMap<>(set.size() * 2);
+        int i = 0;
+        for (Student student : set) {
+            is.put(i++, student);
+        }
 
-		Map<Integer, Student> is = new HashMap<>();
-		Integer i = 0;
-		for (Student student : set) {
-			is.put(i++, student);
-		}
-
-		Set<Map.Entry<Integer, Student>> set3 = is.entrySet();
-		for (Map.Entry<Integer, Student> entry : set3) {
-			Integer key = entry.getKey();
-			Student value = entry.getValue();
-			System.out.println("Key:" + key  + "-----Value:"+ value.getName() + "-----" + value.getAge()
-				+ "-----" + value.getSex() + "-----" + value.getClassNo());
-		}
-	}
+        Set<Map.Entry<Integer, Student>> set3 = is.entrySet();
+        for (Map.Entry<Integer, Student> entry : set3) {
+            Integer key = entry.getKey();
+            Student value = entry.getValue();
+            System.out.println("Key:" + key + "-----Value:" + value.getName() + "-----" + value.getAge()
+                    + "-----" + value.getSex() + "-----" + value.getClassNo());
+        }
+    }
 }

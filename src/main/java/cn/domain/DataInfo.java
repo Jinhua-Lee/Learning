@@ -9,7 +9,10 @@ package cn.domain;
 
 import lombok.Data;
 
-// 存储信息记录的对应的属性和值
+/**
+ * 存储信息记录的对应的属性和值
+ * @author Jinhua
+ */
 @Data
 public class DataInfo {
 
