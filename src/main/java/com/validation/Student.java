@@ -8,6 +8,8 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
 /**
+ * javax.validation的校验
+ *
  * @author Jinhua
  */
 @Valid
@@ -36,7 +38,6 @@ public class Student {
      * 邮箱
      */
     private String email;
-
 
     public static void main(String[] args) {
         Student stu = new Student("小明", -1, 97.3d, "123@qq.com");

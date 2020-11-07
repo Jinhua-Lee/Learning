@@ -19,5 +19,5 @@ public interface Observer {
      *
      * @param message 被观察者发出的消息
      */
-    public void update(String message);
+    void update(String message);
 }
