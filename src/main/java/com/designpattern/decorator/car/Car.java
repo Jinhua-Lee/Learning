@@ -1,12 +1,17 @@
 package com.designpattern.decorator.car;
 
 /**
- * 实现了移动功能的汽车类
+ * 基本移动功能的汽车实现类
+ *
  * @author Jinhua
  */
 public class Car implements ICar {
-	@Override
-	public void move() {
-		System.out.println("陆地上跑");
-	}
+
+    /**
+     * 实现基本功能：移动
+     */
+    @Override
+    public void move() {
+        System.out.println("陆地上跑");
+    }
 }

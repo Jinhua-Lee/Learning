@@ -1,7 +1,5 @@
 package com.mylinkedlist;
 
-import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,7 +59,7 @@ public class MyLinkedList {
      * 从头到尾遍历
      *
      * @param L 单链表
-     * @return
+     * @return 遍历结果的列表
      */
     public List<Integer> printFromHeadToTail(MyNode L) {
         List<Integer> integers = new ArrayList<>();
@@ -76,16 +74,18 @@ public class MyLinkedList {
         return integers;
     }
 
-    @Test
-    public void test() {
+    public static void main(String[] args) {
         MyNode l1 = new MyNode(1);
         MyNode[] lns = new MyNode[4];
         lns[0] = new MyNode(1);
         lns[1] = new MyNode(2);
         lns[2] = new MyNode(3);
         lns[3] = new MyNode(4);
-        MyNode L = makeList(lns);
-        List<Integer> integers = printFromHeadToTail(L);
+
+        MyLinkedList linkedList = new MyLinkedList();
+
+        MyNode myNode = linkedList.makeList(lns);
+        List<Integer> integers = linkedList.printFromHeadToTail(myNode);
         System.out.println("打印构建的链表：");
         for (Integer i : integers) {
             System.out.println(i);

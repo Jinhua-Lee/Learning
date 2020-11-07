@@ -33,7 +33,7 @@ public class AtomicityDemo {
     private int y;
     volatile boolean flag;
 
-    private Lock lock = new ReentrantLock();
+    private final Lock lock = new ReentrantLock();
 
     public void increase() {
         inc++;

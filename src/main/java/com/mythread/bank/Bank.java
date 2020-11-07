@@ -2,6 +2,11 @@ package com.mythread.bank;
 
 import java.util.Arrays;
 
+/**
+ * 银行转账与总金额
+ *
+ * @author Jinhua
+ */
 public class Bank {
     private final double[] accounts;
 
@@ -10,6 +15,13 @@ public class Bank {
         Arrays.fill(accounts, initBalance);
     }
 
+    /**
+     * 账户间转账
+     *
+     * @param from   转出的账户
+     * @param to     转到的账户
+     * @param amount 转出金额
+     */
     public void transfer(int from, int to, double amount) {
         if (accounts[from] < amount) {
             return;
@@ -21,6 +33,11 @@ public class Bank {
         System.out.printf("总额：%10.2f\r\n", getTotalBalance());
     }
 
+    /**
+     * 获取银行账户总余额
+     *
+     * @return 总金额
+     */
     public double getTotalBalance() {
         double sum = 0;
         for (double a : accounts) {
@@ -29,6 +46,11 @@ public class Bank {
         return sum;
     }
 
+    /**
+     * 账户数量
+     *
+     * @return 账户数量
+     */
     public int size() {
         return accounts.length;
     }

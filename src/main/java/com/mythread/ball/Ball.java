@@ -3,6 +3,10 @@ package com.mythread.ball;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 
+/**
+ * 球
+ * @author Jinhua
+ */
 public class Ball {
     private static final int XSIZE = 15;
     private static final int YSIZE = 15;
@@ -11,6 +15,10 @@ public class Ball {
     private double dx = 1;
     private double dy = 1;
 
+    /**
+     * 球移动的方法
+     * @param bounds 2D矩形画布
+     */
     public void move(Rectangle2D bounds) {
         x += dx;
         y += dy;

@@ -50,7 +50,7 @@ public class StopThreadDemo {
         Thread t1 = new Thread(new S1(stopThreadDemo), "线程1");
         Thread t2 = new Thread(new S2(stopThreadDemo), "线程2");
 
-        /**
+        /*
          * 实际分析语句a, b, c的执行顺序，以及stop的值更新到CPU各自高速缓存的取到值的时间
          *      所以分析原子性和结果依赖性，可能的执行情况：
          *      1. 无volatile可能情况分析：

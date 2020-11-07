@@ -22,24 +22,33 @@ import java.util.concurrent.FutureTask;
  * @date 2020年8月15日 18点32分
  */
 public class Delivery implements Callable<String> {
+
     /**
-     * 实现 Callable 接口
+     * 送餐方法
+     *
+     * @return 送到时间信息
+     * @throws Exception 异常情况
      */
     @Override
     public String call() throws Exception {
+        // 送餐与送到时间间隔10秒内
         Thread.sleep(new Random().nextInt(10000));
         System.out.println(Thread.currentThread().getName() + "：您的外卖已送达");
         return Thread.currentThread().getName() + " 送达时间：" + LocalDateTime.now() + "\n";
     }
 
     /**
-     * Callable 作为参数传递给 FutureTask，FutureTask 再作为参数传递给 Thread（类似 Runnable），然后就可以在子线程执行
+     * 1. Callable 作为参数传递给 FutureTask
+     * 2. FutureTask 再作为参数传递给 Thread（类似 Runnable），然后就可以在子线程执行
      *
      * @param args 主函数入参
      */
     public static void main(String[] args) {
         List<FutureTask<String>> futureTasks = new ArrayList<>(4);
-        for (int i = 0; i < 4; i++) {
+
+        final int deliverySize = 4;
+        // 4位送餐员
+        for (int i = 0; i < deliverySize; i++) {
             Delivery callable = new Delivery();
             FutureTask<String> futureTask = new FutureTask<>(callable);
             futureTasks.add(futureTask);

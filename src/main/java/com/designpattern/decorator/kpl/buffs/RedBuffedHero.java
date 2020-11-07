@@ -1,16 +1,16 @@
 package com.designpattern.decorator.kpl.buffs;
 
-import com.designpattern.decorator.kpl.Buff;
+import com.designpattern.decorator.kpl.BuffedHero;
 import com.designpattern.decorator.kpl.Hero;
 
 /**
  * 带红Buff的英雄
  * @author Jinhua
  */
-public class RedBuff extends Buff {
+public class RedBuffedHero extends BuffedHero {
 	private Hero hero;
 
-	public RedBuff(Hero hero) {
+	public RedBuffedHero(Hero hero) {
 		super(hero);
 	}
 

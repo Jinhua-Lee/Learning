@@ -1,11 +1,13 @@
 package com.sort;
 
 /**
+ * 排序的学习
+ *
  * @author Jinhua
  */
 public class MySort {
 
-    private static MySort mySort = new MySort();
+    private static final MySort mySort = new MySort();
 
     public static void main(String[] args) {
         MySort.getInstance().test();
@@ -201,15 +203,15 @@ public class MySort {
 
     /**
      * 06_堆排序 -> 改进的对简单选择排序；
-     * 1) 最后一个非叶子节点下标
-     * a) 按数组长度
-     * lastNonLeaf = length / 2 - 1;
-     * b) 按下标
-     * lastNonLeaf = (length - 1) / 2;
-     * 2) 按大顶堆的结构，二叉树父节点的值大于左右孩子节点的值。
-     * a) 需要在每次构建堆，保证节点与子节点构成大顶堆
-     * b) 最大元素向堆顶（最小）移动，所以必须从最后一个非叶子节点开始
-     * 3) 每个节点构建完堆，则将堆尾值与堆顶值的最大值交换。
+     *      1) 最后一个非叶子节点下标
+     *          a) 按数组长度
+     *              lastNonLeaf = length / 2 - 1;
+     *          b) 按下标
+     *              lastNonLeaf = (length - 1) / 2;
+     *      2) 按大顶堆的结构，二叉树父节点的值大于左右孩子节点的值。
+     *          a) 需要在每次构建堆，保证节点与子节点构成大顶堆
+     *          b) 最大元素向堆顶（最小）移动，所以必须从最后一个非叶子节点开始
+     *      3) 每个节点构建完堆，则将堆尾值与堆顶值的最大值交换。
      *
      * @param arr 待排序数组
      */

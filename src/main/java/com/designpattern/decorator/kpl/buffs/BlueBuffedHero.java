@@ -1,16 +1,20 @@
 package com.designpattern.decorator.kpl.buffs;
 
-import com.designpattern.decorator.kpl.Buff;
+import com.designpattern.decorator.kpl.BuffedHero;
 import com.designpattern.decorator.kpl.Hero;
 
 /**
  * 带蓝Buff的英雄类
  * @author Jinhua
  */
-public class BlueBuff extends Buff {
+public class BlueBuffedHero extends BuffedHero {
+
+	/**
+	 * 基本英雄的引用
+	 */
 	private Hero hero;
 
-	public BlueBuff (Hero hero) {
+	public BlueBuffedHero(Hero hero) {
 		super(hero);
 	}
 

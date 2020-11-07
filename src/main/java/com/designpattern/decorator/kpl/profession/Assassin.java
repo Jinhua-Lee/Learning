@@ -1,12 +1,15 @@
 package com.designpattern.decorator.kpl.profession;
 
 import com.designpattern.decorator.kpl.Hero;
+import lombok.Setter;
 
 /**
  * 刺客类
  * @author Jinhua
  */
+@Setter
 public class Assassin implements Hero {
+
 	/**
 	 * 攻击值
 	 */
@@ -21,19 +24,10 @@ public class Assassin implements Hero {
 		System.out.println("我是刺客");
 	}
 
-	public void setAttackPower(int attackPower) {
-		this.attackPower = attackPower;
-	}
-
-	public void setCoolingTime(int coolingTime) {
-		this.coolingTime = coolingTime;
-	}
-
 	@Override
 	public int attackPower() {
 		return attackPower;
 	}
-
 
 	@Override
 	public int coolingTime() {

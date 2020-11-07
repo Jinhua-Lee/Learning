@@ -14,9 +14,10 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
 /**
- * 电影院售票模拟
+ * 电影院售票模拟，Callable 接口实现
+ *
  * @author Jinhua
- * @date  2020/8/15 17:56
+ * @date 2020/8/15 17:56
  */
 public class MovieTicketCallable implements Callable<String> {
 
@@ -33,7 +34,7 @@ public class MovieTicketCallable implements Callable<String> {
 
     @Override
     public String call() throws InterruptedException {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         synchronized (this) {
             while (TICKET_NUM > 0) {
                 String executeResult = Thread.currentThread().getName() + " 正在售票，剩余 " + (--TICKET_NUM) + " 张票";
@@ -53,7 +54,7 @@ public class MovieTicketCallable implements Callable<String> {
         for (int i = 0; i < MovieTicketCallable.WINDOW_NUM; i++) {
             FutureTask<String> futureTask = new FutureTask<>(new MovieTicketCallable());
             futureTasks.add(futureTask);
-            Thread thread = new Thread(futureTask, "窗口" + ( i + 1));
+            Thread thread = new Thread(futureTask, "窗口" + (i + 1));
             thread.start();
         }
 
