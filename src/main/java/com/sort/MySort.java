@@ -7,14 +7,14 @@ package com.sort;
  */
 public class MySort {
 
-    private static final MySort mySort = new MySort();
+    private static final MySort MY_SORT = new MySort();
 
     public static void main(String[] args) {
         MySort.getInstance().test();
     }
 
     private static MySort getInstance() {
-        return mySort;
+        return MY_SORT;
     }
 
     public void test() {
@@ -24,8 +24,9 @@ public class MySort {
 //        insertSort(arr);
 //        shellSort(arr);
 //		quickSort(arr, 0, arr.length - 1);
-        heapSort(arr);
-
+//        heapSort(arr);
+        int[] tempArr = new int[arr.length];
+        mergeSort(arr, 0, arr.length - 1, tempArr);
         for (int i : arr) {
             System.out.printf("%-4d", i);
         }
@@ -46,8 +47,8 @@ public class MySort {
 
     /**
      * 01_冒泡排序
-     * 1) 每轮会选出最大的元素到末端
-     * 2) 改进：增加一个变量标记该轮是否有交换过元素，若没有交换，则已经排好序
+     *  1) 每轮会选出最大的元素到末端
+     *  2) 改进：增加一个变量标记该轮是否有交换过元素，若没有交换，则已经排好序
      *
      * @param arr 待排序数组
      */
@@ -119,9 +120,9 @@ public class MySort {
 
     /**
      * 04_希尔排序
-     * 1) 改进的直接插入排序；
-     * 2) 增加了分组。按增量进行分组，组内仍使用直接插入排序
-     * 3) 组内的直接插入排序找前一个元素，从固定移动1，改为指定步长
+     *  1) 改进的直接插入排序；
+     *  2) 增加了分组。按增量进行分组，组内仍使用直接插入排序
+     *  3) 组内的直接插入排序找前一个元素，从固定移动1，改为指定步长
      *
      * @param arr 待排序数组
      */
@@ -159,6 +160,11 @@ public class MySort {
 
     /**
      * 05_快速排序
+     *  1) 初始调用，从0到length - 1
+     *  2) 基准值选取的三种方式：
+     *      a. 选start下标位置元素或end位置的元素 -> 易产生劣质的分割
+     *      b. 选start到end范围内随机位置的元素 -> 不易产生劣质的分割
+     *      c. 选start, end, (end - start) / 2，三个位置元素中，值大小排在中间的元素 -> 算出中值会费一定时间
      *
      * @param arr   待排序数组
      * @param start 开始下标
@@ -166,7 +172,7 @@ public class MySort {
      */
     public void quickSort(int[] arr, int start, int end) {
         if (start < end) {
-            // 选基准值
+            // 选基准值，随机
             int baseNum = arr[start + Math.round(end - start)];
 
             int i = start;
@@ -182,7 +188,7 @@ public class MySort {
                     j--;
                 }
                 if (i <= j) {
-                    // 两个值做交换（位置相等时候不用换）
+                    // 两个值做交换（位置相等时候不用换，保证稳定性）
                     if (i < j) {
                         swapInt(arr, i, j);
                     }
@@ -203,15 +209,15 @@ public class MySort {
 
     /**
      * 06_堆排序 -> 改进的对简单选择排序；
-     *      1) 最后一个非叶子节点下标
-     *          a) 按数组长度
-     *              lastNonLeaf = length / 2 - 1;
-     *          b) 按下标
-     *              lastNonLeaf = (length - 1) / 2;
-     *      2) 按大顶堆的结构，二叉树父节点的值大于左右孩子节点的值。
-     *          a) 需要在每次构建堆，保证节点与子节点构成大顶堆
-     *          b) 最大元素向堆顶（最小）移动，所以必须从最后一个非叶子节点开始
-     *      3) 每个节点构建完堆，则将堆尾值与堆顶值的最大值交换。
+     *  1) 最后一个非叶子节点下标
+     *      a) 按数组长度
+     *          lastNonLeaf = length / 2 - 1;
+     *      b) 按下标
+     *          lastNonLeaf = (length - 1) / 2;
+     *  2) 按大顶堆的结构，二叉树父节点的值大于左右孩子节点的值。
+     *      a) 需要在每次构建堆，保证节点与子节点构成大顶堆
+     *      b) 最大元素向堆顶（最小）移动，所以必须从最后一个非叶子节点开始
+     *  3) 每个节点构建完堆，则将堆尾值与堆顶值的最大值交换。
      *
      * @param arr 待排序数组
      */
@@ -258,6 +264,72 @@ public class MySort {
                     swapInt(arr, cur, biggerIndex);
                 }
             }
+        }
+    }
+
+
+    /**
+     * 07_归并排序
+     *  1) 运用递归，将相邻两个有序数组合并；
+     *  2) 当两个数组元素都大于1时候，再分别将两个数组再划分为两个数组；
+     *  3) 递归到每个数组大小为1时候，开始回溯；
+     *  4) 缓存数组一开始就在外面创建，减少递归中创建的消耗
+     *
+     * @param arr     待排数组
+     * @param left    待排数组的起始位置
+     * @param right   待排数组终点位置
+     * @param tempArr 缓存数组
+     */
+    public void mergeSort(int[] arr, int left, int right, int[] tempArr) {
+        // 当数组元素不为1时候，继续划分；否则可以进行归并
+        if (left != right) {
+            int middle = (left + right) / 2;
+            // 分别排序左右两边，再归并起来
+            mergeSort(arr, left, middle, tempArr);
+            mergeSort(arr, middle + 1, right, tempArr);
+            merge(arr, left, middle, right, tempArr);
+        }
+    }
+
+    /**
+     * 将两个相邻数的有序数组合并为一个有序数组的方法
+     *  1) middle用来分割两个有序数组，该位置的元素属于左边或右边，归并需要定义清楚，通常由于除法运算向下取整，定义为属于第一个数组;
+     *  2) 需要额外的数组空间 right -left + 1，由于该额外空间在每次归并只使用一次，且归并到最后是原数组大小，所以大小直接分配为原数组大小，在递归外部创建;
+     *  3) 每次归并排好序后放入原来的位置。
+     *  4) 归并的难点在于将两个序列合并为一个有序序列，此处需要想清楚过程，否则容易导致数组下标越界：
+     *      a. 当两边都有值的时候，将值比较后一次填入缓存数组；
+     *      b. 执行完上面的循环，只有一边有值了，将另一边剩下的位置数组全部放到缓存数组接着的位置。
+     *
+     * @param arr     待排数组
+     * @param left    待排数组的起始位置
+     * @param middle  待排数组中间位置，归属于左边
+     * @param right   待排数组终点位置
+     * @param tempArr 缓存数组
+     */
+    private void merge(int[] arr, int left, int middle, int right, int[] tempArr) {
+        // 分别是左边数组，右边数组，缓存数组的游标
+        int i = left;
+        int j = middle + 1;
+        int k = left;
+        // 左右两部分值都还未取完时
+        while (i <= middle && j <= right) {
+
+            if (arr[i] <= arr[j]) {
+                tempArr[k++] = arr[i++];
+            } else {
+                tempArr[k++] = arr[j++];
+            }
+        }
+        // 当左边或者右边值被取完时候，将另一边的值全部赋值到缓存数组
+        while (i <= middle) {
+            tempArr[k++] = arr[i++];
+        }
+        while (j <= right) {
+            tempArr[k++] = arr[j++];
+        }
+        // 将缓存数组的值放回原来数组的对应位置
+        for (k = left; k <= right; k++) {
+            arr[k] = tempArr[k];
         }
     }
 
