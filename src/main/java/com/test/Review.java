@@ -9,9 +9,9 @@ import java.math.BigInteger;
 import java.nio.file.Paths;
 import java.time.*;
 import java.util.*;
-import java.util.stream.Stream;
 
 /**
+ * 一些杂项
  * @author Jinhua
  */
 public class Review {
@@ -38,8 +38,6 @@ public class Review {
         envs.forEach(e -> System.out.println("env:    " + e.getKey() + " ---- " + e.getValue()));
     }
 
-
-    @Test
     public void test() {
         double monthCoefficient = getMonthCoefficient(1603152000000L, 1601481600000L);
     }
@@ -158,20 +156,6 @@ public class Review {
     }
 
     /**
-     * 集合与流操作
-     *
-     * @param s
-     * @return
-     */
-    public Stream<String> letters(String s) {
-        List<String> result = new ArrayList<>();
-        for (int i = 0; i < s.length(); i++) {
-            result.add(s.substring(i, i + 1));
-        }
-        return result.stream();
-    }
-
-    /**
      * 求两整数数相除的余数
      *
      * @param x 被除数
@@ -229,7 +213,9 @@ public class Review {
     }
 
 
-    // 五位数百位等于其他四位之和
+    /**
+     * 五位数百位等于其他四位之和
+     */
     public void f1() {
         System.out.println("10000-99999的");
         int a, b, c, d, e;
@@ -248,7 +234,7 @@ public class Review {
 
     public void func(int N) {
         for (int i = 3; i <= N; i++) {
-            int a[] = new int[i];
+            int[] a = new int[i];
             int num = (int) Math.pow(10, i - 1) + 1;
             System.out.print(i + "\t");
             while (num <= Math.pow(10, i)) {
@@ -268,6 +254,10 @@ public class Review {
         }
     }
 
+    /**
+     * 从0到 N，共n行，每行打印N个 *
+     * @param N 行数
+     */
     public void f5(int N) {
         int i = 0, j = 0;
         while (i < N) {
@@ -281,6 +271,10 @@ public class Review {
         }
     }
 
+    /**
+     * 乘法口诀表
+     * @param n 口诀表最大值
+     */
     public void f6(int n) {
         int i = 1, j = 1;
         while (j <= n) {
