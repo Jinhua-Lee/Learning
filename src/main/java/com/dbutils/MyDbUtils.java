@@ -174,7 +174,7 @@ public class MyDbUtils {
     }
 
     public static void main(String[] args) {
-        String sql = "Select * From Usr";
+        String sql = "Select * From student";
         MyDbUtils.getConnection();
         // 获取结果的List集合（可看作一个表）
         List<Map<String, Object>> table = MyDbUtils.executeQuery(sql);

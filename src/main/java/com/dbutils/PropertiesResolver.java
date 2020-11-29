@@ -10,15 +10,15 @@ import java.util.ResourceBundle;
  */
 
 public class PropertiesResolver {
-
-    private static final ResourceBundle bundle;
+    
+    private static final ResourceBundle BUNDLE;
 
     static {
-        bundle = ResourceBundle.getBundle("mysql");
+        BUNDLE = ResourceBundle.getBundle("postgres");
     }
 
     public static String getValue(String key) throws MissingResourceException {
-        return bundle.getString(key);
+        return BUNDLE.getString(key);
     }
 
     public static void main(String[] args) {
