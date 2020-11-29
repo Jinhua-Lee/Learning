@@ -14,7 +14,7 @@ public class PropertiesResolver {
     private static final ResourceBundle BUNDLE;
 
     static {
-        BUNDLE = ResourceBundle.getBundle("postgres");
+        BUNDLE = ResourceBundle.getBundle("mysql");
     }
 
     public static String getValue(String key) throws MissingResourceException {
