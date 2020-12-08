@@ -6,7 +6,7 @@ import java.util.*;
 /**
  * 数据库JDBC工具类封装
  *
- * @author 子期
+ * @author Jinhua
  */
 public class MyDbUtils {
     /**
@@ -23,10 +23,11 @@ public class MyDbUtils {
     /**
      * 创建一个本地线程对象
      */
-    private static ThreadLocal<Connection> threadLocal = new ThreadLocal<>();
+    private static final ThreadLocal<Connection> THREAD_LOCAL;
 
     // 静态代码块注册驱动，只运行一次
     static {
+        THREAD_LOCAL = new ThreadLocal<>();
         try {
             Class.forName(DRIVER);
             System.out.println("驱动注册成功~");
@@ -41,13 +42,13 @@ public class MyDbUtils {
      */
     private static Connection getConnection() {
         // 从本地线程中获取连接对象
-        conn = threadLocal.get();
+        conn = THREAD_LOCAL.get();
         // 判断获取到的连接对象是否为空
         if (conn == null) {
             // 创建连接对象，放到本地线程中
             try {
                 conn = DriverManager.getConnection(URL, USER, PASSWORD);
-                threadLocal.set(conn);
+                THREAD_LOCAL.set(conn);
                 System.out.println("连接数据库成功~");
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -61,13 +62,13 @@ public class MyDbUtils {
      * 定义关闭数据库连接的方法
      */
     private static void closeConnection() {
-        conn = threadLocal.get();
+        conn = THREAD_LOCAL.get();
         // 从本地线程中获取连接对象
         try {
             if (conn != null) {
                 if (!conn.isClosed()) {
                     conn.close();
-                    threadLocal.remove();
+                    THREAD_LOCAL.remove();
                     conn = null;
                 }
             }
@@ -174,7 +175,7 @@ public class MyDbUtils {
     }
 
     public static void main(String[] args) {
-        String sql = "Select * From student";
+        String sql = "Select * From Usr";
         MyDbUtils.getConnection();
         // 获取结果的List集合（可看作一个表）
         List<Map<String, Object>> table = MyDbUtils.executeQuery(sql);
