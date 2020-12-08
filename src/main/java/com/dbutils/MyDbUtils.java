@@ -6,7 +6,6 @@ import java.util.*;
 /**
  * 数据库JDBC工具类封装
  *
-<<<<<<< HEAD
  * @author Jinhua
  */
 public class MyDbUtils {
