@@ -1,5 +1,7 @@
 package com.bitree;
 
+import java.util.Stack;
+
 /**
  * 二叉树定义实体类
  *
@@ -12,10 +14,8 @@ public class BinaryTree {
      */
     private Node root = null;
 
-    public BinaryTree(int value) {
-        root = new Node(value);
-        root.left = null;
-        root.right = null;
+    public BinaryTree(Node node) {
+        root = node;
     }
 
     public int getHeight() {
@@ -64,6 +64,7 @@ public class BinaryTree {
 
     /**
      * 遍历的方法
+     *
      * @param node 遍历的节点
      */
     private void visit(Node node) {
@@ -91,6 +92,34 @@ public class BinaryTree {
         visit(node);
         preOrderTraverse(node.left);
         preOrderTraverse(node.right);
+    }
+
+    /**
+     * 先序遍历非递归操作
+     *
+     * @param node 待遍历的树根
+     */
+    private void preOrderNonRecur(Node node) {
+        if (node == null) {
+            return;
+        }
+
+        Stack<Node> nodeStack = new Stack<>();
+        Node curNode = node;
+        visit(curNode);
+        nodeStack.push(curNode);
+
+        curNode = curNode.left;
+
+        while ( !nodeStack.isEmpty() || curNode != null) {
+
+            while (curNode != null) {
+                visit(curNode);
+                nodeStack.push(curNode);
+                curNode = curNode.left;
+            }
+            curNode = nodeStack.pop().right;
+        }
     }
 
     /**
@@ -137,5 +166,33 @@ public class BinaryTree {
         postOrderTraverse(node.left);
         postOrderTraverse(node.right);
         visit(node);
+    }
+
+    public static void main(String[] args) {
+        Node a = new Node(1);
+        Node b = new Node(2);
+        Node c = new Node(3);
+        Node d = new Node(4);
+        Node e = new Node(5);
+        Node f = new Node(6);
+        Node g = new Node(7);
+        Node h = new Node(8);
+        Node i = new Node(9);
+
+        a.left = b;
+        a.right = e;
+
+        b.right = c;
+        c.right = d;
+
+        e.left = f;
+        f.right = g;
+
+        g.left = h;
+        g.right = i;
+
+        BinaryTree bt = new BinaryTree(a);
+        bt.preOrderNonRecur(a);
+
     }
 }
