@@ -42,7 +42,7 @@ public class HttpRequestUtil {
         return result;
     }
 
-    public static String urlEncodeGBK(String source) {
+    public static String urlEncodeGbk(String source) {
         String result = null;
         try {
             result = java.net.URLEncoder.encode(source, "GBK");
@@ -99,7 +99,7 @@ public class HttpRequestUtil {
      * @param requestUrl 请求地址
      * @return InputStream
      */
-    public static InputStream httpRequestIO(String requestUrl) {
+    public static InputStream httpRequestIo(String requestUrl) {
         InputStream inputStream = null;
         try {
             URL url = new URL(requestUrl);
@@ -203,6 +203,7 @@ public class HttpRequestUtil {
             return "0";
         } finally {
             try {
+                assert out != null;
                 out.close();
                 instr.close();
 
@@ -240,7 +241,8 @@ public class HttpRequestUtil {
             // 发送POST请求必须设置如下两行
             conn.setDoOutput(true);
             conn.setDoInput(true);
-            conn.setRequestMethod("POST"); // POST方法
+            // POST方法
+            conn.setRequestMethod("POST");
 
 
             // 设置通用的请求属性

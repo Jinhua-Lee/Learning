@@ -28,7 +28,7 @@ public class ModelServiceQueryTest {
     /**
      * rest请求对象
      */
-    private static RestTemplate restTemplate;
+    private static final RestTemplate restTemplate;
 
     static {
         restTemplate = new RestTemplate();

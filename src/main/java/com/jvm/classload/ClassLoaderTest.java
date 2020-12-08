@@ -8,7 +8,7 @@
 package com.jvm.classload;
 
 import sun.misc.Launcher;
-import sun.security.ec.CurveDB;
+//import sun.security.ec.CurveDB;
 
 import java.net.URL;
 import java.security.Provider;
@@ -94,8 +94,8 @@ public class ClassLoaderTest {
          * 从上面的路径中找到一个类，看看他们的类加载器是什么
          *      sun.misc.Launcher$ExtClassLoader@7946e1f4 -> 扩展类加载器
          */
-        ClassLoader classLoader1 = CurveDB.class.getClassLoader();
-        System.out.println("classLoader1 = " + classLoader1);
+//        ClassLoader classLoader1 = CurveDB.class.getClassLoader();
+//        System.out.println("classLoader1 = " + classLoader1);
     }
 
 

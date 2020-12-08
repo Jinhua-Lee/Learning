@@ -14,24 +14,33 @@ import java.util.Set;
 
 /**
  * 台账信息表，存储台账的名称和版本
+ * @author Jinhua
  */
 @Data
 public class Account {
     /**
      * 台账的id
      */
-    private Integer account_id;
+    private Integer accountId;
 
-    // 台账英文名
-    private String account_name;
+    /**
+     * 台账英文名
+     */
+    private String accountName;
 
-    // 台账中文名
+    /**
+     * 台账中文名
+     */
     private String description;
 
-    //台账的信息版本
+    /**
+     * 台账的信息版本
+     */
     private Integer version;
 
-    // 存储台账所包含的属性列
+    /**
+     * 存储台账所包含的属性列
+     */
     private Set<Property> properties = new HashSet<>();
 
 }

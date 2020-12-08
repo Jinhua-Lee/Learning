@@ -6,7 +6,11 @@ import java.util.*;
 /**
  * 数据库JDBC工具类封装
  *
+<<<<<<< HEAD
  * @author Jinhua
+=======
+ * @author 子期
+>>>>>>> cacb31c527f2619d78f1813cd31be7d59897ed6b
  */
 public class MyDbUtils {
     /**
@@ -23,11 +27,18 @@ public class MyDbUtils {
     /**
      * 创建一个本地线程对象
      */
+<<<<<<< HEAD
     private static final ThreadLocal<Connection> THREAD_LOCAL;
 
     // 静态代码块注册驱动，只运行一次
     static {
         THREAD_LOCAL = new ThreadLocal<>();
+=======
+    private static ThreadLocal<Connection> threadLocal = new ThreadLocal<>();
+
+    // 静态代码块注册驱动，只运行一次
+    static {
+>>>>>>> cacb31c527f2619d78f1813cd31be7d59897ed6b
         try {
             Class.forName(DRIVER);
             System.out.println("驱动注册成功~");
@@ -42,13 +53,21 @@ public class MyDbUtils {
      */
     private static Connection getConnection() {
         // 从本地线程中获取连接对象
+<<<<<<< HEAD
         conn = THREAD_LOCAL.get();
+=======
+        conn = threadLocal.get();
+>>>>>>> cacb31c527f2619d78f1813cd31be7d59897ed6b
         // 判断获取到的连接对象是否为空
         if (conn == null) {
             // 创建连接对象，放到本地线程中
             try {
                 conn = DriverManager.getConnection(URL, USER, PASSWORD);
+<<<<<<< HEAD
                 THREAD_LOCAL.set(conn);
+=======
+                threadLocal.set(conn);
+>>>>>>> cacb31c527f2619d78f1813cd31be7d59897ed6b
                 System.out.println("连接数据库成功~");
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -62,13 +81,21 @@ public class MyDbUtils {
      * 定义关闭数据库连接的方法
      */
     private static void closeConnection() {
+<<<<<<< HEAD
         conn = THREAD_LOCAL.get();
+=======
+        conn = threadLocal.get();
+>>>>>>> cacb31c527f2619d78f1813cd31be7d59897ed6b
         // 从本地线程中获取连接对象
         try {
             if (conn != null) {
                 if (!conn.isClosed()) {
                     conn.close();
+<<<<<<< HEAD
                     THREAD_LOCAL.remove();
+=======
+                    threadLocal.remove();
+>>>>>>> cacb31c527f2619d78f1813cd31be7d59897ed6b
                     conn = null;
                 }
             }
@@ -175,7 +202,11 @@ public class MyDbUtils {
     }
 
     public static void main(String[] args) {
+<<<<<<< HEAD
         String sql = "Select * From Usr";
+=======
+        String sql = "Select * From student";
+>>>>>>> cacb31c527f2619d78f1813cd31be7d59897ed6b
         MyDbUtils.getConnection();
         // 获取结果的List集合（可看作一个表）
         List<Map<String, Object>> table = MyDbUtils.executeQuery(sql);

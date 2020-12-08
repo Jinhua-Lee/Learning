@@ -8,17 +8,17 @@ import com.designpattern.decorator.car.SuperCar;
  * @author Jinhua
  */
 public class WaterCar extends SuperCar {
-	public WaterCar(ICar car) {
-		super(car);
-	}
+    public WaterCar(ICar car) {
+        super(car);
+    }
 
-	public void swim() {
-		System.out.println("水里游");
-	}
+    public void swim() {
+        System.out.println("水里游");
+    }
 
-	@Override
-	public void move() {
-		super.move();
-		swim();
-	}
+    @Override
+    public void move() {
+        super.move();
+        swim();
+    }
 }

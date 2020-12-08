@@ -4,11 +4,12 @@ import java.util.Stack;
 
 /**
  * 记录访问状态及标记是否有环的结果
- *      1. 如果无环，则标记变量为false，栈为空；
- *      2. 如果有环，则标记变量为true，栈为出现环的遍历路径
+ * 1. 如果无环，则标记变量为false，栈为空；
+ * 2. 如果有环，则标记变量为true，栈为出现环的遍历路径
+ *
  * @author Jinhua
- * @date 2020/8/19 15:47
  * @version 1.0
+ * @date 2020/8/19 15:47
  */
 public class VisitStackAndCircle {
     /**

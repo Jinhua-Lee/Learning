@@ -1,9 +1,12 @@
 package cn.graph;
 
 /**
+ * 度的类型枚举
+ * 度、入度、出度
+ *
  * @author Jinhua
- * @date 2020/8/26 11:13
  * @version 1.0
+ * @date 2020/8/26 11:13
  */
 public enum DegreeTypeEnum {
 

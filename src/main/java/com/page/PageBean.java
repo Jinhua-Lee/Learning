@@ -7,11 +7,14 @@
 
 package com.page;
 
+import lombok.Data;
+
 /**
  * 分页信息实体类
  *
  * @author Jinhua
  */
+@Data
 public class PageBean {
     /**
      * 当前页数
@@ -61,19 +64,4 @@ public class PageBean {
         }
     }
 
-    public int getCurrPage() {
-        return currPage;
-    }
-
-    public int getPageSize() {
-        return pageSize;
-    }
-
-    public int getTotalCount() {
-        return totalCount;
-    }
-
-    public int getTotalPage() {
-        return totalPage;
-    }
 }

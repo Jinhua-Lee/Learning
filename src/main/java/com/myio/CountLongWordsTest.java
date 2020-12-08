@@ -16,7 +16,7 @@ import java.util.stream.Stream;
  *
  * @author Jinhua
  */
-public class CountLongWords {
+public class CountLongWordsTest {
     public static void main(String[] args) throws IOException {
         String dir = "E:/IOTest/";
         String filename = "chars.txt";
@@ -44,8 +44,8 @@ public class CountLongWords {
         words.add("your");
         words.add("name");
 
-        Stream<Stream<Character>> result = words.stream().map(CountLongWords::characterStream);
-        Stream<Character> letters = words.stream().flatMap(CountLongWords::characterStream);
+        Stream<Stream<Character>> result = words.stream().map(CountLongWordsTest::characterStream);
+        Stream<Character> letters = words.stream().flatMap(CountLongWordsTest::characterStream);
     }
 
     public static Stream<Character> characterStream(String s) {

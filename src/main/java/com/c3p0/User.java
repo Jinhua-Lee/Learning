@@ -1,70 +1,44 @@
 package com.c3p0;
 
+import lombok.Data;
+import lombok.ToString;
+
+/**
+ * 用户类
+ *
+ * @author Jinhua
+ */
+@Data
+@ToString
 public class User {
-	private int ID;
-	private String Name;
-	private String Password;
-	private String Sex;
-	private String Home;
-	private String Info;
 
-	public int getID() {
-		return ID;
-	}
+    /**
+     * 用户Id
+     */
+    private int ID;
 
-	public void setID(int ID) {
-		this.ID = ID;
-	}
+    /**
+     * 用户名
+     */
+    private String Name;
 
-	public String getName() {
-		return Name;
-	}
+    /**
+     * 用户密码
+     */
+    private String Password;
 
-	public void setName(String name) {
-		Name = name;
-	}
+    /**
+     * 用户性别
+     */
+    private String Sex;
 
-	public String getPassword() {
-		return Password;
-	}
+    /**
+     * 用户家乡
+     */
+    private String Home;
 
-	public void setPassword(String password) {
-		Password = password;
-	}
-
-	public String getSex() {
-		return Sex;
-	}
-
-	public void setSex(String sex) {
-		Sex = sex;
-	}
-
-	public String getHome() {
-		return Home;
-	}
-
-	public void setHome(String home) {
-		Home = home;
-	}
-
-	public String getInfo() {
-		return Info;
-	}
-
-	public void setInfo(String info) {
-		Info = info;
-	}
-
-	@Override
-	public String toString() {
-		return "User{" +
-				"ID=" + ID +
-				", Name='" + Name + '\'' +
-				", Password='" + Password + '\'' +
-				", Sex='" + Sex + '\'' +
-				", Home='" + Home + '\'' +
-				", Info='" + Info + '\'' +
-				'}';
-	}
+    /**
+     * 用户备注
+     */
+    private String Info;
 }

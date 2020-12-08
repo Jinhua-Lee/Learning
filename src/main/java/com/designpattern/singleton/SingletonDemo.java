@@ -11,10 +11,11 @@ import lombok.SneakyThrows;
 
 /**
  * 单例模式的多线程环境演示类
+ *
  * @author Jinhua
  * @date 2020/8/23 12:20
  */
-public class SingletonDemo implements Runnable{
+public class SingletonDemo implements Runnable {
 
     /**
      * 测试饿汉模式
@@ -25,7 +26,8 @@ public class SingletonDemo implements Runnable{
 
     /**
      * 测试懒汉模式（线程不安全）
-     * @throws InterruptedException
+     *
+     * @throws InterruptedException 中断异常
      */
     public void testSingletonLazy() throws InterruptedException {
         System.out.println(SingletonLazy.getInstance().hashCode());
@@ -33,7 +35,8 @@ public class SingletonDemo implements Runnable{
 
     /**
      * 测试懒汉模式（线程安全）
-     * @throws InterruptedException
+     *
+     * @throws InterruptedException 中断异常
      */
     public void testSingletonLazyThread() throws InterruptedException {
         System.out.println(SingletonLazyThread.getInstance().hashCode());
@@ -47,9 +50,9 @@ public class SingletonDemo implements Runnable{
     }
 
     public void testSingleton() {
-        SingletonDemo r1 = new  SingletonDemo();
-        SingletonDemo r2 = new  SingletonDemo();
-        SingletonDemo r3 = new  SingletonDemo();
+        SingletonDemo r1 = new SingletonDemo();
+        SingletonDemo r2 = new SingletonDemo();
+        SingletonDemo r3 = new SingletonDemo();
         Thread t1 = new Thread(r1, "线程1");
         Thread t2 = new Thread(r2, "线程2");
         Thread t3 = new Thread(r3, "线程3");

@@ -11,22 +11,33 @@ import lombok.Data;
 
 /**
  * 台账属性列
+ * @author Jinhua
  */
 @Data
 public class Property {
 
-    // 属性列id
-    private Integer property_id;
+    /**
+     * 属性列id
+     */
+    private Integer propertyId;
 
-    // 属性列英文名
-    private String property_name;
+    /**
+     * 属性列英文名
+     */
+    private String propertyName;
 
-    // 属性列中文名
+    /**
+     * 属性列中文名
+     */
     private String description;
 
-    // 属性列取值范围
+    /**
+     * 属性列取值范围
+     */
     private String range;
 
-    // 引用的属性数据类型
+    /**
+     * 引用的属性数据类型
+     */
     private Datatype datatype;
 }

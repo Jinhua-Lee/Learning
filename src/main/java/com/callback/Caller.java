@@ -7,23 +7,33 @@
 
 package com.callback;
 
-import java.util.Scanner;
-
+/**
+ * 调用者
+ *     关键是要拿到被调用者的引用
+ *
+ * @author Jinhua
+ */
 public class Caller {
 
-    public void call(MyCallerInterface myCallerInterface) {
-        myCallerInterface.method();
+    /**
+     * 调用方法
+     * @param calleeInterface 被调用者的引用，以接口来保证它有要执行的方法
+     */
+    public void call(CalleeInterface calleeInterface) {
+        // 执行被调用者的方法
+        calleeInterface.method();
     }
 
     public static void main(String[] args) {
         Caller caller = new Caller();
-        caller.call(new MyCallerInterface() {
-            @Override
-            public void method() {
-                Scanner scanner = new Scanner(System.in);
+        // 拿到被调用者的引用，执行被调用者的方法
+        // 都是由调用者执行的
+        caller.call(new Callee());
 
-                System.out.println(scanner.nextInt());
-            }
+        caller.call(new AnotherCallee());
+
+        caller.call(() -> {
+            System.out.println("匿名的被调用者要执行的方法");
         });
     }
 }

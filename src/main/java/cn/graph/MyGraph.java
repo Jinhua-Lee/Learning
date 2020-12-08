@@ -7,9 +7,10 @@ import java.util.Map;
 
 /**
  * 用邻接矩阵来描述图
+ *
  * @author Jinhua
- * @date 2020/8/17 9:30
  * @version 1.2 加入根据入度和出度判断是否为起始节点、末端节点的方法
+ * @date 2020/8/17 9:30
  */
 public class MyGraph {
 
@@ -25,7 +26,7 @@ public class MyGraph {
 
     /**
      * 定义邻接矩阵表示顶点之间的连接关系
-     *      因为用的包装类，可以直接用空表示顶点间无边
+     * 因为用的包装类，可以直接用空表示顶点间无边
      */
     private final Double[][] adjMatrix;
 
@@ -36,16 +37,17 @@ public class MyGraph {
 
     /**
      * 图的类型：
-     * 		1：有向图.
-     * 		2：无向图.
+     * 1：有向图.
+     * 2：无向图.
      */
     private final GraphTypeEnum graphType;
 
     /**
      * 传入最大顶点数目和图类型
-     *      1.构造顶点数组
-     *      2.构造顶点关系的二维矩阵
-     *      3.初始化顶点数目、边的数目、图的类型
+     * 1.构造顶点数组
+     * 2.构造顶点关系的二维矩阵
+     * 3.初始化顶点数目、边的数目、图的类型
+     *
      * @param vexNum 最大顶点数
      */
     public MyGraph(Integer vexNum, GraphTypeEnum graphType) {
@@ -58,6 +60,7 @@ public class MyGraph {
 
     /**
      * 向图中加入顶点
+     *
      * @param vs 要加入的顶点列表
      */
     public void addVertex(Vertex<?>... vs) {
@@ -73,8 +76,9 @@ public class MyGraph {
 
     /**
      * 向图中添加边
-     * @param v1 顶点1
-     * @param v2 顶点2
+     *
+     * @param v1     顶点1
+     * @param v2     顶点2
      * @param length 边的长度
      */
     public void addEdge(Vertex<?> v1, Vertex<?> v2, Double length) {
@@ -121,6 +125,7 @@ public class MyGraph {
 
     /**
      * 获取与该顶点有边的所有顶点的集合（从流入找流出）
+     *
      * @param v 图的一个顶点
      * @return 返回相关联的顶点集合
      */
@@ -140,7 +145,8 @@ public class MyGraph {
 
     /**
      * 求一个节点在该图中的位置类型
-     *      外部需判断是否是有向图，若为无向图，所有的节点都设置为中间节点类型
+     * 外部需判断是否是有向图，若为无向图，所有的节点都设置为中间节点类型
+     *
      * @return 节点与其位置类型的映射
      */
     public Map<Vertex<?>, VertexPositionEnum> getVertexPosition() {
@@ -165,9 +171,10 @@ public class MyGraph {
 
     /**
      * 获取图的度
-     * @param vertex 顶点
+     *
+     * @param vertex     顶点
      * @param degreeType 度的类型:
-     *                      0：度；1：入度；2：出度；
+     *                   0：度；1：入度；2：出度；
      *                   其中：度 = 入度 + 出度。
      * @return 返回度
      */
@@ -177,7 +184,7 @@ public class MyGraph {
         switch (degreeType) {
             case IN_DEGREE: {
                 for (int i = 0; i < vertices.length; i++) {
-                    if ( i != index && adjMatrix[i][index] != null ) {
+                    if (i != index && adjMatrix[i][index] != null) {
                         degree++;
                     }
                 }
@@ -194,7 +201,7 @@ public class MyGraph {
             case DEGREE: {
                 for (int i = 0; i < vertices.length; i++) {
                     if (i != index) {
-                        if (adjMatrix[i][index] != null ) {
+                        if (adjMatrix[i][index] != null) {
                             degree++;
                         }
                         if (adjMatrix[index][i] != null) {

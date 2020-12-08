@@ -10,7 +10,15 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author Jinhua
  */
 public class LockBank extends Bank {
-    private Lock bankLock;
+
+    /**
+     * 锁对象，通过公平锁来实现
+     */
+    private final Lock bankLock;
+
+    /**
+     * 上锁的条件，资金足够
+     */
     private Condition sufficientFunds;
 
     public LockBank(int n, double initBalance) {
@@ -19,6 +27,13 @@ public class LockBank extends Bank {
         sufficientFunds = bankLock.newCondition();
     }
 
+    /**
+     * 重写转账方法，通过公平锁来实现同步
+     *
+     * @param from   转出的账户
+     * @param to     转到的账户
+     * @param amount 转出金额
+     */
     @Override
     public void transfer(int from, int to, double amount) {
         bankLock.lock();
@@ -29,6 +44,11 @@ public class LockBank extends Bank {
         }
     }
 
+    /**
+     * 重写获取总余额功能，公平锁实现
+     *
+     * @return 银行所有账户的余额
+     */
     @Override
     public double getTotalBalance() {
         bankLock.lock();

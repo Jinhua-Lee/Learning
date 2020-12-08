@@ -13,7 +13,7 @@ import java.util.List;
  * @author Jinhua
  */
 public class ObjectAnalyzer {
-    private ArrayList<Object> visited = new ArrayList<>();
+    private final ArrayList<Object> visited = new ArrayList<>();
 
     public String toString(Object obj) {
         if (obj == null) {

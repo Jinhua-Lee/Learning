@@ -7,16 +7,21 @@
 
 package com.designpattern.dynamicproxy;
 
+/**
+ * 用户服务实现
+ *
+ * @author Jinhua
+ */
 public class UserServiceImpl implements UserService {
-	@Override
-	public String getName(int id) {
-		System.out.println("----====GetName====----");
-		return "dbutils";
-	}
+    @Override
+    public String getName(int id) {
+        System.out.println("----====GetName====----");
+        return "dbutils";
+    }
 
-	@Override
-	public int getAge(int id) {
-		System.out.println("----====GetAge====----");
-		return 21;
-	}
+    @Override
+    public int getAge(int id) {
+        System.out.println("----====GetAge====----");
+        return 21;
+    }
 }

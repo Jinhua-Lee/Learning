@@ -8,20 +8,24 @@
 package com.designpattern.dynamicproxy;
 
 /**
+ * 用户服务
+ *
  * @author Jinhua
  */
 public interface UserService {
-	/**
-	 * 根据id获取名字
-	 * @param id ID
-	 * @return 名字
-	 */
-	String getName(int id);
+    /**
+     * 根据id获取名字
+     *
+     * @param id ID
+     * @return 名字
+     */
+    String getName(int id);
 
-	/**
-	 * 根据id获取年龄
-	 * @param id ID
-	 * @return 年龄
-	 */
-	int getAge(int id);
+    /**
+     * 根据id获取年龄
+     *
+     * @param id ID
+     * @return 年龄
+     */
+    int getAge(int id);
 }

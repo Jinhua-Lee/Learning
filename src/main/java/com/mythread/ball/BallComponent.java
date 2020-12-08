@@ -7,15 +7,20 @@ import java.util.List;
 
 /**
  * 球组件
+ *
  * @author Jinhua
  */
 public class BallComponent extends JPanel {
     private static final int DEFAULT_WIDTH = 450;
     private static final int DEFAULT_HEIGHT = 350;
-    private List<Ball> balls = new ArrayList<>();
+    private final List<Ball> balls = new ArrayList<>();
 
-    public void add(Ball b) {
-        balls.add(b);
+    /**
+     * 添加小球
+     * @param ball 小球
+     */
+    public void add(Ball ball) {
+        balls.add(ball);
     }
 
     @Override
