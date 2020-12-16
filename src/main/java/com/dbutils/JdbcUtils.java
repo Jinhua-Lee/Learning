@@ -128,8 +128,6 @@ public class JdbcUtils {
 		 * 如果不是事务专用，则需要关闭；
 		 * 反之不用关闭
 		 */
-
-
 		conn = T_LOCAL.get();
 		// 如果 conn 为null，则没有事务， connection一定不是事务专用连接
 		if (conn == null) {
@@ -138,7 +136,6 @@ public class JdbcUtils {
 			// 如果有事务，且connection不是事务专用连接
 			connection.close();
 		}
-
 		// 从本地线程池中移除
 		T_LOCAL.remove();
 	}

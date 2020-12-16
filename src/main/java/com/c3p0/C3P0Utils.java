@@ -13,28 +13,30 @@ import java.sql.SQLException;
  * @author Jinhua
  */
 public class C3P0Utils {
-    // 事务专用连接
+    /**
+     * 事务专用连接
+     */
     private static Connection conn = null;
 
     /**
      * 存放事务连接的本地线程池
      */
-    private static ThreadLocal<Connection> tl = new ThreadLocal<>();
+    private static final ThreadLocal<Connection> TL = new ThreadLocal<>();
 
     /**
      * C3P0数据源
      */
-    private static ComboPooledDataSource ds = new ComboPooledDataSource();
+    private static final ComboPooledDataSource DS = new ComboPooledDataSource();
 
     /*
      * 静态块，设置参数
      */
     static {
         try {
-            ds.setDriverClass(PropertiesResolver.getValue("jdbc.driver"));
-            ds.setJdbcUrl(PropertiesResolver.getValue("jdbc.url"));
-            ds.setUser(PropertiesResolver.getValue("jdbc.user"));
-            ds.setPassword(PropertiesResolver.getValue("jdbc.password"));
+            DS.setDriverClass(PropertiesResolver.getValue("jdbc.driver"));
+            DS.setJdbcUrl(PropertiesResolver.getValue("jdbc.url"));
+            DS.setUser(PropertiesResolver.getValue("jdbc.user"));
+            DS.setPassword(PropertiesResolver.getValue("jdbc.password"));
         } catch (PropertyVetoException e) {
             e.printStackTrace();
         }
@@ -47,17 +49,17 @@ public class C3P0Utils {
      * @throws SQLException SQL异常
      */
     public static Connection getConnection() throws SQLException {
-        conn = tl.get();
+        conn = TL.get();
         // 如果 conn 不为空，说明开启了事务，直接获取到该连接
         if (conn != null) {
             return conn;
         }
         // 否则从连接池拿到新的连接
-        return ds.getConnection();
+        return DS.getConnection();
     }
 
     public static ComboPooledDataSource getDs() {
-        return ds;
+        return DS;
     }
 
     /**
@@ -69,7 +71,7 @@ public class C3P0Utils {
      * @throws SQLException SQL异常
      */
     public static void beginTransaction() throws SQLException {
-        conn = tl.get();
+        conn = TL.get();
         // 开启事务前判断是否为空，防止重复开启事务
         if (conn != null) {
             throw new RuntimeException("请勿重复开启事务！");
@@ -77,7 +79,7 @@ public class C3P0Utils {
         conn = getConnection();
         conn.setAutoCommit(false);
         // 将本次的连接保存到本地ThreadLocal中
-        tl.set(conn);
+        TL.set(conn);
     }
 
     /**
@@ -87,7 +89,7 @@ public class C3P0Utils {
      */
     public static void commitTransaction() throws SQLException {
         // 从本地线程池中拿到连接
-        conn = tl.get();
+        conn = TL.get();
 
         if (conn == null) {
             throw new RuntimeException("请先开启事务再提交！");
@@ -97,7 +99,7 @@ public class C3P0Utils {
         conn.close();
 
         // 从本地线程池中移除
-        tl.remove();
+        TL.remove();
     }
 
     /**
@@ -107,7 +109,7 @@ public class C3P0Utils {
      */
     public static void rollbackTransaction() throws SQLException {
         // 从本地线程池中拿到连接
-        conn = tl.get();
+        conn = TL.get();
 
         if (conn == null) {
             throw new RuntimeException("请先开启事务再回滚！");
@@ -117,7 +119,7 @@ public class C3P0Utils {
         conn.close();
 
         // 从本地线程池中移除
-        tl.remove();
+        TL.remove();
     }
 
     /**
@@ -132,17 +134,16 @@ public class C3P0Utils {
          * 如果不是事务专用，则需要关闭；
          * 反之不用关闭
          */
-
-
-        conn = tl.get();
+        conn = TL.get();
         // 如果 conn 为null，则没有事务， connection一定不是事务专用连接
         if (conn == null) {
             connection.close();
-        } else if (conn != connection) {    // 如果有事务，且connection不是事务专用连接
+        }
+        // 如果有事务，且connection不是事务专用连接
+        else if (conn != connection) {
             connection.close();
         }
-
         // 从本地线程池中移除
-        tl.remove();
+        TL.remove();
     }
 }
