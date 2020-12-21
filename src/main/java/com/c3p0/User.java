@@ -3,6 +3,8 @@ package com.c3p0;
 import lombok.Data;
 import lombok.ToString;
 
+import java.lang.reflect.Field;
+
 /**
  * 用户类
  *
@@ -15,30 +17,48 @@ public class User {
     /**
      * 用户Id
      */
-    private int ID;
+    private int id;
 
     /**
      * 用户名
      */
-    private String Name;
+    private String name;
 
     /**
      * 用户密码
      */
-    private String Password;
+    private String password;
 
     /**
      * 用户性别
      */
-    private String Sex;
+    private String sex;
 
     /**
      * 用户家乡
      */
-    private String Home;
+    private String home;
 
     /**
      * 用户备注
      */
-    private String Info;
+    private String info;
+
+    public static void main(String[] args) {
+
+        User user = new User();
+        user.setName("ljh");
+        user.setId(1);
+
+        Class<? extends User> uClass = user.getClass();
+
+        System.out.println("uClass = " + uClass);
+
+        for (Field field : uClass.getFields()) {
+            Class<?> fieldType = field.getType();
+            String name = field.getName();
+            System.out.println("fieldType = " + fieldType + "\n name = " + name);
+        }
+
+    }
 }
