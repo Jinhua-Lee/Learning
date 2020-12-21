@@ -54,8 +54,13 @@ public class User {
 
         System.out.println("uClass = " + uClass);
 
-        for (Field field : uClass.getFields()) {
+        for (Field field : uClass.getDeclaredFields()) {
             Class<?> fieldType = field.getType();
+
+            if (fieldType.equals(int.class)) {
+                // do something
+            }
+
             String name = field.getName();
             System.out.println("fieldType = " + fieldType + "\n name = " + name);
         }
