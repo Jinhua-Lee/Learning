@@ -141,6 +141,12 @@
             <artifactId>spring-web</artifactId>
             <version>5.2.2.RELEASE</version>
         </dependency>
+        <!-- mybatis half-orm-->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.5.6</version>
+        </dependency>
 
     </dependencies>
 
