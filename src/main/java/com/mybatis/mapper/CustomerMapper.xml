@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  ~ Copyright (c)    2020 Jinhua, Inc. All rights reserved.
+  ~ Author:    Jinhua
+  ~ PathName:    D:/IdeaProjects/Learning/src/main/resources/mappers/CustomerMapper.xml
+  ~ LastModified:    2020/12/26 上午2:42
+  -->
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.mybatis.mapper.CustomerMapper">
+
+    <resultMap id = "CustomMap" type = "com.mybatis.domain.Customer">
+        <id column = "id" property = "id"/>
+        <result column = "name" property = "name"/>
+        <result column = "gender" property = "gender"/>
+        <result column = "age" property = "age"/>
+    </resultMap>
+
+
+    <!--新增客户-->
+    <insert id = "addCustomers" parameterType = "com.mybatis.domain.Customer" useGeneratedKeys = "true">
+        insert into customer(name, gender, age)
+        values
+        <foreach collection = "customers" item = "cus" separator = ", ">
+            (#{cus.name}, #{cus.gender}, #{cus.age})
+        </foreach>
+    </insert>
+
+    <!--更新客户-->
+    <update id = "updateCustomer" parameterType = "com.mybatis.domain.Customer">
+        update customer
+        <foreach collection = "customers" item = "cus" separator = ", ">
+            set name = #{cus.name}, gender = #{cus.gender}, age=#{cus.age}
+            where id = #{cus.id}
+        </foreach>
+    </update>
+
+    <!--删除客户-->
+    <delete id = "deleteCustomer" parameterType = "java.lang.Integer">
+        delete from customer
+        where id in
+        <foreach collection = "ids" item = "it" separator = ", " open = "(" close = ")">
+            #{it}
+        </foreach>
+    </delete>
+
+
+</mapper>

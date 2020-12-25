@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource = "mysql.properties"/>
+
+    <settings>
+        <setting name = "cacheEnabled" value = "true"/>
+        <setting name = "useGeneratedKeys" value = "true"/>
+        <setting name = "defaultExecutorType" value = "REUSE"/>
+        <setting name = "logImpl" value = "LOG4J"/>
+    </settings>
+
+    <typeAliases>
+        <!--自定义的别名会很多，麻烦-->
+        <!--<typeAlias type="com.jinhua.domain.User" alias="User"/>-->
+
+        <!--扫描包，其子包，和其下的类，自动起别名为类名，对应在Mapper文件中-->
+        <package name = "com.mybatis.mapper"/>
+    </typeAliases>
+
+    <!--和Spring整合后将废除-->
+    <environments default = "development">
+        <environment id = "development">
+            <transactionManager type = "JDBC"/>
+            <dataSource type = "POOLED">
+                <property name = "driver" value = "${jdbc.driver}"/>
+                <property name = "url" value = "${jdbc.url}"/>
+                <property name = "username" value = "${jdbc.user}"/>
+                <property name = "password" value = "${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <!--        <mapper class="com.mybatis.mapper.CustomerMapper"/>-->
+        <package name = "com.mybatis.mapper"/>
+    </mappers>
+</configuration>
