@@ -23,7 +23,7 @@ import java.util.Collections;
 public class MainRun {
 
     public static void main(String[] args) {
-        SqlSession sqlSession = MyBatisSessionUtil.getSqlSession();
+        SqlSession sqlSession = MyBatisSessionUtil.getTransactionSession();
 
         CustomerMapper customerMapper = sqlSession.getMapper(CustomerMapper.class);
 

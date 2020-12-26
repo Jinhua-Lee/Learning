@@ -8,6 +8,7 @@
 package com.mybatis.mapper;
 
 import com.mybatis.domain.Customer;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.List;
  * @author Jinhua
  * @date 2020/12/26 1:09
  */
+@Mapper
 public interface CustomerMapper {
 
     /**
