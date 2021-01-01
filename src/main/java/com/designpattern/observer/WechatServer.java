@@ -20,7 +20,7 @@ public class WechatServer implements Subject {
     /**
      * 用于保存所有观察者的列表
      */
-    private List<Observer> observerList;
+    private final List<Observer> observerList;
 
     /**
      * 推送更新的消息保存
