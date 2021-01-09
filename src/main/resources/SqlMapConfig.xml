@@ -17,7 +17,7 @@
         <!--<typeAlias type="com.jinhua.domain.User" alias="User"/>-->
 
         <!--扫描包，其子包，和其下的类，自动起别名为类名，对应在Mapper文件中-->
-        <package name = "com.mybatis.mapper"/>
+        <package name = "com.ee.mybatis.mapper"/>
     </typeAliases>
 
     <!--和Spring整合后将废除-->
@@ -35,6 +35,6 @@
 
     <mappers>
         <mapper resource="mapper/CustomerMapper.xml"/>
-<!--        <package name = "com.mybatis.mapper"/>-->
+<!--        <package name = "com.ee.mybatis.mapper"/>-->
     </mappers>
 </configuration>

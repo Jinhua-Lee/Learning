@@ -7,7 +7,7 @@
 
 package cn.genetic;
 
-import cn.graph.MyGraph;
+import cn.ds.graph.MyGraph;
 
 /**
  * TSP数据类
