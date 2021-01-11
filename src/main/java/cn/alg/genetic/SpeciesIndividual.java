@@ -1,11 +1,11 @@
 /*
- * Copyright (c)    19-2-25 下午1:06.
+ * Copyright (c)    2021 Jinhua, Inc. All rights reserved.
  * Author:    Jinhua
- * PathName:    D:/IDEA/Learning/src/com/genetic/SpeciesIndividual.java
- * LastModified:    19-2-25 下午1:05
+ * PathName:    D:/IdeaProjects/Learning/src/main/java/cn/alg/genetic/SpeciesIndividual.java
+ * LastModified:    2020/11/7 下午2:08
  */
 
-package cn.genetic;
+package cn.alg.genetic;
 
 import java.util.Random;
 

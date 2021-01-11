@@ -1,11 +1,11 @@
 /*
- * Copyright (c)    19-2-25 下午1:06.
+ * Copyright (c)    2021 Jinhua, Inc. All rights reserved.
  * Author:    Jinhua
- * PathName:    D:/IDEA/Learning/src/com/genetic/TspData.java
- * LastModified:    19-2-25 下午1:05
+ * PathName:    D:/IdeaProjects/Learning/src/main/java/cn/alg/genetic/TspData.java
+ * LastModified:    2021/1/9 下午10:27
  */
 
-package cn.genetic;
+package cn.alg.genetic;
 
 import cn.ds.graph.MyGraph;
 
