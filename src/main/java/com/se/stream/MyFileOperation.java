@@ -1,4 +1,4 @@
-package com.se.myio;
+package com.se.stream;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -96,7 +96,6 @@ public class MyFileOperation {
         boolean b = false;
         File f = new File(dir, fn);
         if (f.exists()) {
-            b = false;
             System.out.println("文件已存在！");
         } else {
             try {

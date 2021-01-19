@@ -1,4 +1,4 @@
-package com.se.myio;
+package com.se.stream;
 
 import lombok.ToString;
 
@@ -16,7 +16,7 @@ public class StudentSerial implements Serializable {
     /**
      * 域字段
      */
-    private String name;
+    private final String name;
 
     /**
      * 静态常量
@@ -26,7 +26,7 @@ public class StudentSerial implements Serializable {
     /**
      * 非序列化属性
      */
-    private transient String password;
+    private final transient String password;
 
     public StudentSerial(String name, String password) {
         System.out.println("进入构造方法");

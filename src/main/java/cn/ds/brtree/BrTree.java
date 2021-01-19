@@ -45,7 +45,7 @@ public class BrTree<E> {
      */
     private final BrTreeNode<E> nil;
 
-    {
+    public BrTree() {
         nil = new BrTreeNode<>(true, null);
         nil.left = nil.right = nil.parent = nil;
         root = nil;
@@ -53,6 +53,7 @@ public class BrTree<E> {
 
     /**
      * 插入元素
+     *
      * @param element 待插入元素
      */
     public void insert(E element) {
