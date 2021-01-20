@@ -3,7 +3,6 @@ package com.se.stream;
 import lombok.SneakyThrows;
 import org.junit.Test;
 
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -18,9 +17,6 @@ import java.util.stream.Stream;
  * @author Jinhua
  */
 public class StreamTest {
-    public static void main(String[] args) throws IOException {
-
-    }
 
     /**
      * 测试长单词统计
@@ -49,7 +45,7 @@ public class StreamTest {
     }
 
     /**
-     * 测试嵌套对象从内层属性映射到外层本身
+     * 测试嵌套对象从内层属性映射到外层本身，测试成功
      */
     @Test
     public void testNestedObjStream() {
@@ -74,14 +70,8 @@ public class StreamTest {
                 new Father("二明", new ArrayList<>(children.subList(2, 4))
                 )
         );
-        List<String> targetToyNames = Arrays.asList("迪迦", "希卡利");
-
-        fathers.forEach(System.out::println);
         // 尝试构造 toy.name -> Father 的映射
-
-        // Todo: 父亲对象到其自身的映射
-        Map<String, String> fatherNameMapFather = fathers.stream().map(Father::getName)
-                .collect(Collectors.toMap(fName -> fName, Function.identity()));
+        Map<String, List<Father>> fatherNameMapFather = fathers.stream().collect(Collectors.groupingBy(Father::getName));
 
         Map<String, Child> childNameMapChild =
                 fathers.stream().flatMap(father -> father.getChildren().stream())
@@ -90,15 +80,22 @@ public class StreamTest {
                 childNameMapChild.values().stream().flatMap(child -> child.getToys().stream())
                         .collect(Collectors.toMap(Toy::getName, Function.identity()));
         final int mapInitSize = 16;
-        Map<String, Father> toyNameMapFather = new HashMap<>(16);
+        Map<String, Father> toyNameMapFather = new HashMap<>(mapInitSize);
         toyNameMapToy.forEach((toyName, toy) -> {
             childNameMapChild.forEach((childName, child) -> {
-                fatherNameMapFather.forEach((fatherName, father) -> {
-
-                });
+                if (child.getToys().contains(toy)) {
+                    fatherNameMapFather.forEach((fatherName, fatherList) -> {
+                        Father anyFather = fatherList.stream().filter(Objects::nonNull).findAny().orElse(null);
+                        if (Objects.nonNull(anyFather) && anyFather.getChildren().contains(child)) {
+                            toyNameMapFather.put(toyName, anyFather);
+                        }
+                    });
+                }
             });
         });
-
+        toyNameMapFather.forEach((tName, father) -> {
+            System.out.println(tName + " -> " + father);
+        });
     }
 
     @Test
