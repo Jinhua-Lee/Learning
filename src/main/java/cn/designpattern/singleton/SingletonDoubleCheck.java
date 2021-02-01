@@ -15,7 +15,7 @@ package cn.designpattern.singleton;
  */
 public class SingletonDoubleCheck implements MySingleton {
 
-    private volatile static SingletonDoubleCheck instance = null;
+    private static volatile SingletonDoubleCheck instance = null;
 
     private SingletonDoubleCheck() {
 
