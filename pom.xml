@@ -206,6 +206,7 @@
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
         </dependency>
+
         <!--单元测试工具-->
         <dependency>
             <groupId>org.powermock</groupId>
@@ -218,6 +219,16 @@
             <artifactId>powermock-module-junit4</artifactId>
             <version>1.7.4</version>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.powermock</groupId>
+                    <artifactId>powermock-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.powermock</groupId>
+                    <artifactId>powermock-reflect</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
