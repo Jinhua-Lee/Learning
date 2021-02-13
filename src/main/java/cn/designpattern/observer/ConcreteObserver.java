@@ -9,6 +9,8 @@ package cn.designpattern.observer;
 
 /**
  * 实际的观察者
+ * <p>
+ * 实现观察者所需的更新方法，使得本身状态与试图协调
  *
  * @author Jinhua
  */

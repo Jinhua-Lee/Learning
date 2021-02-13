@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>cn.designpattern.observer.ConcreteObserver</OriginalElement>
+  <nodes>
+    <node x="148.5" y="0.0">cn.designpattern.observer.Observer</node>
+    <node x="258.0" y="104.0">cn.designpattern.observer.ConcreteObserver</node>
+    <node x="0.0" y="254.0">cn.designpattern.observer.WechatServer</node>
+    <node x="0.0" y="104.0">cn.designpattern.observer.Subject</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="cn.designpattern.observer.WechatServer" target="cn.designpattern.observer.Subject">
+      <point x="0.0" y="-62.0" />
+      <point x="0.0" y="50.0" />
+    </edge>
+    <edge source="cn.designpattern.observer.ConcreteObserver" target="cn.designpattern.observer.Observer">
+      <point x="0.0" y="-50.0" />
+      <point x="338.0" y="79.0" />
+      <point x="268.5" y="79.0" />
+      <point x="40.0" y="27.0" />
+    </edge>
+    <edge source="cn.designpattern.observer.Subject" target="cn.designpattern.observer.Observer">
+      <point x="0.0" y="-50.0" />
+      <point x="119.0" y="79.0" />
+      <point x="188.5" y="79.0" />
+      <point x="-40.0" y="27.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="209.0" y="189.0" />
+  <SelectedNodes>
+    <node>cn.designpattern.observer.ConcreteObserver</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>属性</Category>
+    <Category>方法</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

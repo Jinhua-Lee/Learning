@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 具体被观察者，这里表达为微信的公众号服务
+ * 具体被观察者ConcreteSubject，这里表达为微信的公众号服务
+ * <p>
+ * 在所有主题内部发生改变时候，向所有注册的观察者发送通知。
  *
  * @author Jinhua
  */
@@ -38,7 +40,9 @@ public class WechatServer implements Subject {
      */
     @Override
     public void registerObserver(Observer o) {
-        observerList.add(o);
+        if (!observerList.contains(o)) {
+            observerList.add(o);
+        }
     }
 
     /**
