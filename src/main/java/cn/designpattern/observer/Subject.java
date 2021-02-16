@@ -17,7 +17,7 @@ package cn.designpattern.observer;
  *
  * @author Jinhua
  */
-public interface Subject extends Observer {
+public interface Subject {
 
     /**
      * 注册观察者的方法
