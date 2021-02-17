@@ -20,7 +20,7 @@ public class SingletonStaticInnerClass implements MySingleton {
     }
 
     public static SingletonStaticInnerClass getInstance() {
-        return SingletonHolder.sInstance;
+        return SingletonHolder.S_INSTANCE;
     }
 
     @Override
@@ -32,6 +32,6 @@ public class SingletonStaticInnerClass implements MySingleton {
      * 静态内部类中引用当前对象
      */
     private static class SingletonHolder {
-        private static final SingletonStaticInnerClass sInstance = new SingletonStaticInnerClass();
+        private static final SingletonStaticInnerClass S_INSTANCE = new SingletonStaticInnerClass();
     }
 }

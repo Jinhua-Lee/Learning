@@ -29,6 +29,7 @@ public class SingletonLazyThread implements MySingleton {
      */
     public static synchronized SingletonLazyThread getInstance() throws InterruptedException {
         if (instance == null) {
+            // 睡眠用于模拟线程的问题
             Thread.sleep(5000);
             instance = new SingletonLazyThread();
         }
