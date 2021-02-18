@@ -2,9 +2,9 @@ package com.test;
 
 import javax.swing.*;
 import java.awt.*;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.Date;
 
 /**
  * 打招呼类
@@ -21,10 +21,7 @@ abstract class Greeter {
 class TimeGreeter extends Greeter {
     @Override
     public void greet() {
-        Timer t = new Timer(1000, (event) -> {
-            super.greet();
-        }
-        );
+        Timer t = new Timer(1000, (event) -> super.greet());
         t.start();
     }
 }
@@ -48,7 +45,7 @@ public class LambdaTest {
         System.out.println(Arrays.toString(planets));
 
         Timer t = new Timer(1000, event -> {
-            System.out.println("时间：" + new Date());
+            System.out.println("时间：" + LocalDateTime.now());
             Toolkit.getDefaultToolkit().beep();
         });
         t.start();
