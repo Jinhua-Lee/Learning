@@ -4,7 +4,7 @@ import cn.designpattern.decorator.car.ICar;
 import cn.designpattern.decorator.car.SuperCar;
 
 /**
- * AI智能汽车类
+ * AI智能汽车 -> 增强功能的实现
  *
  * @author Jinhua
  */
@@ -12,6 +12,7 @@ public class AiCar extends SuperCar {
 
     /**
      * 继续拿到抽象类的基本功能汽车引用，构造其属性
+     *
      * @param car 基本功能的汽车
      */
     public AiCar(ICar car) {

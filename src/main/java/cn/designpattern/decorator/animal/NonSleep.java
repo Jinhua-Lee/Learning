@@ -1,7 +1,7 @@
 package cn.designpattern.decorator.animal;
 
 /**
- * 不睡觉的超级动物
+ * 不睡觉的狗 -> 增强功能的实现
  *
  * @author Jinhua
  */

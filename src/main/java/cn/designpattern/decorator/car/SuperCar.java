@@ -4,7 +4,8 @@ import cn.designpattern.decorator.car.concreteCar.FlyCar;
 import cn.designpattern.decorator.car.concreteCar.WaterCar;
 
 /**
- * 超级汽车抽象类
+ * 超级汽车 -> 增强的功能定义
+ *
  * @author Jinhua
  */
 public abstract class SuperCar implements ICar {

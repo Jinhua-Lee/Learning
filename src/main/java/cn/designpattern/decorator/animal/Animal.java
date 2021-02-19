@@ -1,7 +1,7 @@
 package cn.designpattern.decorator.animal;
 
 /**
- * 动物接口
+ * 动物普通功能定义
  *
  * @author Jinhua
  */

@@ -1,7 +1,7 @@
 package cn.designpattern.decorator.car;
 
 /**
- * 基本移动功能的汽车实现类
+ * 基本功能的实现
  *
  * @author Jinhua
  */

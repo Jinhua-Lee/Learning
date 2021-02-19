@@ -4,7 +4,8 @@ import cn.designpattern.decorator.car.ICar;
 import cn.designpattern.decorator.car.SuperCar;
 
 /**
- * 实现水里游功能的汽车类
+ * 水里游功能的汽车 -> 增强功能的实现
+ *
  * @author Jinhua
  */
 public class WaterCar extends SuperCar {

@@ -4,7 +4,8 @@ import cn.designpattern.decorator.car.ICar;
 import cn.designpattern.decorator.car.SuperCar;
 
 /**
- * 实现天上飞功能的超级汽车类
+ * 天上飞功能的超级汽车 -> 增强功能的实现
+ *
  * @author Jinhua
  */
 public class FlyCar extends SuperCar {

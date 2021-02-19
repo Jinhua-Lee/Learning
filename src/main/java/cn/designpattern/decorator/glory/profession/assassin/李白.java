@@ -1,9 +1,9 @@
-package cn.designpattern.decorator.kpl.profession.assassin;
+package cn.designpattern.decorator.glory.profession.assassin;
 
-import cn.designpattern.decorator.kpl.profession.Assassin;
+import cn.designpattern.decorator.glory.profession.Assassin;
 
 /**
- * 刺客实体类
+ * 刺客实体类 -> 普通实体基本功能实现
  *
  * @author Jinhua
  */

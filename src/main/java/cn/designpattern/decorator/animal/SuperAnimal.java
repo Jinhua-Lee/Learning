@@ -1,7 +1,7 @@
 package cn.designpattern.decorator.animal;
 
 /**
- * 超级动物抽象类
+ * 超级动物 -> 增强功能的抽象
  *
  * @author Jinhua
  */
@@ -25,19 +25,19 @@ public abstract class SuperAnimal implements Animal {
         animal.sleep();
     }
 
-	public static void main(String[] args) {
-		Animal dog = new Dog();
-		dog.sleep();
-		dog.eat();
+    public static void main(String[] args) {
+        Animal dog = new Dog();
+        dog.sleep();
+        dog.eat();
 
-		System.out.println("--------------");
-		Animal electDog = new Electric(dog);
-		electDog.eat();
-		electDog.sleep();
+        System.out.println("--------------");
+        Animal electDog = new Electric(dog);
+        electDog.eat();
+        electDog.sleep();
 
-		System.out.println("--------------");
-		Animal nonSleepDog = new NonSleep(electDog);
-		nonSleepDog.eat();
-		nonSleepDog.sleep();
-	}
+        System.out.println("--------------");
+        Animal nonSleepDog = new NonSleep(electDog);
+        nonSleepDog.eat();
+        nonSleepDog.sleep();
+    }
 }

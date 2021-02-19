@@ -1,7 +1,7 @@
 package cn.designpattern.decorator.animal;
 
 /**
- * 狗类
+ * 狗 -> 普通功能的实现对象
  *
  * @author Jinhua
  */

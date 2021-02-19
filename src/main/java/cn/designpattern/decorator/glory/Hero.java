@@ -1,7 +1,7 @@
-package cn.designpattern.decorator.kpl;
+package cn.designpattern.decorator.glory;
 
 /**
- * 英雄定义类
+ * 英雄定义 -> 普通功能定义
  *
  * @author Jinhua
  */

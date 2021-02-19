@@ -1,7 +1,7 @@
 package cn.designpattern.decorator.animal;
 
 /**
- * 超级动物
+ * 吃电的狗 -> 增强功能的实现
  *
  * @author Jinhua
  */
