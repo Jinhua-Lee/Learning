@@ -9,8 +9,7 @@ package cn.designpattern.factory.abs.product;
 
 import cn.designpattern.factory.abs.component.cpu.Cpu;
 import cn.designpattern.factory.abs.component.graphicscard.GraphicsCard;
-import cn.designpattern.factory.abs.factory.cpu.AppleCpuFactory;
-import cn.designpattern.factory.abs.factory.graphics.AmdGraphicsCardFactory;
+import cn.designpattern.factory.abs.factory.WidgetFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
 
@@ -32,14 +31,9 @@ public class MacBook implements PcProduct {
      */
     private GraphicsCard graphicsCard;
 
-    public MacBook() {
-        this.cpu = new AppleCpuFactory().createCpu();
-        this.graphicsCard = new AmdGraphicsCardFactory().createGraphicsCard();
-    }
-
-    public MacBook(Cpu cpu, GraphicsCard graphicsCard) {
-        this.cpu = cpu;
-        this.graphicsCard = graphicsCard;
+    public MacBook(WidgetFactory factory) {
+        this.cpu = factory.createCpu();
+        this.graphicsCard = factory.createGraphicsCard();
     }
 
     @Override

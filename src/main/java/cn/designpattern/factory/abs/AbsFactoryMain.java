@@ -7,6 +7,8 @@
 
 package cn.designpattern.factory.abs;
 
+import cn.designpattern.factory.abs.factory.AppleWidgetFactory;
+import cn.designpattern.factory.abs.factory.WindowsWidgetFactory;
 import cn.designpattern.factory.abs.product.MacBook;
 import cn.designpattern.factory.abs.product.PcProduct;
 import cn.designpattern.factory.abs.product.WindowsSurface;
@@ -23,10 +25,10 @@ public class AbsFactoryMain {
 
     public static void main(String[] args) {
 
-        PcProduct windowsSurface = new WindowsSurface();
+        PcProduct windowsSurface = new WindowsSurface(new WindowsWidgetFactory());
         System.out.println(windowsSurface);
 
-        PcProduct macBook = new MacBook();
+        PcProduct macBook = new MacBook(new AppleWidgetFactory());
         System.out.println(macBook);
     }
 }

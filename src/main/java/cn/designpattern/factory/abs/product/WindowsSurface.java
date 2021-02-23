@@ -9,10 +9,7 @@ package cn.designpattern.factory.abs.product;
 
 import cn.designpattern.factory.abs.component.cpu.Cpu;
 import cn.designpattern.factory.abs.component.graphicscard.GraphicsCard;
-import cn.designpattern.factory.abs.factory.cpu.CpuFactory;
-import cn.designpattern.factory.abs.factory.cpu.IntelCpuFactory;
-import cn.designpattern.factory.abs.factory.graphics.GraphicsCardFactory;
-import cn.designpattern.factory.abs.factory.graphics.NvidiaGraphicsCardFactory;
+import cn.designpattern.factory.abs.factory.WidgetFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
 
@@ -35,36 +32,12 @@ public class WindowsSurface implements PcProduct {
     private GraphicsCard graphicsCard;
 
     /**
-     * 部件工厂 -> Cpu工厂
-     */
-    private CpuFactory cpuFactory;
-
-    /**
-     * 部件工厂 -> 显卡工厂
-     */
-    private GraphicsCardFactory gcFactory;
-
-    /**
      * 默认构造，采用工厂构造
      * 本类将工厂作为属性
      */
-    public WindowsSurface() {
-        this.cpuFactory = new IntelCpuFactory();
-        this.gcFactory = new NvidiaGraphicsCardFactory();
-
-        this.cpu = this.cpuFactory.createCpu();
-        this.graphicsCard = this.gcFactory.createGraphicsCard();
-    }
-
-    /**
-     * 带参构造，指定参数的部件
-     *
-     * @param cpu          CPU
-     * @param graphicsCard 显卡
-     */
-    public WindowsSurface(Cpu cpu, GraphicsCard graphicsCard) {
-        this.cpu = cpu;
-        this.graphicsCard = graphicsCard;
+    public WindowsSurface(WidgetFactory factory) {
+        this.cpu = factory.createCpu();
+        this.graphicsCard = factory.createGraphicsCard();
     }
 
     @Override
