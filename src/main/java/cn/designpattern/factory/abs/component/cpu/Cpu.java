@@ -8,7 +8,7 @@
 package cn.designpattern.factory.abs.component.cpu;
 
 /**
- * 抽象部件 -> CPU
+ * 抽象部件A -> CPU
  *
  * @author Jinhua
  * @date 2021/2/22 22:49
