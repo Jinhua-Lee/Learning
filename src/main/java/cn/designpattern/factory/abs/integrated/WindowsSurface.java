@@ -5,16 +5,16 @@
  * LastModified:    2021/2/23 下午8:11
  */
 
-package cn.designpattern.factory.abs.product;
+package cn.designpattern.factory.abs.integrated;
 
-import cn.designpattern.factory.abs.component.cpu.Cpu;
-import cn.designpattern.factory.abs.component.graphicscard.GraphicsCard;
+import cn.designpattern.factory.product.cpu.Cpu;
+import cn.designpattern.factory.product.graphicscard.GraphicsCard;
 import cn.designpattern.factory.abs.factory.WidgetFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
 
 /**
- * 产品实现 -> Windows Surface
+ * 产品集成实现 -> Windows Surface
  *
  * @author Jinhua
  * @date 2021/2/23 0:23
@@ -22,12 +22,12 @@ import lombok.SneakyThrows;
 public class WindowsSurface implements PcProduct {
 
     /**
-     * 产品采用的部件 -> CPU
+     * 产品集成采用的产品 -> CPU
      */
     private Cpu cpu;
 
     /**
-     * 产品采用部件 -> 显卡
+     * 产品集成采用产品 -> 显卡
      */
     private GraphicsCard graphicsCard;
 

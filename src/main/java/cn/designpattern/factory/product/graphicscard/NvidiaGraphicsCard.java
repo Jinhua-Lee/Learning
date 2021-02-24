@@ -6,10 +6,10 @@
  * LastModified:    2021/2/23 下午8:24
  */
 
-package cn.designpattern.factory.abs.component.graphicscard;
+package cn.designpattern.factory.product.graphicscard;
 
 /**
- * 抽象部件B的实现 -> 英伟达显卡
+ * 抽象产品B的实现 -> 英伟达显卡
  *
  * @author Jinhua
  * @date 2021/2/23 20:24

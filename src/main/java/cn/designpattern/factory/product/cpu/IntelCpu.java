@@ -5,10 +5,10 @@
  * LastModified:    2021/2/23 下午8:15
  */
 
-package cn.designpattern.factory.abs.component.cpu;
+package cn.designpattern.factory.product.cpu;
 
 /**
- * 抽象部件A的实现 -> Intel CPU
+ * 抽象产品A的实现 -> Intel CPU
  *
  * @author Jinhua
  * @date 2021/2/23 20:15

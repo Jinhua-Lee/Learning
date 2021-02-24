@@ -8,7 +8,7 @@
 package cn.designpattern.proxy;
 
 /**
- * 产品相关方法的实现
+ * 产品集成相关方法的实现
  *
  * @author Jinhua
  */

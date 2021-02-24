@@ -5,10 +5,10 @@
  * LastModified:    2021/2/22 下午11:02
  */
 
-package cn.designpattern.factory.abs.component.cpu;
+package cn.designpattern.factory.product.cpu;
 
 /**
- * 抽象部件A -> CPU
+ * 抽象产品A -> CPU
  *
  * @author Jinhua
  * @date 2021/2/22 22:49

@@ -7,10 +7,10 @@
 
 package cn.designpattern.factory.abs.factory.cpu;
 
-import cn.designpattern.factory.abs.component.cpu.Cpu;
+import cn.designpattern.factory.product.cpu.Cpu;
 
 /**
- * 抽象部件A的工厂 -> CPU工厂
+ * 抽象产品A的工厂 -> CPU工厂
  *
  * @author Jinhua
  * @date 2021/2/22 22:51

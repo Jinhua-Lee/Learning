@@ -7,11 +7,11 @@
 
 package cn.designpattern.factory.abs.factory;
 
-import cn.designpattern.factory.abs.component.cpu.Cpu;
-import cn.designpattern.factory.abs.component.graphicscard.GraphicsCard;
+import cn.designpattern.factory.product.cpu.Cpu;
+import cn.designpattern.factory.product.graphicscard.GraphicsCard;
 
 /**
- * 部件工厂 -> 生产CPU和显卡
+ * 产品工厂 -> 生产CPU和显卡
  *
  * @author Jinhua
  * @date 2021/2/23 22:20

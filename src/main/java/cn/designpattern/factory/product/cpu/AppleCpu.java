@@ -5,10 +5,10 @@
  * LastModified:    2021/2/23 下午8:17
  */
 
-package cn.designpattern.factory.abs.component.cpu;
+package cn.designpattern.factory.product.cpu;
 
 /**
- * 抽象部件A的实现 -> Apple CPU
+ * 抽象产品A的实现 -> Apple CPU
  *
  * @author Jinhua
  * @date 2021/2/23 20:17

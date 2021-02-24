@@ -8,10 +8,10 @@
 
 package cn.designpattern.factory.abs.factory.graphics;
 
-import cn.designpattern.factory.abs.component.graphicscard.GraphicsCard;
+import cn.designpattern.factory.product.graphicscard.GraphicsCard;
 
 /**
- * 抽象部件B的工厂 -> 显卡工厂
+ * 抽象产品B的工厂 -> 显卡工厂
  *
  * @author Jinhua
  * @date 2021/2/22 23:52
