@@ -22,6 +22,10 @@ public class Mouse {
      */
     private String name;
 
+    public Mouse(String name) {
+        this.name = name;
+    }
+
     @SneakyThrows
     @Override
     public String toString() {

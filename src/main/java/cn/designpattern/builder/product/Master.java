@@ -34,6 +34,12 @@ public class Master {
      */
     private GraphicsCard graphicsCard;
 
+    public Master(String name, Cpu cpu, GraphicsCard graphicsCard) {
+        this.name = name;
+        this.cpu = cpu;
+        this.graphicsCard = graphicsCard;
+    }
+
     @SneakyThrows
     @Override
     public String toString() {

@@ -22,6 +22,10 @@ public class Keyboard {
      */
     private String name;
 
+    public Keyboard(String name) {
+        this.name = name;
+    }
+
     @SneakyThrows
     @Override
     public String toString() {

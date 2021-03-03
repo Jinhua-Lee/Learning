@@ -1,4 +1,4 @@
-package cn.designpattern.builder;
+package cn.designpattern.builder.normal;
 
 import cn.designpattern.builder.product.Keyboard;
 import cn.designpattern.builder.product.Master;
