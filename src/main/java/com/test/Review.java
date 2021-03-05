@@ -12,6 +12,7 @@ import java.util.*;
 
 /**
  * 一些杂项
+ *
  * @author Jinhua
  */
 public class Review {
@@ -20,6 +21,26 @@ public class Review {
     public static void main(String[] args) {
         printSystemProperties();
         printSystemEnv();
+    }
+
+    /**
+     * 测试包装类equals方法和相等判断
+     */
+    @SuppressWarnings("all")
+    public void wrapperEquals() {
+        Integer i1 = 127;
+        Integer i2 = 127;
+        // true
+        System.out.println("(i1 == i2) = " + (i1 == i2));
+        // true
+        System.out.println("i1.equals(i2) = " + i1.equals(i2));
+
+        Integer i3 = 128;
+        Integer i4 = 128;
+        // false
+        System.out.println("(i3 == i4) = " + (i3 == i4));
+        // true
+        System.out.println("i3.equals(i4) = " + i3.equals(i4));
     }
 
     /**
@@ -256,6 +277,7 @@ public class Review {
 
     /**
      * 从0到 N，共n行，每行打印N个 *
+     *
      * @param N 行数
      */
     public void f5(int N) {
@@ -273,6 +295,7 @@ public class Review {
 
     /**
      * 乘法口诀表
+     *
      * @param n 口诀表最大值
      */
     public void f6(int n) {
