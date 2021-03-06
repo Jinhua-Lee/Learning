@@ -48,7 +48,7 @@ public class ComputerBuilder extends Computer {
      */
     public Computer build() {
         Computer computer = null;
-
+        // 规则解析
         int[] status = new int[3];
         status[0] = Objects.isNull(super.getMaster()) ? 0 : 1;
         status[1] = Objects.isNull(super.getScreen()) ? 0 : 1;
