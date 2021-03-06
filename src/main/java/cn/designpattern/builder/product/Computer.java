@@ -37,6 +37,13 @@ public class Computer {
      */
     private Mouse mouse;
 
+    public Computer(Master master, Screen screen, Keyboard keyboard, Mouse mouse) {
+        this.master = master;
+        this.screen = screen;
+        this.keyboard = keyboard;
+        this.mouse = mouse;
+    }
+
     @SneakyThrows
     @Override
     public String toString() {

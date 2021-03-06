@@ -6,17 +6,12 @@ import java.util.Objects;
 
 /**
  * 产品生成器实现类<p>
- * 目前通过继承，将设置参数暂存于父类属性
+ * 个人思路是，属性暂存到父类的属性中，当前类中新建的一个目标对象作为产品，最后在build()方法中校验并操作此对象
  *
  * @author Jinhua
  * @date 2021/3/4上午12:15
  */
 public class ComputerBuilder extends Computer {
-
-    /**
-     * 待输出的产品
-     */
-    private final Computer computer = new Computer();
 
     public ComputerBuilder master(Master master) {
         super.setMaster(master);
@@ -52,15 +47,19 @@ public class ComputerBuilder extends Computer {
      * @return 规则校验后，构建出的电脑
      */
     public Computer build() {
-        // 不满足某些规则
-        if (Objects.isNull(super.getMaster())) {
-            throw new RuntimeException("主机不能为空！！！");
-        }
-        this.computer.setMaster(super.getMaster());
-        if (Objects.isNull(super.getScreen())) {
-            throw new RuntimeException("不能为空！！！");
-        }
+        Computer computer = null;
 
-        return this.computer;
+        int[] status = new int[3];
+        status[0] = Objects.isNull(super.getMaster()) ? 0 : 1;
+        status[1] = Objects.isNull(super.getScreen()) ? 0 : 1;
+        status[2] = Objects.isNull(super.getKeyboard()) && Objects.isNull(super.getMouse()) ? 0 : 1;
+
+        for (int i = 0; i < status.length - 1; i++) {
+            // 不满足某些规则
+            if (status[i] < status[i + 1]) {
+                throw new RuntimeException("违背了先有Base的原则！！！");
+            }
+        }
+        return new Computer(super.getMaster(), super.getScreen(), super.getKeyboard(), super.getMouse());
     }
 }

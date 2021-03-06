@@ -59,6 +59,7 @@ public class Review {
         envs.forEach(e -> System.out.println("env:    " + e.getKey() + " ---- " + e.getValue()));
     }
 
+    @Test
     public void test() {
         double monthCoefficient = getMonthCoefficient(1603152000000L, 1601481600000L);
     }

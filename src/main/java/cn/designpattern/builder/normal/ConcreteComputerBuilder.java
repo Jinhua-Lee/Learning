@@ -1,9 +1,8 @@
 package cn.designpattern.builder.normal;
 
-import cn.designpattern.builder.product.Keyboard;
-import cn.designpattern.builder.product.Master;
-import cn.designpattern.builder.product.Mouse;
-import cn.designpattern.builder.product.Screen;
+import cn.designpattern.builder.product.*;
+import cn.designpattern.factory.product.cpu.AppleCpu;
+import cn.designpattern.factory.product.graphicscard.AmdGraphicsCard;
 
 /**
  * 具体构建者 -> 电脑构建者<p>
@@ -14,9 +13,14 @@ import cn.designpattern.builder.product.Screen;
  */
 public class ConcreteComputerBuilder extends AbstractComputerBuilder {
 
+    public ConcreteComputerBuilder() {
+        super();
+        super.computer = new Computer();
+    }
+
     @Override
     public void buildMaster() {
-        super.computer.setMaster(new Master());
+        super.computer.setMaster(new Master("linux 服务主机", new AppleCpu(), new AmdGraphicsCard()));
     }
 
     @Override
