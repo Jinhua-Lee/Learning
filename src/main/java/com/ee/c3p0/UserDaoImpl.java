@@ -16,7 +16,7 @@ import java.util.List;
 public class UserDaoImpl implements UserDao {
 
 
-    private QueryRunner qr = new QueryRunner(C3P0Utils.getDs());
+    private final QueryRunner qr = new QueryRunner(C3P0Utils.getDs());
 
     /**
      * 获得指定ID用户
@@ -30,7 +30,7 @@ public class UserDaoImpl implements UserDao {
 
         User user = null;
         try {
-            user = (User) qr.query(sql, new BeanHandler<>(User.class), id);
+            user = qr.query(sql, new BeanHandler<>(User.class), id);
         } catch (SQLException e) {
             e.printStackTrace();
         }
