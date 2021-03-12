@@ -5,7 +5,7 @@
  * LastModified:    2019/10/8 下午11:23
  */
 
-package cn.designpattern.dynamicproxy;
+package cn.designpattern.proxy.dynamic;
 
 import java.lang.reflect.*;
 

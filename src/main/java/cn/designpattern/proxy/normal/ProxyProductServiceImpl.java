@@ -5,7 +5,7 @@
  * LastModified:    2019/10/8 下午11:23
  */
 
-package cn.designpattern.proxy;
+package cn.designpattern.proxy.normal;
 
 /**
  * 静态代理类
@@ -42,7 +42,7 @@ public class ProxyProductServiceImpl implements ProductService {
         ps.addPro();
         ps.delPro();
         System.out.println("_____________________");
-        ProxyProductServiceImpl psp = new ProxyProductServiceImpl(ps);
+        ProductService psp = new ProxyProductServiceImpl(ps);
         psp.addPro();
         psp.delPro();
     }

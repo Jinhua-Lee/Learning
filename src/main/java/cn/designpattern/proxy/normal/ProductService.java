@@ -5,7 +5,7 @@
  * LastModified:    2020/8/15 下午3:52
  */
 
-package cn.designpattern.proxy;
+package cn.designpattern.proxy.normal;
 
 /**
  * 产品集成的相关方法
