@@ -7,6 +7,9 @@
 
 package cn.designpattern.proxy.dynamic;
 
+import cn.designpattern.proxy.ProductService;
+import cn.designpattern.proxy.ProductServiceImpl;
+
 import java.lang.reflect.*;
 
 /**
@@ -19,14 +22,11 @@ public class MyInvocationHandler implements InvocationHandler {
     /**
      * 被代理对象的引用
      */
-    private Object target;
-
-    public MyInvocationHandler() {
-        super();
-    }
+    private final Object target;
 
     /**
      * 拿到被代理对象
+     *
      * @param target 被代理对象
      */
     public MyInvocationHandler(Object target) {
@@ -46,10 +46,10 @@ public class MyInvocationHandler implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         // 添加了代理方法
-        if ("getName".equals(method.getName())) {
-            System.out.println("s++++++before " + method.getName() + "++++++");
+        if ("addPro".equals(method.getName())) {
+            System.out.println("开启事务……");
             Object result = method.invoke(target, args);
-            System.out.println("++++++after " + method.getName() + "++++++");
+            System.out.println("提交事务……");
             return result;
         } else {    // 未添加代理方法
             return method.invoke(target, args);
@@ -57,12 +57,17 @@ public class MyInvocationHandler implements InvocationHandler {
     }
 
     public static void main(String[] args) {
-        UserService userService = new UserServiceImpl();
-        InvocationHandler ih = new MyInvocationHandler(userService);
-        // 代理对象
-        UserService usp = (UserService) Proxy.newProxyInstance
-                (userService.getClass().getClassLoader(),
-                        userService.getClass().getInterfaces(), ih);
-        System.out.println(usp.getName(1) + "---" + usp.getAge(1));
+        // 普通对象产生
+        ProductService ps = new ProductServiceImpl();
+        InvocationHandler ih2 = new MyInvocationHandler(ps);
+        // 产生代理对象
+        ProductService proxy = (ProductService) Proxy.newProxyInstance(
+                ps.getClass().getClassLoader(),
+                ps.getClass().getInterfaces(),
+                ih2
+        );
+        proxy.addPro();
+        System.out.println("---------");
+        proxy.delPro();
     }
 }

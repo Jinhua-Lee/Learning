@@ -5,10 +5,10 @@
  * LastModified:    2020/8/15 下午3:52
  */
 
-package cn.designpattern.proxy.normal;
+package cn.designpattern.proxy;
 
 /**
- * 产品集成相关方法的实现
+ * 普通对象的实现
  *
  * @author Jinhua
  */
