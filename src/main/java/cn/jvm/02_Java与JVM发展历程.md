@@ -142,7 +142,7 @@
 
 - - 高性能虚拟机中的战斗机；
   - 直接运行在自己的Hypervisor虚拟机上；
-  - Liquid VM即是现在的JRockit VE（virtual Edition）。本身不需要操作系统支持，或者说它本身实现了一个专用操作系统的必要功能，如线程调度，文件系统，网络支持等功能。
+  - Liquid VM，即现在的JRockit VE（virtual Edition）。本身不需要操作系统支持，或者说它本身实现了一个专用操作系统的必要功能，如线程调度，文件系统，网络支持等功能。
   - 随着JRockit VM终止开发，Liquid项目也停止了。
 
 - Apache Harmony
