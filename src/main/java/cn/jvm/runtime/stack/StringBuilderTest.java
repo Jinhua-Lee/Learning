@@ -11,11 +11,11 @@ package cn.jvm.runtime.stack;
  * 面试题：方法中定义的局部变量是否线程安全？<p>&emsp;
  * 局部变量：<p>&emsp;&emsp;
  * 1. 基本类型；<p>&emsp;&emsp;
- * 2. 引用类型<p>&emsp;
- * 线程安全：<p>&emsp;&emsp
- * 1. 只有一个线程操作此数据，则必定是线程安全的。<p>&emsp;&emsp
+ * 2. 引用类型；<p>&emsp;
+ * 线程安全：<p>&emsp;&emsp;
+ * 1. 只有一个线程操作此数据，则必定是线程安全的。<p>&emsp;&emsp;
  * 2. 若有多线程并发操作此数据，则此数据是共享数据，不考虑同步机制，则会存在线程安全问题。<p>&emsp;
- * 测试 StringBuilder, 线程不安全，用本身不安全的类来说事<p>&emsp
+ * 测试 StringBuilder, 线程不安全，用本身不安全的类来说事<p>&emsp;
  *
  * @author Jinhua
  * @date 2020/10/28 22:14
