@@ -9,10 +9,11 @@ package cn.jvm.runtime.stack.dl;
 
 /**
  * 虚方法和非虚方法的测试
+ *
  * @author Jinhua
  * @date 2020/10/25 22:03
  */
-public class Son extends Father{
+public class Son extends Father {
 
     public Son() {
         super();

@@ -8,14 +8,15 @@
 package cn.jvm.runtime.stack;
 
 /**
- * 面试题：方法中定义的局部变量是否线程安全？
- *      局部变量：
- *          1. 基本类型；
- *          2. 引用类型
- *      线程安全：
- *          1. 只有一个线程操作此数据，则必定是线程安全的。
- *          2. 若有多线程并发操作此数据，则此数据是共享数据，不考虑同步机制，则会存在线程安全问题。
- *      测试 StringBuilder, 线程不安全，用本身不安全的类来说事
+ * 面试题：方法中定义的局部变量是否线程安全？<p>&emsp;
+ * 局部变量：<p>&emsp;&emsp;
+ * 1. 基本类型；<p>&emsp;&emsp;
+ * 2. 引用类型<p>&emsp;
+ * 线程安全：<p>&emsp;&emsp
+ * 1. 只有一个线程操作此数据，则必定是线程安全的。<p>&emsp;&emsp
+ * 2. 若有多线程并发操作此数据，则此数据是共享数据，不考虑同步机制，则会存在线程安全问题。<p>&emsp;
+ * 测试 StringBuilder, 线程不安全，用本身不安全的类来说事<p>&emsp
+ *
  * @author Jinhua
  * @date 2020/10/28 22:14
  */
@@ -33,6 +34,7 @@ public class StringBuilderTest {
 
     /**
      * s2线程不安全，它是从外部传入的，可能其他地方也有对该变量的操作。
+     *
      * @param s2 外部入参 StringBuilder，变量所属类没有线程安全机制
      */
     public static void method2(StringBuilder s2) {
@@ -46,6 +48,7 @@ public class StringBuilderTest {
 
     /**
      * 作为返回值，和s2同理，返回出去的值可能被多个地方并发操作
+     *
      * @return 返回 StringBuilder
      */
     public static StringBuilder method3() {
@@ -58,6 +61,7 @@ public class StringBuilderTest {
 
     /**
      * s3 在内部消亡了。返回的是一个新的对象，并不是上s3本身
+     *
      * @return 返回String 类型，
      */
     public static String method4() {

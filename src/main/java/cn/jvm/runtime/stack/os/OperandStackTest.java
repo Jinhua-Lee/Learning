@@ -9,6 +9,7 @@ package cn.jvm.runtime.stack.os;
 
 /**
  * 操作数栈演示
+ *
  * @author Jinhua
  * @date 2020/10/23 22:31
  */
@@ -35,7 +36,7 @@ public class OperandStackTest {
 
     /**
      * 自增问题:
-     *      ++i 和 i++ 的区别，放到字节码篇章再讲
+     * ++i 和 i++ 的区别，放到字节码篇章再讲
      */
     public void testSelfIncrease() {
         /*

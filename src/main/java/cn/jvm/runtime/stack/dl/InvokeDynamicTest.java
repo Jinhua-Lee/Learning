@@ -9,6 +9,7 @@ package cn.jvm.runtime.stack.dl;
 
 /**
  * 动态方法调用举例
+ *
  * @author Jinhua
  * @date 2020/10/25 23:13
  */
@@ -26,6 +27,7 @@ public class InvokeDynamicTest {
 
     /**
      * 函数式接口动态方法调用
+     *
      * @param testFunction 动态方法
      */
     public void lambda(TestFunction testFunction) {
@@ -58,6 +60,7 @@ interface TestFunction {
 
     /**
      * 接口方法
+     *
      * @param str 字符串入参
      */
     void func(String str);
