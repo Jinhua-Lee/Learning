@@ -50,7 +50,7 @@
 ## JVM的生命周期
 
 1. 虚拟机的启动
-   * 通过引导类加载器（BootStrap Class     Loader）创建一个初始类（initial class）来完成
+   * 通过引导类加载器（BootStrap ClassLoader）创建一个初始类（initial class）来完成
    * 初始类（initial class）有虚拟机的**具体实现**（HotSpot / classic）指定。
 
 2. 虚拟机的执行
@@ -63,4 +63,4 @@
      * 执行过程中遇到异常或错误而终止；
      * 操作系统出现错误导致Java虚拟机进程终止；
      * 某线程调用了System.exit()方法，或Runtime类的halt()方法，并且安全管理器也允许这次exit()或halt()操作。
-     * 除此之外，JNI (Java Native     Interface)规范描述了用JNI Invocation API来加载/卸载Java虚拟机，Java虚拟机的退出情况。
+     * 除此之外，JNI (Java Native Interface)规范描述了用JNI Invocation API来加载/卸载Java虚拟机，Java虚拟机的退出情况。

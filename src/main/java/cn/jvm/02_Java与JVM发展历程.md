@@ -6,7 +6,7 @@
 - 1995年，Sun公司正式发布Java和HotJava产品，Java首次公开亮相。
 - 1996年1月23日， Sun MicroSystem发布JDK 1.0.
 - 1998年，JDK 1.2发布。同时发布JSP/Servlet、EJB规范，以及将Java分为JavaSE，JavaEE和JavaME，表明Java开始向企业、桌面应用、移动设备三大领域挺进。
-- 2000年，JDK 1.3发布，Java Hotspot      Virsual Machine正式发布，成为Java默认的虚拟机。
+- 2000年，JDK 1.3发布，Java Hotspot Virtual Machine正式发布，成为Java默认的虚拟机。
 - 2002年，JDK 1.4发布，古老的Classic虚拟机退出。
 - 2003年底，Java平台的Scala发布，同年Groovy也加入Java阵营。
 - 2004年，JDK1.5发布，同时改名为JavaSE 5.0
@@ -42,7 +42,7 @@
 
   - Exact Memory      Management（准确式内存管理）
 
-  - - 又名，Non-Conservative/Accurate       Memory Management；
+  - - 又名，Non-Conservative/Accurate Memory Management；
 
     - 虚拟机也可以知道内存中某个位置的数据具体是什么类型。
 
@@ -61,7 +61,7 @@
 
 - - HotSpot历史
 
-  - - 最初由一个名为       LongView Technologies 小公司设计。
+  - - 最初由一个名为 LongView Technologies 小公司设计。
 
     - 1997年，被Sun公司收购；2009年，sun公司被Oracle甲骨文收购。
 
@@ -92,7 +92,7 @@
 
   - 优势，全面的Java运行时解决方案。
 
-  - - JRockit面向延时敏感型的应用解决方案JRockit Real       Time提供毫秒或微秒级的JVM响应时间，适合财务，军事指挥，电信网络的需要。
+  - - JRockit面向延时敏感型的应用解决方案JRockit Real Time提供毫秒或微秒级的JVM响应时间，适合财务，军事指挥，电信网络的需要。
     - Mission Control服务套件，一组以极低开销来监控、管理和分析生产环境中的应用程序的工具。
 
   - 2008年，被Oracle收购
@@ -103,7 +103,7 @@
 
 - IBM J9 VM
 
-- - 全称： IBM      Technology for Java Virtual Machine，简称 IT4J，内部代号J9；
+- - 全称： IBM Technology for Java Virtual Machine，简称 IT4J，内部代号J9；
   - 市场定位与HotSpot接近，服务端，桌面应用，嵌入式等多种用途的VM；
   - 广泛应用于IBM的各种Java产品；
   - 目前是有影响力的三大商用虚拟机之一，也是号称世界最快的Java虚拟机【自己的软件优化】。
@@ -111,7 +111,7 @@
 
 - KVM和CDC/CLDC HotSpot
 
-- - Oracle在Java ME产品线上的两款虚拟机      CDC/CLDC HotSpot Implementation VM
+- - Oracle在Java ME产品线上的两款虚拟机 CDC/CLDC HotSpot Implementation VM
 
   - KVM（kilobyte）是CLDC-HI的早期产品
 
@@ -147,7 +147,7 @@
 
 - Apache Harmony
 
-- - Apache曾退出过JDK 1.5 与JDK 1.6兼容的Java运行平台Apache      Harmony虚拟机；
+- - Apache曾退出过JDK 1.5 与JDK 1.6兼容的Java运行平台Apache Harmony虚拟机；
   - IBM与Intel联合开发的开源JVM，受到同样开源的OpenJDK的压制，Sun坚决不让Harmony获得JCP认证，最终于2011年退役，IBM转而参与OpenJDK；
   - 类库代码吸纳进入了Android SDK。
 
@@ -163,12 +163,12 @@
 
   - 覆盖云计算、金融、物流、电商等众多领域，需要解决高并发，高可用，分布式的符合问题，由大量的开源产品；
 
-  - 基于Open JDK      HotSpot VM发布的国内第一个优化，深度定制且开源的服务器版Java虚拟机。
+  - 基于Open JDK HotSpot VM发布的国内第一个优化，深度定制且开源的服务器版Java虚拟机。
 
-  - - 创新的GCIH（GC invisible       Heap）技术实现了off-heap，将生命周期较长的Java对象从heap中移到了heap之外，并且GC不能管理GCIH内部的Java对象，以此达到降低GC回收频率和提升GC回收效率的目的。
+  - - 创新的GCIH（GC invisible Heap）技术实现了off-heap，将生命周期较长的Java对象从heap中移到了heap之外，并且GC不能管理GCIH内部的Java对象，以此达到降低GC回收频率和提升GC回收效率的目的。
     - GCIH中的对象能在多个Java虚拟机中实现共享。
     - 使用crc 32指令实现JVM intrinsic降低JNI调用开销。
-    - PMU       Hardware的Java profiling tool和诊断协调功能。
+    - PMU Hardware的Java profiling tool和诊断协调功能。
     - 针对大多数场景的ZenGC。
 
   - Taobao VM应用在阿里产品上性能搞，严重依赖IntelCPU，损失兼容性来提高性能。
@@ -189,13 +189,13 @@
 
   - - 可以通过class文件转化而来，使用Java语法编写应用程序，直接使用大部分的Java API。
 
-  - Android 5.0使用支持提前编译（Ahead Of Time      Compilation，AOT）的ART VM替换了Davlik VM。
+  - Android 5.0使用支持提前编译（Ahead Of Time Compilation，AOT）的ART VM替换了Davlik VM。
 
 - Graal VM（Oracle Labs公司）
 
-- - Run Programs Faster      Anywhere.
+- - Run Programs Faster Anywhere.
 
-  - 在HotSpot VM基础上增强，跨语言的全栈虚拟机，包括（Java, Kotlin,      Scala, Groovy, C, C++, JavaScript, Ruby, Python, R等）
+  - 在HotSpot VM基础上增强，跨语言的全栈虚拟机，包括（Java, Kotlin, Scala, Groovy, C, C++, JavaScript, Ruby, Python, R等）
 
   - - 支持不同语言混用对方的接口和对象。
     - 支持这些语言使用已编译好的本地库文件。
