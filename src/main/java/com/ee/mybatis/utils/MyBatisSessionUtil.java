@@ -14,82 +14,55 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import java.util.Objects;
 
 /**
- * MyBatis 会话工具类
+ * MyBatis 会话获取工具类
+ * <p>
+ * 双重检查模式，保证单例
  *
  * @author Jinhua
+ * @version 1.1   增加单例控制
  * @date 2020/12/26 1:42
  */
 public class MyBatisSessionUtil {
-
-    /**
-     * 供增删改的核心会话对象
-     */
-    private static final ThreadLocal<SqlSession> TRANSACTION_SESSION_LOCAL;
-
-    /**
-     * 供查询的会话对象
-     */
-    private static final ThreadLocal<SqlSession> SESSION_LOCAL;
 
     /**
      * 会话工厂
      */
     private static final SqlSessionFactory SQL_SESSION_FACTORY;
 
+    /**
+     * 单例对象
+     */
+    private static volatile MyBatisSessionUtil singleSession;
+
+    private MyBatisSessionUtil() {
+    }
 
     static {
         final String resource = "SqlMapConfig.xml";
         // 创建 SqlSession 工厂
         SQL_SESSION_FACTORY = new SqlSessionFactoryBuilder()
                 .build(MyBatisSessionUtil.class.getClassLoader().getResourceAsStream(resource));
-        // 线程绑定变量
-        SESSION_LOCAL = new ThreadLocal<>();
-        TRANSACTION_SESSION_LOCAL = new ThreadLocal<>();
+    }
+
+    public static MyBatisSessionUtil getInstance() {
+        if (Objects.isNull(singleSession)) {
+            synchronized (MyBatisSessionUtil.class) {
+                if (Objects.isNull(singleSession)) {
+                    singleSession = new MyBatisSessionUtil();
+                }
+            }
+        }
+        return singleSession;
     }
 
     /**
-     * 获取会话对象
+     * 从工厂获取会话对象
      *
+     * @param autoCommit 会话是否开启自动提交
      * @return 会话对象
      */
-    public static SqlSession getSqlSession() {
-        SqlSession sqlSession = SESSION_LOCAL.get();
-        if (Objects.nonNull(sqlSession)) {
-            return sqlSession;
-        }
-        SqlSession newSession = SQL_SESSION_FACTORY.openSession(true);
-        SESSION_LOCAL.set(newSession);
-        return newSession;
+    public SqlSession getSession(boolean autoCommit) {
+        return SQL_SESSION_FACTORY.openSession(autoCommit);
     }
 
-    /**
-     * 获取事务会话对象
-     *
-     * @return 事务会话对象
-     */
-    public static SqlSession getTransactionSession() {
-        SqlSession sqlSession = TRANSACTION_SESSION_LOCAL.get();
-        if (Objects.nonNull(sqlSession)) {
-            return sqlSession;
-        }
-        SqlSession newSession = SQL_SESSION_FACTORY.openSession(false);
-        TRANSACTION_SESSION_LOCAL.set(newSession);
-        return newSession;
-    }
-
-    /**
-     * 关闭会话
-     */
-    public static void releaseSession() {
-        SqlSession sqlSession = SESSION_LOCAL.get();
-        if (Objects.nonNull(sqlSession)) {
-            sqlSession.close();
-            SESSION_LOCAL.remove();
-        }
-        SqlSession transactionSession = TRANSACTION_SESSION_LOCAL.get();
-        if (Objects.nonNull(transactionSession)) {
-            transactionSession.close();
-            TRANSACTION_SESSION_LOCAL.remove();
-        }
-    }
 }
