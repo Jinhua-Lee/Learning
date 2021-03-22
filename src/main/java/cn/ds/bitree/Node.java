@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2020 Jinhua, Inc. All rights reserved.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/bitree/Node.java
- * LastModified:    2020/9/2 下午11:21
- */
-
 package cn.ds.bitree;
 
 import lombok.Data;

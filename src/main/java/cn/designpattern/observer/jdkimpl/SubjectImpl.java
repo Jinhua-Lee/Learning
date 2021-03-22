@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2021 Jinhua, Inc. All rights reserved.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/cn/designpattern/observer/jdkimpl/SubjectImpl.java
- * LastModified:    2021/2/13 下午6:41
- */
-
 package cn.designpattern.observer.jdkimpl;
 
 import java.util.Observable;

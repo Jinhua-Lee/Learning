@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2020/8/15 下午3:57.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/designpattern/proxy/ProductService.java
- * LastModified:    2020/8/15 下午3:52
- */
-
 package cn.designpattern.proxy;
 
 /**

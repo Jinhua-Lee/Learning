@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2021 Jinhua, Inc. All rights reserved.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/cn/designpattern/factory/abs/AbsFactoryMain.java
- * LastModified:    2021/2/23 下午8:50
- */
-
 package cn.designpattern.factory.abs;
 
 import cn.designpattern.factory.abs.factory.AppleWidgetFactory;

@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2021 Jinhua, Inc. All rights reserved.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/cn/ds/brtree/BrTree.java
- * LastModified:    2021/1/14 下午10:12
- */
-
 package cn.ds.brtree;
 
 import lombok.Data;

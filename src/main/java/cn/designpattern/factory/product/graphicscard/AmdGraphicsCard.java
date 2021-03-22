@@ -1,11 +1,3 @@
-/*
- * Copyright (c)    2021 Jinhua, Inc. All rights reserved.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/cn/designpattern/factory/abs/component/graphicscard
- * /AmdGraphicsCard.java
- * LastModified:    2021/2/23 下午8:21
- */
-
 package cn.designpattern.factory.product.graphicscard;
 
 /**

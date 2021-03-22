@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2020 Jinhua, Inc. All rights reserved.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/mythread/delivery/Delivery.java
- * LastModified:    2020/8/15 下午6:32
- */
-
 package cn.mythread.delivery;
 
 import java.time.LocalDateTime;

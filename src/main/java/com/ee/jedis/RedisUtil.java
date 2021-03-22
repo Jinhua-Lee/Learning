@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2019/10/8 下午3:42.
- * Author:    Jinhua-Work
- * PathName:    D:/IDEA_Projects/Learning/src/main/java/com/jedis/RedisUtil.java
- * LastModified:    2019/10/8 下午3:42
- */
-
 package com.ee.jedis;
 
 import redis.clients.jedis.Jedis;

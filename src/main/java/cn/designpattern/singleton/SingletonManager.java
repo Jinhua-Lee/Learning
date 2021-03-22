@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2020 Jinhua, Inc. All rights reserved.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/designpattern/singleton/SingletonManager.java
- * LastModified:    2020/8/22 下午11:05
- */
-
 package cn.designpattern.singleton;
 
 import java.util.HashMap;

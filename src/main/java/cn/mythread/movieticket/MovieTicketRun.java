@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2020/8/15 下午5:48.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/mythread/movieticket/MovieTicketRun.java
- * LastModified:    2020/8/15 下午5:35
- */
-
 package cn.mythread.movieticket;
 
 import lombok.SneakyThrows;

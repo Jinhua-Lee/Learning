@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2021 Jinhua, Inc. All rights reserved.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/cn/designpattern/factory/abs/component/graphics/GraphicsCard.java
- * LastModified:    2021/2/22 下午11:48
- */
-
 package cn.designpattern.factory.product.graphicscard;
 
 /**

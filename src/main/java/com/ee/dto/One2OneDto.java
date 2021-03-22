@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2021 Jinhua, Inc. All rights reserved.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/ee/dto/One2OneDto.java
- * LastModified:    2021/1/29 下午9:56
- */
-
 package com.ee.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;

@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2021 Jinhua, Inc. All rights reserved.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/cn/alg/genetic/GeneticAlgorithm.java
- * LastModified:    2020/11/7 下午2:08
- */
-
 package cn.alg.genetic;
 
 import java.util.Random;

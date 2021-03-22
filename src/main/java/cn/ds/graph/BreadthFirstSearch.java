@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    19-1-16 上午1:37.
- * Author:    Jinhua
- * PathName:    D:/IDEA/Learning/src/com/graph/BreadthFirstSearch.java
- * LastModified:    19-1-16 上午1:37
- */
-
 package cn.ds.graph;
 
 import java.util.*;

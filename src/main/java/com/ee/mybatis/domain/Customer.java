@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2020 Jinhua, Inc. All rights reserved.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/mybatis/domain/Customer.java
- * LastModified:    2020/12/26 上午12:13
- */
-
 package com.ee.mybatis.domain;
 
 import lombok.Data;

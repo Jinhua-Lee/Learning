@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2020/1/19 下午2:29.
- * Author:    Jinhua
- * PathName:    D:/IDEA_Projects/Learning/src/main/java/com/callback/Callee.java
- * LastModified:    2020/1/19 下午2:29
- */
-
 package com.se.callback;
 
 /**

@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2020 Jinhua, Inc. All rights reserved.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/mythread/learn/stopthreaddemo/StopThreadDemo.java
- * LastModified:    2020/8/17 下午10:38
- */
-
 package cn.mythread.learn.stopthreaddemo;
 
 /**

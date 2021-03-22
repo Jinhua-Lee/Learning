@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2021 Jinhua, Inc. All rights reserved.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/se/stream/Toy.java
- * LastModified:    2021/1/19 下午10:27
- */
-
 package com.se.stream;
 
 import com.fasterxml.jackson.databind.ObjectMapper;

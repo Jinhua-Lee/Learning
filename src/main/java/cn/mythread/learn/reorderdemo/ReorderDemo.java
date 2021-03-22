@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2020 Jinhua, Inc. All rights reserved.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/mythread/learn/reorderdemo/ReorderDemo.java
- * LastModified:    2020/8/17 上午12:16
- */
-
 package cn.mythread.learn.reorderdemo;
 
 import lombok.SneakyThrows;

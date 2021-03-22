@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2019/9/26 上午9:25.
- * Author:    Jinhua-Work
- * PathName:    D:/IDEA_Projects/Learning/src/main/java/com/observer_pattern/Observer.java
- * LastModified:    2019/9/26 上午9:25
- */
-
 package cn.designpattern.observer;
 
 /**

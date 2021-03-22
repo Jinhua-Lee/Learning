@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2019/10/8 下午3:31.
- * Author:    Jinhua-Work
- * PathName:    D:/IDEA_Projects/Learning/src/main/java/com/jedis/JavaRedisTest.java
- * LastModified:    2019/10/8 下午3:31
- */
-
 package com.ee.jedis;
 
 import org.junit.Test;

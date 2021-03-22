@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    19-1-16 上午12:14.
- * Author:    Jinhua
- * PathName:    D:/IDEA/Learning/src/com/graph/Item.java
- * LastModified:    19-1-14 下午10:29
- */
-
 package cn.ds.graph;
 
 /**

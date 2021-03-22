@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2020 Jinhua, Inc. All rights reserved.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/callback/AnotherCallee.java
- * LastModified:    2020/11/7 上午1:37
- */
-
 package com.se.callback;
 
 /**

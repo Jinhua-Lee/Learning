@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2020 Jinhua, Inc. All rights reserved.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/mynet/Result.java
- * LastModified:    2020/11/5 上午12:52
- */
-
 package com.se.mynet;
 
 import lombok.Data;

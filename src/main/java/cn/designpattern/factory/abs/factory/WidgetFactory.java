@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2021 Jinhua, Inc. All rights reserved.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/cn/designpattern/factory/abs/factory/WidgetFactory.java
- * LastModified:    2021/2/23 下午10:20
- */
-
 package cn.designpattern.factory.abs.factory;
 
 import cn.designpattern.factory.product.cpu.Cpu;

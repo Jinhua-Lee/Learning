@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2021 Jinhua, Inc. All rights reserved.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/se/inner/anonymous/Outer.java
- * LastModified:    2021/2/18 下午8:57
- */
-
 package com.se.inner.anonymous;
 
 /**

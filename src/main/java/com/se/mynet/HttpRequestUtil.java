@@ -1,9 +1,3 @@
-/*
- * Copyright (c)    2020 Jinhua, Inc. All rights reserved.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/mynet/HttpRequestUtil.java
- * LastModified:    2020/9/2 下午9:48
- */
 package com.se.mynet;
 
 import org.apache.commons.io.IOUtils;

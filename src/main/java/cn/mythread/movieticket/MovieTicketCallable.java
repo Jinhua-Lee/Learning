@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2020/8/15 下午5:56.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/mythread/movieticket/MovieTicketCallable.java
- * LastModified:    2020/8/15 下午5:56
- */
-
 package cn.mythread.movieticket;
 
 import java.util.ArrayList;

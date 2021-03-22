@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    19-2-1 下午5:48.
- * Author:    Jinhua
- * PathName:    D:/IDEA/Learning/src/com/graph/CreateGraphTest.java
- * LastModified:    19-2-1 下午5:23
- */
-
 package cn.ds.graph;
 
 import org.junit.jupiter.api.Test;

@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2020 Jinhua, Inc. All rights reserved.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/mybatis/demo/MainRun.java
- * LastModified:    2020/12/26 上午1:39
- */
-
 package com.ee.mybatis.demo;
 
 import com.ee.mybatis.domain.Customer;

@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2021 Jinhua, Inc. All rights reserved.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/cn/alg/genetic/TspData.java
- * LastModified:    2021/1/9 下午10:27
- */
-
 package cn.alg.genetic;
 
 import cn.ds.graph.MyGraph;

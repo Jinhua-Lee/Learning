@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2020/8/15 下午3:58.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/designpattern/dynamicproxy/MyInvocationHandler.java
- * LastModified:    2019/10/8 下午11:23
- */
-
 package cn.designpattern.proxy.dynamic;
 
 import cn.designpattern.proxy.ProductService;

@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2020 Jinhua, Inc. All rights reserved.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/jvm/natives/IHaveNatives.java
- * LastModified:    2020/10/29 下午10:41
- */
-
 package cn.jvm.natives;
 
 /**

@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2020/8/15 下午10:24.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/test/HasStatic.java
- * LastModified:    2020/8/15 下午10:24
- */
-
 package com.test;
 
 /**

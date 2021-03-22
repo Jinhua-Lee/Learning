@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2020 Jinhua, Inc. All rights reserved.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/mybatis/mapper/CustomerMapper.java
- * LastModified:    2020/12/26 上午1:09
- */
-
 package com.ee.mybatis.mapper;
 
 import com.ee.mybatis.domain.Customer;
