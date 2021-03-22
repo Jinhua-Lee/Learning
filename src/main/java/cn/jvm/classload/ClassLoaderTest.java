@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2020 Jinhua, Inc. All rights reserved.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/jvm/classload/ClassLoaderTest.java
- * LastModified:    2020/10/13 下午10:46
- */
-
 package cn.jvm.classload;
 
 import sun.misc.Launcher;
@@ -14,7 +7,10 @@ import java.net.URL;
 import java.security.Provider;
 
 /**
- * 类加载器模拟
+ * 类加载器模拟<p>&emsp;
+ * 1) 类加载器之间的关系；<p>&emsp;
+ * 2) 各种类加载器的获取方式；
+ *
  * @author Jinhua
  * @date 2020/10/12 23:00
  */
@@ -25,7 +21,7 @@ public class ClassLoaderTest {
     }
 
     /**
-     * 各种类是由什么类加载器加载的，以及各种类加载器的关系模拟
+     * 各种类是由什么类加载器加载的，以及各种【类加载器的关系】模拟
      */
     private static void func1() {
         /*
@@ -65,7 +61,7 @@ public class ClassLoaderTest {
     }
 
     /**
-     * 系统类加载器和扩展类加载器各自的加载路径模拟
+     * 【系统类加载器】和【扩展类加载器】各自的加载路径模拟
      */
     private static void func2() {
 
@@ -100,11 +96,11 @@ public class ClassLoaderTest {
 
 
     /**
-     * 4种获取类加载器的方式
-     *      1. 获取当前类的ClassLoader；
-     *      2. 获取当前线程上下文的ClassLoader；
-     *      3. 获取系统默认的ClassLoader；
-     *      4. 获取调用者的ClassLoader；
+     * 4种获取类加载器的方式<p>&emsp;
+     * 1. 获取当前类的ClassLoader；<p>&emsp;
+     * 2. 获取当前线程上下文的ClassLoader；<p>&emsp;
+     * 3. 获取系统默认的ClassLoader；<p>&emsp;
+     * 4. 获取调用者的ClassLoader；
      */
     public void func3() throws ClassNotFoundException {
         /*

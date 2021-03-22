@@ -1,14 +1,9 @@
-/*
- * Copyright (c)    2020 Jinhua, Inc. All rights reserved.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/jvm/classload/ParentAndChildInitTest.java
- * LastModified:    2020/9/30 下午11:21
- */
-
 package cn.jvm.classload;
 
 /**
- * 父类和子类加载的<clinit>方法前后关系
+ * 父类和子类加载的<clinit>方法前后关系<p>&emsp;
+ * ==> 先执行父类，再执行子类
+ *
  * @author Jinhua
  * @date 2020/9/30 23:04
  */
@@ -34,7 +29,7 @@ public class ParentAndChildInitTest {
 
     public static void main(String[] args) {
         // 先加载Parent类，再加载Child类，结果为2
-        System.out.println(Child.b);
+        System.out.println("Child.b = " + Child.b);
     }
 
 }

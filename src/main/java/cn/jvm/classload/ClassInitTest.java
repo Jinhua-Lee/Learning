@@ -1,13 +1,9 @@
-/*
- * Copyright (c)    2020 Jinhua, Inc. All rights reserved.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/jvm/classload/ClassInitTest.java
- * LastModified:    2020/9/30 下午10:44
- */
-
 package cn.jvm.classload;
 
 /**
+ * 类对象初始化模拟<p>&emsp;
+ * 1) 类变量（static）的加载顺序 => 按源文件中的顺序；
+ *
  * @author Jinhua
  * @date 2020/9/30 21:59
  */

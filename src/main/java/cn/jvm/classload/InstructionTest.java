@@ -1,14 +1,9 @@
-/*
- * Copyright (c)    2020 Jinhua, Inc. All rights reserved.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/jvm/classload/InstructionTest.java
- * LastModified:    2020/9/28 下午10:18
- */
-
 package cn.jvm.classload;
 
 /**
- * JVM 指令操作模拟
+ * JVM 指令操作模拟<p>&emsp;
+ * ==> 基于栈的零指令集架构，所需指令行数
+ *
  * @author Jinhua
  * @version 1.0
  * @date 2020/9/27 16:43
@@ -24,7 +19,7 @@ public class InstructionTest {
      */
     public int testSingle() {
         // 编译完成直接识别为5
-        return  2 + 3;
+        return 2 + 3;
     }
 
     /**
