@@ -1,10 +1,4 @@
 <?xml version="1.0" encoding="UTF8" ?>
-<!--
-  ~ Copyright (c)    2020 Jinhua, Inc. All rights reserved.
-  ~ Author:    Jinhua
-  ~ PathName:    D:/IdeaProjects/Learning/src/main/resources/mappers/CustomerMapper.xml
-  ~ LastModified:    2020/12/26 上午2:42
-  -->
 
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
