@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2020 Jinhua, Inc. All rights reserved.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/jvm/runtime/stack/StringBuilderTest.java
- * LastModified:    2020/10/28 下午10:14
- */
-
 package cn.jvm.runtime.stack;
 
 /**

@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2020 Jinhua, Inc. All rights reserved.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/jvm/runtime/stack/lv/LocalVariablesTest.java
- * LastModified:    2020/10/21 下午10:45
- */
-
 package cn.jvm.runtime.stack.lv;
 
 import java.util.Date;

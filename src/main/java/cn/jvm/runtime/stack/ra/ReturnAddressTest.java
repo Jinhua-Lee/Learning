@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2020 Jinhua, Inc. All rights reserved.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/jvm/runtime/stack/ra/ReturnAddressTest.java
- * LastModified:    2020/10/27 下午10:24
- */
-
 package cn.jvm.runtime.stack.ra;
 
 import java.io.File;

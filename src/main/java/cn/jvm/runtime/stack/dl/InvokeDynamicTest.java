@@ -1,10 +1,3 @@
-/*
- * Copyright (c)    2020 Jinhua, Inc. All rights reserved.
- * Author:    Jinhua
- * PathName:    D:/IdeaProjects/Learning/src/main/java/com/jvm/runtime/stack/dl/InvokeDynamicTest.java
- * LastModified:    2020/10/25 下午11:39
- */
-
 package cn.jvm.runtime.stack.dl;
 
 /**
