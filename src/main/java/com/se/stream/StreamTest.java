@@ -115,4 +115,16 @@ public class StreamTest {
         }
         return result.stream();
     }
+
+    @Test
+    public void testPeek() {
+        List<Child> children = new ArrayList<>();;
+        children.add(new Child(" hello ", null));
+        children.add(new Child(" world   ", null));
+        List<Child> childList = children.stream().peek(
+                child -> child.setName(child.getName().trim())
+        ).collect(Collectors.toList());
+        childList.forEach(System.out::println);
+
+    }
 }
