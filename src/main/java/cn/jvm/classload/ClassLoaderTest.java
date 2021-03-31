@@ -1,9 +1,5 @@
 package cn.jvm.classload;
 
-import sun.misc.Launcher;
-//import sun.security.ec.CurveDB;
-
-import java.net.URL;
 import java.security.Provider;
 
 /**
@@ -67,11 +63,11 @@ public class ClassLoaderTest {
 
         System.out.println("========启动类加载器========");
 
-        // 获取BootStrap ClassLoader能加载的类api路径
-        URL[] bootstrapUrls = Launcher.getBootstrapClassPath().getURLs();
-        for (URL bootstrapUrl : bootstrapUrls) {
-            System.out.println(bootstrapUrl.toExternalForm());
-        }
+//        // 获取BootStrap ClassLoader能加载的类api路径
+//        URL[] bootstrapUrls = Launcher.getBootstrapClassPath().getURLs();
+//        for (URL bootstrapUrl : bootstrapUrls) {
+//            System.out.println(bootstrapUrl.toExternalForm());
+//        }
         /*
          * 从上面的路径中找到一个类，看看他们的类加载器是什么
          *      null -> BootStrap ClassLoader
