@@ -17,8 +17,15 @@ import lombok.SneakyThrows;
  * 3. 当前验证的手动设置<p>&emsp;
  * 1) -Xms600M;<p>&emsp;
  * 2) -Xmx600M;<p>
+ * Tips: 建议生产环境 Xms和Xmx设置为相等的值，避免扩容带来的性能损耗。<p>
  * <p>
- * Tips: 建议生产环境 Xms和Xmx设置为相等的值，避免扩容带来的性能损耗。
+ * 4. 查看参数设置结果<p>&emsp;
+ * 1) 方式一：通过jps + jstat命令，设置程序睡眠时间；<p>&emsp;
+ * 2) 方式二：运行前设置JVM参数 -XX:+PrintGCDetails<p>
+ * <p>
+ * 5. 结果差异性原因分析<p>&emsp;
+ * 1) 设置总内存值 = S0C + S1C + EC + OC;<p>&emsp;
+ * 2) 实际用到的总内存值 = (S0C 或 S1C) + EC + OC;
  *
  * @author Jinhua
  * @version 1.0
