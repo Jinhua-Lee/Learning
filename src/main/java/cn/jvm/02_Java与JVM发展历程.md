@@ -1,6 +1,6 @@
 # 02_Java与JVM发展历程
 
-## Java发展历程
+## 一、Java发展历程
 
 - 1990年，在Sun计算机公司，领导Green Team项目的几个人开发出新的程序语言命名为oak，后续更名为java。
 - 1995年，Sun公司正式发布Java和HotJava产品，Java首次公开亮相。
@@ -21,7 +21,7 @@
 - 2018年，Android的Java侵权案判决，Google赔偿Oracle 88亿美元；同年，Oracle宣布JavaEE成为历史名词，JDBC、JMS、Servlet赠予Eclipse基金会；同年，JDK11发布，LTS版本的JDK，发布革命性的ZGC，调整JDK授权许可。
 - 2019年，JDK12发布，加入RedHat领导开发的shenandoah GC。
 
-## JVM发展历程
+## 二、JVM发展历程
 
 - Sun Classic VM
 
