@@ -50,6 +50,7 @@ group = 'groupId'
 version = '1.0.1'
 description = 'Learning'
 java.sourceCompatibility = JavaVersion.VERSION_1_8
+java.targetCompatibility = JavaVersion.VERSION_1_8
 
 publishing {
     publications {
