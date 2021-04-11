@@ -6,7 +6,9 @@ import org.springframework.util.StopWatch;
 /**
  * 栈上分配举例<p>&emsp;
  * 1) 内存配置项：-Xms1024M -Xmx1024M; <p>&emsp;
- * 2) 逃逸分析项开关，默认是开启的：-XX:+DoEscapeAnalysis; 通过此开关状态，通过Visual VM对比堆中对象的个数;
+ * 2) 逃逸分析项开关，默认是开启的：-XX:+DoEscapeAnalysis; 通过此开关状态，通过Visual VM对比堆中对象的个数;<p>
+ *
+ * 目前栈上分配并未在Hotspot中实现，因为无法定量分析逃逸分析过程本身的过程消耗和栈上分配带来的性能提升的大小关系。
  *
  * @author Jinhua
  * @date 2021/4/10 22:23
