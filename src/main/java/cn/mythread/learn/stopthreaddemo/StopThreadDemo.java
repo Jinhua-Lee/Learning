@@ -1,5 +1,33 @@
 package cn.mythread.learn.stopthreaddemo;
 
+class S1 extends StopThreadDemo implements Runnable {
+
+    private final StopThreadDemo stopThreadDemo;
+
+    public S1(StopThreadDemo stopThreadDemo) {
+        this.stopThreadDemo = stopThreadDemo;
+    }
+
+    @Override
+    public void run() {
+        stopThreadDemo.code1();
+    }
+}
+
+class S2 extends StopThreadDemo implements Runnable {
+
+    private final StopThreadDemo stopThreadDemo;
+
+    public S2(StopThreadDemo stopThreadDemo) {
+        this.stopThreadDemo = stopThreadDemo;
+    }
+
+    @Override
+    public void run() {
+        stopThreadDemo.code2();
+    }
+}
+
 /**
  * 测试volatile是否将修改后的值立即写入主存中
  *

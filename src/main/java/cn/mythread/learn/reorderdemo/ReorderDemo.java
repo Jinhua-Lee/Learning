@@ -2,6 +2,40 @@ package cn.mythread.learn.reorderdemo;
 
 import lombok.SneakyThrows;
 
+class R1 extends ReorderDemo implements Runnable {
+
+    private ReorderDemo reOrderDemo = null;
+
+    public R1() {
+    }
+
+    public R1(ReorderDemo reOrderDemo) {
+        this.reOrderDemo = reOrderDemo;
+    }
+
+    @Override
+    public void run() {
+        reOrderDemo.code1();
+    }
+}
+
+class R2 extends ReorderDemo implements Runnable {
+
+    private ReorderDemo reOrderDemo = null;
+
+    public R2() {
+    }
+
+    public R2(ReorderDemo reOrderDemo) {
+        this.reOrderDemo = reOrderDemo;
+    }
+
+    @Override
+    public void run() {
+        reOrderDemo.code2();
+    }
+}
+
 /**
  * 测试指令重排序
  *
