@@ -4,6 +4,7 @@ import cn.designpattern.chain.impl.OperationHandler;
 import cn.designpattern.chain.impl.ParamCheckHandler;
 import cn.designpattern.chain.impl.PermissionCheckHandler;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,7 +16,11 @@ import java.util.Objects;
  */
 public class HandlerChain {
 
-    private List<Handler> handlers;
+    private final List<Handler> handlers;
+
+    public HandlerChain() {
+        handlers = new ArrayList<>();
+    }
 
     /**
      * 添加处理结点

@@ -1,7 +1,5 @@
 package cn.designpattern.chain;
 
-import org.apache.commons.io.Charsets;
-
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
