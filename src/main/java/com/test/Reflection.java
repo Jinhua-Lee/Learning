@@ -58,7 +58,6 @@ public class Reflection {
         Constructor[] cons = cl.getDeclaredConstructors();
 
         for (Constructor c : cons) {
-            String name = c.getName();
             System.out.print("	");
             String modifiers = Modifier.toString(c.getModifiers());
             if (modifiers.length() > 0) {
@@ -87,8 +86,6 @@ public class Reflection {
 
         for (Method m : methods) {
             Class<?> retType = m.getReturnType();
-            String name = m.getName();
-
             System.out.print("	");
             String modifiers = Modifier.toString(m.getModifiers());
             if (modifiers.length() > 0) {

@@ -19,15 +19,16 @@ public class Review {
 
     @SneakyThrows
     public static void main(String[] args) {
-        printSystemProperties();
-        printSystemEnv();
+//        printSystemProperties();
+//        printSystemEnv();
+        guess();
     }
 
     /**
      * 测试包装类equals方法和相等判断
      */
     @SuppressWarnings("all")
-    public void wrapperEquals() {
+    public static void wrapperEquals() {
         Integer i1 = 127;
         Integer i2 = 127;
         // true
@@ -72,7 +73,7 @@ public class Review {
      * @param energyPoi 能耗POI时间
      * @return 日偏移系数
      */
-    public double getDayCoefficient(long energyPoi, long logTime) {
+    public static double getDayCoefficient(long energyPoi, long logTime) {
         // logTime所在天
         LocalDateTime then = LocalDateTime.ofInstant(Instant.ofEpochMilli(logTime), ZoneId.systemDefault());
         System.out.println("then: " + then);
@@ -101,7 +102,7 @@ public class Review {
         return dayCoefficient;
     }
 
-    public long getDefaultTimeStamp(LocalDateTime localDateTime) {
+    public static long getDefaultTimeStamp(LocalDateTime localDateTime) {
         return localDateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
     }
 
@@ -112,7 +113,7 @@ public class Review {
      * @param logTime   记录时间
      * @return 月偏移系数
      */
-    public double getMonthCoefficient(long energyPoi, long logTime) {
+    public static double getMonthCoefficient(long energyPoi, long logTime) {
 
         LocalDateTime then = LocalDateTime.ofInstant(Instant.ofEpochMilli(logTime), ZoneId.systemDefault());
         System.out.println("then: " + then);
@@ -144,18 +145,18 @@ public class Review {
      * @param num 待求阶乘的数
      * @return 返回阶乘
      */
-    public BigInteger function(Integer num) {
+    public static BigInteger factorial(Integer num) {
         if (num == 1) {
             return BigInteger.valueOf(num);
         } else {
-            return function(num - 1).multiply(BigInteger.valueOf(num));
+            return factorial(num - 1).multiply(BigInteger.valueOf(num));
         }
     }
 
     /**
      * 利用Map统计单词
      */
-    public void myMapDemo() {
+    public static void countWords() {
         String s = "aababcabcdabcde";
         char[] chs = s.toCharArray();
         Map<Character, Integer> map = new HashMap<>(chs.length);
@@ -174,7 +175,7 @@ public class Review {
             Integer value = map.get(key);
             sb.append(key).append("(").append(value).append(")");
         }
-        System.out.println(sb.toString());
+        System.out.println(sb);
     }
 
     /**
@@ -184,7 +185,7 @@ public class Review {
      * @param s 除数
      * @return 余数
      */
-    public int f(int x, int s) {
+    public static int remainder(int x, int s) {
         int n = 1;
         int result = 0;
         while (x / n % s != 0) {
@@ -201,7 +202,7 @@ public class Review {
      * @param fileEncoding 文件编码
      * @throws IOException IO异常
      */
-    public void myFileRead(String fileDir, String fileEncoding) throws IOException {
+    public static void myFileRead(String fileDir, String fileEncoding) throws IOException {
         Scanner sc = new Scanner(Paths.get(fileDir), fileEncoding);
         List<String> list = new ArrayList<>();
         while (sc.hasNextLine()) {
@@ -213,8 +214,7 @@ public class Review {
         }
     }
 
-    @Test
-    public void guess() {
+    public static void guess() {
         System.out.println("猜数字");
         System.out.println("请输入1-100的数字：");
         int lucky = (int) (Math.random() * 100) + 1;
@@ -238,12 +238,12 @@ public class Review {
     /**
      * 五位数百位等于其他四位之和
      */
-    public void f1() {
+    public static void f1() {
         System.out.println("10000-99999的");
         int a, b, c, d, e;
-        for (int i = 10000; i < 100000; i++) {
-            a = i / 10000;
-            b = i / 1000 % 10;
+        for (int i = 10_000; i < 100_000; i++) {
+            a = i / 10_000;
+            b = i / 1_000 % 10;
             c = i / 100 % 10;
             d = i / 10 % 10;
             e = i % 10;
@@ -254,7 +254,7 @@ public class Review {
         }
     }
 
-    public void func(int N) {
+    public static void func(int N) {
         for (int i = 3; i <= N; i++) {
             int[] a = new int[i];
             int num = (int) Math.pow(10, i - 1) + 1;
@@ -279,11 +279,11 @@ public class Review {
     /**
      * 从0到 N，共n行，每行打印N个 *
      *
-     * @param N 行数
+     * @param rowNumber 行数
      */
-    public void f5(int N) {
+    public static void printTriangle(int rowNumber) {
         int i = 0, j = 0;
-        while (i < N) {
+        while (i < rowNumber) {
             while (j <= i) {
                 System.out.print("*");
                 j++;
@@ -299,7 +299,7 @@ public class Review {
      *
      * @param n 口诀表最大值
      */
-    public void f6(int n) {
+    public static void multiplicationFormula(int n) {
         int i = 1, j = 1;
         while (j <= n) {
             while (i <= n && i <= j) {
@@ -312,7 +312,7 @@ public class Review {
         }
     }
 
-    public void f7() {
+    public static void f7() {
         int day = 0;
         double money = 0;
         while (money < 100) {
