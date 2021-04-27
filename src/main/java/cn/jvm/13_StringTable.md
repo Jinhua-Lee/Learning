@@ -157,7 +157,99 @@ public class MemoryTest {
 
 ## 四、字符串的拼接操作
 
+```java
+public class Main {
+      /**
+     * StringBuilder和String的拼接执行效率，for循环测试<p>&emsp;
+     * 1) append()方式，自始至终只会创建一个StringBuilder对象；<p>&emsp;
+     * 2) String拼接方式，创建多个StringBuilder对象，及多个String对象，占用内存对象。每次循环，进来的变量，下一次就不再使用。<p><p>
+     * 改进空间：
+     * 1) 若基本确定长度上限，则建议使用指定容量构造器{@link StringBuilder#StringBuilder(int)}，以减小扩容
+     */
+    @Test
+    public void test4() {
+        StopWatch sw1 = new StopWatch();
+        sw1.start();
+        method1(100_000);
+        sw1.stop();
+        // 9500ms
+        System.out.println("花费时间：" + sw1.getTotalTimeMillis());
+
+        StopWatch sw2 = new StopWatch();
+        sw2.start();
+        method2(100_000);
+        sw2.stop();
+        // 2ms
+        System.out.println("花费时间：" + sw2.getTotalTimeMillis());
+    }
+
+    private void method1(int highLevel) {
+        String src = "";
+        for (int i = 0; i < highLevel; i++) {
+            // 创建10w个StringBuilder，及10w个String
+            src += "a";
+        }
+    }
+
+    private void method2(int highLevel) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < highLevel; i++) {
+            sb.append("a");
+        }
+    }
+}
+```
+
+### 1. 字符串拼接的方式
+
+1. StringBuilder
+   * 循环中，自始至终只会创建一个StringBuilder对象；
+2. String与【+】连接
+   * 循环中，创建多个StringBuilder对象，及多个String对象，占用内存对象。
+   * 每次循环，进来的变量，下一次就不再使用。
+
+### 2. StringBuilder改进空间
+
+若基本确定长度上限，则建议使用指定容量构造器**StringBuilder.StringBuilder(int)**，以减小扩容。
+
 ## 五、intern() 的使用
+
+### 1. 使用规则
+
+* 如果**不是双引号声明**的String对象，可以使用 intern()方法。查询当前字符串是否存在，若不存在则将当前字符串放入常量池中。
+
+  ```java
+  public class Main {
+      public static void main(String[] args) {
+          String myInfo = new String("Hello, world!").intern();
+      }
+  }
+  ```
+
+* 换句话说，在任意字符串常量调用intern()方法，返回结果所指向的那个实例，必须和直接以常量形式出现的字符串实例完全相同。
+
+  ```java
+  public class Main {
+      public static void main(String[] args) {
+          // 值为true
+          boolean equals = ("a" + "b" + "c").intern() == "abc";
+      }
+  }
+  ```
+
+* 通俗讲，Intern**保证**字符串在**内存只有一份**，以节约空间，加快字符串操作速度。这个值会被存放在**字符串内部池(String Intern Pool)**。
+
+### 2. 小结
+
+* 如何保证变量s指向的是字符串常量池中的数据呢？
+
+  1. 字面量
+
+     String s = “hello”;
+
+  2. 调用intern方法
+
+     String s = new String(“hello”).intern();
 
 ## 六、StringTable的垃圾回收
 
