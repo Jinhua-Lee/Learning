@@ -76,6 +76,7 @@ public class StringTest {
         System.out.println("花费时间：" + sw2.getTotalTimeMillis());
     }
 
+    @SuppressWarnings("all")
     private void method1(int highLevel) {
         String src = "";
         for (int i = 0; i < highLevel; i++) {
@@ -84,10 +85,56 @@ public class StringTest {
         }
     }
 
+    @SuppressWarnings("all")
     private void method2(int highLevel) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < highLevel; i++) {
             sb.append("a");
         }
+    }
+
+    /**
+     * 查看字节码<p>&emsp;
+     * 1) new String("ab") 创建了几个对象？<p>&emsp;&emsp;
+     * 2个：<p>&emsp;&emsp;
+     * ①new关键字在堆空间创建的对象；<p>&emsp;&emsp;
+     * ②字符串常量池中的对象，字节码指令ldc。<p>&emsp;
+     * 2) new String("a") + new String("b")创建了几个对象？<p>&emsp;&emsp;
+     * 6个：<p>&emsp;&emsp;
+     * ① 【+】拼接，new StringBuilder(); <p>&emsp;&emsp;
+     * ② new String("a"); <p>&emsp;&emsp;
+     * ③ 常量池中的 “a”。 <p>&emsp;&emsp;
+     * ② new String("b"); <p>&emsp;&emsp;
+     * ③ 常量池中的 “b”。 <p><p>&emsp;&emsp;
+     * 深入剖析：<p>&emsp;&emsp;
+     * ⑥ StringBuilder#toString();
+     */
+    @Test
+    public void test5() {
+        String str1 = new String("ab");
+        String str2 = new String("a") + new String("b");
+    }
+
+    /**
+     * intern的使用，不同版本结果不同（JDK 7将字符串常量池移至堆空间）<p>&emsp;
+     * 1) JDK 6及以前；
+     * 2) JDK 7+：
+     */
+    @Test
+    @SuppressWarnings("all")
+    public void test7() {
+        String s1 = new String("1");
+        s1.intern();
+        String s2 = "1";
+        // JDK 6 -> false
+        // JDK 7+ -> false
+        System.out.println(s1 == s2);
+
+        String s3 = new String("1") + new String("1");
+        s3.intern();
+        String s4 = "11";
+        // JDK 6 -> false
+        // jDK 7+ -> true
+        System.out.println(s3 == s4);
     }
 }

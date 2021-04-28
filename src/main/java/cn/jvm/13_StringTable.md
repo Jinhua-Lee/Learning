@@ -212,6 +212,30 @@ public class Main {
 
 若基本确定长度上限，则建议使用指定容量构造器**StringBuilder.StringBuilder(int)**，以减小扩容。
 
+### 3. 一个面试题
+
+* 以下两个语句分别创建了几个对象？
+  * String str1 = new String("ab"); 
+  * String str2 = new String("a") + new String("b");
+
+> 解答：
+>
+> 1. new String("ab") 创建了几个对象？
+>    2个：
+>    ① new关键字在堆空间创建的对象；
+>    ② 字符串常量池中的对象，字节码指令ldc。
+>
+> 2. new String("a") + new String("b")创建了几个对象？
+>    6个：
+>    ① 【+】拼接，new StringBuilder();
+>    ② new String("a");
+>    ③ 常量池中的 “a”。
+>    ② new String("b");
+>    ③ 常量池中的 “b”。
+>
+>   深入剖析：
+>   ⑥ StringBuilder#toString();
+
 ## 五、intern() 的使用
 
 ### 1. 使用规则
@@ -241,17 +265,211 @@ public class Main {
 
 ### 2. 小结
 
-* 如何保证变量s指向的是字符串常量池中的数据呢？
+1. 如何保证变量s指向的是字符串常量池中的数据，而不是堆内存中new的数据呢？
+   1. 字面量
 
-  1. 字面量
+      String s = “hello”;
 
-     String s = “hello”;
+   2. 调用intern方法
 
-  2. 调用intern方法
+      String s = new String(“hello”).intern();
 
-     String s = new String(“hello”).intern();
+2. intern的使用规则概括：
+   * JDK 6：
+     * 将字符串复制一份
+   * JDK 7+：
+     * 将字符串的引用地址复制一份
+
+### 3. 面试题
+
+1. 以下代码的输出结果是什么？
+
+   ```java
+   public class Main {
+       /**
+        * intern的使用，不同版本结果不同（JDK 7将字符串常量池移至堆空间）<p>&emsp;
+        * 1) JDK 6及以前；
+        * 2) JDK 7+：
+        */
+       @SuppressWarnings("all")
+       public static void main(String[] args) {
+           String s1 = new String("1");
+           // 调用intern方法前，字符串常量池和堆空间中都存在了"1"
+           s1.intern();
+           String s2 = "1";
+           // JDK 6 -> false
+           // JDK 7+ -> false
+           System.out.println(s1 == s2);
+   
+           // s3 指向 new String("11")，执行完后字符串常量池中不存在"11"
+           String s3 = new String("1") + new String("1");
+           // 字符串常量池中生成"11"
+           // 在JDK 6中，创建一个新的对象"11"；
+           // 在JDK 7+中，
+           s3.intern();
+           // s4 指向 上一行代码生成的字符串常量池中"11"的地址
+           String s4 = "11";
+           // JDK 6 -> false
+           // jDK 7+ -> true
+           System.out.println(s3 == s4);
+       }
+   }
+   ```
+
+   * 详细解读
+
+     ![intern方法的版本细节](ref/intern方法的版本细节.png)
+
+2. 将以上的s3的intern和s4的定义两个语句互换顺序。
+
+   ```java
+   public class Main {
+       public static void main(String[] args) {
+           String s3 = new String("1") + new String("1");
+           String s4 = "11";
+           String s5 = s3.intern();
+           System.out.println(s3 == s4);	// flase
+           System.out.println(s4 == s5);	// true
+       }
+   }
+   ```
+
+   * 关键点：**intern时**，字符串常量池中**是否有"11"**
+
+3. 扩展练习1
+
+   ```java
+   public class Main {
+       public static void main(String[] args) {
+           String  s = new String("a") + new String("b");
+           String s2 = s.intern();
+           // JDK 6 -> true;	JDK 8 -> true
+           System.out.println(s2 == "ab");
+           // JDK 6 -> false;	JDK 8 -> true（常量池创建的是引用）
+           System.out.println(s == "ab");
+       }
+   }
+   ```
+
+   * 关键点：**字符串常量池中创建的**字符串是**副本还是引用**。
+
+4. 扩展练习2
+
+   ```java
+   public class Main {
+       public static void main(String[] args) {
+           String s1 = new String("ab");
+           String s1 = new String("a") + new String("b");
+           s1.intern();
+           String s2 = "ab";
+           System.out.println(s1 == s2);
+       }
+   }
+   ```
+
+   * 关键点：s1的两种创建方式，**字符串常量池中是否有"ab"**
+
+5. 效率测试
+
+   ```java
+   /**
+    * String的intern方法空间使用上的效率测试
+    * <p>
+    * 替换for循环中的语句，通过JVisual VM查看intern的影响
+    *
+    * @author Jinhua
+    * @version 1.0
+    * @date 2021/4/28 10:52
+    */
+   public class StringInternEff {
+       static final int MAX_COUNT = 1_000 * 10_000;
+       static final String[] ARRAYS = new String[MAX_COUNT];
+   
+       @SneakyThrows
+       @SuppressWarnings("all")
+       public static void main(String[] args) {
+           Integer[] data = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+   
+           StopWatch sw = new StopWatch();
+           sw.start();
+           for (int i = 0; i < MAX_COUNT; i++) {
+   //            ARRAYS[i] = new String(String.valueOf(data[i % data.length]));
+               ARRAYS[i] = new String(String.valueOf(data[i % data.length])).intern();
+           }
+           sw.stop();
+           System.out.println("花费时间：" + sw.getTotalTimeMillis());
+   
+           Thread.sleep(1_000_000L);
+           System.gc();
+       }
+   }
+   ```
+
+   
 
 ## 六、StringTable的垃圾回收
 
+```java
+/**
+ * String的垃圾回收测试<p>&emsp;
+ * -Xms15M -Xmx15M -XX:+PrintStringTableStatistics -XX:+PrintGCDetails
+ *
+ * @author Jinhua
+ * @version 1.0
+ * @date 2021/4/28 11:13
+ */
+public class StringGc {
+
+    @SuppressWarnings("all")
+    public static void main(String[] args) {
+        // 通过调整num值，查看对象个数
+        int num = 100;
+        for (int i = 0; i < num; i++) {
+            String.valueOf(i).intern();
+        }
+    }
+}
+```
+
+* 通过调大num值，发现不是按预期的线性增长，说明存在垃圾回收行为。
+
 ## 七、G1中的String去重操作
+
+### 1. 操作概述
+
+[G1的String去重操作](https://openjdk.java.net/jeps/192)
+
+#### 1) 前提说明
+
+* 去重是指去除**new的char[]数组**的重复，而不是常量池中的重复。
+
+#### 2) 测试结果及分析
+
+1. 测试结果
+   * 堆存活数据集合里，String对象占了25%；
+   * 重复的对象占13.5%；
+   * String对象平均长度是45
+
+2. 结果分析
+   * 许多大规模Java应用的瓶颈在于内存，堆上存在重复的String对象必然是一种浪费。
+
+#### 3) 实现细节
+
+1. GC工作时，会访问堆上存活的对象。对每个访问到的对象都检查，是否为**候选的要去重的String对象**
+
+   * 如果是，将**对象的引用**插入到**队列**中等待后续处理。一个**去重线程**在后台运行，处理这个队列，从队列中删除元素，然后尝试**去重它引用的String对象**。
+
+2. 使用一个Hashtable记录所有被String对象使用的不重复的char数组。去重时候，查询该Hashtable，看堆上是否有相同的char数组。
+
+   * 如果存在，String对象会被调整到引用那一个数组，释放对原有数组的引用。最终会被垃圾收集器回收掉。
+
+   * 如果查找失败，char数组会被插入到Hashtable，以后如果有需要该引用时候，就共享该数组了。
+
+#### 4) VM参数
+
+| 参数                                        | 描述                                                         |
+| ------------------------------------------- | ------------------------------------------------------------ |
+| **-XX:+UseStringDeduplication**             | **开启String去重**，默认关闭。                               |
+| **-XX:+PrintStringDeduplicationStatistics** | 打印详细的**去重统计信息**                                   |
+| **-XX:StringDeduplicationAgeThreshold=5**   | **年龄阈值**，达到该年龄的String对象被认为是去重的候选对象。 |
 
