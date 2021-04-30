@@ -6,3 +6,5 @@
 *.class
 .gradle
 /build
+.hprof
+/*hprof*/*
