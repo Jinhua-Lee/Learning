@@ -14,6 +14,10 @@ import java.util.List;
  * 2) 新生代使用ParNew GC
  * <p>&emsp;&emsp;
  * -XX:+PrintCommandLineFlags -XX:+UseParNewGC
+ * <p>&emsp;
+ * 3) Parallel GC，新生代和老年代互相激活（设置新生代，老年代也会默认采用该Parallel收集器）
+ * <p>&emsp;&emsp;
+ * -XX:+UseParallelGC -XX:+UseParallelOldGC
  *
  * @author Jinhua
  * @date 2021/5/3 18:25
