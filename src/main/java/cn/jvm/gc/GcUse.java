@@ -18,6 +18,10 @@ import java.util.List;
  * 3) Parallel GC，新生代和老年代互相激活（设置新生代，老年代也会默认采用该Parallel收集器）
  * <p>&emsp;&emsp;
  * -XX:+UseParallelGC -XX:+UseParallelOldGC
+ * <p>&emsp;
+ * 4) CMS GC，老年代并发GC，与ParNew互相激活
+ * <p>&emsp;&emsp;
+ * -XX:+PrintCommandLineFlags -XX:+UseConcMarkSweepGC
  *
  * @author Jinhua
  * @date 2021/5/3 18:25
