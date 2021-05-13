@@ -4,7 +4,7 @@ package cn.jvm.gc;
  * GC日志文件位置测试：<p>&emsp;
  * 在 JDK 7 和 JDK 8 中分别执行。<p>
  * 参数列表：<p>&emsp;
- * -verbose:gc -Xms20M -Xmx20M -Xmn10M -XX:+PrintGCDetails -XX:SurvivorRatio=8 -XX:+UseSerialGC
+ * -verbose:gc -Xms20M -Xmx20M -Xmn10M -XX:+PrintGCDetails -XX:SurvivorRatio=8 -XX:+UseSerialGC -Xloggc:./logs/gc.log
  *
  * @author Jinhua
  * @version 1.0
