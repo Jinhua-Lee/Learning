@@ -1,10 +1,10 @@
 # Project exclude paths
-/target/
-/out/
-/.idea
-/Learning.iml
+target/
+out/
+.idea
+*.iml
 *.class
 .gradle
-/build
+build
 *.hprof
 /*hprof*/*
