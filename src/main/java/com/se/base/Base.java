@@ -1,4 +1,4 @@
-package com.se.bae;
+package com.se.base;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
