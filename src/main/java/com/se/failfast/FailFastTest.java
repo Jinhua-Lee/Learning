@@ -1,11 +1,8 @@
-package com.se;
+package com.se.failfast;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
@@ -42,6 +39,21 @@ public class FailFastTest {
             Integer next = iterator.next();
             if (next % 3 == 0) {
                 list.remove(next);
+            }
+        }
+        list.forEach(System.out::println);
+    }
+
+    /**
+     * 当移除的是最后一个元素时候，不报错
+     */
+    @Test
+    @SuppressWarnings("all")
+    public void testFail3() {
+        List<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+        for (Integer integer : list) {
+            if (Objects.equals(integer, 5)) {
+                list.remove(integer);
             }
         }
         list.forEach(System.out::println);
