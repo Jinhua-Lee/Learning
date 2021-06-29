@@ -28,16 +28,16 @@ public class ObjectAnalyzer {
             return (String) obj;
         }
         if (cl.isArray()) {
-            String r = cl.getComponentType() + "[]{";
+            StringBuilder r = new StringBuilder(cl.getComponentType() + "[]{");
             for (int i = 0; i < Array.getLength(obj); i++) {
                 if (i > 0) {
-                    r += ", ";
+                    r.append(", ");
                 }
                 Object val = Array.get(obj, i);
                 if (cl.getComponentType().isPrimitive()) {
-                    r += val;
+                    r.append(val);
                 } else {
-                    r += toString(val);
+                    r.append(toString(val));
                 }
             }
             return r + "}";
@@ -55,7 +55,7 @@ public class ObjectAnalyzer {
                     }
                     r.append(f.getName()).append(" = ");
                     try {
-                        Class t = f.getType();
+                        Class<?> t = f.getType();
                         Object val = f.get(obj);
                         if (t.isPrimitive()) {
                             r.append(val);
