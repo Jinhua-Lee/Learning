@@ -68,6 +68,7 @@ public class ReorderDemo {
     }
 
     @SneakyThrows
+    @SuppressWarnings("all")
     public static void main(String[] args) {
         ReorderDemo test = new ReorderDemo();
         Thread t1 = new Thread(new R1(test), "线程1");

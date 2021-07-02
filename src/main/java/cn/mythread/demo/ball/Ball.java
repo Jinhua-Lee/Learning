@@ -1,4 +1,4 @@
-package cn.mythread.ball;
+package cn.mythread.demo.ball;
 
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;

@@ -1,4 +1,4 @@
-package cn.mythread.movieticket;
+package cn.mythread.demo.movieticket;
 
 /**
  * 电影售票窗 继承 Thread 类实现

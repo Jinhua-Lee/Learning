@@ -1,4 +1,4 @@
-package cn.mythread.movieticket;
+package cn.mythread.demo.movieticket;
 
 import lombok.SneakyThrows;
 

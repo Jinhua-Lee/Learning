@@ -1,4 +1,4 @@
-package cn.mythread.ball;
+package cn.mythread.demo.ball;
 
 import javax.swing.*;
 import java.awt.*;

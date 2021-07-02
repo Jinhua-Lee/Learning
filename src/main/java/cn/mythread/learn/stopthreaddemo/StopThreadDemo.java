@@ -65,6 +65,7 @@ public class StopThreadDemo {
         System.out.println("线程2执行结束……");
     }
 
+    @SuppressWarnings("all")
     public static void main(String[] args) {
         StopThreadDemo stopThreadDemo = new StopThreadDemo();
 

@@ -17,6 +17,7 @@ public class ThreadPoolExecutorDemo {
     private static final int MAX_POOL_SIZE = 10;
     private static final int QUEUE_CAPACITY = 100;
     private static final Long KEEP_ALIVE_TIME = 1L;
+
     public static void main(String[] args) {
 
         // 使用阿里巴巴推荐的创建线程池的方式
@@ -37,6 +38,7 @@ public class ThreadPoolExecutorDemo {
         }
         // 终止线程池
         executor.shutdown();
+        // 线程池中所有任务执行完，线程池终止，才返回调用线程
         while (!executor.isTerminated()) {
         }
         System.out.println("Finished all threads");

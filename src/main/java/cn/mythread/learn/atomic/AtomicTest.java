@@ -12,7 +12,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author Jinhua
  * @date 2020/8/17 23:22
  */
-public class AtomicityDemo {
+public class AtomicTest {
 
     /**
      * 用volatile修饰的变量
@@ -72,8 +72,9 @@ public class AtomicityDemo {
         y = -1;
     }
 
+    @SuppressWarnings("all")
     public static void main(String[] args) {
-        final AtomicityDemo test = new AtomicityDemo();
+        final AtomicTest test = new AtomicTest();
         // 开十个线程
         for (int i = 0; i < 10; i++) {
             new Thread() {

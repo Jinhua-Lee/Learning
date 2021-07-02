@@ -1,4 +1,4 @@
-package cn.mythread.bank;
+package cn.mythread.demo.bank;
 
 /**
  * 同步银行

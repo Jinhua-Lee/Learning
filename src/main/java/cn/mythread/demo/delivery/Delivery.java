@@ -1,4 +1,4 @@
-package cn.mythread.delivery;
+package cn.mythread.demo.delivery;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -36,6 +36,7 @@ public class Delivery implements Callable<String> {
      *
      * @param args 主函数入参
      */
+    @SuppressWarnings("all")
     public static void main(String[] args) {
         List<FutureTask<String>> futureTasks = new ArrayList<>(4);
 

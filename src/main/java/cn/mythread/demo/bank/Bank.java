@@ -1,4 +1,4 @@
-package cn.mythread.bank;
+package cn.mythread.demo.bank;
 
 import java.util.Arrays;
 
