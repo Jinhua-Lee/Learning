@@ -88,14 +88,12 @@ public class DepthFirstSearch {
      * @param v 要遍历的开始顶点下标
      */
     private void dfs(MyGraph g, int v) {
-        /*
-         * 访问顶点并且标记访问
-         */
+        // 访问并标记访问状态
         visit(g.getVertices()[v]);
         visited.put(g.getVertices()[v], VertexVisitStateEnum.VisitedOnce);
 
         // 对每个结点深度优先搜索
-        // 获取到下标对应的顶点相连的顶点集合
+        // 获取【直接后代】列表
         for (Vertex<?> vertex : g.getRelatedVertices(v)) {
             if (VertexVisitStateEnum.Unvisited.equals(visited.get(g.getVertices()[vertex.getIndex()]))) {
                 dfs(g, vertex.getIndex());
@@ -143,8 +141,10 @@ public class DepthFirstSearch {
         // 获取到下标对应的顶点相连的顶点集合，对每个结点深度优先搜索
         for (Vertex<?> vertex : g.getRelatedVertices(v)) {
             currentRelatedVertex = g.getVertices()[vertex.getIndex()];
+            // 判断到环
             if (VertexVisitStateEnum.VisitedOnce.equals(visited.get(currentRelatedVertex))) {
                 visitStack.push(vertex);
+                // 设置环路径访问栈，返回
                 withCircle = new VisitStackAndCircle(true, visitStack);
                 return;
             } else if (VertexVisitStateEnum.Unvisited.equals(visited.get(currentRelatedVertex))) {
