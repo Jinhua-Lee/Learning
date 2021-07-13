@@ -1,4 +1,4 @@
-package cn.mythread.learn.atomic;
+package cn.mythread.atomic;
 
 import org.junit.Test;
 
