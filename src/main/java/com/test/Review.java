@@ -21,7 +21,13 @@ public class Review {
     public static void main(String[] args) {
 //        printSystemProperties();
 //        printSystemEnv();
-        guess();
+
+        String[] split = "1|2||3".split("\\|");
+        for (int i = 0; i < split.length; i++) {
+            System.out.println(split[i].isEmpty());
+        }
+
+//        guess();
     }
 
     /**

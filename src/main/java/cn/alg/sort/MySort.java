@@ -5,6 +5,7 @@ package cn.alg.sort;
  *
  * @author Jinhua
  */
+@SuppressWarnings("unused")
 public class MySort {
 
     private static final MySort MY_SORT = new MySort();
@@ -25,8 +26,7 @@ public class MySort {
 //        shellSort(arr);
 //		quickSort(arr, 0, arr.length - 1);
 //        heapSort(arr);
-        int[] tempArr = new int[arr.length];
-        mergeSort(arr, 0, arr.length - 1, tempArr);
+        mergeSort(arr, 0, arr.length - 1);
         for (int i : arr) {
             System.out.printf("%-4d", i);
         }
@@ -55,7 +55,6 @@ public class MySort {
      * @param arr 待排序数组
      */
     public void bubbleSort(int[] arr) {
-        int temp;
         // 外层表示循环次数，循环 length - 1次
         for (int i = 0; i < arr.length - 1; i++) {
             // 该轮是否排交换过的标志变量，若没改变，则表示没进行过交换，已经排好
@@ -132,7 +131,6 @@ public class MySort {
      * @param arr 待排序数组
      */
     public void shellSort(int[] arr) {
-        // 单独把数组长度拿出来，提高效率
         int length = arr.length;
         while (length > 0) {
             // 增量公式，简单折半
@@ -297,16 +295,15 @@ public class MySort {
      * @param arr     待排数组
      * @param left    待排数组的起始位置
      * @param right   待排数组终点位置
-     * @param tempArr 缓存数组
      */
-    public void mergeSort(int[] arr, int left, int right, int[] tempArr) {
+    public void mergeSort(int[] arr, int left, int right) {
         // 当数组元素不为1时候，继续划分；否则可以进行归并
         if (left != right) {
             int middle = (left + right) / 2;
             // 分别排序左右两边，再归并起来
-            mergeSort(arr, left, middle, tempArr);
-            mergeSort(arr, middle + 1, right, tempArr);
-            merge(arr, left, middle, right, tempArr);
+            mergeSort(arr, left, middle);
+            mergeSort(arr, middle + 1, right);
+            merge(arr, left, middle, right);
         }
     }
 
@@ -329,9 +326,9 @@ public class MySort {
      * @param left    待排数组的起始位置
      * @param middle  待排数组中间位置，归属于左边
      * @param right   待排数组终点位置
-     * @param tempArr 缓存数组
      */
-    private void merge(int[] arr, int left, int middle, int right, int[] tempArr) {
+    private void merge(int[] arr, int left, int middle, int right) {
+        int[] tempArr = new int[arr.length];
         // 分别是左边数组，右边数组，缓存数组的游标
         int i = left;
         int j = middle + 1;
