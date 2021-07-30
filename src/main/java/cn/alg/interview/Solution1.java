@@ -1,4 +1,4 @@
-package com.interview;
+package cn.alg.interview;
 
 /**
  * Todo
