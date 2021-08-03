@@ -17,6 +17,40 @@ public class Solution {
         return SOLUTION;
     }
 
+    public static void main(String[] args) {
+        Solution instance = Solution.getInstance();
+//        boolean find = instance.find(5, new int[][]{{2, 3}, {3, 3}, {4, 5}});
+//        System.out.println(find);
+//        System.out.println(instance.title2Number("ABC"));
+        int i = instance.trainingZeros(15);
+        System.out.println(i);
+    }
+
+    public int trainingZeros(int n) {
+
+        int ans = 0;
+        while (n > 0) {
+            ans += n / 5;
+            n /= 5;
+        }
+        return ans;
+    }
+
+    /**
+     * 英文转26进制(Excel的第几列)
+     *
+     * @param str 英文字符串
+     */
+    public int title2Number(String str) {
+
+        int ans = 0;
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+            ans = ans * 26 + (c - 'A' + 1);
+        }
+        return ans;
+    }
+
     public boolean find(int target, int[][] array) {
         int i = 0, j = 0;
         int xLength = array.length;
@@ -62,9 +96,5 @@ public class Solution {
         return sb.toString();
     }
 
-    public static void main(String[] args) {
-        boolean find = Solution.getInstance().find(5, new int[][]{{2, 3}, {3, 3}, {4, 5}});
-        System.out.println(find);
-    }
 }
 
