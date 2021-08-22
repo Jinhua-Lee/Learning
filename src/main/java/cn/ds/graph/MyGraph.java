@@ -144,6 +144,28 @@ public class MyGraph {
         return relatedVertices;
     }
 
+    public boolean judgeIsStart(int v) {
+        for (int i = 0; i < vertices.length; i++) {
+            Double d = this.adjMatrix[i][v];
+            if (i != v && d != null) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean judgeIsEnd(int v) {
+        // v必须满足在【顶点列表】下标范围
+        // 判断是否末端结点，即是判断邻接矩阵指定行，除了对角线位置是否全为null
+        for (int i = 0; i < vertices.length; i++) {
+            Double d = this.adjMatrix[v][i];
+            if (i != v && d != null) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     /**
      * 求一个节点在该图中的位置类型
      * 外部需判断是否是有向图，若为无向图，所有的节点都设置为中间节点类型
