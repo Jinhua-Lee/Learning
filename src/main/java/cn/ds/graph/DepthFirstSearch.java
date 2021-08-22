@@ -3,6 +3,7 @@ package cn.ds.graph;
 import lombok.Getter;
 
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 /**
@@ -61,16 +62,16 @@ public class DepthFirstSearch {
         this.start = start;
     }
 
-    public void executeDfs(Function<Vertex<?>, ?> visit) {
-        dfs(graph, start, visit);
+    public void executeDfs(Consumer<Vertex<?>> userVisit) {
+        dfs(graph, start, userVisit);
         for (Vertex<?> vertex : visited.keySet()) {
             if (VertexVisitStateEnum.Unvisited.equals(visited.get(vertex))) {
-                dfs(graph, vertex.getIndex(), visit);
+                dfs(graph, vertex.getIndex(), userVisit);
             }
         }
     }
 
-    private void dfs(MyGraph g, int v, Function<Vertex<?>, ?> userVisit) {
+    private void dfs(MyGraph g, int v, Consumer<Vertex<?>> userVisit) {
         // 访问并标记访问状态
         Vertex<?> cur = g.getVertices()[v];
         visit(cur, userVisit);
@@ -146,10 +147,10 @@ public class DepthFirstSearch {
      *
      * @param v 要访问的结点
      */
-    private void visit(Vertex<?> v, Function<Vertex<?>, ?> userVisit) {
+    private void visit(Vertex<?> v, Consumer<Vertex<?>> userVisit) {
         visitedVertices.add(v);
         if (userVisit != null) {
-            userVisit.apply(v);
+            userVisit.accept(v);
         }
     }
 }

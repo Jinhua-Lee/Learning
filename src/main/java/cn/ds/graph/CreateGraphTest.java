@@ -2,7 +2,7 @@ package cn.ds.graph;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.function.Function;
+import java.util.function.Consumer;
 
 /**
  * 图创建测试类
@@ -52,10 +52,7 @@ public class CreateGraphTest {
         // 深度优先遍历
         System.out.println("深度优先遍历：");
         DepthFirstSearch dfs = new DepthFirstSearch(graph);
-        Function<Vertex<?>, Void> printValue = vertex -> {
-            System.out.println(vertex.getT().toString());
-            return null;
-        };
+        Consumer<Vertex<?>> printValue = vertex -> System.out.println(vertex.getT().toString());
         dfs.executeDfs(printValue);
         for (Vertex<?> v : dfs.getVisitedVertices()) {
             System.out.println(v);

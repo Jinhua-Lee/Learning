@@ -3,6 +3,7 @@ package cn.ds.graph;
 import lombok.Getter;
 
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 /**
@@ -45,11 +46,11 @@ public class BreadthFirstSearch {
         }
     }
 
-    public void executeBfs(Function<Vertex<?>, ?> userVisit) {
+    public void executeBfs(Consumer<Vertex<?>> userVisit) {
         bfs(graph, start, userVisit);
     }
 
-    private void bfs(MyGraph g, int start, Function<Vertex<?>, ?> userVisit) {
+    private void bfs(MyGraph g, int start, Consumer<Vertex<?>> userVisit) {
 
         Queue<Vertex<?>> vertexQueue = new ArrayDeque<>();
         // 标记起点已经被访问
@@ -70,10 +71,10 @@ public class BreadthFirstSearch {
         }
     }
 
-    private void visit(Vertex<?> v, Function<Vertex<?>, ?> userVisit) {
+    private void visit(Vertex<?> v, Consumer<Vertex<?>> userVisit) {
         visitedVertices.add(v);
         if (userVisit != null) {
-            userVisit.apply(v);
+            userVisit.accept(v);
         }
     }
 }
