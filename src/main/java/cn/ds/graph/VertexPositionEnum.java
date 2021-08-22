@@ -1,5 +1,8 @@
 package cn.ds.graph;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 /**
  * 节点在流向图中的位置枚举类
  *
@@ -7,6 +10,8 @@ package cn.ds.graph;
  * @version 1.1 修改枚举类名称
  * @date 2020/8/21 14:23
  */
+@Getter
+@AllArgsConstructor
 public enum VertexPositionEnum {
 
     /**
@@ -24,19 +29,6 @@ public enum VertexPositionEnum {
      */
     MiddleNode(2, "中间节点");
 
-    private final Integer value;
+    private final int value;
     private final String description;
-
-    VertexPositionEnum(Integer value, String description) {
-        this.value = value;
-        this.description = description;
-    }
-
-    public Integer getValue() {
-        return value;
-    }
-
-    public String getDescription() {
-        return description;
-    }
 }

@@ -1,5 +1,8 @@
 package cn.ds.graph;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 /**
  * 度的类型枚举
  * 度、入度、出度
@@ -8,6 +11,8 @@ package cn.ds.graph;
  * @version 1.0
  * @date 2020/8/26 11:13
  */
+@Getter
+@AllArgsConstructor
 public enum DegreeTypeEnum {
 
     /**
@@ -25,19 +30,6 @@ public enum DegreeTypeEnum {
      */
     OUT_DEGREE(2, "出度");
 
-    private Integer value;
-    private String description;
-
-    DegreeTypeEnum(Integer value, String description) {
-        this.value = value;
-        this.description = description;
-    }
-
-    public Integer getValue() {
-        return value;
-    }
-
-    public String getDescription() {
-        return description;
-    }
+    private final int value;
+    private final String description;
 }

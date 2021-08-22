@@ -1,12 +1,17 @@
 package cn.ds.graph;
 
+import lombok.Getter;
+
 import java.util.*;
 
 /**
  * 广度优先遍历
  *
  * @author Jinhua
+ * @version 1.0
+ * @date 2020/8/17 15:17
  */
+@Getter
 public class BreadthFirstSearch {
 
     /**
@@ -78,21 +83,5 @@ public class BreadthFirstSearch {
     private void visit(Vertex<?> v) {
         visitedVertices.add(v);
         System.out.println(v.getT().toString());
-    }
-
-    public int getStart() {
-        return start;
-    }
-
-    public Map<Vertex<?>, Boolean> getVisited() {
-        return visited;
-    }
-
-    public MyGraph getGraph() {
-        return graph;
-    }
-
-    public List<Vertex<?>> getVisitedVertices() {
-        return visitedVertices;
     }
 }

@@ -1,5 +1,8 @@
 package cn.ds.graph;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 /**
  * 图的有向和无向类型枚举
  *
@@ -7,6 +10,8 @@ package cn.ds.graph;
  * @version 1.1 重命名类
  * @date 2020/8/17 9:43
  */
+@Getter
+@AllArgsConstructor
 public enum GraphTypeEnum {
 
     /**
@@ -19,27 +24,6 @@ public enum GraphTypeEnum {
      */
     Undirected(2, "无向图");
 
-    /**
-     * 枚举值
-     */
-    Integer value;
-
-    /**
-     * 枚举类型
-     */
-    String typeName;
-
-    GraphTypeEnum(int value, String typeName) {
-        this.value = value;
-        this.typeName = typeName;
-    }
-
-    public Integer getValue() {
-        return value;
-    }
-
-    public String getTypeName() {
-        return typeName;
-    }
-
+    private int value;
+    private String typeName;
 }

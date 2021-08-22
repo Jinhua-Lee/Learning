@@ -1,5 +1,8 @@
 package cn.ds.graph;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 /**
  * 节点访问状态枚举类
  *
@@ -7,6 +10,8 @@ package cn.ds.graph;
  * @version 1.0
  * @date 2020/8/19 13:38
  */
+@Getter
+@AllArgsConstructor
 public enum VertexVisitStateEnum {
     /**
      * 节点未被访问过
@@ -21,25 +26,6 @@ public enum VertexVisitStateEnum {
      */
     AllSubNodesVisited(1, "该节点的所有后代都被访问过");
 
-    /**
-     * 值枚举
-     */
-    private final Integer value;
-    /**
-     * 值描述
-     */
+    private final int value;
     private final String description;
-
-    VertexVisitStateEnum(Integer value, String description) {
-        this.value = value;
-        this.description = description;
-    }
-
-    public Integer getValue() {
-        return value;
-    }
-
-    public String getDescription() {
-        return description;
-    }
 }

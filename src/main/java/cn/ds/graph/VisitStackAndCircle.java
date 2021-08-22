@@ -1,5 +1,7 @@
 package cn.ds.graph;
 
+import lombok.Getter;
+
 import java.util.Stack;
 
 /**
@@ -11,6 +13,7 @@ import java.util.Stack;
  * @version 1.0
  * @date 2020/8/19 15:47
  */
+@Getter
 public class VisitStackAndCircle {
     /**
      * 是否有环
@@ -25,13 +28,5 @@ public class VisitStackAndCircle {
     public VisitStackAndCircle(Boolean withCircle, Stack<Vertex<?>> visitStack) {
         this.withCircle = withCircle;
         this.visitStack = visitStack;
-    }
-
-    public Boolean getWithCircle() {
-        return withCircle;
-    }
-
-    public Stack<Vertex<?>> getVisitStack() {
-        return visitStack;
     }
 }

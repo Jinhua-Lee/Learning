@@ -1,5 +1,7 @@
 package cn.ds.graph;
 
+import lombok.Getter;
+
 import java.util.*;
 
 /**
@@ -13,6 +15,7 @@ import java.util.*;
  * 实现判断构成环的逻辑。
  * @date 2020/8/17 15:17
  */
+@Getter
 public class DepthFirstSearch {
 
     /**
@@ -48,10 +51,10 @@ public class DepthFirstSearch {
      */
     public DepthFirstSearch(MyGraph g) {
         this.graph = g;
-        visited = new HashMap<>();
-        withCircle = new VisitStackAndCircle(false, null);
-        start = 0;
-        visitedVertices = new ArrayList<>();
+        this.visited = new HashMap<>();
+        this.withCircle = new VisitStackAndCircle(false, null);
+        this.start = 0;
+        this.visitedVertices = new ArrayList<>();
         for (Vertex<?> vertex : g.getVertices()) {
             visited.put(vertex, VertexVisitStateEnum.Unvisited);
         }
@@ -165,25 +168,5 @@ public class DepthFirstSearch {
     private void visit(Vertex<?> v) {
         visitedVertices.add(v);
         System.out.println(v.getT().toString());
-    }
-
-    public List<Vertex<?>> getVisitedVertices() {
-        return visitedVertices;
-    }
-
-    public Map<Vertex<?>, VertexVisitStateEnum> getVisited() {
-        return visited;
-    }
-
-    public MyGraph getGraph() {
-        return graph;
-    }
-
-    public Integer getStart() {
-        return start;
-    }
-
-    public VisitStackAndCircle getWithCircle() {
-        return withCircle;
     }
 }

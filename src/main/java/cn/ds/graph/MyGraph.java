@@ -1,5 +1,7 @@
 package cn.ds.graph;
 
+import lombok.Getter;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,6 +14,7 @@ import java.util.Map;
  * @version 1.2 加入根据入度和出度判断是否为起始节点、末端节点的方法
  * @date 2020/8/17 9:30
  */
+@Getter
 public class MyGraph {
 
     /**
@@ -22,7 +25,7 @@ public class MyGraph {
     /**
      * 记录当前顶点数目
      */
-    private Integer currentVertexNum;
+    private int currentVertexNum;
 
     /**
      * 定义邻接矩阵表示顶点之间的连接关系
@@ -33,7 +36,7 @@ public class MyGraph {
     /**
      * 边的数目
      */
-    private Integer edgeNum;
+    private int edgeNum;
 
     /**
      * 图的类型：
@@ -65,10 +68,8 @@ public class MyGraph {
      */
     public void addVertex(Vertex<?>... vs) {
         for (int i = currentVertexNum; i < vs.length; i++) {
-
             // 存入顶点数组
             vertices[currentVertexNum++] = vs[i];
-
             // 设置顶点在所存储的一维数组中的下标
             vs[i].setIndex(i);
         }
@@ -182,23 +183,21 @@ public class MyGraph {
         int degree = 0;
         int index = vertex.getIndex();
         switch (degreeType) {
-            case IN_DEGREE: {
+            case IN_DEGREE:
                 for (int i = 0; i < vertices.length; i++) {
                     if (i != index && adjMatrix[i][index] != null) {
                         degree++;
                     }
                 }
                 break;
-            }
-            case OUT_DEGREE: {
+            case OUT_DEGREE:
                 for (int i = 0; i < vertices.length; i++) {
                     if (i != index && adjMatrix[index][i] != null) {
                         degree++;
                     }
                 }
                 break;
-            }
-            case DEGREE: {
+            case DEGREE:
                 for (int i = 0; i < vertices.length; i++) {
                     if (i != index) {
                         if (adjMatrix[i][index] != null) {
@@ -210,31 +209,9 @@ public class MyGraph {
                     }
                 }
                 break;
-            }
-            default: {
+            default:
                 break;
-            }
         }
         return degree;
-    }
-
-    public Double[][] getAdjMatrix() {
-        return adjMatrix;
-    }
-
-    public Vertex<?>[] getVertices() {
-        return vertices;
-    }
-
-    public Integer getCurrentVertexNum() {
-        return currentVertexNum;
-    }
-
-    public Integer getEdgeNum() {
-        return edgeNum;
-    }
-
-    public GraphTypeEnum getGraphType() {
-        return graphType;
     }
 }
