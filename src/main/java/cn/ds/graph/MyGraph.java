@@ -152,26 +152,29 @@ public class MyGraph {
         return relatedVertices;
     }
 
-    public boolean judgeIsStart(int v) {
-        for (int i = 0; i < vertices.length; i++) {
-            Double d = this.adjMatrix[i][v];
-            if (i != v && d != null) {
-                return false;
-            }
+    public Boolean judgeStartEnd(Vertex<?> v, boolean judgeStart) {
+        Integer index = indexOfVertex(v);
+        if (index >= vertices.length) {
+            return null;
         }
-        return true;
+        return judgeStartEnd(index, judgeStart);
     }
 
-    public boolean judgeIsEnd(int v) {
-        // v必须满足在【顶点列表】下标范围
-        // 判断是否末端结点，即是判断邻接矩阵指定行，除了对角线位置是否全为null
+    public Boolean judgeStartEnd(int v, boolean judgeStart) {
+        if (v >= vertices.length) {
+            return null;
+        }
+        boolean end = true;
         for (int i = 0; i < vertices.length; i++) {
-            Double d = this.adjMatrix[v][i];
+            Double d = judgeStart
+                    ? this.adjMatrix[i][v]
+                    : this.adjMatrix[v][i];
             if (i != v && d != null) {
-                return false;
+                end = false;
+                break;
             }
         }
-        return true;
+        return end;
     }
 
     /**

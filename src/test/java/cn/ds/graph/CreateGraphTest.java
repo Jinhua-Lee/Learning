@@ -2,7 +2,10 @@ package cn.ds.graph;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 /**
  * 图创建测试类
@@ -23,7 +26,7 @@ public class CreateGraphTest {
         Vertex<Item> g = new Vertex<>(new Item("G"), "g");
 
 
-        graph = new MyGraph(7, GraphTypeEnum.Undirected);
+        graph = new MyGraph(7, GraphTypeEnum.Directed);
         graph.addVertex(a, b, c, d, e, f, g);
 
         graph.addEdge(a, b, 12d);
@@ -44,22 +47,30 @@ public class CreateGraphTest {
         return graph;
     }
 
-    public static void main(String[] args) {
-
+    @Test
+    public void testTraverse() {
         // 打印邻接矩阵
         graph.printAdjMatrix();
 
+        Consumer<Vertex<?>> printValue = vertex -> System.out.println(vertex.getT().toString());
         // 深度优先遍历
+        testDfs(printValue);
+        // 广度优先遍历
+        testBfs(printValue);
+        // 收集叶子结点
+        testLeafCollect();
+    }
+
+    private void testDfs(Consumer<Vertex<?>> printValue) {
         System.out.println("深度优先遍历：");
         DepthFirstSearch dfs = new DepthFirstSearch(graph);
-        Consumer<Vertex<?>> printValue = vertex -> System.out.println(vertex.getT().toString());
         dfs.executeDfs(printValue);
         for (Vertex<?> v : dfs.getVisitedVertices()) {
             System.out.println(v);
         }
+    }
 
-        System.out.println("-------------------");
-
+    private void testBfs(Consumer<Vertex<?>> printValue) {
         System.out.println("广度优先遍历：");
         BreadthFirstSearch bfs = new BreadthFirstSearch(graph, 3);
         bfs.executeBfs(printValue);
@@ -71,6 +82,16 @@ public class CreateGraphTest {
         for (Double weight : dist) {
             System.out.print(weight + "  ");
         }
+        System.out.println();
+    }
+
+    private void testLeafCollect() {
+        Supplier<Collection<Vertex<?>>> collectionSupplier = ArrayList::new;
+        DepthFirstSearch dfs = new DepthFirstSearch(graph);
+        Collection<Vertex<?>> leafByDfs = dfs.collectLeafByDfs(graph.getVertices()[0], collectionSupplier);
+        System.out.println("叶子结点：");
+        leafByDfs.forEach(System.out::println);
+        System.out.println("-------------------");
     }
 
     /**
@@ -79,7 +100,7 @@ public class CreateGraphTest {
     public static final int M = Integer.MAX_VALUE;
 
     @Test
-    public void test() {
+    public void testDijkstra() {
         // 二维数组每一行分别是 A、B、C、D、E 各点到其余点的距离,
         // A -> A 距离为0, 常量M 为正无穷
         int[][] weight1 = {
@@ -106,7 +127,7 @@ public class CreateGraphTest {
      * @param start  开始顶点
      * @return 返回路径
      */
-    public static int[] dijkstra(int[][] weight, int start) {
+    public int[] dijkstra(int[][] weight, int start) {
         //
         // 返回一个int[] 数组，表示从start到它的最短路径长度
         // 顶点个数
