@@ -2,10 +2,7 @@ package cn.ds.graph;
 
 import lombok.Getter;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 用邻接矩阵来描述图
@@ -59,6 +56,17 @@ public class MyGraph {
         edgeNum = 0;
         currentVertexNum = 0;
         this.graphType = graphType;
+    }
+
+    public Integer indexOfVertex(Vertex<?> vertex) {
+        Integer index = null;
+        for (int i = 0; i < this.vertices.length; i++) {
+            Vertex<?> v = vertices[i];
+            if (Objects.equals(v, vertex)) {
+                index = i;
+            }
+        }
+        return index;
     }
 
     /**
