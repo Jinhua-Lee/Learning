@@ -3,6 +3,7 @@ package cn.ds.graph;
 import lombok.Getter;
 
 import java.util.*;
+import java.util.function.Function;
 
 /**
  * 广度优先遍历
@@ -44,22 +45,16 @@ public class BreadthFirstSearch {
         }
     }
 
-    public void executeBfs() {
-        bfs(graph, start);
+    public void executeBfs(Function<Vertex<?>, ?> userVisit) {
+        bfs(graph, start, userVisit);
     }
 
-    /**
-     * 广度优先搜索
-     *
-     * @param g     传入的图
-     * @param start 开始遍历的结点
-     */
-    private void bfs(MyGraph g, int start) {
+    private void bfs(MyGraph g, int start, Function<Vertex<?>, ?> userVisit) {
 
         Queue<Vertex<?>> vertexQueue = new ArrayDeque<>();
         // 标记起点已经被访问
         visited.put(g.getVertices()[start], true);
-        visit(g.getVertices()[start]);
+        visit(g.getVertices()[start], userVisit);
         // 将结点加入队列
         vertexQueue.add(g.getVertices()[start]);
         while (!vertexQueue.isEmpty()) {
@@ -68,20 +63,17 @@ public class BreadthFirstSearch {
             for (Vertex<?> v : g.getRelatedVertices(last.getIndex())) {
                 if (!visited.get(v)) {
                     visited.put(v, true);
-                    visit(v);
+                    visit(v, userVisit);
                     vertexQueue.offer(v);
                 }
             }
         }
     }
 
-    /**
-     * 对结点的访问方法
-     *
-     * @param v 要访问的结点
-     */
-    private void visit(Vertex<?> v) {
+    private void visit(Vertex<?> v, Function<Vertex<?>, ?> userVisit) {
         visitedVertices.add(v);
-        System.out.println(v.getT().toString());
+        if (userVisit != null) {
+            userVisit.apply(v);
+        }
     }
 }

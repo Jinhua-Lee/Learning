@@ -3,6 +3,7 @@ package cn.ds.graph;
 import lombok.Getter;
 
 import java.util.*;
+import java.util.function.Function;
 
 /**
  * 深度优先遍历基本信息及执行类
@@ -44,11 +45,6 @@ public class DepthFirstSearch {
      */
     private VisitStackAndCircle withCircle;
 
-    /**
-     * 构造方法，通过传入图的顶点数构建标记数组
-     *
-     * @param g 传入的图
-     */
     public DepthFirstSearch(MyGraph g) {
         this.graph = g;
         this.visited = new HashMap<>();
@@ -60,49 +56,34 @@ public class DepthFirstSearch {
         }
     }
 
-    /**
-     * 提供遍历开始节点的构造方法
-     *
-     * @param g     构造的图
-     * @param start 开始节点
-     */
     public DepthFirstSearch(MyGraph g, Integer start) {
         this(g);
         this.start = start;
     }
 
-    /**
-     * 提供给对外执行的DFS遍历方法
-     * 读取标记所有节点是否被访问的映射，对未访问的节点执行深度优先遍历，访问过程中也会更新映射中对应节点的状态
-     */
-    public void executeDfs() {
-        dfs(graph, start);
+    public void executeDfs(Function<Vertex<?>, ?> visit) {
+        dfs(graph, start, visit);
         for (Vertex<?> vertex : visited.keySet()) {
             if (VertexVisitStateEnum.Unvisited.equals(visited.get(vertex))) {
-                dfs(graph, vertex.getIndex());
+                dfs(graph, vertex.getIndex(), visit);
             }
         }
     }
 
-    /**
-     * 执行DFS深度优先遍历算法
-     *
-     * @param g 传入的图
-     * @param v 要遍历的开始顶点下标
-     */
-    private void dfs(MyGraph g, int v) {
+    private void dfs(MyGraph g, int v, Function<Vertex<?>, ?> userVisit) {
         // 访问并标记访问状态
-        visit(g.getVertices()[v]);
-        visited.put(g.getVertices()[v], VertexVisitStateEnum.VisitedOnce);
+        Vertex<?> cur = g.getVertices()[v];
+        visit(cur, userVisit);
+        visited.put(cur, VertexVisitStateEnum.VisitedOnce);
 
         // 对每个结点深度优先搜索
         // 获取【直接后代】列表
         for (Vertex<?> vertex : g.getRelatedVertices(v)) {
             if (VertexVisitStateEnum.Unvisited.equals(visited.get(g.getVertices()[vertex.getIndex()]))) {
-                dfs(g, vertex.getIndex());
+                dfs(g, vertex.getIndex(), userVisit);
             }
         }
-        visited.put(g.getVertices()[v], VertexVisitStateEnum.AllSubNodesVisited);
+        visited.put(cur, VertexVisitStateEnum.AllSubNodesVisited);
     }
 
     /**
@@ -137,7 +118,7 @@ public class DepthFirstSearch {
         // 用于存：当前节点的所有流出节点的迭代
         Vertex<?> currentRelatedVertex;
         // 执行访问，则执行压栈，更新访问状态
-        visit(currentVertex);
+        visit(currentVertex, null);
         visitStack.push(currentVertex);
         visited.put(currentVertex, VertexVisitStateEnum.VisitedOnce);
 
@@ -165,8 +146,10 @@ public class DepthFirstSearch {
      *
      * @param v 要访问的结点
      */
-    private void visit(Vertex<?> v) {
+    private void visit(Vertex<?> v, Function<Vertex<?>, ?> userVisit) {
         visitedVertices.add(v);
-        System.out.println(v.getT().toString());
+        if (userVisit != null) {
+            userVisit.apply(v);
+        }
     }
 }

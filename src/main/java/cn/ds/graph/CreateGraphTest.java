@@ -2,6 +2,8 @@ package cn.ds.graph;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.function.Function;
+
 /**
  * 图创建测试类
  *
@@ -44,14 +46,17 @@ public class CreateGraphTest {
 
     public static void main(String[] args) {
 
-
         // 打印邻接矩阵
         graph.printAdjMatrix();
 
         // 深度优先遍历
         System.out.println("深度优先遍历：");
         DepthFirstSearch dfs = new DepthFirstSearch(graph);
-        dfs.executeDfs();
+        Function<Vertex<?>, Void> printValue = vertex -> {
+            System.out.println(vertex.getT().toString());
+            return null;
+        };
+        dfs.executeDfs(printValue);
         for (Vertex<?> v : dfs.getVisitedVertices()) {
             System.out.println(v);
         }
@@ -60,7 +65,7 @@ public class CreateGraphTest {
 
         System.out.println("广度优先遍历：");
         BreadthFirstSearch bfs = new BreadthFirstSearch(graph, 3);
-        bfs.executeBfs();
+        bfs.executeBfs(printValue);
 
         System.out.println("-------------------");
         System.out.println("Dist数组：");
