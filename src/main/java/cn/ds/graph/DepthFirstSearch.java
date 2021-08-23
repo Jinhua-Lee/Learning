@@ -73,8 +73,9 @@ public class DepthFirstSearch {
     /**
      * 对指定的图进行遍历，收集叶子节点
      */
-    public Collection<Vertex<?>> collectLeafByDfs(Vertex<?> vertex, Supplier<Collection<Vertex<?>>> leafCollectionSupplier) {
-        Collection<Vertex<?>> leafCollection = leafCollectionSupplier.get();
+    public <T> Collection<Vertex<T>> collectLeafByDfs(Vertex<?> vertex,
+                                                      Supplier<Collection<Vertex<T>>> leafCollectionSupplier) {
+        Collection<Vertex<T>> leafCollection = leafCollectionSupplier.get();
         Integer index = this.graph.indexOfVertex(vertex);
         if (index == null) {
             return leafCollection;
@@ -99,7 +100,7 @@ public class DepthFirstSearch {
         visited.put(cur, VertexVisitStateEnum.AllSubNodesVisited);
     }
 
-    private void collectLeafByDfs(int v, Collection<Vertex<?>> leafCollect) {
+    private <T> void collectLeafByDfs(int v, Collection<Vertex<T>> leafCollect) {
         // 访问并标记访问状态
         Vertex<?> cur = this.graph.getVertices()[v];
         visit(cur, leafCollect);
@@ -180,14 +181,15 @@ public class DepthFirstSearch {
         }
     }
 
-    private void visit(Vertex<?> vertex, Collection<Vertex<?>> leafCollect) {
+    @SuppressWarnings("unchecked")
+    private <T> void visit(Vertex<?> vertex, Collection<Vertex<T>> leafCollect) {
         visitedVertices.add(vertex);
         if (leafCollect == null) {
             leafCollect = new ArrayList<>();
         }
         Boolean end = this.graph.judgeStartEnd(vertex, false);
         if (end != null && end) {
-            leafCollect.add(vertex);
+            leafCollect.add((Vertex<T>) vertex);
         }
     }
 }
