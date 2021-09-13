@@ -86,9 +86,9 @@ public class CreateGraphTest {
     }
 
     private void testLeafCollect() {
-        Supplier<Collection<Vertex<?>>> collectionSupplier = ArrayList::new;
+        Supplier<Collection<Vertex<Item>>> collectionSupplier = ArrayList::new;
         DepthFirstSearch dfs = new DepthFirstSearch(graph);
-        Collection<Vertex<?>> leafByDfs = dfs.collectLeafByDfs(graph.getVertices()[0], collectionSupplier);
+        Collection<Vertex<Item>> leafByDfs = dfs.collectLeafByDfs(graph.getVertices()[0], collectionSupplier);
         System.out.println("叶子结点：");
         leafByDfs.forEach(System.out::println);
         System.out.println("-------------------");
