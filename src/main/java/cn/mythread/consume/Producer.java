@@ -1,4 +1,4 @@
-package cn.mythread.consume.obj;
+package cn.mythread.consume;
 
 /**
  * 产品的生产者

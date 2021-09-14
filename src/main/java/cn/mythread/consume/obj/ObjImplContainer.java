@@ -1,5 +1,8 @@
 package cn.mythread.consume.obj;
 
+import cn.mythread.consume.Container;
+import cn.mythread.consume.IntegerConsumer;
+import cn.mythread.consume.IntegerProducer;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,7 +20,7 @@ import java.util.concurrent.Future;
  * @date 2021/9/11 22:32
  */
 @Slf4j
-public class Container<T> {
+public class ObjImplContainer<T> implements Container<T> {
 
     /**
      * 存放产品的容器
@@ -29,7 +32,7 @@ public class Container<T> {
      */
     private final int fullSize;
 
-    public Container(int fullSize) {
+    public ObjImplContainer(int fullSize) {
         if (fullSize <= 0) {
             throw new IllegalArgumentException("容器容量大小不合法");
         }
@@ -42,6 +45,7 @@ public class Container<T> {
      *
      * @return 取出的元素
      */
+    @Override
     @SneakyThrows
     public synchronized T take() {
         T element;
@@ -61,6 +65,7 @@ public class Container<T> {
      *
      * @param element 待放置的元素
      */
+    @Override
     @SneakyThrows
     public synchronized void put(T element) {
         // 满的时候，处于阻塞状态
@@ -76,7 +81,7 @@ public class Container<T> {
 
     @SneakyThrows
     public static void main(String[] args) {
-        Container<Integer> container = new Container<>(5);
+        Container<Integer> container = new ObjImplContainer<>(5);
 
         ExecutorService executor = Executors.newFixedThreadPool(5);
 

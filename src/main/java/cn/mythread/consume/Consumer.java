@@ -1,4 +1,4 @@
-package cn.mythread.consume.obj;
+package cn.mythread.consume;
 
 /**
  * 消费者接口

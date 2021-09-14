@@ -1,5 +1,6 @@
-package cn.mythread.consume.obj;
+package cn.mythread.consume;
 
+import cn.mythread.consume.obj.ObjImplContainer;
 import lombok.extern.slf4j.Slf4j;
 
 /**
