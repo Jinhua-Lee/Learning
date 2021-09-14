@@ -1,4 +1,4 @@
-package cn.mythread.comsume.obj;
+package cn.mythread.consume.obj;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;

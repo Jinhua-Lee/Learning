@@ -1,4 +1,4 @@
-package cn.mythread.comsume.obj;
+package cn.mythread.consume.obj;
 
 import lombok.extern.slf4j.Slf4j;
 

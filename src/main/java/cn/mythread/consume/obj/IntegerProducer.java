@@ -1,4 +1,4 @@
-package cn.mythread.comsume.obj;
+package cn.mythread.consume.obj;
 
 import java.util.Random;
 
