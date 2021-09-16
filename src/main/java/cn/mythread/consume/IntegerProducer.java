@@ -1,7 +1,5 @@
 package cn.mythread.consume;
 
-import cn.mythread.consume.obj.ObjImplContainer;
-
 import java.util.Random;
 
 /**
@@ -28,6 +26,7 @@ public class IntegerProducer implements Producer<Integer> {
     }
 
     @Override
+    @SuppressWarnings("all")
     public void run() {
         while (true) {
             this.container.put(this.produce());

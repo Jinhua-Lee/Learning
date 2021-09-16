@@ -11,6 +11,7 @@ import java.util.Queue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 生产者、消费者的容器
@@ -48,13 +49,20 @@ public class ObjImplContainer<T> implements Container<T> {
     @Override
     @SneakyThrows
     public synchronized T take() {
+        TimeUnit.SECONDS.sleep(3);
         T element;
+        boolean flag = false;
         // 空的时候，也是阻塞状态
-        while ((element = productQueue.poll()) == null) {
+        while (this.productQueue.peek() == null) {
+            flag = true;
             log.info("There is no element in container, waiting...");
             wait();
         }
-        log.info("element {} is taken from container. Waked up!", element);
+        if (flag ) {
+            log.info("consumer waked up!!");
+        }
+        element = this.productQueue.poll();
+        log.info("element {} is taken from container.", element);
         // 唤醒所有阻塞的线程（）
         notifyAll();
         return element;
@@ -68,12 +76,19 @@ public class ObjImplContainer<T> implements Container<T> {
     @Override
     @SneakyThrows
     public synchronized void put(T element) {
+        // 便于调试，加入sleep，平时不能将sleep放入同步块
+        TimeUnit.MILLISECONDS.sleep(3);
+        boolean flag = false;
         // 满的时候，处于阻塞状态
         while (productQueue.size() == this.fullSize) {
+            flag = true;
             log.info("container is full, waiting...");
             wait();
         }
-        log.info("element {} is added to container. Waked up!", element);
+        if (flag ) {
+            log.info("producer waked up!!");
+        }
+        log.info("element {} is added to container. ", element);
         productQueue.offer(element);
         // 唤醒所有阻塞的线程（有元素了，可以继续消费了）
         notifyAll();

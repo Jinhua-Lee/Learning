@@ -1,6 +1,5 @@
 package cn.mythread.consume;
 
-import cn.mythread.consume.obj.ObjImplContainer;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -28,6 +27,7 @@ public class IntegerConsumer implements Consumer<Integer> {
     }
 
     @Override
+    @SuppressWarnings("all")
     public void run() {
         while (true) {
             this.consume(container.take());

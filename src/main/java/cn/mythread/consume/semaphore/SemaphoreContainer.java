@@ -22,7 +22,7 @@ import java.util.concurrent.Semaphore;
  */
 @Slf4j
 public class SemaphoreContainer<T> implements Container<T> {
-    private final int capacity;
+
     private final Semaphore fullCount = new Semaphore(0);
     private final Semaphore emptyCount;
     private final Semaphore isUse = new Semaphore(1);
@@ -30,7 +30,6 @@ public class SemaphoreContainer<T> implements Container<T> {
     private final Queue<T> productQueue;
 
     public SemaphoreContainer(int capacity) {
-        this.capacity = capacity;
         this.emptyCount = new Semaphore(capacity);
         this.productQueue = new LinkedList<>();
     }
