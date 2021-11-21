@@ -1,16 +1,11 @@
 package cn.mythread.consume.obj;
 
 import cn.mythread.consume.Container;
-import cn.mythread.consume.IntegerConsumer;
-import cn.mythread.consume.IntegerProducer;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -94,25 +89,4 @@ public class ObjImplContainer<T> implements Container<T> {
         notifyAll();
     }
 
-    @SneakyThrows
-    public static void main(String[] args) {
-        Container<Integer> container = new ObjImplContainer<>(5);
-
-        ExecutorService executor = Executors.newFixedThreadPool(5);
-
-        // 两个生产者 + 三个消费者
-        Future<?> p1 = executor.submit(new IntegerProducer(container));
-        Future<?> p2 = executor.submit(new IntegerProducer(container));
-        Future<?> c1 = executor.submit(new IntegerConsumer(container));
-        Future<?> c2 = executor.submit(new IntegerConsumer(container));
-        Future<?> c3 = executor.submit(new IntegerConsumer(container));
-
-        p1.get();
-        p2.get();
-        c1.get();
-        c2.get();
-        c3.get();
-
-        Thread.currentThread().join();
-    }
 }
