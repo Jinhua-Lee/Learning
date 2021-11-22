@@ -1,7 +1,9 @@
 package cn.mythread.consume;
 
 import cn.mythread.consume.blockingqueue.BlockedContainer;
+import cn.mythread.consume.lock.LockContainer;
 import cn.mythread.consume.obj.ObjImplContainer;
+import cn.mythread.consume.semaphore.SemaphoreContainer;
 import lombok.SneakyThrows;
 
 import java.util.concurrent.ExecutorService;
@@ -18,7 +20,7 @@ public class ProducerConsumerMain {
     @SneakyThrows
     @SuppressWarnings("all")
     public static void main(String[] args) {
-        Container<Integer> container = new BlockedContainer<>(5);
+        Container<Integer> container = ContainerType.LOCK_CONDITION.container(5);
         ExecutorService executor = Executors.newFixedThreadPool(5);
 
         // 两个生产者 + 三个消费者，每个Runnable负责持续生产或消费
@@ -35,5 +37,34 @@ public class ProducerConsumerMain {
         c3.get();
 
         Thread.currentThread().join();
+    }
+
+    enum ContainerType {
+        OBJ_IMPL {
+            @Override
+            public <T> Container<T> container(int size) {
+                return new ObjImplContainer<>(size);
+            }
+        },
+        SEMAPHORE {
+            @Override
+            public <T> Container<T> container(int size) {
+                return new SemaphoreContainer<>(size);
+            }
+        },
+        BLOCKING_QUEUE {
+            @Override
+            public <T> Container<T> container(int size) {
+                return new BlockedContainer<>(size);
+            }
+        },
+        LOCK_CONDITION {
+            @Override
+            public <T> Container<T> container(int size) {
+                return new LockContainer<>(size);
+            }
+        };
+
+        public abstract <T> Container<T> container(int size);
     }
 }
