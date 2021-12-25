@@ -40,6 +40,10 @@ public class ProducerConsumerMain {
     }
 
     enum ContainerType {
+
+        /**
+         * 容器实现类枚举
+         */
         OBJ_IMPL {
             @Override
             public <T> Container<T> container(int size) {
