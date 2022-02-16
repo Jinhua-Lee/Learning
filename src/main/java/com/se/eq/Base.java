@@ -1,4 +1,4 @@
-package com.se.base;
+package com.se.eq;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
