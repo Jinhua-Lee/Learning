@@ -7,7 +7,7 @@ package cn.alg.interview;
  * @version 1.0
  * @date 2021/7/31 23:06
  */
-public class Solution4 {
+public class JudgePowerOfTwo {
 
     public static void main(String[] args) {
         boolean judge = judge(9);
