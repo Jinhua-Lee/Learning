@@ -42,7 +42,7 @@ public class MergeTwoSortedArray {
         int k = 0;
         int[] res = new int[a.length + b.length];
 
-        while (i <= a.length && j <= b.length) {
+        while (i < a.length && j < b.length) {
             // 按照大小，将较小的数加入到新数组中
             if (a[i] < b[j]) {
                 res[k++] = a[i++];
