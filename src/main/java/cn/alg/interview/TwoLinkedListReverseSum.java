@@ -15,36 +15,50 @@ package cn.alg.interview;
 public class TwoLinkedListReverseSum {
 
     public static void main(String[] args) {
+        ListNode l3 = new ListNode(3);
+        ListNode l2 = new ListNode(4, l3);
+        ListNode l1 = new ListNode(2, l2);
 
+        ListNode r3 = new ListNode(4);
+        ListNode r2 = new ListNode(6, r3);
+        ListNode r1 = new ListNode(5, r2);
+
+        ListNode listNode = addTwoNumbers(l1, r1);
     }
 
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        int realSum = l1.val + l2.val;
-        boolean upto = realSum >= 10;
-        ListNode curNode = new ListNode(upto ? realSum - 10 : realSum);
-        ListNode res = curNode;
-        // 1. 当两个链表相等下标位置都有元素的时候，相加，判断是否进位
-        while (l1.next != null && l2.next != null) {
-            realSum = l1.val + l2.val;
-            // 如果上一位进位，则加一
-            int curSum = upto ? realSum + 1 : realSum;
-            // 加入结点，并设置标识位：下一个结点是否需要进位
-            if (curSum >=10) {
+    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        // 1. 预置头结点
+        ListNode head = new ListNode(-1);
+        ListNode cur = head;
+        boolean upto = false;
+        // 2. 只要有一个不为null都行，如果其中一个为null，则当作0处理，所以取或
+        while (l1 != null || l2 != null) {
+            int v1 = l1 == null ? 0 : l1.val;
+            int v2 = l2 == null ? 0 : l2.val;
+            int realSum = upto ? v1 + v2 + 1 : v1 + v2;
+            int curPos;
+            if (realSum >= 10) {
                 upto = true;
-                curNode = new ListNode(curSum - 10);
+                curPos = realSum % 10;
             } else {
                 upto = false;
-                curNode = new ListNode(curSum);
+                curPos = realSum;
             }
-
-            curNode = curNode.next;
-            l1 = l1.next;
-            l2 = l2.next;
+            cur.next = new ListNode(curPos);
+            // 特别重要，当不为空的时候才移动
+            if (l1 != null) {
+                l1 = l1.next;
+            }
+            if (l2 != null) {
+                l2 = l2.next;
+            }
+            cur = cur.next;
         }
-        // 2. 当其中一个链表完成后，需要判断进位表示，并且另外一个链表若有元素，则仍要判断进位标识
-        // TODO: 2022/2/23
-
-        return res;
+        // 处理最后的进位问题
+        if (upto) {
+            cur.next = new ListNode(1);
+        }
+        return head.next;
     }
 }
 
@@ -58,5 +72,10 @@ class ListNode {
 
     public ListNode(int val) {
         this.val = val;
+    }
+
+    public ListNode(int val, ListNode next) {
+        this.val = val;
+        this.next = next;
     }
 }
