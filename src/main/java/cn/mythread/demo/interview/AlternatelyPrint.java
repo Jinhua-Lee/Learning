@@ -22,6 +22,7 @@ public class AlternatelyPrint {
     }
 
     @SneakyThrows
+    @SuppressWarnings("all")
     private static void waitNotify() {
         Thread wOdd = new Thread(new WaitNotifyImpl(), "奇数线程");
         Thread wEven = new Thread(new WaitNotifyImpl(), "偶数线程");
@@ -33,13 +34,14 @@ public class AlternatelyPrint {
     }
 
     @SneakyThrows
+    @SuppressWarnings("all")
     private static void exchanger() {
-        ExchangerImpl.NumberExchanger<Integer> numExchanger = new ExchangerImpl.NumberExchanger<>(1);
-        Thread ex1 = new Thread(new ExchangerImpl(numExchanger), "ex1");
-        Thread ex2 = new Thread(new ExchangerImpl(numExchanger), "ex2");
-        ex1.start();
+        Exchanger<Integer> numExchanger = new Exchanger<>();
+        Thread odd = new Thread(new ExchangerImpl(numExchanger, 1), "odd");
+        Thread even = new Thread(new ExchangerImpl(numExchanger, null), "even");
+        odd.start();
         TimeUnit.MILLISECONDS.sleep(3L);
-        ex2.start();
+        even.start();
     }
 }
 
@@ -53,18 +55,18 @@ class WaitNotifyImpl implements Runnable {
      * 1. 终止的条件
      * 2. 由于是不变的final对象，所以同时将它当作锁
      */
-    private static final Integer num = 100;
+    private static final Integer NUM = 100;
 
     @Override
     public void run() {
-        while (count <= num) {
-            synchronized (num) {
+        while (count <= NUM) {
+            synchronized (NUM) {
                 System.out.println(Thread.currentThread().getName() + " print count = " + count++);
-                num.notify();
+                NUM.notify();
                 // 该条件，保证线程能够正常结束
-                if (count <= num) {
+                if (count <= NUM) {
                     try {
-                        num.wait();
+                        NUM.wait();
                     } catch (InterruptedException ignored) {
                     }
                 }
@@ -74,36 +76,51 @@ class WaitNotifyImpl implements Runnable {
 }
 
 /**
- * Exchanger是两个线程交换空间：
- * 执行到exchange方法时候，两个线程必须在此处完成数据交换，各自的线程才会进行下去。
+ * Exchanger是两个线程交换空间，执行到exchange方法时候：<p>&emsp;
+ * 交出数据的线程会被阻塞，直到另一个线程与它进行交换。
  */
 class ExchangerImpl implements Runnable {
 
-    private final NumberExchanger<Integer> numExchanger;
+    private final Exchanger<Integer> numExchanger;
 
+    /**
+     * 当次待操作的值
+     */
     private Integer numLocal;
 
-    public ExchangerImpl(NumberExchanger<Integer> numExchanger) {
+    /**
+     * 缓存上一次操作的数据，用于判断结束条件
+     */
+    private Integer lastReceived;
+
+    private static final int NUM = 100;
+
+    public ExchangerImpl(Exchanger<Integer> numExchanger, Integer numLocal) {
         this.numExchanger = numExchanger;
+        this.numLocal = numLocal;
     }
 
     @Override
     @SneakyThrows
     public void run() {
-        Integer numLocal;
-        // TODO: 2022/2/25 仍然有问题，还需调试
-        // 1. 如果一个线程拿到的数据是null，则直接递出去
-        // 2. 如果不是空值，则打印并自增，再递出去
-        while ((numLocal = numExchanger.exchange(numExchanger.data++)) <= 100) {
-            System.out.println(Thread.currentThread().getName() + " print count = " + numLocal);
-        }
-    }
-
-    static class NumberExchanger<T> extends Exchanger<T> {
-        T data;
-
-        public NumberExchanger(T data) {
-            this.data = data;
+        // 1. 如果一个线程本地的数据是null, 且小于，则直接递出去
+        // 2. 如果本地的不是空值，则打印并自增，再递出去
+        while (this.numLocal == null || this.numLocal <= NUM) {
+            // 处理odd线程的退出
+            boolean oddOver = this.lastReceived != null && this.lastReceived == NUM;
+            if (oddOver) {
+                break;
+            }
+            if (this.numLocal != null) {
+                System.out.println(Thread.currentThread().getName() + " print count = " + numLocal++);
+                // 处理even线程的退出
+                if (this.numLocal == NUM + 1) {
+                    break;
+                }
+            }
+            // 最后保存时候，一定要先将上次的值做缓存
+            this.lastReceived = this.numLocal;
+            this.numLocal = numExchanger.exchange(this.numLocal);
         }
     }
 }
