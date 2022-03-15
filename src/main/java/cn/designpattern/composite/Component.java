@@ -14,19 +14,22 @@ public interface Component extends Serializable {
 
     /**
      * 组件
+     *
      * @param component 组件
      */
     void add(Component component);
 
     /**
      * 删除组件
+     *
      * @param component 组件
      */
     void remove(Component component);
 
     /**
-     * 遍历的方法
-     * @param traverseConsumer 遍历的方法
+     * 访问的方法，用于体现【一】和【多】的共同表现形式
+     *
+     * @param traverseConsumer 访问的方法
      */
     void eachChild(Consumer<Component> traverseConsumer);
 }

@@ -8,7 +8,7 @@ import org.apache.commons.lang3.NotImplementedException;
 import java.util.function.Consumer;
 
 /**
- * 单个元素, 不支持添加
+ * 单个元素, 不支持对多的操作
  *
  * @author Jinhua-Lee
  * @version 1.0
