@@ -1,13 +1,13 @@
-package cn.design;
+package cn.design.valobj.op;
 
 /**
- * Todo
+ * 权限操作
  *
  * @author Jinhua-Lee
  * @version 1.0
  * @date 2022/3/17 14:58
  */
-public enum PermissionOpEnum {
+public enum PermissionOpEnum implements PermissionOp {
 
     /**
      * 新增
