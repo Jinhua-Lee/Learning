@@ -1,7 +1,7 @@
 package cn.design.valobj.permission;
 
 import cn.design.entity.resource.BaseResource;
-import cn.design.valobj.op.PermissionOpEnum;
+import cn.design.valobj.op.OperationEnum;
 import lombok.EqualsAndHashCode;
 
 /**
@@ -22,7 +22,7 @@ import lombok.EqualsAndHashCode;
 public abstract class PermissionDescVo {
 
     private BaseResource baseResource;
-    private PermissionOpEnum permissionOp;
+    private OperationEnum permissionOp;
 
     private Boolean judgeResult;
 }

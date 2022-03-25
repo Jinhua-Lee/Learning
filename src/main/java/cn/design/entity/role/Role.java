@@ -1,24 +1,24 @@
 package cn.design.entity.role;
 
-import cn.design.entity.EntitySupport;
-import cn.design.valobj.permission.PermissionTemplateVo;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import cn.design.entity.permission.CustomizedPermissionTemplate;
 
-import java.util.Set;
+import java.util.List;
 
 /**
- * 【角色】
- * 权限模板的集合
+ * 【角色】<p>
+ * 有两种实现，<p>&emsp;
+ * 1. 默认角色：权限服务的默认实现，作用于租户结点，<p>&emsp;
+ * 2. 自定义角色：如果有角色权限，可以自定义角色<p>
  *
- * @author Jinhua-Lee
+ * @author Jinhua
  * @version 1.0
- * @date 2022/3/16 11:26
+ * @date 2022/3/25 20:28
  */
-@Getter
-@EqualsAndHashCode(of = "id")
-public class Role implements EntitySupport {
+public interface Role {
 
-    private Integer id;
-    private Set<PermissionTemplateVo> permissionTemplates;
+    /**
+     * 提供获取【权限模板】的能力
+     * @return 【权限模板】列表
+     */
+    List<CustomizedPermissionTemplate> getPermissionTemplates();
 }
