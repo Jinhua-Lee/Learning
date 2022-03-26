@@ -1,6 +1,6 @@
 package cn.design.entity.role;
 
-import cn.design.entity.permission.CustomizedPermissionTemplate;
+import cn.design.entity.permission.BasePermissionTemplate;
 import cn.design.entity.permission.holder.DefaultPermissionTemplateHolder;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,7 +25,7 @@ public enum DefaultRoleEnum implements Role {
      */
     TENANT_SUBTREE_MANAGER(1, "租户子树管理员") {
         @Override
-        public List<CustomizedPermissionTemplate> getPermissionTemplates() {
+        public List<BasePermissionTemplate> getPermissionTemplates() {
             return DefaultPermissionTemplateHolder.TENANT_SUBTREE_MANAGER_TEMPLATES;
         }
     },
@@ -35,7 +35,7 @@ public enum DefaultRoleEnum implements Role {
      */
     TENANT_MANAGER(2, "租户管理员") {
         @Override
-        public List<CustomizedPermissionTemplate> getPermissionTemplates() {
+        public List<BasePermissionTemplate> getPermissionTemplates() {
             return DefaultPermissionTemplateHolder.TENANT_MANAGER_TEMPLATES;
         }
     },
@@ -45,7 +45,7 @@ public enum DefaultRoleEnum implements Role {
      */
     PROJECT_MANAGER(3, "项目管理员") {
         @Override
-        public List<CustomizedPermissionTemplate> getPermissionTemplates() {
+        public List<BasePermissionTemplate> getPermissionTemplates() {
             return DefaultPermissionTemplateHolder.PROJECT_MANAGER_TEMPLATES;
         }
     };
@@ -59,5 +59,5 @@ public enum DefaultRoleEnum implements Role {
     }
 
     @Override
-    public abstract List<CustomizedPermissionTemplate> getPermissionTemplates();
+    public abstract List<BasePermissionTemplate> getPermissionTemplates();
 }

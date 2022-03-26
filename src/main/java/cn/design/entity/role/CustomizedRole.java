@@ -1,7 +1,7 @@
 package cn.design.entity.role;
 
 import cn.design.entity.EntitySupport;
-import cn.design.entity.permission.CustomizedPermissionTemplate;
+import cn.design.entity.permission.BasePermissionTemplate;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
@@ -19,5 +19,5 @@ import java.util.List;
 public class CustomizedRole implements Role, EntitySupport {
 
     private Integer id;
-    private List<CustomizedPermissionTemplate> permissionTemplates;
+    private List<BasePermissionTemplate> permissionTemplates;
 }

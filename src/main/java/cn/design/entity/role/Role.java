@@ -1,6 +1,6 @@
 package cn.design.entity.role;
 
-import cn.design.entity.permission.CustomizedPermissionTemplate;
+import cn.design.entity.permission.BasePermissionTemplate;
 
 import java.util.List;
 
@@ -20,5 +20,5 @@ public interface Role {
      * 提供获取【权限模板】的能力
      * @return 【权限模板】列表
      */
-    List<CustomizedPermissionTemplate> getPermissionTemplates();
+    List<BasePermissionTemplate> getPermissionTemplates();
 }

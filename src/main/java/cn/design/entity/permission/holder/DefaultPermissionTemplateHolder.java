@@ -1,6 +1,6 @@
 package cn.design.entity.permission.holder;
 
-import cn.design.entity.permission.CustomizedPermissionTemplate;
+import cn.design.entity.permission.BasePermissionTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +18,9 @@ import java.util.List;
  */
 public class DefaultPermissionTemplateHolder {
 
-    public static final List<CustomizedPermissionTemplate> TENANT_SUBTREE_MANAGER_TEMPLATES;
-    public static final List<CustomizedPermissionTemplate> TENANT_MANAGER_TEMPLATES;
-    public static final List<CustomizedPermissionTemplate> PROJECT_MANAGER_TEMPLATES;
+    public static final List<BasePermissionTemplate> TENANT_SUBTREE_MANAGER_TEMPLATES;
+    public static final List<BasePermissionTemplate> TENANT_MANAGER_TEMPLATES;
+    public static final List<BasePermissionTemplate> PROJECT_MANAGER_TEMPLATES;
 
     static {
         TENANT_SUBTREE_MANAGER_TEMPLATES = new ArrayList<>();
