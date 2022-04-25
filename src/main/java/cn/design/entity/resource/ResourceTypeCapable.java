@@ -3,6 +3,8 @@ package cn.design.entity.resource;
 import cn.design.entity.resource.type.ResourceType;
 
 /**
+ * 【资源类型能力】
+ *
  * @author Jinhua
  * @version 1.0
  * @date 2022/3/22 16:50

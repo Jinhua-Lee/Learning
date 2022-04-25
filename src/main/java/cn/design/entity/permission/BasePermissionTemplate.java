@@ -1,7 +1,7 @@
 package cn.design.entity.permission;
 
 import cn.design.entity.resource.type.ResourceType;
-import cn.design.valobj.op.Operation;
+import cn.design.valobj.operation.Operation;
 import lombok.Getter;
 
 /**
@@ -17,8 +17,6 @@ import lombok.Getter;
 @Getter
 public abstract class BasePermissionTemplate implements PermissionTemplate {
 
-    protected ResourceType sourceType;
+    protected ResourceType resourceType;
     protected Operation operation;
-    protected ResourceType targetType;
-    protected Boolean cascade;
 }

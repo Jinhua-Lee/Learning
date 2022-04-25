@@ -10,5 +10,5 @@ package cn.design.entity.resource;
  * @version 1.0
  * @date 2022/3/21 11:42
  */
-public abstract class AuthMainResource extends BaseResource {
+public interface AuthMainResource extends Resource {
 }

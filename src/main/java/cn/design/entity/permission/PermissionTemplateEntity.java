@@ -12,6 +12,5 @@ import lombok.Getter;
  */
 @Getter
 public class PermissionTemplateEntity extends BasePermissionTemplate implements EntitySupport {
-
     private Integer id;
 }
