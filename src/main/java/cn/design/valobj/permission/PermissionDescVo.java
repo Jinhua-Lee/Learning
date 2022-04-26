@@ -1,14 +1,14 @@
 package cn.design.valobj.permission;
 
-import cn.design.entity.resource.BaseResource;
-import cn.design.valobj.op.OperationEnum;
+import cn.design.entity.resource.Resource;
+import cn.design.valobj.operation.Operation;
 import lombok.EqualsAndHashCode;
 
 /**
  * 【权限描述】<p>
- * 解释为【对某个资源{@link PermissionDescVo#baseResource}
- * 是否能{@link PermissionDescVo#judgeResult}
- * 进行操作{@link PermissionDescVo#permissionOp}】<p>
+ * 解释为【对某个{@link PermissionDescVo#resource 资源}
+ * {@link PermissionDescVo#allow 是否} 能
+ * 进行{@link PermissionDescVo#operation 操作}】<p>
  * <p>
  * 通过【资源 + 操作】来唯一确定对象，最终的判断值为boolean值【是否能】
  *
@@ -17,12 +17,12 @@ import lombok.EqualsAndHashCode;
  * @date 2022/3/17 14:55
  */
 @EqualsAndHashCode(of = {
-        "baseResource", "permissionOp"
+        "resource", "operation"
 })
-public abstract class PermissionDescVo {
+public class PermissionDescVo {
 
-    private BaseResource baseResource;
-    private OperationEnum permissionOp;
+    private Resource resource;
+    private Operation operation;
 
-    private Boolean judgeResult;
+    private Boolean allow;
 }

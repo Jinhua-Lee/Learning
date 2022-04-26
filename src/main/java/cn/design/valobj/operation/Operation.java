@@ -1,4 +1,4 @@
-package cn.design.valobj.op;
+package cn.design.valobj.operation;
 
 /**
  * 【操作】
@@ -8,5 +8,4 @@ package cn.design.valobj.op;
  * @date 2022/3/22 16:35
  */
 public interface Operation {
-
 }

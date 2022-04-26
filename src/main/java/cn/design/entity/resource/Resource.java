@@ -1,7 +1,6 @@
 package cn.design.entity.resource;
 
 import cn.design.entity.EntitySupport;
-import cn.design.entity.resource.type.ResourceType;
 
 /**
  * 【资源】<p>&emsp;
@@ -13,12 +12,4 @@ import cn.design.entity.resource.type.ResourceType;
  * @date 2022/3/22 16:27
  */
 public interface Resource extends EntitySupport, ResourceTypeCapable {
-
-    /**
-     * 获取【资源】的class类型
-     *
-     * @return 【资源】的class类型
-     */
-    @Override
-    ResourceType getResourceType();
 }

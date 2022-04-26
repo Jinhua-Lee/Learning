@@ -24,6 +24,6 @@ public class Tenant implements EntitySupport, ResourceTypeCapable {
 
     @Override
     public ResourceType getResourceType() {
-        return AuthResourceTypeEnum.ROLE;
+        return AuthResourceTypeEnum.TENANT;
     }
 }
