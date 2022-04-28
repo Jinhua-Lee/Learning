@@ -17,7 +17,6 @@ public class AlternatelyPrint {
     @SneakyThrows
     public static void main(String[] args) {
 //        waitNotify();
-
         exchanger();
     }
 
