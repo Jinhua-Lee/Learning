@@ -23,8 +23,8 @@ public abstract class BaseInputStreamTest {
         // 从某个位置开始，都是无效数据
         int emptyStart = -1;
         for (int i = 0; i < bytes.length; i++) {
-            if (bytes[i++] == 0) {
-                emptyStart = i - 1;
+            if (bytes[i] == 0) {
+                emptyStart = i;
                 break;
             }
         }
