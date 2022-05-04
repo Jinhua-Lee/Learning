@@ -1,4 +1,4 @@
-package com.se.io.base;
+package com.se.io.input;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -13,14 +13,14 @@ import java.io.FileWriter;
 import java.nio.charset.StandardCharsets;
 
 /**
- * InputStream输入流源码调试
+ * 【文件输入流】调试
  *
  * @author Jinhua-Lee
  * @version 1.0
  * @date 2022/4/30 16:11
  */
 @Slf4j
-public class InputStreamTest extends BaseInputStreamTest {
+public class FileInputStreamTest extends BaseInputStreamTest {
 
     @BeforeEach
     @SneakyThrows
@@ -44,6 +44,18 @@ public class InputStreamTest extends BaseInputStreamTest {
             log.info("写入文件的内容是：{}", content);
             log.info("写入文件的字节数是：{}", content.getBytes(StandardCharsets.UTF_8).length);
         }
+    }
+
+    @Test
+    @DisplayName(value = "测试读多个字节")
+    @SneakyThrows
+    public void testReadBytes() {
+        byte[] bytes = new byte[200];
+        int readNum = inputStream.read(bytes);
+
+        byte[] processed = processEmpty(bytes);
+        log.info("读取到的内容是：{}", new String(processed, StandardCharsets.UTF_8));
+        log.info("读取到的字节数是：{}", readNum);
     }
 
     @Test

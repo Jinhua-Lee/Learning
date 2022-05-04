@@ -1,4 +1,4 @@
-package com.se.io.base;
+package com.se.io.input;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +18,7 @@ import java.nio.charset.StandardCharsets;
  * @date 2022/5/1 13:01
  */
 @Slf4j
-public class BufferedInputStreamTest extends BaseInputStreamTest {
+public class BufferedInputTest extends BaseInputStreamTest {
 
     private BufferedInputStream bis;
 
@@ -58,7 +58,7 @@ public class BufferedInputStreamTest extends BaseInputStreamTest {
         int read;
         for (int i = 0; i < content.length; i++) {
             // 这里多次读，都是从缓冲区中拿
-            if ( (read = bis.read()) != -1) {
+            if ((read = bis.read()) != -1) {
                 content[i] = (byte) read;
             } else {
                 break;
@@ -77,6 +77,17 @@ public class BufferedInputStreamTest extends BaseInputStreamTest {
         byte[] processed = processEmpty(content);
         log.info("API多字节读取，读到的内容是：{}", new String(processed, StandardCharsets.UTF_8));
         log.info("API多字节读取，读到的数量是：{}", readNum);
+    }
+
+    @Test
+    @DisplayName(value = "测试用户指定字符数组的读取")
+    @SneakyThrows
+    public void testBufferedReadByChars() {
+        BufferedReader br = new BufferedReader(new InputStreamReader(bis), 4);
+        char[] chars = new char[200];
+        int readNum = br.read(chars);
+        byte[] bytes = processEmpty(new String(chars).getBytes(StandardCharsets.UTF_8));
+        log.info("API多字符读取，读到的内容是：{}，共{}个字符", new String(bytes, StandardCharsets.UTF_8), readNum);
     }
 
     @AfterEach

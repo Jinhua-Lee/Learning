@@ -1,4 +1,4 @@
-package com.se.io.base;
+package com.se.io.input;
 
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.BeforeEach;
