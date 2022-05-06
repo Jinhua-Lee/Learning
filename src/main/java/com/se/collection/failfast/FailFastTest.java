@@ -1,9 +1,8 @@
-package com.se.failfast;
+package com.se.collection.failfast;
 
 import org.junit.Test;
 
 import java.util.*;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * 快速失败机制测试类

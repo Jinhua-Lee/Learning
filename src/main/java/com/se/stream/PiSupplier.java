@@ -10,7 +10,7 @@ import java.util.stream.Stream;
  * @version 1.0
  * @date 2021/4/25 17:28
  */
-class PiSupplier implements Supplier<Double> {
+public class PiSupplier implements Supplier<Double> {
 
     double sum = 0.0;
     double current = 1.0;

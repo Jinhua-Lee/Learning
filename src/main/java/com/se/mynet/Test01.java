@@ -14,6 +14,7 @@ import java.net.Socket;
  */
 public class Test01 {
 
+    @SuppressWarnings("all")
     public static void main(String[] args) throws IOException {
         while (true) {
             ServerSocket ss = new ServerSocket(8081);
