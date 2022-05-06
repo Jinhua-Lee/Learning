@@ -2,7 +2,6 @@ package com.se.io;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 /**
  * 【管道流】测试
@@ -35,7 +33,6 @@ public class PipedStreamTest {
 
     @Test
     @DisplayName(value = "进行管道传输")
-    @SneakyThrows
     public void pipe() {
         Thread out = new Thread(this::produce, "管道输出");
         Thread in = new Thread(this::consume, "管道输入");
@@ -48,11 +45,10 @@ public class PipedStreamTest {
     private void produce() {
         int upper = 'A';
         while (true) {
-            Random r = new Random(26);
-            int letter = upper + r.nextInt();
+            int letter = upper + new Random().nextInt(26);
             pos.write(letter);
+            pos.flush();
             log.info("{} write a letter: {}", Thread.currentThread().getName(), (char) letter);
-            TimeUnit.SECONDS.sleep(2L);
         }
     }
 
@@ -61,16 +57,7 @@ public class PipedStreamTest {
     public void consume() {
         while (true) {
             int letter = pis.read();
-            TimeUnit.SECONDS.sleep(4L);
             log.info("{} receive a letter: {}", Thread.currentThread().getName(), (char) letter);
         }
-    }
-
-    @AfterEach
-    @SneakyThrows
-    @DisplayName(value = "关闭流")
-    public void afterAll() {
-        pos.close();
-        pis.close();
     }
 }
