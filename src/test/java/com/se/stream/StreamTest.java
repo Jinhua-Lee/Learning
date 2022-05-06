@@ -125,6 +125,5 @@ public class StreamTest {
                 child -> child.setName(child.getName().trim())
         ).collect(Collectors.toList());
         childList.forEach(System.out::println);
-
     }
 }

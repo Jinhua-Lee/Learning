@@ -1,4 +1,4 @@
-package com.se.stream;
+package com.se.io;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

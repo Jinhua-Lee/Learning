@@ -9,24 +9,15 @@ import java.io.*;
  *
  * @author Jinhua
  */
-@ToString
-public class StudentSerial implements Serializable {
-    private static final long serialVersionUID = 1L;
+public record StudentSerial(String name, String password) implements Serializable {
 
-    /**
-     * 域字段
-     */
-    private final String name;
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     /**
      * 静态常量
      */
     private static int count = 0;
-
-    /**
-     * 非序列化属性
-     */
-    private final transient String password;
 
     public StudentSerial(String name, String password) {
         System.out.println("进入构造方法");
@@ -46,7 +37,7 @@ public class StudentSerial implements Serializable {
             }
         }
         StudentSerial s1 = new StudentSerial("李金华", "5206");
-        StudentSerial s2 = new StudentSerial("高亚文", "5247");
+        StudentSerial s2 = new StudentSerial("李文凯", "6868");
 
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
         oos.writeObject(s1);

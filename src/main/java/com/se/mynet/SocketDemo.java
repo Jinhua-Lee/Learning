@@ -19,7 +19,7 @@ public class SocketDemo {
             Socket s = ss.accept();
             InputStream is = s.getInputStream();
             OutputStream os = s.getOutputStream();
-            Scanner sc = new Scanner(is, "UTF-8");
+            Scanner sc = new Scanner(is, StandardCharsets.UTF_8);
             PrintWriter pw = new PrintWriter(
                     new OutputStreamWriter(os, StandardCharsets.UTF_8),
                     true);
