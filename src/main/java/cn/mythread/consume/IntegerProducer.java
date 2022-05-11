@@ -9,16 +9,7 @@ import java.util.Random;
  * @version 1.0
  * @date 2021/9/11 23:29
  */
-public class IntegerProducer implements Producer<Integer> {
-
-    /**
-     * 生产的产品要放入容器
-     */
-    private final Container<Integer> container;
-
-    public IntegerProducer(Container<Integer> container) {
-        this.container = container;
-    }
+public record IntegerProducer(Container<Integer> container) implements Producer<Integer> {
 
     @Override
     public Integer produce() {

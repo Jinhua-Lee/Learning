@@ -21,7 +21,7 @@ public class BounceThread {
 
 
 class BounceFrame extends JFrame {
-    private BallComponent comp;
+    private final BallComponent comp;
     public static final int STEPS = 1000;
     public static final int DELAY = 5;
 

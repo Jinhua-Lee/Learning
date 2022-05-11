@@ -1,6 +1,7 @@
 package cn.mythread.demo.bank;
 
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 银行存款测试
@@ -29,16 +30,12 @@ public class BankTest {
     public static final int DELAY = 10;
 
     public static Bank init(int i) {
-        switch (i) {
-            case 1:
-                return new Bank(ACCOUNT_NUM, INITIAL_BALANCE);
-            case 2:
-                return new LockBank(ACCOUNT_NUM, INITIAL_BALANCE);
-            case 3:
-                return new SynBank(ACCOUNT_NUM, INITIAL_BALANCE);
-            default:
-                return null;
-        }
+        return switch (i) {
+            case 1 -> new Bank(ACCOUNT_NUM, INITIAL_BALANCE);
+            case 2 -> new LockBank(ACCOUNT_NUM, INITIAL_BALANCE);
+            case 3 -> new SynBank(ACCOUNT_NUM, INITIAL_BALANCE);
+            default -> null;
+        };
     }
 
     /**
@@ -56,7 +53,7 @@ public class BankTest {
                 int toAccount = (int) (bank.size() * Math.random());
                 // 执行转账
                 bank.transfer(fromAccount, toAccount, amount);
-                Thread.sleep((int) (DELAY * Math.random()));
+                TimeUnit.MILLISECONDS.sleep((long) (DELAY * Math.random()));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -69,11 +66,8 @@ public class BankTest {
         Bank bank = BankTest.init(j);
         for (int i = 0; i < ACCOUNT_NUM; i++) {
             int fromAccount = i;
-            Runnable r = () -> {
-                execute(bank, fromAccount);
-            };
-            Thread t = new Thread(r);
-            t.start();
+            Runnable r = () -> execute(bank, fromAccount);
+            new Thread(r).start();
         }
     }
 }

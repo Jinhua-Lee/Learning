@@ -11,14 +11,7 @@ import java.util.Random;
  *
  * @author Jinhua
  */
-public class TraceHandler implements InvocationHandler {
-
-    private final Object target;
-
-    public TraceHandler(Object target) {
-        super();
-        this.target = target;
-    }
+public record TraceHandler(Object target) implements InvocationHandler {
 
     /**
      * 运用反射，代理对象的方法执行

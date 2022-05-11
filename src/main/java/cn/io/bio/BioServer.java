@@ -1,4 +1,4 @@
-package com.se.io.bio;
+package cn.io.bio;
 
 import lombok.extern.slf4j.Slf4j;
 

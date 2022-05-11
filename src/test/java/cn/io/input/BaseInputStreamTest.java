@@ -1,4 +1,4 @@
-package com.se.io.input;
+package cn.io.input;
 
 import java.io.InputStream;
 

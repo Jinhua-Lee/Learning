@@ -1,4 +1,4 @@
-package com.se.io.output;
+package cn.io.output;
 
 import java.io.OutputStream;
 

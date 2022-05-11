@@ -10,16 +10,16 @@ import java.util.List;
  *
  * @author Jinhua
  */
-public class IntegerDemo {
+public class IntegerBoxDemo {
     public static void main(String[] args) {
         Obj obj = new Obj();
-        Pro pro = new Pro(obj);
+        AddToListFunc sumProxy = new AddToListProxy(obj);
         // 返回Integer类型，不用装箱
-        long s1 = pro.add(Integer.valueOf("1"));
+        long s1 = sumProxy.circularAddToList(Integer.valueOf("1"));
         // 返回int类型，自动装箱
-        long s2 = pro.add(Integer.parseInt("1"));
+        long s2 = sumProxy.circularAddToList(Integer.parseInt("1"));
         // 装箱一次，不用从String转换
-        long s3 = pro.add(1);
+        long s3 = sumProxy.circularAddToList(1);
 
         System.out.println("valueOf:	" + s1);
         System.out.println("parseInt:	" + s2);
@@ -30,24 +30,24 @@ public class IntegerDemo {
 /**
  * 被代理对象要执行的方法
  */
-interface Demo {
+interface AddToListFunc {
     /**
      * 定义添加元素的函数
      * @param element 待添加元素
      * @return 添加的时间
      */
-    long add(Integer element);
+    long circularAddToList(Integer element);
 }
 
 /**
  * 被代理对象
  */
-class Obj implements Demo {
+class Obj implements AddToListFunc {
 
     /**
      * 待测试数组
      */
-    private List<Integer> list;
+    private final List<Integer> list;
 
     public Obj() {
         list = new ArrayList<>();
@@ -59,8 +59,8 @@ class Obj implements Demo {
      * @return 执行时间
      */
     @Override
-    public long add(Integer element) {
-        final int eleSize = 10000000;
+    public long circularAddToList(Integer element) {
+        final int eleSize = 10_000_000;
         for (int i = 0; i < eleSize; i++) {
             list.add(element);
         }
@@ -71,26 +71,18 @@ class Obj implements Demo {
 /**
  * 代理对象
  */
-class Pro implements Demo {
-
-    /**
-     * 被代理对象
-     */
-    private final Obj obj;
-
-    public Pro(Obj obj) {
-        this.obj = obj;
-    }
+record AddToListProxy(Obj obj) implements AddToListFunc {
 
     /**
      * 重写，以进行增强
+     *
      * @param element 待添加元素
      * @return 执行时间
      */
     @Override
-    public long add(Integer element) {
+    public long circularAddToList(Integer element) {
         long t1 = System.currentTimeMillis();
-        obj.add(element);
+        obj.circularAddToList(element);
         long t2 = System.currentTimeMillis();
         return t2 - t1;
     }

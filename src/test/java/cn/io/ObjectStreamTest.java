@@ -1,4 +1,4 @@
-package com.se.io;
+package cn.io;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;

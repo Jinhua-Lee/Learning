@@ -10,16 +10,7 @@ import lombok.extern.slf4j.Slf4j;
  * @date 2021/9/11 23:34
  */
 @Slf4j
-public class IntegerConsumer implements Consumer<Integer> {
-
-    /**
-     * 从容器中取产品
-     */
-    private final Container<Integer> container;
-
-    public IntegerConsumer(Container<Integer> container) {
-        this.container = container;
-    }
+public record IntegerConsumer(Container<Integer> container) implements Consumer<Integer> {
 
     @Override
     public void consume(Integer integer) {

@@ -8,8 +8,8 @@ import java.awt.geom.Rectangle2D;
  * @author Jinhua
  */
 public class Ball {
-    private static final int XSIZE = 15;
-    private static final int YSIZE = 15;
+    private static final int X_SIZE = 15;
+    private static final int Y_SIZE = 15;
     private double x = 0;
     private double y = 0;
     private double dx = 1;
@@ -26,21 +26,21 @@ public class Ball {
             x = bounds.getMinX();
             dx = -dx;
         }
-        if (x + XSIZE >= bounds.getMaxX()) {
-            x = bounds.getMaxX() - XSIZE;
+        if (x + X_SIZE >= bounds.getMaxX()) {
+            x = bounds.getMaxX() - X_SIZE;
             dx = -dx;
         }
         if (y < bounds.getMinY()) {
             y = bounds.getMinY();
             dy = -dy;
         }
-        if (y + YSIZE >= bounds.getMaxY()) {
-            y = bounds.getMaxY() - YSIZE;
+        if (y + Y_SIZE >= bounds.getMaxY()) {
+            y = bounds.getMaxY() - Y_SIZE;
             dy = -dy;
         }
     }
 
     public Ellipse2D getShape() {
-        return new Ellipse2D.Double(x, y, XSIZE, YSIZE);
+        return new Ellipse2D.Double(x, y, X_SIZE, Y_SIZE);
     }
 }

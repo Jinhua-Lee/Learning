@@ -19,7 +19,7 @@ public class LockBank extends Bank {
     /**
      * 上锁的条件，资金足够
      */
-    private Condition sufficientFunds;
+    private final Condition sufficientFunds;
 
     public LockBank(int n, double initBalance) {
         super(n, initBalance);

@@ -1,4 +1,4 @@
-package com.se.io;
+package cn.io;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

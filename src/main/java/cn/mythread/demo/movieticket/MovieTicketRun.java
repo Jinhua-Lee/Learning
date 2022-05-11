@@ -2,6 +2,8 @@ package cn.mythread.demo.movieticket;
 
 import lombok.SneakyThrows;
 
+import java.util.concurrent.*;
+
 /**
  * 电影售票窗口 Runnable 接口实现
  *
@@ -16,11 +18,13 @@ public class MovieTicketRun implements Runnable {
         synchronized (this) {
             while (number > 0) {
                 System.out.println(Thread.currentThread().getName() + " 售票中，还剩： " + (--number) + " 张票");
-                Thread.sleep(10);
+                TimeUnit.MILLISECONDS.sleep(10L);
             }
         }
     }
 
+    @SneakyThrows
+    @SuppressWarnings("all")
     public static void main(String[] args) {
         MovieTicketRun mt = new MovieTicketRun();
 

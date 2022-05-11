@@ -1,5 +1,9 @@
 package cn.mythread.demo.movieticket;
 
+import lombok.SneakyThrows;
+
+import java.util.concurrent.TimeUnit;
+
 /**
  * 电影售票窗 继承 Thread 类实现
  *
@@ -9,15 +13,12 @@ public class MovieTicketThread extends Thread {
     private static int number = 100;
 
     @Override
+    @SneakyThrows
     public void run() {
         synchronized (this) {
             while (number > 0) {
                 System.out.println(Thread.currentThread().getName() + " 售票中，还剩： " + (--number) + " 张票");
-                try {
-                    Thread.sleep(10);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                TimeUnit.MILLISECONDS.sleep(10L);
             }
         }
     }
