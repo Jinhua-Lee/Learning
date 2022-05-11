@@ -1,4 +1,4 @@
-package cn.jvm.gc;
+package cn.jvm.gc.ref;
 
 import lombok.SneakyThrows;
 

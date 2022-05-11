@@ -1,4 +1,4 @@
-package cn.jvm.gc;
+package cn.jvm.gc.ref;
 
 /**
  * 循环引用问题探究<p>&emsp;
