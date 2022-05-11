@@ -19,6 +19,7 @@ public class RefCountGc {
 
     RefCountGc reference = null;
 
+    @SuppressWarnings("unused")
     public static void main(String[] args) {
         RefCountGc r1 = new RefCountGc();
         RefCountGc r2 = new RefCountGc();

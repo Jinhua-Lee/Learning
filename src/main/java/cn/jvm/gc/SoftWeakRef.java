@@ -1,10 +1,14 @@
 package cn.jvm.gc;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.SneakyThrows;
 
+import java.lang.ref.Reference;
+import java.lang.ref.ReferenceQueue;
 import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 软引用与弱引用测试：<p>&emsp;
@@ -17,8 +21,10 @@ import java.lang.ref.WeakReference;
  */
 public class SoftWeakRef {
 
+    private static ReferenceQueue<User> uReferQueue = new ReferenceQueue<>();
+
     public static void main(String[] args) {
-        executeSoft();
+//        executeSoft();
         executeWeak();
     }
 
@@ -46,27 +52,48 @@ public class SoftWeakRef {
         }
     }
 
+    @SneakyThrows
     private static void executeWeak() {
         WeakReference<User> wUser = new WeakReference<>(new User(2, "name2"));
         System.out.println("wUser.get() = " + wUser.get());
         System.gc();
+        TimeUnit.SECONDS.sleep(5L);
         // 无论内存是否充足，执行过GC后都会回收
         System.out.println("After GC: ");
         System.out.println("wUser.get() = " + wUser.get());
     }
 
-    @AllArgsConstructor
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    public static class User {
-        private final int id;
-        private final String name;
+    @SuppressWarnings("unchecked")
+    @SneakyThrows
+    private static void executeWeakWithSubClass() {
+        // 弱引用 + 引用队列
+        WeakReference<User> wUserWithQueue = new UserMain(new User(3, "name3"), uReferQueue);
+        System.out.println("wUser.get() = " + wUserWithQueue.get());
+        System.gc();
+        TimeUnit.SECONDS.sleep(5L);
+        // 无论内存是否充足，执行过GC后都会回收
+        System.out.println("After GC: ");
+        System.out.println("wUser.get() = " + wUserWithQueue.get());
+        Reference<User> aUser;
 
-        @Override
-        public String toString() {
-            return "User{" +
-                    "id=" + id +
-                    ", name='" + name + '\'' +
-                    '}';
+        // TODO: 2022/5/11 队列里没有东西，还待调试
+        while ((aUser = (Reference<User>) uReferQueue.poll()) != null) {
+            System.out.println(aUser.get());
+        }
+    }
+
+    @SuppressWarnings("all")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    static record User(int id, String name) {}
+
+    @Getter
+    static class UserMain extends WeakReference<User> {
+
+        private final Integer userId;
+
+        public UserMain(User weakUser, ReferenceQueue<User> refQueue) {
+            super(weakUser, refQueue);
+            this.userId = weakUser.id;
         }
     }
 }
