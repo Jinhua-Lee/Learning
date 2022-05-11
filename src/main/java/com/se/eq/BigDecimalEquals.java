@@ -1,5 +1,7 @@
 package com.se.eq;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.math.BigDecimal;
 
 /**
@@ -7,22 +9,24 @@ import java.math.BigDecimal;
  * @version 1.0
  * @date 2022/2/16 14:09
  */
+@Slf4j
 public class BigDecimalEquals {
 
     public static void main(String[] args) {
-        BigDecimal bigDecimal1 = new BigDecimal(1);
-        BigDecimal bigDecimal2 = new BigDecimal(1);
+        BigDecimal bd1 = new BigDecimal(1);
+        BigDecimal bd2 = new BigDecimal(1);
         // 输出true
-        System.out.println(bigDecimal1.equals(bigDecimal2));
+        log.info("bd1和bd2相等：{}", bd1.equals(bd2));
 
-        BigDecimal bigDecimal3 = new BigDecimal(1);
-        BigDecimal bigDecimal4 = new BigDecimal(1.0);
+        BigDecimal bd3 = new BigDecimal(1);
+        // FIXME: 2022/5/12 double类型构造，可能得不到想要的结果
+        BigDecimal bd4 = new BigDecimal(1.0);
         // 输出true
-        System.out.println(bigDecimal3.equals(bigDecimal4));
+        log.info("bd3和bd4相等：{}", bd3.equals(bd4));
 
-        BigDecimal bigDecimal5 = new BigDecimal("1.00");
-        BigDecimal bigDecimal6 = new BigDecimal("1.0");
+        BigDecimal bd5 = new BigDecimal("1.00");
+        BigDecimal bd6 = new BigDecimal("1.0");
         // 输出false：值和精度相等，才认为是相等
-        System.out.println(bigDecimal5.equals(bigDecimal6));
+        log.info("bd5和bd6相等：{}", bd5.equals(bd6));
     }
 }

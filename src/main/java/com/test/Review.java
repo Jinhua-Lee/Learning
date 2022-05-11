@@ -31,26 +31,6 @@ public class Review {
     }
 
     /**
-     * 测试包装类equals方法和相等判断
-     */
-    @SuppressWarnings("all")
-    public static void wrapperEquals() {
-        Integer i1 = 127;
-        Integer i2 = 127;
-        // true
-        System.out.println("(i1 == i2) = " + (i1 == i2));
-        // true
-        System.out.println("i1.equals(i2) = " + i1.equals(i2));
-
-        Integer i3 = 128;
-        Integer i4 = 128;
-        // false
-        System.out.println("(i3 == i4) = " + (i3 == i4));
-        // true
-        System.out.println("i3.equals(i4) = " + i3.equals(i4));
-    }
-
-    /**
      * 打印系统属性
      */
     public static void printSystemProperties() {
@@ -64,85 +44,6 @@ public class Review {
     public static void printSystemEnv() {
         Set<Map.Entry<String, String>> envs = System.getenv().entrySet();
         envs.forEach(e -> System.out.println("env:    " + e.getKey() + " ---- " + e.getValue()));
-    }
-
-    @Test
-    public void test() {
-        double monthCoefficient = getMonthCoefficient(1603152000000L, 1601481600000L);
-    }
-
-
-    /**
-     * 获取日偏移系数
-     *
-     * @param logTime   记录时间
-     * @param energyPoi 能耗POI时间
-     * @return 日偏移系数
-     */
-    public static double getDayCoefficient(long energyPoi, long logTime) {
-        // logTime所在天
-        LocalDateTime then = LocalDateTime.ofInstant(Instant.ofEpochMilli(logTime), ZoneId.systemDefault());
-        System.out.println("then: " + then);
-
-        LocalDateTime nowDateTime = LocalDateTime.now();
-        LocalTime nowTime = LocalTime.of(nowDateTime.getHour(), 0);
-        LocalDateTime nowHour = LocalDateTime.of(nowDateTime.toLocalDate(), nowTime);
-        System.out.println("nowHour: " + nowHour);
-        long nowHourStamp = getDefaultTimeStamp(nowHour);
-
-        LocalDateTime thenStartDay = then.toLocalDate().atStartOfDay();
-        long thenStartStamp = getDefaultTimeStamp(thenStartDay);
-        System.out.println("thenStartDay: " + thenStartDay);
-        System.out.println("thenStartStamp = " + thenStartStamp);
-
-        LocalDateTime thenEndDay = then.toLocalDate().plusDays(1).atStartOfDay();
-        long thenEndStamp = getDefaultTimeStamp(thenEndDay);
-        System.out.println("thenEndDay: " + thenEndDay);
-        System.out.println("thenEndStamp = " + thenEndStamp);
-
-        double dayCoefficient = BigDecimal.valueOf((double) (energyPoi - logTime) / (thenEndStamp - thenStartStamp))
-                .setScale(5, BigDecimal.ROUND_HALF_UP).doubleValue();
-        System.out.println("energyPoi - logTime = " + (energyPoi - logTime));
-        System.out.println("thenEndStamp - thenStartStamp = " + (thenEndStamp - thenStartStamp));
-        System.out.println(dayCoefficient);
-        return dayCoefficient;
-    }
-
-    public static long getDefaultTimeStamp(LocalDateTime localDateTime) {
-        return localDateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
-    }
-
-    /**
-     * 获取月偏移系数
-     *
-     * @param energyPoi 能耗POI
-     * @param logTime   记录时间
-     * @return 月偏移系数
-     */
-    public static double getMonthCoefficient(long energyPoi, long logTime) {
-
-        LocalDateTime then = LocalDateTime.ofInstant(Instant.ofEpochMilli(logTime), ZoneId.systemDefault());
-        System.out.println("then: " + then);
-
-        LocalDate thenStartMonth = LocalDate.of(then.getYear(), then.getMonth(), 1);
-        long thenStartStamp = getDefaultTimeStamp(thenStartMonth.atStartOfDay());
-        System.out.println("thenStartMonth: " + thenStartMonth);
-        System.out.println("thenStartStamp = " + thenStartStamp);
-
-
-        LocalDate thenEndMonth = thenStartMonth.plusMonths(1);
-        long thenEndStamp = getDefaultTimeStamp(thenEndMonth.atStartOfDay());
-        System.out.println("thenEndMonth: " + thenEndMonth);
-        System.out.println("thenEndStamp = " + thenEndStamp);
-
-        double monthCoefficient = BigDecimal.valueOf(
-                (double) (energyPoi - logTime) / (thenEndStamp - thenStartStamp)
-        ).setScale(5, BigDecimal.ROUND_HALF_UP).doubleValue();
-        System.out.println("energyPoi - logTime = " + (energyPoi - logTime));
-        System.out.println("thenEndStamp - thenStartStamp = " + (thenEndStamp - thenStartStamp));
-        System.out.println(monthCoefficient);
-
-        return monthCoefficient;
     }
 
     /**
