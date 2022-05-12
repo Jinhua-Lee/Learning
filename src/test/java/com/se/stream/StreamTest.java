@@ -3,7 +3,6 @@ package com.se.stream;
 import lombok.SneakyThrows;
 import org.junit.Test;
 
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
@@ -26,7 +25,7 @@ public class StreamTest {
     public void testCountLongWords() {
         String dir = "E:/IOTest/";
         String filename = "chars.txt";
-        String contents = new String(Files.readAllBytes(Paths.get(dir + filename)), StandardCharsets.UTF_8);
+        String contents = Files.readString(Paths.get(dir + filename));
         List<String> words = Arrays.asList(contents.split("\\PL+"));
 
         long count = 0;
@@ -81,21 +80,20 @@ public class StreamTest {
                         .collect(Collectors.toMap(Toy::getName, Function.identity()));
         final int mapInitSize = 16;
         Map<String, Father> toyNameMapFather = new HashMap<>(mapInitSize);
-        toyNameMapToy.forEach((toyName, toy) -> {
-            childNameMapChild.forEach((childName, child) -> {
-                if (child.getToys().contains(toy)) {
-                    fatherNameMapFather.forEach((fatherName, fatherList) -> {
-                        Father anyFather = fatherList.stream().filter(Objects::nonNull).findAny().orElse(null);
-                        if (Objects.nonNull(anyFather) && anyFather.getChildren().contains(child)) {
-                            toyNameMapFather.put(toyName, anyFather);
-                        }
-                    });
-                }
-            });
-        });
-        toyNameMapFather.forEach((tName, father) -> {
-            System.out.println(tName + " -> " + father);
-        });
+        toyNameMapToy.forEach((toyName, toy) ->
+                childNameMapChild.forEach((childName, child) -> {
+                    if (child.getToys().contains(toy)) {
+                        fatherNameMapFather.forEach((fatherName, fatherList) -> {
+                            Father anyFather = fatherList.stream().filter(Objects::nonNull).findAny().orElse(null);
+                            if (Objects.nonNull(anyFather) && anyFather.getChildren().contains(child)) {
+                                toyNameMapFather.put(toyName, anyFather);
+                            }
+                        });
+                    }
+                }));
+        toyNameMapFather.forEach((tName, father) ->
+                System.out.println(tName + " -> " + father)
+        );
     }
 
     @Test
@@ -118,7 +116,7 @@ public class StreamTest {
 
     @Test
     public void testPeek() {
-        List<Child> children = new ArrayList<>();;
+        List<Child> children = new ArrayList<>();
         children.add(new Child(" hello ", null));
         children.add(new Child(" world   ", null));
         List<Child> childList = children.stream().peek(
