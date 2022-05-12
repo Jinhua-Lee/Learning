@@ -15,22 +15,26 @@ public class MyThreadLocal {
     @SneakyThrows
     @SuppressWarnings("all")
     public static void main(String[] args) {
-        LOCAL.set("主线程");
+        LOCAL.set("main");
         // 新建一个线程，分别向里面存线程ID，看主线程能否取出
         Thread t1 = new Thread(() -> {
-            LOCAL.set("线程1");
-            // 输出：线程1
-            System.out.println("线程1获取：" + LOCAL.get());
-            LOCAL.remove();
+
+            // 输出：local
+            LOCAL.set("local");
+            System.out.println(Thread.currentThread().getName() + "获取：" + LOCAL.get());
+
             // 输出：null
-            System.out.println("线程1移除后获取：" + LOCAL.get());
-        }, "线程1");
+            LOCAL.remove();
+            System.out.println(Thread.currentThread().getName() + "移除后获取：" + LOCAL.get());
+        }, "local");
         t1.start();
         t1.join();
-        // 输出：主线程
-        System.out.println("主线程获取：" + LOCAL.get());
-        LOCAL.remove();
+
+        // 输出：main
+        System.out.println(Thread.currentThread().getName() + "获取：" + LOCAL.get());
+
         // 输出：null
-        System.out.println("主线程移除后获取：" + LOCAL.get());
+        LOCAL.remove();
+        System.out.println(Thread.currentThread().getName() + "移除后获取：" + LOCAL.get());
     }
 }
