@@ -161,7 +161,7 @@ public class ObjectStreamTest {
          */
         private static int count = 0;
         protected String name;
-        protected Integer age;
+        protected int age;
 
         /**
          * transient关键字标记的属性不进行序列化
@@ -173,7 +173,7 @@ public class ObjectStreamTest {
             count++;
         }
 
-        public StudentSerial(String name, Integer age) {
+        public StudentSerial(String name, int age) {
             this();
             this.name = name;
             this.age = age;
@@ -187,7 +187,7 @@ public class ObjectStreamTest {
     @AllArgsConstructor
     private static final class StudentReplaceSerial extends StudentSerial {
 
-        public StudentReplaceSerial(String name, Integer age) {
+        public StudentReplaceSerial(String name, int age) {
             super(name, age);
         }
 
