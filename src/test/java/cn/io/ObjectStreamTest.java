@@ -142,6 +142,14 @@ public class ObjectStreamTest {
         Assertions.assertEquals(25, objList.get(1));
     }
 
+    @AfterAll
+    @DisplayName(value = "删除文件")
+    public static void afterAll() {
+        if (objFile.exists() && objFile.delete()) {
+            log.info("[delete file] success!");
+        }
+    }
+
     @Getter
     private static class StudentSerial implements Serializable {
 
