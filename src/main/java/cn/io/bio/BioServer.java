@@ -18,37 +18,29 @@ import java.net.Socket;
 @Slf4j
 public class BioServer {
 
+    @SuppressWarnings("all")
     public static void main(String[] args) throws IOException {
-        // 1. 服务端的端口注册
-        Socket socket;
-        ServerSocket serverSocket;
-        try {
-            // 2. 监听8081端口
-            int serverPort = 8081;
-            serverSocket = new ServerSocket(serverPort);
-            socket = serverSocket.accept();
-            log.info("服务端开启端口监听：{}", serverPort);
-        } catch (IOException e) {
-            log.info("服务端异常：{}", e.getMessage());
-            return;
-        }
-        // 3. 从Socket中得到字节流对象
-        BufferedInputStream bis;
-        InputStream is;
-        try {
-            is = socket.getInputStream();
-        } catch (IOException e) {
-            return;
-        }
-        // 4. 将字节输入流包装为缓冲流
-        bis = new BufferedInputStream(is);
-        // 5. 包装为字符输入流
+
+        // 1. 服务端端口注册
+        int serverPort = 8081;
+        ServerSocket serverSocket = new ServerSocket(serverPort);
+        Socket socket = serverSocket.accept();
+        log.info("服务端开启端口监听：{}", serverPort);
+
+        // 2. 从Socket中得到流对象
+
+        BufferedInputStream bis = new BufferedInputStream(socket.getInputStream());
         BufferedReader br = new BufferedReader(new InputStreamReader(bis));
 
-        // 6. 读入
+//        BufferedOutputStream bos = new BufferedOutputStream(socket.getOutputStream());
+//        PrintWriter pw = new PrintWriter(bos);
+
+        // 3. 读入
         String msg;
         while ((msg = br.readLine()) != null) {
-            log.info("我是服务端，我收到：{}", msg);
+            log.info("[server] receive msg = {}", msg);
+//            pw.println("您发送了：" + msg);
+//            pw.flush();
         }
     }
 }
