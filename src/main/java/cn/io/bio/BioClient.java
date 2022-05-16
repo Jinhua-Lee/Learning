@@ -23,11 +23,14 @@ public class BioClient {
         int serverPort = 8081;
         String server = "127.0.0.1";
         Socket socket = new Socket(server, serverPort);
-        log.info("成功连接到服务端，IP: {}, 端口: {}", server, serverPort);
+        log.info("succeed to connect to server, IP: {}, port: {}", server, serverPort);
 
-        writeOnce(socket.getOutputStream());
+//        writeOnce(socket.getOutputStream());
+        // 读，依赖于TCP的（全）双工
 //        readOnce(socket.getInputStream());
-//        writeCircular(socket.getOutputStream());
+        writeAndReadCircular(socket);
+        // 夯住
+        for (; ; ) ;
     }
 
     /**
@@ -37,7 +40,7 @@ public class BioClient {
      */
     private static void writeOnce(OutputStream os) {
         PrintWriter pw = new PrintWriter(os);
-        pw.println("你好，我是客户端！");
+        pw.println("Hello server, I am client! ");
         pw.flush();
     }
 
@@ -60,14 +63,20 @@ public class BioClient {
      *
      * @param os 字节输出流
      */
-    private static void writeCircular(OutputStream os) {
-        PrintWriter pw = new PrintWriter(os);
+    @SuppressWarnings("all")
+    private static void writeAndReadCircular(Socket socket) throws IOException {
+        PrintWriter pw = new PrintWriter(socket.getOutputStream());
         Scanner sc = new Scanner(System.in);
         for (; ; ) {
-            System.out.println("请发送消息：");
+            System.out.println("please input msg: ");
+
+            // 发
             String line = sc.nextLine();
             pw.println(line);
             pw.flush();
+
+            // 收
+            readOnce(socket.getInputStream());
         }
     }
 }
