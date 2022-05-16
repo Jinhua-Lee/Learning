@@ -25,22 +25,24 @@ public class BioServer {
         int serverPort = 8081;
         ServerSocket serverSocket = new ServerSocket(serverPort);
         Socket socket = serverSocket.accept();
-        log.info("服务端开启端口监听：{}", serverPort);
+        log.info("server open the port：{}", serverPort);
 
         // 2. 从Socket中得到流对象
 
         BufferedInputStream bis = new BufferedInputStream(socket.getInputStream());
         BufferedReader br = new BufferedReader(new InputStreamReader(bis));
 
-//        BufferedOutputStream bos = new BufferedOutputStream(socket.getOutputStream());
-//        PrintWriter pw = new PrintWriter(bos);
+        BufferedOutputStream bos = new BufferedOutputStream(socket.getOutputStream());
+        PrintWriter pw = new PrintWriter(bos);
 
         // 3. 读入
         String msg;
         while ((msg = br.readLine()) != null) {
-            log.info("[server] receive msg = {}", msg);
-//            pw.println("您发送了：" + msg);
-//            pw.flush();
+            log.info("[server] receive msg = {}, from = {}", msg, socket.getInetAddress());
+
+            // 将读入的消息回馈给client，TCP是全双工
+            pw.println(socket.getInetAddress() + ", this is what you send：" + msg);
+            pw.flush();
         }
     }
 }
