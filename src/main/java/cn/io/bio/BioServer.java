@@ -1,5 +1,6 @@
 package cn.io.bio;
 
+import cn.io.ServerCommonUtil;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.*;
@@ -18,7 +19,6 @@ import java.net.Socket;
 @Slf4j
 public class BioServer {
 
-    @SuppressWarnings("all")
     public static void main(String[] args) throws IOException {
 
         // 1. 服务端端口注册
@@ -27,22 +27,6 @@ public class BioServer {
         Socket socket = serverSocket.accept();
         log.info("server open the port：{}", serverPort);
 
-        // 2. 从Socket中得到流对象
-
-        BufferedInputStream bis = new BufferedInputStream(socket.getInputStream());
-        BufferedReader br = new BufferedReader(new InputStreamReader(bis));
-
-        BufferedOutputStream bos = new BufferedOutputStream(socket.getOutputStream());
-        PrintWriter pw = new PrintWriter(bos);
-
-        // 3. 读入
-        String msg;
-        while ((msg = br.readLine()) != null) {
-            log.info("[server] receive msg = {}, from = {}", msg, socket.getInetAddress());
-
-            // 将读入的消息回馈给client，TCP是全双工
-            pw.println(socket.getInetAddress() + ", this is what you send：" + msg);
-            pw.flush();
-        }
+        ServerCommonUtil.requestProc(socket);
     }
 }

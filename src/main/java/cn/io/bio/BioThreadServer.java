@@ -1,5 +1,6 @@
 package cn.io.bio;
 
+import cn.io.ServerCommonUtil;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
@@ -44,22 +45,7 @@ public class BioThreadServer {
         @SneakyThrows
         @SuppressWarnings("all")
         public void run() {
-            // 输入流
-            BufferedInputStream bis = new BufferedInputStream(socket.getInputStream());
-            BufferedReader br = new BufferedReader(new InputStreamReader(bis));
-
-            // 输出流
-            BufferedOutputStream bos = new BufferedOutputStream(socket.getOutputStream());
-            PrintWriter pw = new PrintWriter(bos);
-
-            String msg;
-            while ((msg = br.readLine()) != null) {
-                log.info("[server] receive msg = {}, from = {}", msg, socket.getInetAddress());
-
-                // 将读入的消息回馈给client，TCP是全双工
-                pw.println(socket.getInetAddress() + ", this is what you send：" + msg);
-                pw.flush();
-            }
+            ServerCommonUtil.requestProc(socket);
         }
     }
 }
