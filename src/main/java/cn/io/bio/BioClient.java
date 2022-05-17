@@ -1,5 +1,6 @@
 package cn.io.bio;
 
+import cn.io.BaseSocketUtil;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.*;
@@ -20,10 +21,8 @@ public class BioClient {
 
     @SuppressWarnings("all")
     public static void main(String[] args) throws IOException {
-        int serverPort = 8081;
-        String server = "127.0.0.1";
-        Socket socket = new Socket(server, serverPort);
-        log.info("succeed to connect to server, IP: {}, port: {}", server, serverPort);
+        // 创建客户端连接
+        Socket socket = BaseSocketUtil.createSocket4Client();
 
 //        writeOnce(socket.getOutputStream());
         // 读，依赖于TCP的（全）双工

@@ -1,6 +1,6 @@
 package cn.io.bio;
 
-import cn.io.BaseServerCommonUtil;
+import cn.io.BaseSocketUtil;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
@@ -45,7 +45,7 @@ public class BioThreadServer {
         @SneakyThrows
         @SuppressWarnings("all")
         public void run() {
-            BaseServerCommonUtil.requestProc(socket);
+            BaseSocketUtil.requestProc(socket);
         }
     }
 }

@@ -1,10 +1,9 @@
 package cn.io.bio;
 
-import cn.io.BaseServerCommonUtil;
+import cn.io.BaseSocketUtil;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.*;
-import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
@@ -21,12 +20,10 @@ public class BioServer {
 
     public static void main(String[] args) throws IOException {
 
-        // 1. 服务端端口注册
-        int serverPort = 8081;
-        ServerSocket serverSocket = new ServerSocket(serverPort);
-        Socket socket = serverSocket.accept();
-        log.info("server open the port：{}", serverPort);
+        // 1. 创建服务端的socket，开启端口监听
+        Socket socket = BaseSocketUtil.createSocket4Server();
 
-        BaseServerCommonUtil.requestProc(socket);
+        // 2. 处理与客户端的请求
+        BaseSocketUtil.requestProc(socket);
     }
 }

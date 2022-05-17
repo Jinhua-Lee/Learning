@@ -1,6 +1,6 @@
 package cn.io.asyncio;
 
-import cn.io.BaseServerCommonUtil;
+import cn.io.BaseSocketUtil;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -57,7 +57,7 @@ public class AsyncServer {
         @Override
         @SneakyThrows
         public void run() {
-            BaseServerCommonUtil.requestProc(socket);
+            BaseSocketUtil.requestProc(socket);
         }
     }
 }
