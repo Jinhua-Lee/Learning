@@ -6,14 +6,14 @@ import java.io.*;
 import java.net.Socket;
 
 /**
- * Todo
+ * 服务端通用逻辑封装
  *
  * @author Jinhua-Lee
  * @version 1.0
  * @date 2022/5/17 0:04
  */
 @Slf4j
-public abstract class ServerCommonUtil {
+public abstract class BaseServerCommonUtil {
 
     public static void requestProc(Socket socket) throws IOException {
         // 输入流

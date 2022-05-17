@@ -1,6 +1,6 @@
 package cn.io.bio;
 
-import cn.io.ServerCommonUtil;
+import cn.io.BaseServerCommonUtil;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.*;
@@ -27,6 +27,6 @@ public class BioServer {
         Socket socket = serverSocket.accept();
         log.info("server open the port：{}", serverPort);
 
-        ServerCommonUtil.requestProc(socket);
+        BaseServerCommonUtil.requestProc(socket);
     }
 }
