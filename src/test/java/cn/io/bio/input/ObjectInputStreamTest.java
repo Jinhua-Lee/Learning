@@ -1,4 +1,4 @@
-package cn.io.input;
+package cn.io.bio.input;
 
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.BeforeEach;

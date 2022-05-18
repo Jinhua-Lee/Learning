@@ -1,4 +1,4 @@
-package cn.io.output;
+package cn.io.bio.output;
 
 import java.io.OutputStream;
 

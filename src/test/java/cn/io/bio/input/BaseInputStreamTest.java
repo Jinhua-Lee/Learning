@@ -1,4 +1,4 @@
-package cn.io.input;
+package cn.io.bio.input;
 
 import java.io.InputStream;
 

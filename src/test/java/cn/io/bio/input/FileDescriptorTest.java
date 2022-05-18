@@ -1,4 +1,4 @@
-package cn.io.input;
+package cn.io.bio.input;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
