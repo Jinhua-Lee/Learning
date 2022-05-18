@@ -13,7 +13,6 @@ import java.util.Scanner;
  * 1) 读线程：接收server的消息并打印；<p>&emsp;
  * 2) 写线程：接收用户命令行输入，向server发送消息。
  *
- *
  * @author Jinhua-Lee
  * @version 1.0
  * @date 2022/5/17 22:59
@@ -28,7 +27,7 @@ public class ChatClient {
 
         // 开两个线程，一个收，一个发
         Thread rec = new Thread(new ReceiveProc(socket), "rec-proc");
-        Thread send = new Thread(new ReceiveProc(socket), "send-proc");
+        Thread send = new Thread(new SendProc(socket), "send-proc");
 
         rec.start();
         send.start();
@@ -50,12 +49,12 @@ public class ChatClient {
         @SneakyThrows
         @SuppressWarnings("all")
         public void run() {
-            while (true) {
-                BufferedInputStream bis = new BufferedInputStream(socket.getInputStream());
-                BufferedReader br = new BufferedReader(new InputStreamReader(bis));
+            BufferedInputStream bis = new BufferedInputStream(socket.getInputStream());
+            BufferedReader br = new BufferedReader(new InputStreamReader(bis));
 
-                String line = br.readLine();
-                log.info("[client] receive: {}", line);
+            String line;
+            while ((line = br.readLine()) != null) {
+                log.info("[receive proc] receive msg: {}", line);
             }
         }
     }
@@ -79,7 +78,7 @@ public class ChatClient {
             PrintWriter pw = new PrintWriter(socket.getOutputStream());
             Scanner sc = new Scanner(System.in);
             for (; ; ) {
-                System.out.println("please input msg: ");
+                System.out.println("[send proc] please input msg: ");
 
                 // 发
                 String line = sc.nextLine();

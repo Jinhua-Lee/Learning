@@ -89,7 +89,7 @@ public class ChatServer {
                     BufferedOutputStream bos = new BufferedOutputStream(os);
                     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(bos));
 
-                    bw.write(Thread.currentThread().getName() + "send msg: " + msg);
+                    bw.write(Thread.currentThread().getName() + " send msg: " + msg + "\n");
                     bw.flush();
                 }
             }
