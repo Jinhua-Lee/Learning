@@ -23,8 +23,8 @@ import java.util.List;
 @TestMethodOrder(value = MethodOrderer.OrderAnnotation.class)
 public class ObjectStreamTest {
 
-    private static final String objFilePath = "D:/io_test/object_test.txt";
-    private static final File objFile = new File(objFilePath);
+    private static final String OBJ_FILE_PATH = "D:/io_test/object_test.txt";
+    private static final File OBJ_FILE = new File(OBJ_FILE_PATH);
 
     private static ObjectMapper mapper;
 
@@ -39,10 +39,10 @@ public class ObjectStreamTest {
     @SuppressWarnings("all")
     public static void beforeAll() {
 
-        if (!objFile.exists() ||
-                (objFile.exists()
-                        && objFile.delete()
-                        && objFile.createNewFile())) {
+        if (!OBJ_FILE.exists() ||
+                (OBJ_FILE.exists()
+                        && OBJ_FILE.delete()
+                        && OBJ_FILE.createNewFile())) {
         }
 
         mapper = new ObjectMapper()
@@ -55,7 +55,7 @@ public class ObjectStreamTest {
     @SneakyThrows
     public void testSimpleOutAndIn() {
         // 1. 写出
-        ObjectOutputStream objOutStream = new ObjectOutputStream(new FileOutputStream(objFile));
+        ObjectOutputStream objOutStream = new ObjectOutputStream(new FileOutputStream(OBJ_FILE));
 
         log.info("[simple out]第一个对象：\n{}", mapper.writeValueAsString(LJH));
         objOutStream.writeObject(LJH);
@@ -67,7 +67,7 @@ public class ObjectStreamTest {
         objOutStream.close();
 
         // 2. 读入
-        ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream(objFile));
+        ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream(OBJ_FILE));
 
         StudentSerial readLjh = (StudentSerial) objInStream.readObject();
         StudentSerial readLwk = (StudentSerial) objInStream.readObject();
@@ -86,7 +86,7 @@ public class ObjectStreamTest {
     @SneakyThrows
     public void testWriteSameObj() {
         // 1. 写出
-        ObjectOutputStream objOutStream = new ObjectOutputStream(new FileOutputStream(objFile));
+        ObjectOutputStream objOutStream = new ObjectOutputStream(new FileOutputStream(OBJ_FILE));
 
         log.info("[duplicated out]第一个对象：\n{}", mapper.writeValueAsString(LJH));
         objOutStream.writeObject(LJH);
@@ -97,7 +97,7 @@ public class ObjectStreamTest {
         objOutStream.close();
 
         // 2. 读入
-        ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream(objFile));
+        ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream(OBJ_FILE));
 
         StudentSerial readLjh = (StudentSerial) objInStream.readObject();
         StudentSerial readLjh2 = (StudentSerial) objInStream.readObject();
@@ -117,7 +117,7 @@ public class ObjectStreamTest {
     @SuppressWarnings("unchecked")
     public void testReplaceObjOutAndIn() {
         // 1. 写出
-        ObjectOutputStream objOutStream = new ObjectOutputStream(new FileOutputStream(objFile));
+        ObjectOutputStream objOutStream = new ObjectOutputStream(new FileOutputStream(OBJ_FILE));
 
         log.info("out第一个替换对象：\n{}", mapper.writeValueAsString(LJH_REPLACE));
 
@@ -126,7 +126,7 @@ public class ObjectStreamTest {
         objOutStream.close();
 
         // 2. 读入
-        ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream(objFile));
+        ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream(OBJ_FILE));
 
         // 读上来的是数组
         List<Object> objList = (List<Object>) objInStream.readObject();
@@ -145,7 +145,7 @@ public class ObjectStreamTest {
     @AfterAll
     @DisplayName(value = "删除文件")
     public static void afterAll() {
-        if (objFile.exists() && objFile.delete()) {
+        if (OBJ_FILE.exists() && OBJ_FILE.delete()) {
             log.info("[delete file] success!");
         }
     }
