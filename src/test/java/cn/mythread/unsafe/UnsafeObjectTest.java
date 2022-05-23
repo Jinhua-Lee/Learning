@@ -9,33 +9,19 @@ import sun.misc.Unsafe;
 
 import java.io.*;
 import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
 
 /**
- * 【Unsafe】测试
+ * 【Unsafe】对象操作测试
  *
  * @author Jinhua-Lee
  * @version 1.0
- * @date 2022/5/23 22:08
+ * @date 2022/5/24 0:02
  */
 @Slf4j
 @TestMethodOrder(value = MethodOrderer.OrderAnnotation.class)
-public class UnsafeTest {
+public class UnsafeObjectTest {
 
-    /**
-     * unsafe，需要通过反射获取
-     */
-    private static Unsafe myUnsafe;
-    static {
-        try {
-            Field theUnsafe = Unsafe.class.getDeclaredField("theUnsafe");
-            theUnsafe.setAccessible(true);
-            myUnsafe = (Unsafe) theUnsafe.get(null);
-        } catch (NoSuchFieldException | IllegalAccessException ignored) {
-        } finally {
-            assert myUnsafe != null;
-        }
-    }
+    private static final Unsafe myUnsafe = MyUnsafeHolder.getMyUnsafe();
 
     /**
      * Unsafe对象操作用到
@@ -46,11 +32,6 @@ public class UnsafeTest {
         private String name;
         private int age;
     }
-
-    /* 数组类型的测试 */
-    private final String[] strings = {"hi", "hello"};
-    private final int strArrBaseOffset = myUnsafe.arrayBaseOffset(String[].class);
-    private final int strArrIndexScale = myUnsafe.arrayIndexScale(String[].class);
 
     /* 类类型的测试 */
     private static final String CLASS_FILE_PATH = "D:/io_test/class_file/";
@@ -71,39 +52,26 @@ public class UnsafeTest {
         oos.close();
     }
 
+    private static MyUnsafeUser myUnsafeUser;
+
     @Test
     @Order(value = 1)
-    @DisplayName(value = "测试数组相关API")
-    public void testArrayOperations() {
-        log.info("string数组的基本偏移量是{}, 增量地址是{}", strArrBaseOffset, strArrIndexScale);
-
-        // 1. 读数组的指定索引元素
-        final int index = 3;
-        String str = (String) myUnsafe.getObject(strings, strArrBaseOffset + (long) index * strArrIndexScale);
-        log.info("数组的第{}个元素是{}", index + 1, str);
-        Assertions.assertEquals(strings[index], str);
-
-        // 2. 写数组的第i个元素
-        String replace = "you!";
-        myUnsafe.putObject(strings, strArrBaseOffset + (long) index * strArrIndexScale, replace);
-        String reGet = (String) myUnsafe.getObject(strings, strArrBaseOffset + (long) index * strArrIndexScale);
-        log.info("再次获取数组的第{}个元素是{}", index + 1, reGet);
-        Assertions.assertEquals(replace, reGet);
+    @DisplayName(value = "测试【无需构造参数，进行对象实例化】")
+    @SneakyThrows
+    public void testInstantiationWithoutConstructor() {
+        // 1. 无需构造，进行对象实例化
+        myUnsafeUser = (MyUnsafeUser) myUnsafe.allocateInstance(MyUnsafeUser.class);
+        // 预测基本类型为默认值，引用类型为null
+        Assertions.assertNotNull(myUnsafeUser);
+        Assertions.assertNull(myUnsafeUser.getName());
+        Assertions.assertEquals(0, myUnsafeUser.age);
     }
 
     @Test
     @Order(value = 2)
-    @DisplayName(value = "测试对象相关API")
+    @DisplayName(value = "测试【对象字段读写】")
     @SneakyThrows
-    @SuppressWarnings("unchecked")
-    public void testObjectOperations() {
-
-        // 1. 无需构造，进行对象实例化
-        MyUnsafeUser myUnsafeUser = (MyUnsafeUser) myUnsafe.allocateInstance(MyUnsafeUser.class);
-        // 预测基本类型为默认值，引用类型为null
-        Assertions.assertNull(myUnsafeUser.getName());
-        Assertions.assertEquals(0, myUnsafeUser.age);
-
+    public void testFieldReadAndWrite() {
         // 2. 对象偏移及读写字段
         long nameFieldOffset = myUnsafe.objectFieldOffset(MyUnsafeUser.class.getDeclaredField("name"));
         long ageFieldOffset = myUnsafe.objectFieldOffset(MyUnsafeUser.class.getDeclaredField("age"));
@@ -111,12 +79,19 @@ public class UnsafeTest {
 
         // 跳过setter直接写，注意基本类型和引用类型的API
         String setName = "ljh";
-        Integer setAge = 26;
+        int setAge = 26;
         myUnsafe.putObject(myUnsafeUser, nameFieldOffset, setName);
         myUnsafe.putInt(myUnsafeUser, ageFieldOffset, setAge);
         Assertions.assertEquals(setName, myUnsafeUser.name);
         Assertions.assertEquals(setAge, myUnsafeUser.age);
+    }
 
+    @Test
+    @Order(value = 3)
+    @DisplayName(value = "测试【运行时读取文件流对象class，创建对象】")
+    @SneakyThrows
+    @SuppressWarnings("unchecked")
+    public void testObjectOperations() {
         // 3. 运行时读取类型，创建对象
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream(CLASS_FILE));
         // 加载类
@@ -125,6 +100,9 @@ public class UnsafeTest {
         ois.close();
         // 创建对象
         Constructor<MyUnsafeUser> stringIntCtr = myUnsafeUserClazz.getDeclaredConstructor(String.class, int.class);
-        stringIntCtr.newInstance("lwk", 25);
+        MyUnsafeUser reflectUser = stringIntCtr.newInstance("lwk", 23);
+        Assertions.assertNotNull(reflectUser);
+        Assertions.assertEquals("lwk", reflectUser.name);
+        Assertions.assertEquals(23, reflectUser.age);
     }
 }
