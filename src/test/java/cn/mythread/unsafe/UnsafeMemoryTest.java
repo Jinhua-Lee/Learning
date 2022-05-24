@@ -40,28 +40,27 @@ public class UnsafeMemoryTest {
     @DisplayName(value = "测试【从一个long内容读取两个int内容】")
     public void testGetIntFromLong() {
         // 1. 分配一个字节的内存
-        // TODO: 2022/5/24 调试字节数的问题
         long address = MY_UNSAFE.allocateMemory(8L);
 
-        // 2. 放置一个long类型的内容，调试内容是：180_dd0c_1c00
+        // 2. 放置一个long类型的内容，调试内容是：00_00_01_80_dd_0c_1c_00
         MY_UNSAFE.putLong(address, 1652976000000L);
         log.info("[get int from long] put a long value, its hex value str = {}",
                 Long.toHexString(MY_UNSAFE.getLong(address))
         );
 
-        // 3. 读取
-        //      3.1 读取前4字节int，调试内容是：dd0c_1c00
-        int firstInt = MY_UNSAFE.getInt(address);
-        log.info("[get int from long] first 4 bytes, the int value = {}, its hex value str = {}",
-                firstInt,
-                Integer.toHexString(firstInt)
+        // 3. 读取。证实了unsafe的put方法存放，默认是小端模式（低地址存低字节，高地址存高字节）
+        //      3.1 读取低地址4字节int，调试内容是：dd_0c_1c_00
+        int lowInt = MY_UNSAFE.getInt(address);
+        log.info("[get int from long] low 4 bytes, the int value = {}, its hex value str = {}",
+                lowInt,
+                Integer.toHexString(lowInt)
         );
 
-        //      3.2 读取后4字节int
-        int secondInt = MY_UNSAFE.getInt(address + 4);
-        log.info("[get int from long] first 4 bytes, the int value = {}, its hex value str = {}",
-                secondInt,
-                Integer.toHexString(secondInt)
+        //      3.2 读取后4字节int，调试内容是：00_00_01_80
+        int highInt = MY_UNSAFE.getInt(address + 4);
+        log.info("[get int from long] high 4 bytes, the int value = {}, its hex value str = {}",
+                highInt,
+                Integer.toHexString(highInt)
         );
     }
 
@@ -69,10 +68,9 @@ public class UnsafeMemoryTest {
     @DisplayName(value = "测试【从两个int内容，读取一个long内容】")
     public void testPutIntToLong() {
         // 1. 分配一个字节的内存
-        // TODO: 2022/5/24 调试字节数的问题
         long address = MY_UNSAFE.allocateMemory(8L);
 
-        // 2. 放置两个int类型的内容
+        // 2. 放置两个int类型的内容，低地址字节是00_01_e2_40，高地址字节是00_09_fb_f1
         MY_UNSAFE.putInt(address, 123456);
         MY_UNSAFE.putInt(address + 4, 654321);
 
