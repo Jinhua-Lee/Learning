@@ -15,12 +15,12 @@ import sun.misc.Unsafe;
 @TestMethodOrder(value = MethodOrderer.OrderAnnotation.class)
 public class UnsafeArrayTest {
 
-    private static final Unsafe myUnsafe = MyUnsafeHolder.getMyUnsafe();
+    private static final Unsafe MY_UNSAFE = MyUnsafeHolder.getMyUnsafe();
 
     /* 数组类型的测试 */
     private static final String[] STR_ARR = {"how", "old", "are", "you"};
-    private static final int STR_ARR_BASE_OFFSET = myUnsafe.arrayBaseOffset(String[].class);
-    private static final int STR_ARR_INDEX_SCALE = myUnsafe.arrayIndexScale(String[].class);
+    private static final int STR_ARR_BASE_OFFSET = MY_UNSAFE.arrayBaseOffset(String[].class);
+    private static final int STR_ARR_INDEX_SCALE = MY_UNSAFE.arrayIndexScale(String[].class);
 
     @Test
     @DisplayName(value = "输出基本偏移地址，增量地址")
@@ -34,7 +34,7 @@ public class UnsafeArrayTest {
     public void testArrayRead() {
         // 读数组的指定索引元素
         final int index = 3;
-        String str = (String) myUnsafe.getObject(STR_ARR,
+        String str = (String) MY_UNSAFE.getObject(STR_ARR,
                 STR_ARR_BASE_OFFSET + (long) index * STR_ARR_INDEX_SCALE);
         log.info("数组的第{}个元素是{}", index + 1, str);
         Assertions.assertEquals(STR_ARR[index], str);
@@ -47,8 +47,8 @@ public class UnsafeArrayTest {
         // 写数组的第i个元素
         final int index = 3;
         String replace = "you!";
-        myUnsafe.putObject(STR_ARR, STR_ARR_BASE_OFFSET + (long) index * STR_ARR_INDEX_SCALE, replace);
-        String reGet = (String) myUnsafe.getObject(STR_ARR,
+        MY_UNSAFE.putObject(STR_ARR, STR_ARR_BASE_OFFSET + (long) index * STR_ARR_INDEX_SCALE, replace);
+        String reGet = (String) MY_UNSAFE.getObject(STR_ARR,
                 STR_ARR_BASE_OFFSET + (long) index * STR_ARR_INDEX_SCALE);
         log.info("再次获取数组的第{}个元素是{}", index + 1, reGet);
         Assertions.assertEquals(replace, reGet);

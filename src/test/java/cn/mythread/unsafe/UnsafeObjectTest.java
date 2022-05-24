@@ -21,7 +21,7 @@ import java.lang.reflect.Constructor;
 @TestMethodOrder(value = MethodOrderer.OrderAnnotation.class)
 public class UnsafeObjectTest {
 
-    private static final Unsafe myUnsafe = MyUnsafeHolder.getMyUnsafe();
+    private static final Unsafe MY_UNSAFE = MyUnsafeHolder.getMyUnsafe();
 
     /**
      * Unsafe对象操作用到
@@ -60,7 +60,7 @@ public class UnsafeObjectTest {
     @SneakyThrows
     public void testInstantiationWithoutConstructor() {
         // 1. 无需构造，进行对象实例化
-        myUnsafeUser = (MyUnsafeUser) myUnsafe.allocateInstance(MyUnsafeUser.class);
+        myUnsafeUser = (MyUnsafeUser) MY_UNSAFE.allocateInstance(MyUnsafeUser.class);
         // 预测基本类型为默认值，引用类型为null
         Assertions.assertNotNull(myUnsafeUser);
         Assertions.assertNull(myUnsafeUser.getName());
@@ -73,15 +73,15 @@ public class UnsafeObjectTest {
     @SneakyThrows
     public void testFieldReadAndWrite() {
         // 2. 对象偏移及读写字段
-        long nameFieldOffset = myUnsafe.objectFieldOffset(MyUnsafeUser.class.getDeclaredField("name"));
-        long ageFieldOffset = myUnsafe.objectFieldOffset(MyUnsafeUser.class.getDeclaredField("age"));
+        long nameFieldOffset = MY_UNSAFE.objectFieldOffset(MyUnsafeUser.class.getDeclaredField("name"));
+        long ageFieldOffset = MY_UNSAFE.objectFieldOffset(MyUnsafeUser.class.getDeclaredField("age"));
         log.info("name字段的偏移值为{}, age字段的偏移值为{}", nameFieldOffset, ageFieldOffset);
 
         // 跳过setter直接写，注意基本类型和引用类型的API
         String setName = "ljh";
         int setAge = 26;
-        myUnsafe.putObject(myUnsafeUser, nameFieldOffset, setName);
-        myUnsafe.putInt(myUnsafeUser, ageFieldOffset, setAge);
+        MY_UNSAFE.putObject(myUnsafeUser, nameFieldOffset, setName);
+        MY_UNSAFE.putInt(myUnsafeUser, ageFieldOffset, setAge);
         Assertions.assertEquals(setName, myUnsafeUser.name);
         Assertions.assertEquals(setAge, myUnsafeUser.age);
     }
