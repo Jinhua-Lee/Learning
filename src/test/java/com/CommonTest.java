@@ -1,5 +1,7 @@
 package com;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -47,5 +49,29 @@ public class CommonTest {
         // A,B,C,D四个字节区域，交换后变为D,C,B,A
         System.out.println("intReversed = " + intReversed);
         Assertions.assertEquals(1 << 24, intReversed);
+    }
+
+    @Test
+    @DisplayName(value = "测试【引用类型】数组复制，结果是仅复制了一层引用")
+    public void testSystemArrayCopyReference() {
+
+        @Getter
+        @AllArgsConstructor
+        class User {
+            String name;
+            Integer age;
+        }
+
+        User[] srcUserArr = new User[3];
+        srcUserArr[0] = new User("ljh", 26);
+        srcUserArr[1] = new User("lwk", 23);
+
+        User[] dstUserArr = new User[3];
+        System.arraycopy(srcUserArr, 0, dstUserArr, 1, 2);
+
+        // 预测，System的数组复制也仅仅是复制了一层引用
+        String undefined = "undefined";
+        dstUserArr[1].name = undefined;
+        Assertions.assertEquals(undefined, srcUserArr[0].name);
     }
 }
