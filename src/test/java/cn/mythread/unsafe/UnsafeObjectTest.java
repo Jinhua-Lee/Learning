@@ -73,15 +73,15 @@ public class UnsafeObjectTest {
     @SneakyThrows
     public void testFieldReadAndWrite() {
         // 2. 对象偏移及读写字段
-        long nameFieldOffset = MY_UNSAFE.objectFieldOffset(MyUnsafeUser.class.getDeclaredField("name"));
-        long ageFieldOffset = MY_UNSAFE.objectFieldOffset(MyUnsafeUser.class.getDeclaredField("age"));
-        log.info("name字段的偏移值为{}, age字段的偏移值为{}", nameFieldOffset, ageFieldOffset);
+        long nameOffset = MY_UNSAFE.objectFieldOffset(MyUnsafeUser.class.getDeclaredField("name"));
+        long ageOffset = MY_UNSAFE.objectFieldOffset(MyUnsafeUser.class.getDeclaredField("age"));
+        log.info("name字段的偏移值为{}, age字段的偏移值为{}", nameOffset, ageOffset);
 
         // 跳过setter直接写，注意基本类型和引用类型的API
         String setName = "ljh";
         int setAge = 26;
-        MY_UNSAFE.putObject(myUnsafeUser, nameFieldOffset, setName);
-        MY_UNSAFE.putInt(myUnsafeUser, ageFieldOffset, setAge);
+        MY_UNSAFE.putObject(myUnsafeUser, nameOffset, setName);
+        MY_UNSAFE.putInt(myUnsafeUser, ageOffset, setAge);
         Assertions.assertEquals(setName, myUnsafeUser.name);
         Assertions.assertEquals(setAge, myUnsafeUser.age);
     }
