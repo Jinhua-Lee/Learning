@@ -2,23 +2,22 @@ package com.se.validation;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Valid;
 import javax.validation.Validation;
 import javax.validation.Validator;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.util.Set;
 
 /**
  * javax.validation的校验
- * Todo：源码总结
- * 必须加入包
  *
  * @author Jinhua
  */
-@Valid
 @Data
 @AllArgsConstructor
 public class Student {
@@ -36,19 +35,33 @@ public class Student {
     private Integer age;
 
     /**
-     * 成绩
+     * Valid注解用作嵌套校验
      */
-    private Double score;
-
-    /**
-     * 邮箱
-     */
-    private String email;
+    @Valid
+    private StuExtInfo stuExtInfo;
 
     public static void main(String[] args) {
-        Student stu = new Student("小明", -1, 97.3d, "123@qq.com");
+        Student stu = new Student("小明", -1, new StuExtInfo(104.2d, "1@qq.com"));
         Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
         Set<ConstraintViolation<Student>> validate = validator.validate(stu);
         validate.forEach(System.out::println);
+    }
+
+    @Getter
+    @AllArgsConstructor
+    private static class StuExtInfo {
+
+        /**
+         * 成绩
+         */
+        @Min(value = 0, message = "成绩必须非负")
+        @Max(value = 100, message = "成绩最高是100")
+        private Double score;
+
+        /**
+         * 邮箱
+         */
+        @Email(regexp = "^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$")
+        private String email;
     }
 }
