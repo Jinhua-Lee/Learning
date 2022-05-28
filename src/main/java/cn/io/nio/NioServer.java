@@ -19,16 +19,18 @@ import java.util.Iterator;
 public class NioServer {
 
     public static void main(String[] args) throws IOException {
-        // 1. 【通道】
-        //      1.1 打开【通道】
+
+        // 1. 【选择器】
+        Selector selector = Selector.open();
+
+        // 2. 【通道】
+        //      2.1 打开【通道】
         ServerSocketChannel serverChannel = ServerSocketChannel.open();
-        //      1.2 非阻塞模式
+        //      2.2 非阻塞模式
         serverChannel.configureBlocking(false);
-        //      1.3 绑定服务端口
+        //      2.3 绑定服务端口
         serverChannel.bind(new InetSocketAddress(8082));
 
-        // 2. 【选择器】
-        Selector selector = Selector.open();
         // 3. 【通道】都注册到【选择器】
         serverChannel.register(selector, SelectionKey.OP_ACCEPT);
         // 4. 【选择器】轮询
