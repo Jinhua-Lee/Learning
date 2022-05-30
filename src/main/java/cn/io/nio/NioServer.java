@@ -40,17 +40,17 @@ public class NioServer {
             while (itr.hasNext()) {
                 SelectionKey sKey = itr.next();
 
-                // 连接事件
+                // 接受事件，做选择键的初始化
                 if (sKey.isAcceptable()) {
-                    // 【客户端通道】
+                    // 连接事件，需要产生一个与客户端对应的channel
                     SocketChannel accept = serverChannel.accept();
                     accept.configureBlocking(false);
                     // 【客户端通道】注册到【选择器】
                     accept.register(selector, SelectionKey.OP_READ);
 
-                    // 读事件
+                    // 读事件，通过选择键，拿它channel中的数据。
                 } else if (sKey.isReadable()) {
-                    // 【通道】
+                    // 可读事件，则从选择键中拿取Channel就可以了
                     SocketChannel channel = (SocketChannel) sKey.channel();
 
                     ByteBuffer bBuff = ByteBuffer.allocate(1024);
