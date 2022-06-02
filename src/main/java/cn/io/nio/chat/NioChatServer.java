@@ -71,8 +71,10 @@ public class NioChatServer {
     }
 
     private void transferToOtherChannel(SocketChannel thisChannel, String msg) throws IOException {
-        for (SelectionKey key : selector.selectedKeys()) {
-            SocketChannel channel = (SocketChannel) key.channel();
+        for (SelectionKey key : selector.keys()) {
+            if (!(key.channel() instanceof WritableByteChannel channel)) {
+                continue;
+            }
             if (!Objects.equals(thisChannel, channel)) {
                 ByteBuffer buffer = ByteBuffer.wrap(msg.getBytes(StandardCharsets.UTF_8));
                 channel.write(buffer);
