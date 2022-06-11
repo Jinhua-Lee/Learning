@@ -2,7 +2,7 @@ package com.ee.jedis;
 
 import org.junit.Test;
 import redis.clients.jedis.Jedis;
-import redis.clients.jedis.Tuple;
+import redis.clients.jedis.resps.Tuple;
 
 import java.util.*;
 
@@ -51,9 +51,7 @@ public class JavaRedisTest {
         System.out.println("3. key类型测试");
         Set<String> keys = jedis.keys("*");
         System.out.println("key的个数： " + keys.size());
-        Iterator<String> it = keys.iterator();
-        while (it.hasNext()) {
-            String key = it.next();
+        for (String key : keys) {
             System.out.println(key);
         }
     }
@@ -97,11 +95,9 @@ public class JavaRedisTest {
         //执行交集查询,对category_服装、brand_阿迪达斯、update_time求交集即可
         jedis.zinterstore("search_result","category_服装","brand_阿迪达斯","update_time");
 
-        Set<Tuple> first = jedis.zrangeWithScores("search_result",0,-1);
-        Iterator iterator = first.iterator();
-        while (iterator.hasNext()){
-            Tuple temp = (Tuple)iterator.next();
-            System.out.println("成员："+temp.getElement()+"--"+"分值："+temp.getScore());
+        List<Tuple> first = jedis.zrangeWithScores("search_result",0,-1);
+        for (Tuple temp : first) {
+            System.out.println("成员：" + temp.getElement() + "--" + "分值：" + temp.getScore());
         }
     }
 

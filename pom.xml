@@ -64,20 +64,20 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.17</version>
+            <version>8.0.29</version>
         </dependency>
         <!--postgres JDBC-->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.2.9</version>
+            <version>42.3.4</version>
         </dependency>
 
         <!--apache通用工具-->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.9</version>
+            <version>3.12.0</version>
         </dependency>
         <dependency>
             <groupId>com.mchange</groupId>
@@ -97,7 +97,7 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-dbcp2</artifactId>
-            <version>2.7.0</version>
+            <version>2.9.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -107,7 +107,7 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.6</version>
+            <version>2.11.0</version>
         </dependency>
 
         <!--XML解析-->
@@ -119,14 +119,14 @@
         <dependency>
             <groupId>com.thoughtworks.xstream</groupId>
             <artifactId>xstream</artifactId>
-            <version>1.4.11.1</version>
+            <version>1.4.19</version>
         </dependency>
 
         <!--Lombok实体类简化工具-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.20</version>
+            <version>1.18.24</version>
             <scope>provided</scope>
         </dependency>
 
@@ -134,13 +134,13 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>4.13.2</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>5.4.2</version>
+            <version>5.8.2</version>
             <scope>compile</scope>
         </dependency>
 
@@ -148,7 +148,7 @@
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>6.0.18.Final</version>
+            <version>7.0.4.Final</version>
         </dependency>
         <!--EL-->
         <dependency>
@@ -160,7 +160,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
+            <version>4.0.1</version>
         </dependency>
 
         <!--消息队列-->
@@ -174,14 +174,14 @@
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
-            <version>3.1.0</version>
+            <version>4.2.3</version>
         </dependency>
 
         <!--excel工具-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>easyexcel</artifactId>
-            <version>2.2.6</version>
+            <version>3.1.1</version>
         </dependency>
 
         <!--Http客户端工具-->
@@ -195,7 +195,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
-            <version>1.1.21</version>
+            <version>1.2.10</version>
         </dependency>
 
         <!--Http工具-->
@@ -209,19 +209,19 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>31.0.1-jre</version>
+            <version>31.1-jre</version>
         </dependency>
 
         <!--Jackson Json工具-->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.12.2</version>
+            <version>2.13.3</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>5.2.2.RELEASE</version>
+            <version>5.3.20</version>
         </dependency>
 
         <!-- mybatis half-orm-->
@@ -240,7 +240,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.32</version>
+            <version>1.7.36</version>
         </dependency>
 
         <!--CgLib代理-->
