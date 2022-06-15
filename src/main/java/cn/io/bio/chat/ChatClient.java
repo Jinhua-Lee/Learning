@@ -20,10 +20,13 @@ import java.util.Scanner;
 @Slf4j
 public class ChatClient {
 
+    private static final String SERV_ADDR = "127.0.0.1";
+    private static final int SERV_PORT = 8081;
+
     @SuppressWarnings("all")
     public static void main(String[] args) throws IOException {
         // 创建客户端连接
-        Socket socket = BaseSocketUtil.createSocket4Client();
+        Socket socket = BaseSocketUtil.createSocket4Client(SERV_ADDR, SERV_PORT);
 
         // 开两个线程，一个收，一个发
         Thread rec = new Thread(new ReceiveProc(socket), "rec-proc");

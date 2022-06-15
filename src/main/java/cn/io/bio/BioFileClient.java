@@ -17,9 +17,12 @@ import java.net.Socket;
 @Slf4j
 public class BioFileClient {
 
+    private static final String SERV_ADDR = "127.0.0.1";
+    private static final int SERV_PORT = 8081;
+
     public static void main(String[] args) throws IOException {
         // 1. 创建服务端的socket，开启端口监听
-        Socket socket = BaseSocketUtil.createSocket4Client();
+        Socket socket = BaseSocketUtil.createSocket4Client(SERV_ADDR, SERV_PORT);
 
         String uploadFilePath = "D:/io_test/bio_file/刻晴a.jpg";
         InputStream is = new FileInputStream(uploadFilePath);

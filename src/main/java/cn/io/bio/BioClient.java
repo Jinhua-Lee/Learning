@@ -19,10 +19,13 @@ import java.util.Scanner;
 @Slf4j
 public class BioClient {
 
-    @SuppressWarnings("all")
+    private static final String SERV_ADDR = "172.17.6.117";
+    private static final int SERV_PORT = 8081;
+
+    @SuppressWarnings(value = "all")
     public static void main(String[] args) throws IOException {
         // 创建客户端连接
-        Socket socket = BaseSocketUtil.createSocket4Client();
+        Socket socket = BaseSocketUtil.createSocket4Client(SERV_ADDR, SERV_PORT);
 
 //        writeOnce(socket.getOutputStream());
         // 读，依赖于TCP的（全）双工
@@ -37,6 +40,7 @@ public class BioClient {
      *
      * @param os 字节输出流
      */
+    @SuppressWarnings(value = "unused")
     private static void writeOnce(OutputStream os) {
         PrintWriter pw = new PrintWriter(os);
         pw.println("Hello server, I am client! ");
