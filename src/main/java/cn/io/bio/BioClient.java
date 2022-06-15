@@ -19,7 +19,7 @@ import java.util.Scanner;
 @Slf4j
 public class BioClient {
 
-    private static final String SERV_ADDR = "172.17.6.117";
+    private static final String SERV_ADDR = "127.0.0.1";
     private static final int SERV_PORT = 8081;
 
     @SuppressWarnings(value = "all")
