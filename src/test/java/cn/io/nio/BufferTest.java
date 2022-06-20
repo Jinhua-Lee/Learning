@@ -21,7 +21,7 @@ public class BufferTest {
     @DisplayName(value = "向缓冲区放入初始化数据")
     public void beforeEach() {
         // 1. 初始化缓冲区
-        bBuf = ByteBuffer.allocateDirect(10);
+        bBuf = ByteBuffer.allocate(10);
         Assertions.assertEquals(0, bBuf.position());
         Assertions.assertEquals(10, bBuf.limit());
         Assertions.assertEquals(10, bBuf.capacity());
@@ -50,5 +50,17 @@ public class BufferTest {
         bBuf.clear();
         Assertions.assertEquals(0, bBuf.position());
         Assertions.assertEquals(10, bBuf.limit());
+    }
+
+    @Test
+    @Order(value = 3)
+    @DisplayName(value = "测试【分片slice】")
+    public void testSlice() {
+        ByteBuffer slice = bBuf.slice();
+        String content = "yyDs";
+        // put内容到分片
+        slice.put(content.getBytes(StandardCharsets.UTF_8));
+        // 如果成立，则说明，指向同一内存区域
+        Assertions.assertTrue(new String(bBuf.array(), 0, bBuf.limit()).contains(content));
     }
 }
