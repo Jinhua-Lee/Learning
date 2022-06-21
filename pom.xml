@@ -257,10 +257,18 @@
             <version>0.16</version>
         </dependency>
 
+        <!-- 密码安全相关库 -->
         <dependency>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcprov-jdk15on</artifactId>
             <version>1.70</version>
+        </dependency>
+
+        <!-- Netty -->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>4.1.78.Final</version>
         </dependency>
 
     </dependencies>
