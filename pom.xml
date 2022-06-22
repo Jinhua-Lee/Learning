@@ -55,6 +55,12 @@
                 </includes>
                 <filtering>true</filtering>
             </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>META-INF/</include>
+                </includes>
+            </resource>
         </resources>
     </build>
 
