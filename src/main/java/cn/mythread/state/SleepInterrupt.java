@@ -11,6 +11,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class SleepInterrupt {
 
+    @SuppressWarnings("all")
     public static void main(String[] args) {
         Thread th = new Thread(() -> {
             try {
@@ -19,7 +20,7 @@ public class SleepInterrupt {
                 TimeUnit.SECONDS.sleep(1L);
                 System.out.println("2. 已经完成了休眠.");
             } catch (InterruptedException e) {
-                System.out.println("3. 休眠被终止.");
+                System.out.println("3. 休眠被提前终止.");
                 // 返回方法调用处
                 return;
             }
