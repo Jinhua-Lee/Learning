@@ -32,7 +32,7 @@ public enum MyCharacter {
     };
 
     static {
-        SharedSecrets.INSTANCE.secretCharacter = MyCharacter::getPhrase;
+        MySharedSecrets.INSTANCE.secretCharacter = MyCharacter::getPhrase;
     }
 
     /**

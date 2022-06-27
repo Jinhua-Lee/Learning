@@ -7,8 +7,8 @@ package com.se.privilege.secrets;
  * @version 1.0
  * @date 2022/5/19 16:44
  */
-public final class SharedSecrets {
-    public static SharedSecrets INSTANCE = new SharedSecrets();
+public final class MySharedSecrets {
+    public static MySharedSecrets INSTANCE = new MySharedSecrets();
 
     /**
      * 如何初始化这个变量
@@ -18,6 +18,6 @@ public final class SharedSecrets {
     /**
      * 懒汉单例
      */
-    private SharedSecrets() {
+    private MySharedSecrets() {
     }
 }

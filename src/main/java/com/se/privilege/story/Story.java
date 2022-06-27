@@ -1,7 +1,7 @@
 package com.se.privilege.story;
 
 import com.se.privilege.character.MyCharacter;
-import com.se.privilege.secrets.SharedSecrets;
+import com.se.privilege.secrets.MySharedSecrets;
 
 /**
  * 故事
@@ -20,6 +20,6 @@ public final class Story {
     public void introduce(MyCharacter myCharacter) {
         System.out.println(myCharacter.name() + " enters the room and says: "
                 // 能使用不同包下的default方法
-                + SharedSecrets.INSTANCE.secretCharacter.getPhrase(myCharacter));
+                + MySharedSecrets.INSTANCE.secretCharacter.getPhrase(myCharacter));
     }
 }
