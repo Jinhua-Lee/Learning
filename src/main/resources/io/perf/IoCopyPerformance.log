@@ -1,0 +1,209 @@
+# JMH version: 1.35
+# VM version: JDK 18.0.1.1, Java HotSpot(TM) 64-Bit Server VM, 18.0.1.1+2-6
+# VM invoker: /usr/java/jdk-18.0.1.1/bin/java
+# VM options: -ea -Didea.test.cyclic.buffer.size=1048576 -javaagent:/usr/local/idea-IU-212.5284.40/lib/idea_rt.jar=32771:/usr/local/idea-IU-212.5284.40/bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 10 s each
+# Measurement: 5 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: cn.io.perf.IoCopyPerformanceTest.readMmap
+
+# Run progress: 0.00% complete, ETA 00:07:30
+# Fork: 1 of 1
+# Warmup Iteration   1: ≈ 10⁻⁴ s/op
+# Warmup Iteration   2: [11.181s][warning][os,thread] Failed to start thread "GC Thread#3" - pthread_create failed (EAGAIN) for attributes: stacksize: 1024k, guardsize: 4k, detached.
+[11.182s][error  ][gc,task  ] GC(2) Failed to create worker thread
+≈ 10⁻⁴ s/op
+# Warmup Iteration   3: ≈ 10⁻⁴ s/op
+# Warmup Iteration   4: ≈ 10⁻⁴ s/op
+# Warmup Iteration   5: ≈ 10⁻⁴ s/op
+Iteration   1: ≈ 10⁻⁴ s/op
+Iteration   2: ≈ 10⁻⁴ s/op
+Iteration   3: ≈ 10⁻⁴ s/op
+Iteration   4: ≈ 10⁻⁴ s/op
+Iteration   5: ≈ 10⁻⁴ s/op
+
+
+Result "cn.io.perf.IoCopyPerformanceTest.readMmap":
+  ≈ 10⁻⁴ s/op
+
+
+# JMH version: 1.35
+# VM version: JDK 18.0.1.1, Java HotSpot(TM) 64-Bit Server VM, 18.0.1.1+2-6
+# VM invoker: /usr/java/jdk-18.0.1.1/bin/java
+# VM options: -ea -Didea.test.cyclic.buffer.size=1048576 -javaagent:/usr/local/idea-IU-212.5284.40/lib/idea_rt.jar=32771:/usr/local/idea-IU-212.5284.40/bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 10 s each
+# Measurement: 5 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: cn.io.perf.IoCopyPerformanceTest.readNormal
+
+# Run progress: 16.67% complete, ETA 00:06:19
+# Fork: 1 of 1
+# Warmup Iteration   1: 0.017 s/op
+# Warmup Iteration   2: 0.017 s/op
+# Warmup Iteration   3: 0.016 s/op
+# Warmup Iteration   4: 0.016 s/op
+# Warmup Iteration   5: 0.016 s/op
+Iteration   1: 0.016 s/op
+Iteration   2: 0.016 s/op
+Iteration   3: 0.016 s/op
+Iteration   4: 0.016 s/op
+Iteration   5: 0.016 s/op
+
+
+Result "cn.io.perf.IoCopyPerformanceTest.readNormal":
+  0.016 ±(99.9%) 0.001 s/op [Average]
+  (min, avg, max) = (0.016, 0.016, 0.016), stdev = 0.001
+  CI (99.9%): [0.016, 0.017] (assumes normal distribution)
+
+
+# JMH version: 1.35
+# VM version: JDK 18.0.1.1, Java HotSpot(TM) 64-Bit Server VM, 18.0.1.1+2-6
+# VM invoker: /usr/java/jdk-18.0.1.1/bin/java
+# VM options: -ea -Didea.test.cyclic.buffer.size=1048576 -javaagent:/usr/local/idea-IU-212.5284.40/lib/idea_rt.jar=32771:/usr/local/idea-IU-212.5284.40/bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 10 s each
+# Measurement: 5 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: cn.io.perf.IoCopyPerformanceTest.readSendfile
+
+# Run progress: 33.33% complete, ETA 00:05:03
+# Fork: 1 of 1
+# Warmup Iteration   1: ≈ 10⁻⁴ s/op
+# Warmup Iteration   2: ≈ 10⁻⁴ s/op
+# Warmup Iteration   3: ≈ 10⁻⁴ s/op
+# Warmup Iteration   4: ≈ 10⁻⁴ s/op
+# Warmup Iteration   5: ≈ 10⁻⁴ s/op
+Iteration   1: ≈ 10⁻⁴ s/op
+Iteration   2: ≈ 10⁻⁴ s/op
+Iteration   3: ≈ 10⁻⁴ s/op
+Iteration   4: ≈ 10⁻⁴ s/op
+Iteration   5: ≈ 10⁻⁴ s/op
+
+
+Result "cn.io.perf.IoCopyPerformanceTest.readSendfile":
+  ≈ 10⁻⁴ s/op
+
+
+# JMH version: 1.35
+# VM version: JDK 18.0.1.1, Java HotSpot(TM) 64-Bit Server VM, 18.0.1.1+2-6
+# VM invoker: /usr/java/jdk-18.0.1.1/bin/java
+# VM options: -ea -Didea.test.cyclic.buffer.size=1048576 -javaagent:/usr/local/idea-IU-212.5284.40/lib/idea_rt.jar=32771:/usr/local/idea-IU-212.5284.40/bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 10 s each
+# Measurement: 5 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: cn.io.perf.IoCopyPerformanceTest.readWriteMmap
+
+# Run progress: 50.00% complete, ETA 00:03:47
+# Fork: 1 of 1
+# Warmup Iteration   1: 0.002 s/op
+# Warmup Iteration   2: 0.002 s/op
+# Warmup Iteration   3: 0.002 s/op
+# Warmup Iteration   4: 0.002 s/op
+# Warmup Iteration   5: 0.002 s/op
+Iteration   1: 0.002 s/op
+Iteration   2: 0.002 s/op
+Iteration   3: 0.003 s/op
+Iteration   4: 0.002 s/op
+Iteration   5: 0.002 s/op
+
+
+Result "cn.io.perf.IoCopyPerformanceTest.readWriteMmap":
+  0.002 ±(99.9%) 0.001 s/op [Average]
+  (min, avg, max) = (0.002, 0.002, 0.003), stdev = 0.001
+  CI (99.9%): [0.001, 0.003] (assumes normal distribution)
+
+
+# JMH version: 1.35
+# VM version: JDK 18.0.1.1, Java HotSpot(TM) 64-Bit Server VM, 18.0.1.1+2-6
+# VM invoker: /usr/java/jdk-18.0.1.1/bin/java
+# VM options: -ea -Didea.test.cyclic.buffer.size=1048576 -javaagent:/usr/local/idea-IU-212.5284.40/lib/idea_rt.jar=32771:/usr/local/idea-IU-212.5284.40/bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 10 s each
+# Measurement: 5 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: cn.io.perf.IoCopyPerformanceTest.readWriteNormal
+
+# Run progress: 66.67% complete, ETA 00:02:34
+# Fork: 1 of 1
+# Warmup Iteration   1: 0.028 s/op
+# Warmup Iteration   2: 0.028 s/op
+# Warmup Iteration   3: 0.028 s/op
+# Warmup Iteration   4: 0.028 s/op
+# Warmup Iteration   5: 0.028 s/op
+Iteration   1: 0.028 s/op
+Iteration   2: 0.028 s/op
+Iteration   3: 0.028 s/op
+Iteration   4: 0.028 s/op
+Iteration   5: 0.028 s/op
+
+
+Result "cn.io.perf.IoCopyPerformanceTest.readWriteNormal":
+  0.028 ±(99.9%) 0.001 s/op [Average]
+  (min, avg, max) = (0.028, 0.028, 0.028), stdev = 0.001
+  CI (99.9%): [0.028, 0.028] (assumes normal distribution)
+
+
+# JMH version: 1.35
+# VM version: JDK 18.0.1.1, Java HotSpot(TM) 64-Bit Server VM, 18.0.1.1+2-6
+# VM invoker: /usr/java/jdk-18.0.1.1/bin/java
+# VM options: -ea -Didea.test.cyclic.buffer.size=1048576 -javaagent:/usr/local/idea-IU-212.5284.40/lib/idea_rt.jar=32771:/usr/local/idea-IU-212.5284.40/bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 10 s each
+# Measurement: 5 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: cn.io.perf.IoCopyPerformanceTest.readWriteSendfile
+
+# Run progress: 83.33% complete, ETA 00:01:17
+# Fork: 1 of 1
+# Warmup Iteration   1: ≈ 10⁻⁴ s/op
+# Warmup Iteration   2: ≈ 10⁻⁴ s/op
+# Warmup Iteration   3: ≈ 10⁻⁴ s/op
+# Warmup Iteration   4: ≈ 10⁻⁴ s/op
+# Warmup Iteration   5: ≈ 10⁻⁴ s/op
+Iteration   1: ≈ 10⁻⁴ s/op
+Iteration   2: ≈ 10⁻⁴ s/op
+Iteration   3: ≈ 10⁻⁴ s/op
+Iteration   4: ≈ 10⁻⁴ s/op
+Iteration   5: ≈ 10⁻⁴ s/op
+
+
+Result "cn.io.perf.IoCopyPerformanceTest.readWriteSendfile":
+  ≈ 10⁻⁴ s/op
+
+
+# Run complete. Total time: 00:07:44
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+NOTE: Current JVM experimentally supports Compiler Blackholes, and they are in use. Please exercise
+extra caution when trusting the results, look into the generated code to check the benchmark still
+works, and factor in a small probability of new VM bugs. Additionally, while comparisons between
+different JVMs are already problematic, the performance difference caused by different Blackhole
+modes can be very significant. Please make sure you use the consistent Blackhole mode for comparisons.
+
+Benchmark                                Mode  Cnt   Score    Error  Units
+IoCopyPerformanceTest.readMmap           avgt    5  ≈ 10⁻⁴            s/op
+IoCopyPerformanceTest.readNormal         avgt    5   0.016 ±  0.001   s/op
+IoCopyPerformanceTest.readSendfile       avgt    5  ≈ 10⁻⁴            s/op
+IoCopyPerformanceTest.readWriteMmap      avgt    5   0.002 ±  0.001   s/op
+IoCopyPerformanceTest.readWriteNormal    avgt    5   0.028 ±  0.001   s/op
+IoCopyPerformanceTest.readWriteSendfile  avgt    5  ≈ 10⁻⁴            s/op
