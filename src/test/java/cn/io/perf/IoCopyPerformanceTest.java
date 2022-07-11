@@ -5,7 +5,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openjdk.jmh.annotations.Benchmark;
+import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Measurement;
+import org.openjdk.jmh.annotations.Mode;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
@@ -28,6 +30,7 @@ import java.nio.file.Paths;
  * @date 2021/9/28
  */
 @Measurement(iterations = 5, time = 5)
+@BenchmarkMode(value = Mode.AverageTime)
 @SuppressWarnings("unused")
 public class IoCopyPerformanceTest {
 
@@ -38,7 +41,7 @@ public class IoCopyPerformanceTest {
     @BeforeAll
     public static void beforeAll() {
         try (BufferedWriter bw = Files.newBufferedWriter(Paths.get(FILE_IN))) {
-            for (int i = 0; i < 100000; i++) {
+            for (int i = 0; i < 100_000; i++) {
                 for (int j = 0; j < 10; j++) {
                     bw.write(String.valueOf(j));
                 }
@@ -48,7 +51,7 @@ public class IoCopyPerformanceTest {
 
     @SneakyThrows
     @Test
-    @DisplayName(value = "多种IO的性能测试")
+    @DisplayName(value = "多种IO的性能测试, JMH要求不能以Debug方式执行，会导致连接失败")
     public void testPerformance() {
         Options opt = new OptionsBuilder()
                 .include(IoCopyPerformanceTest.class.getSimpleName())
