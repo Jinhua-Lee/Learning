@@ -8,6 +8,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author Jinhua
@@ -73,5 +76,17 @@ public class CommonTest {
         String undefined = "undefined";
         dstUserArr[1].name = undefined;
         Assertions.assertEquals(undefined, srcUserArr[0].name);
+    }
+
+    @Test
+    @DisplayName(value = "测试List的索引遍历是否会引起fail-fast")
+    public void testListSize() {
+        List<Long> longList = new ArrayList<>(Arrays.asList(1L, 2L, 3L, 4L, 5L, 6L));
+        for (int i = 0; i < longList.size(); i++) {
+            Long aLong = longList.get(i);
+            if (aLong % 3 == 0) {
+                longList.remove(aLong);
+            }
+        }
     }
 }
