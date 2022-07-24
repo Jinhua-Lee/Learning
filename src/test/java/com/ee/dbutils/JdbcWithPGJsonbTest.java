@@ -37,7 +37,7 @@ public class JdbcWithPGJsonbTest {
                                        where records.id = cur.parent_id)
                 select id, org_type, name, parent_id, biz_set
                 from rec;""";
-        // 预编译语句不支持jsonb操作符
+        // 预编译语句不支持jsonb操作符，暂未确定，可能是会话相关的原因。
         SingleJdbcConnectionUtil.printMap(SingleJdbcConnectionUtil.executePstQuery(pstSql, 1, "项目_1", 1));
     }
 }
