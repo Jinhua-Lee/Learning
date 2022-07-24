@@ -11,6 +11,7 @@ import java.util.*;
  * @author Jinhua
  */
 @Slf4j
+@SuppressWarnings("unused")
 public class SingleJdbcConnectionUtil {
     /**
      * 四大参数
@@ -20,10 +21,10 @@ public class SingleJdbcConnectionUtil {
     private static final String USER = PropertiesResolver.getValue("jdbc.user");
     private static final String PASSWORD = PropertiesResolver.getValue("jdbc.password");
 
-    private static final ThreadLocal<Connection> THREAD_LOCAL;
+    private static final ThreadLocal<Connection> LOCAL_CONN;
 
     static {
-        THREAD_LOCAL = new ThreadLocal<>();
+        LOCAL_CONN = new ThreadLocal<>();
         try {
             Class.forName(DRIVER);
             log.info("驱动注册成功~");
@@ -33,11 +34,11 @@ public class SingleJdbcConnectionUtil {
     }
 
     private static Connection getConnection() {
-        Connection conn = THREAD_LOCAL.get();
+        Connection conn = LOCAL_CONN.get();
         if (conn == null) {
             try {
                 conn = DriverManager.getConnection(URL, USER, PASSWORD);
-                THREAD_LOCAL.set(conn);
+                LOCAL_CONN.set(conn);
                 log.info("连接数据库成功~");
             } catch (SQLException e) {
                 log.error("连接数据库失败！{}", (Object) e.getStackTrace());
@@ -47,12 +48,12 @@ public class SingleJdbcConnectionUtil {
     }
 
     private static void closeConnection() {
-        Connection conn = THREAD_LOCAL.get();
+        Connection conn = LOCAL_CONN.get();
         try {
             if (conn != null) {
                 if (!conn.isClosed()) {
                     conn.close();
-                    THREAD_LOCAL.remove();
+                    LOCAL_CONN.remove();
                 }
             }
         } catch (SQLException e) {
@@ -203,7 +204,7 @@ public class SingleJdbcConnectionUtil {
         printMap(SingleJdbcConnectionUtil.executePstQuery(pstSql, 1));
     }
 
-    private static void printMap(List<Map<String, Object>> table) {
+    public static void printMap(List<Map<String, Object>> table) {
         for (Map<String, Object> row : table) {
             ArrayList<String> rowNames = new ArrayList<>(row.keySet());
             for (String name : rowNames) {
