@@ -89,4 +89,15 @@ public class CommonTest {
             }
         }
     }
+
+    @Test
+    @DisplayName(value = "测试double丢失精度")
+    public void testDecimalOfDouble() {
+        double d1 = 0.07;
+        double d2 = 0.02;
+
+        double sub = d1 + d2;
+        System.out.println(sub);
+        Assertions.assertEquals(0.09d, sub);
+    }
 }
