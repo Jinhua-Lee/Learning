@@ -100,4 +100,20 @@ public class CommonTest {
         System.out.println(sub);
         Assertions.assertEquals(0.09d, sub);
     }
+
+    @Test
+    @DisplayName(value = "测试除法和求余数")
+    public void testDivide() {
+        int itemNumber = 1;
+        int totalNumber = 9;
+        int totalUsage = 80;
+
+        int remainder = itemNumber * totalUsage % totalNumber;
+
+        int num = (itemNumber * totalUsage - remainder) / 9;
+
+        System.out.println("remainder = " + remainder);
+        System.out.println("num = " + num);
+
+    }
 }
