@@ -3,7 +3,7 @@ package com.se.spi;
 import java.util.ServiceLoader;
 
 /**
- * 嗷
+ * SPI机制的接口，注意SPI内部类名字的写法
  *
  * @author jinhua
  * @version 1.0
@@ -11,6 +11,9 @@ import java.util.ServiceLoader;
  */
 public interface Shout {
 
+    /**
+     * 嗷
+     */
     void shout();
 
     class Cat implements Shout {
@@ -29,6 +32,11 @@ public interface Shout {
         }
     }
 
+    /**
+     * main
+     *
+     * @param args 参数
+     */
     static void main(String[] args) {
         ServiceLoader<Shout> shoutLoader = ServiceLoader.load(Shout.class);
         shoutLoader.forEach(Shout::shout);
