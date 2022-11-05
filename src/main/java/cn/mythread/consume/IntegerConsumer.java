@@ -1,5 +1,6 @@
 package cn.mythread.consume;
 
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -10,7 +11,10 @@ import lombok.extern.slf4j.Slf4j;
  * @date 2021/9/11 23:34
  */
 @Slf4j
-public record IntegerConsumer(Container<Integer> container) implements Consumer<Integer> {
+@AllArgsConstructor
+public class IntegerConsumer implements Consumer<Integer> {
+
+    private Container<Integer> container;
 
     @Override
     public void consume(Integer integer) {

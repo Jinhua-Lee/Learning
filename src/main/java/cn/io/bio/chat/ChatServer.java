@@ -55,8 +55,10 @@ public class ChatServer {
     }
 
     @Slf4j
-    private record ServerHandlerWithOnlineSockets(Socket socket,
-                                                  Set<Socket> onlineSockets) implements Runnable {
+    private static class ServerHandlerWithOnlineSockets implements Runnable {
+
+        private final Socket socket;
+        private final Set<Socket> onlineSockets;
 
         private ServerHandlerWithOnlineSockets(Socket socket, Set<Socket> onlineSockets) {
             if (socket == null) {

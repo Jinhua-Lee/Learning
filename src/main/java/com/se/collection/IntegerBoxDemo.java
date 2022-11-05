@@ -1,5 +1,7 @@
 package com.se.collection;
 
+import lombok.AllArgsConstructor;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +35,7 @@ public class IntegerBoxDemo {
 interface AddToListFunc {
     /**
      * 定义添加元素的函数
+     *
      * @param element 待添加元素
      * @return 添加的时间
      */
@@ -55,6 +58,7 @@ class Obj implements AddToListFunc {
 
     /**
      * 添加元素的方法
+     *
      * @param element 待添加的元素
      * @return 执行时间
      */
@@ -71,7 +75,10 @@ class Obj implements AddToListFunc {
 /**
  * 代理对象
  */
-record AddToListProxy(Obj obj) implements AddToListFunc {
+@AllArgsConstructor
+class AddToListProxy implements AddToListFunc {
+
+    private final Obj obj;
 
     /**
      * 重写，以进行增强

@@ -1,7 +1,9 @@
 package cn.jvm.gc.ref;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.SneakyThrows;
 
 import java.lang.ref.Reference;
@@ -21,7 +23,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class SoftWeakRef {
 
-    private static ReferenceQueue<User> uReferQueue = new ReferenceQueue<>();
+    private static final ReferenceQueue<User> U_REFER_QUEUE = new ReferenceQueue<>();
 
     public static void main(String[] args) {
 //        executeSoft();
@@ -43,7 +45,7 @@ public class SoftWeakRef {
 
         // 尝试让内存紧张
         try {
-            byte[] b = new byte[7 * 1024 * 1024];
+            byte[] buf = new byte[7 * 1024 * 1024];
         } catch (Throwable t) {
             t.printStackTrace();
         } finally {
@@ -67,7 +69,7 @@ public class SoftWeakRef {
     @SneakyThrows
     private static void executeWeakWithSubClass() {
         // 弱引用 + 引用队列
-        WeakReference<User> wUserWithQueue = new UserMain(new User(3, "name3"), uReferQueue);
+        WeakReference<User> wUserWithQueue = new UserMain(new User(3, "name3"), U_REFER_QUEUE);
         System.out.println("wUser.get() = " + wUserWithQueue.get());
         System.gc();
         TimeUnit.SECONDS.sleep(5L);
@@ -77,14 +79,19 @@ public class SoftWeakRef {
         Reference<User> aUser;
 
         // TODO: 2022/5/11 队列里没有东西，还待调试
-        while ((aUser = (Reference<User>) uReferQueue.poll()) != null) {
+        while ((aUser = (Reference<User>) U_REFER_QUEUE.poll()) != null) {
             System.out.println(aUser.get());
         }
     }
 
     @SuppressWarnings("all")
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    static record User(int id, String name) {}
+    @NoArgsConstructor
+    @AllArgsConstructor
+    static class User {
+        private int id;
+        private String name;
+    }
 
     @Getter
     static class UserMain extends WeakReference<User> {

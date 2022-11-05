@@ -5,7 +5,7 @@ import cn.ds.graph.MyGraph;
 /**
  * TSP数据类
  * 包含：
- * disMap 各个城市间距离矩阵
+ * DIS_MAP 各个城市间距离矩阵
  *
  * @author Jinhua
  */
@@ -45,7 +45,7 @@ public class TspData {
     /**
      * 地图数据
      */
-    static final double[][] disMap;
+    static final double[][] DIS_MAP;
 
     static {
 // 		int[][] cityPosition = {
@@ -78,20 +78,20 @@ public class TspData {
                 {2545, 2357}, {2778, 2826},
                 {2370, 2975}};
 
-// 		disMap = getDisMap(CreateGraphTest.getGraph());
-// 		CITY_NUM = disMap.length;
+// 		DIS_MAP = getDisMap(CreateGraphTest.getGraph());
+// 		CITY_NUM = DIS_MAP.length;
 
 
         CITY_NUM = cityPosition.length;
-        disMap = new double[CITY_NUM][CITY_NUM];
+        DIS_MAP = new double[CITY_NUM][CITY_NUM];
         for (int i = 0; i < CITY_NUM; i++) {
             for (int j = i; j < CITY_NUM; j++) {
                 double dis = Math.sqrt(
                         Math.pow((cityPosition[i][0] - cityPosition[j][0]), 2)
                                 + Math.pow((cityPosition[i][1] - cityPosition[j][1]), 2)
                 );
-                disMap[i][j] = dis;
-                disMap[j][i] = disMap[i][j];
+                DIS_MAP[i][j] = dis;
+                DIS_MAP[j][i] = DIS_MAP[i][j];
             }
         }
 
