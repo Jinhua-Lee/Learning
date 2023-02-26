@@ -1,5 +1,7 @@
 package cn.mythread.consume;
 
+import lombok.AllArgsConstructor;
+
 import java.util.Random;
 
 /**
@@ -9,7 +11,10 @@ import java.util.Random;
  * @version 1.0
  * @date 2021/9/11 23:29
  */
-public record IntegerProducer(Container<Integer> container) implements Producer<Integer> {
+@AllArgsConstructor
+public class IntegerProducer implements Producer<Integer> {
+
+    private final Container<Integer> container;
 
     @Override
     public Integer produce() {

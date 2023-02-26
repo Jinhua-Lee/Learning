@@ -30,12 +30,16 @@ public class BankTest {
     public static final int DELAY = 10;
 
     public static Bank init(int i) {
-        return switch (i) {
-            case 1 -> new Bank(ACCOUNT_NUM, INITIAL_BALANCE);
-            case 2 -> new LockBank(ACCOUNT_NUM, INITIAL_BALANCE);
-            case 3 -> new SynBank(ACCOUNT_NUM, INITIAL_BALANCE);
-            default -> null;
-        };
+        switch (i) {
+            case 1:
+                return new Bank(ACCOUNT_NUM, INITIAL_BALANCE);
+            case 2:
+                return new LockBank(ACCOUNT_NUM, INITIAL_BALANCE);
+            case 3:
+                return new SynBank(ACCOUNT_NUM, INITIAL_BALANCE);
+            default:
+                return null;
+        }
     }
 
     /**
@@ -66,7 +70,10 @@ public class BankTest {
         Bank bank = BankTest.init(j);
         for (int i = 0; i < ACCOUNT_NUM; i++) {
             int fromAccount = i;
-            Runnable r = () -> execute(bank, fromAccount);
+            Runnable r = () -> {
+                assert bank != null;
+                execute(bank, fromAccount);
+            };
             new Thread(r).start();
         }
     }

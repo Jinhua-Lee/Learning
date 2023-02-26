@@ -1,5 +1,7 @@
 package com.se.proxy;
 
+import lombok.AllArgsConstructor;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -11,7 +13,10 @@ import java.util.Random;
  *
  * @author Jinhua
  */
-public record TraceHandler(Object target) implements InvocationHandler {
+@AllArgsConstructor
+public class TraceHandler implements InvocationHandler {
+
+    private final Object target;
 
     /**
      * 运用反射，代理对象的方法执行

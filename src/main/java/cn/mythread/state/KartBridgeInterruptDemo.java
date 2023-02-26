@@ -33,7 +33,7 @@ public class KartBridgeInterruptDemo {
 
         Thread kartOne = new Thread(() -> {
             printTimeAndThread("准备过桥");
-            long millisec = new SecureRandom().nextLong(500) + 1_000L;
+            long millisec = new SecureRandom().nextLong() + 1_000L;
             try {
                 TimeUnit.MILLISECONDS.sleep(millisec);
             } catch (InterruptedException ignored) {

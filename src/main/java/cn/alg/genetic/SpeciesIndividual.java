@@ -95,8 +95,8 @@ public class SpeciesIndividual {
                     // 没重复
                     if (!repeat) {
                         // 判长度
-                        if (TspData.disMap[i][j] < minDis) {
-                            minDis = TspData.disMap[i][j];
+                        if (TspData.DIS_MAP[i][j] < minDis) {
+                            minDis = TspData.DIS_MAP[i][j];
                             minCity = j;
                         }
                     }
@@ -118,7 +118,7 @@ public class SpeciesIndividual {
             int curCity = Integer.parseInt(this.genes[i]) - 1;
             int nextCity = Integer.parseInt(this.genes[(i + 1) % TspData.CITY_NUM]) - 1;
 
-            totalDis += TspData.disMap[curCity][nextCity];
+            totalDis += TspData.DIS_MAP[curCity][nextCity];
         }
 
         //  路径之和为总路程
@@ -135,12 +135,14 @@ public class SpeciesIndividual {
      */
     @Override
     public SpeciesIndividual clone() {
+        try {
+            super.clone();
+        } catch (CloneNotSupportedException ignored) {
+        }
         SpeciesIndividual species = new SpeciesIndividual();
 
         // 复制内容
-        for (int i = 0; i < this.genes.length; i++) {
-            species.genes[i] = this.genes[i];
-        }
+        System.arraycopy(this.genes, 0, species.genes, 0, this.genes.length);
         species.distance = this.distance;
         species.fitness = this.fitness;
 
