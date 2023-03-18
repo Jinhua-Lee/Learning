@@ -40,8 +40,7 @@ public class SocketAcceptTest {
         int clientNum = 5;
 
         Thread server = new Thread(() -> {
-            try {
-                ServerSocket serverSocket = new ServerSocket(8083);
+            try (ServerSocket serverSocket = new ServerSocket(8083)) {
                 while (true) {
                     // accept方法等待客户端的连接
                     SOCKETS.add(serverSocket.accept());
