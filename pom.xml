@@ -99,20 +99,13 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.29</version>
+            <version>8.0.32</version>
         </dependency>
         <!--postgres JDBC-->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.3.4</version>
-        </dependency>
-
-        <!-- SQL Server JDBC -->
-        <dependency>
-            <groupId>com.microsoft.sqlserver</groupId>
-            <artifactId>mssql-jdbc</artifactId>
-            <version>11.2.0.jre8</version>
+            <version>42.5.4</version>
         </dependency>
 
         <!--apache通用工具-->
@@ -161,14 +154,14 @@
         <dependency>
             <groupId>com.thoughtworks.xstream</groupId>
             <artifactId>xstream</artifactId>
-            <version>1.4.19</version>
+            <version>1.4.20</version>
         </dependency>
 
         <!--Lombok实体类简化工具-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.24</version>
+            <version>1.18.26</version>
             <scope>provided</scope>
         </dependency>
 
@@ -182,7 +175,7 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>5.8.2</version>
+            <version>5.9.2</version>
             <scope>compile</scope>
         </dependency>
 
@@ -190,7 +183,7 @@
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>7.0.4.Final</version>
+            <version>8.0.0.Final</version>
         </dependency>
         <!--EL-->
         <dependency>
@@ -216,14 +209,14 @@
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
-            <version>4.2.3</version>
+            <version>4.3.1</version>
         </dependency>
 
         <!--excel工具-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>easyexcel</artifactId>
-            <version>3.1.1</version>
+            <version>3.2.1</version>
         </dependency>
 
         <!--Http客户端工具-->
@@ -237,14 +230,14 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
-            <version>1.2.10</version>
+            <version>1.2.16</version>
         </dependency>
 
         <!--Http工具-->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>4.5.13</version>
+            <version>4.5.14</version>
         </dependency>
 
         <!--谷歌核心java库-->
@@ -258,19 +251,19 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.13.3</version>
+            <version>2.14.2</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>5.3.20</version>
+            <version>6.0.6</version>
         </dependency>
 
         <!-- mybatis half-orm-->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
-            <version>3.5.9</version>
+            <version>3.5.13</version>
         </dependency>
 
         <!--log4j-->
@@ -282,7 +275,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.36</version>
+            <version>2.0.5</version>
         </dependency>
 
         <!--CgLib代理-->
@@ -296,7 +289,7 @@
         <dependency>
             <groupId>org.openjdk.jol</groupId>
             <artifactId>jol-core</artifactId>
-            <version>0.16</version>
+            <version>0.17</version>
         </dependency>
 
         <!-- 密码安全相关库 -->
@@ -310,7 +303,7 @@
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
-            <version>4.1.78.Final</version>
+            <version>4.1.90.Final</version>
         </dependency>
 
         <!-- JMH -->
@@ -330,13 +323,13 @@
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
-            <version>1.9.7</version>
+            <version>1.9.19</version>
         </dependency>
 
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
-            <version>1.9.7</version>
+            <version>1.9.19</version>
         </dependency>
 
     </dependencies>
