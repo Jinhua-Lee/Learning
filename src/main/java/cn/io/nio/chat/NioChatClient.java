@@ -23,7 +23,7 @@ import java.util.Scanner;
 public class NioChatClient {
 
     private static final String LOCAL = "127.0.0.1";
-    private static final int PORT = 8083;
+    private static final int PORT = 8081;
 
     private final Selector selector;
     private final SocketChannel socketChannel;

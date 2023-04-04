@@ -14,6 +14,7 @@ import java.util.Scanner;
  *
  * @author Jinhua
  */
+@SuppressWarnings("unused")
 public class MyFileOperation {
 
     public static void main(String[] args) {
@@ -148,7 +149,7 @@ public class MyFileOperation {
         boolean b = false;
         List<String> list = new ArrayList<>();
         try {
-            Scanner sc = new Scanner(new File(dir, fn), "UTF-8");
+            Scanner sc = new Scanner(new File(dir, fn), StandardCharsets.UTF_8);
 
             while (sc.hasNextLine()) {
                 list.add(sc.nextLine());
@@ -175,7 +176,6 @@ public class MyFileOperation {
     public static boolean myFileBufferedReader(String dir, String fn) {
         boolean b = false;
         File f = new File(dir, fn);
-        List<String> lines = new ArrayList<>();
         if (f.isFile()) {
             try {
                 InputStream in = new FileInputStream(f);
@@ -190,9 +190,6 @@ public class MyFileOperation {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-        for (String s : lines) {
-            System.out.println(s);
         }
         return b;
     }

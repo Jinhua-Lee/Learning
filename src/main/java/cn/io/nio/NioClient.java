@@ -19,9 +19,11 @@ import java.util.Scanner;
 @Slf4j
 public class NioClient {
 
+    private static final int NIO_SERV_PORT = 8081;
+
     @SuppressWarnings("all")
     public static void main(String[] args) throws IOException {
-        SocketChannel channel = SocketChannel.open(new InetSocketAddress("127.0.0.1", 8082));
+        SocketChannel channel = SocketChannel.open(new InetSocketAddress("127.0.0.1", NIO_SERV_PORT));
         channel.configureBlocking(false);
         ByteBuffer bBuf = ByteBuffer.allocate(1024);
 

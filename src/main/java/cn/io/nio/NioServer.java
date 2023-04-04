@@ -18,6 +18,8 @@ import java.util.Iterator;
 @Slf4j
 public class NioServer {
 
+    private static final int NIO_SERV_PORT = 8081;
+
     public static void main(String[] args) throws IOException {
 
         // 1. 【选择器】
@@ -29,7 +31,7 @@ public class NioServer {
             //      2.2 非阻塞模式
             serverChannel.configureBlocking(false);
             //      2.3 绑定服务端口
-            serverChannel.bind(new InetSocketAddress(8082));
+            serverChannel.bind(new InetSocketAddress(NIO_SERV_PORT));
 
             // 3. 【通道】都注册到【选择器】
             serverChannel.register(selector, SelectionKey.OP_ACCEPT);

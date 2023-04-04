@@ -22,14 +22,14 @@ public class NioChatServer {
 
     private final Selector selector;
     private final ServerSocketChannel serverChannel;
-    private static final int PORT = 8083;
+    private static final int NIO_SERV_PORT = 8081;
 
     public NioChatServer() throws IOException {
         selector = Selector.open();
 
         serverChannel = ServerSocketChannel.open();
         serverChannel.configureBlocking(false);
-        serverChannel.bind(new InetSocketAddress(PORT));
+        serverChannel.bind(new InetSocketAddress(NIO_SERV_PORT));
 
         serverChannel.register(selector, SelectionKey.OP_ACCEPT);
     }
@@ -72,10 +72,9 @@ public class NioChatServer {
 
     private void transferToOtherChannel(SocketChannel thisChannel, String msg) throws IOException {
         for (SelectionKey key : selector.keys()) {
-            if (!(key.channel() instanceof WritableByteChannel)) {
+            if (!(key.channel() instanceof WritableByteChannel channel)) {
                 continue;
             }
-            WritableByteChannel channel = (WritableByteChannel) key.channel();
             if (!Objects.equals(thisChannel, channel)) {
                 ByteBuffer buffer = ByteBuffer.wrap(msg.getBytes(StandardCharsets.UTF_8));
                 channel.write(buffer);

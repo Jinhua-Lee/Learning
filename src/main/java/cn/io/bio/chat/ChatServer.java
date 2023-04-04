@@ -21,6 +21,8 @@ import java.util.concurrent.*;
 @Slf4j
 public class ChatServer {
 
+    private static final int SERV_PORT = 8081;
+
     /**
      * 读多写少，一般是取出来发消息
      */
@@ -28,7 +30,7 @@ public class ChatServer {
 
     @SuppressWarnings("all")
     public static void main(String[] args) throws IOException {
-        ServerSocket serverSocket = new ServerSocket(8081);
+        ServerSocket serverSocket = new ServerSocket(SERV_PORT);
 
         // 自定义线程名字的线程工厂
         ThreadFactory threadFactory = new ThreadFactory() {
