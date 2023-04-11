@@ -79,7 +79,7 @@ public class FileChannelCopyTest {
     @DisplayName(value = "测试Transfer方式的复制")
     public void testTransfer() throws IOException {
         String srcFile = "D:/io_test/nio_file/nio_transfer_src.txt";
-        String desFile = "D:/io_test/nio_file/receive/nio_transfer_desc.txt";
+        String desFile = "D:/io_test/nio_file/receive/nio_transfer_des.txt";
         FileInputStream fis = new FileInputStream(srcFile);
         FileOutputStream fos = new FileOutputStream(desFile);
         FileChannel inChannel = fis.getChannel();
