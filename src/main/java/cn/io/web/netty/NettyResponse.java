@@ -24,6 +24,7 @@ public class NettyResponse implements Resp {
 
     private ChannelHandlerContext ctx;
 
+    @Override
     public void write(String out) throws Exception {
         try {
             if (ObjectUtils.isEmpty(out)) {

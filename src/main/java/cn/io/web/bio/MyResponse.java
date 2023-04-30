@@ -18,6 +18,7 @@ public class MyResponse implements Resp {
 
     private OutputStream out;
 
+    @Override
     public void write(String content) throws Exception {
         // 请求行
         String sb = "HTTP/1.1 200 OK\n" +

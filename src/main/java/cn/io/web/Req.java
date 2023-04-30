@@ -9,5 +9,10 @@ package cn.io.web;
  */
 public interface Req {
 
+    /**
+     * 方法名
+     *
+     * @return 方法名
+     */
     String getMethod();
 }
