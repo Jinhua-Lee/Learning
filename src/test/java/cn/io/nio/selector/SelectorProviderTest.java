@@ -1,7 +1,7 @@
 package cn.io.nio.selector;
 
 import org.junit.jupiter.api.*;
-//import sun.nio.ch.EPollSelectorProvider;
+// import sun.nio.ch.EPollSelectorProvider;
 
 import java.io.IOException;
 import java.nio.channels.Selector;
@@ -22,7 +22,7 @@ public class SelectorProviderTest {
     public void testSystemPropertyConf() throws IOException {
         String providerKey = "java.nio.channels.spi.SelectorProvider";
         // 默认是 WEPollSelectorProvider
-        String providerVal = "sun.nio.ch.WindowsSelectorProvider";
+        String providerVal = "sun.nio.ch.EPollSelectorProvider";
         System.setProperty(providerKey, providerVal);
 
         Selector selector = Selector.open();
@@ -30,6 +30,6 @@ public class SelectorProviderTest {
         System.clearProperty(providerKey);
 
         // 这里有权限问题，暂时只能通过断点方式去验证
-//        Assertions.assertTrue(provider instanceof EPollSelectorProvider);
+        // Assertions.assertTrue(provider instanceof EPollSelectorProvider);
     }
 }
