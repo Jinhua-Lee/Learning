@@ -63,8 +63,7 @@ public class NettyCatalina extends BaseCatalina {
     private class MyTomcatHandler extends ChannelInboundHandlerAdapter {
         @Override
         public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-            if (msg instanceof HttpRequest) {
-                HttpRequest req = (HttpRequest) msg;
+            if (msg instanceof HttpRequest req) {
                 log.info("[tomcat handler] hello, request is received now!");
 
                 NettyRequest request = new NettyRequest(ctx, req);
