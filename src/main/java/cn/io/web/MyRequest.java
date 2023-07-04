@@ -13,10 +13,10 @@ import java.io.InputStream;
  * @date 2022/6/21 下午7:14
  */
 @Getter
-public class MyRequest {
+public class MyRequest implements Req {
 
     private String method;
-    private String url;
+    private String uri;
 
     public MyRequest(InputStream input) {
         try {
@@ -30,7 +30,7 @@ public class MyRequest {
             String[] arr = line.split("\\s");
 
             this.method = arr[0];
-            this.url = arr[1].split("\\?")[0];
+            this.uri = arr[1].split("\\?")[0];
         } catch (IOException ignored) {
         }
     }

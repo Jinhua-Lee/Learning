@@ -14,20 +14,20 @@ import java.nio.charset.StandardCharsets;
  * @date 2022/6/21 下午7:20
  */
 @AllArgsConstructor
-public class MyResponse {
+public class MyResponse implements Resp {
 
     private OutputStream out;
 
+    @Override
     public void write(String s) throws IOException {
-        StringBuilder sb = new StringBuilder();
         // 请求行
-        sb.append("HTTP/1.1 200 OK\n")
+        String sb = "HTTP/1.1 200 OK\n" +
                 // 请求头
-                .append("Content-Type: text/html;\n")
+                "Content-Type: text/html;\n" +
                 // 空行
-                .append("\r\n")
+                "\r\n" +
                 // 响应体
-                .append(s);
-        out.write(sb.toString().getBytes(StandardCharsets.UTF_8));
+                s;
+        out.write(sb.getBytes(StandardCharsets.UTF_8));
     }
 }

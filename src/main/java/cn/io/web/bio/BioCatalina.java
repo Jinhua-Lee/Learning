@@ -34,26 +34,6 @@ public class BioCatalina extends BaseCatalina {
         }
     }
 
-    private void process(Socket client) throws Exception {
-        InputStream in = client.getInputStream();
-        OutputStream out = client.getOutputStream();
-
-        MyRequest req = new MyRequest(in);
-        MyResponse resp = new MyResponse(out);
-
-        String uri = req.getUri();
-        if (servletMapping.containsKey(uri)) {
-            servletMapping.get(uri).service(req, resp);
-        } else {
-            resp.write("404 - Not Found.");
-        }
-
-        out.flush();
-        out.close();
-        in.close();
-        client.close();
-    }
-
     public static void main(String[] args) {
         new BioCatalina().start();
     }
