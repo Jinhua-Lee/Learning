@@ -31,5 +31,9 @@ public class ExtendReflectTest {
         declaredSuperFields[0].set(typeB, 1);
 
         System.out.println("b.a = " + typeB.a);
+
+        // Field可以获取到所属的Class类型
+        Field field = TypeA.class.getDeclaredField("a");
+        System.out.println(field.getDeclaringClass());
     }
 }
