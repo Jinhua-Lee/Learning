@@ -40,9 +40,9 @@ public class NettyCatalina extends BaseCatalina {
                             // Netty对Http的封装，有顺序要求
 
                             // 责任链，双向链表 Inbound OutBound
-                            channel.pipeline().addLast(new HttpResponseEncoder());
-                            channel.pipeline().addLast(new HttpRequestDecoder());
-                            channel.pipeline().addLast(new MyTomcatHandler());
+                            channel.pipeline().addLast(new HttpResponseEncoder())
+                                    .addLast(new HttpRequestDecoder())
+                                    .addLast(new MyTomcatHandler());
                         }
                     })
                     // 主线程，分配最大线程数
