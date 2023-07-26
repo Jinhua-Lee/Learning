@@ -116,4 +116,11 @@ public class CommonTest {
         System.out.println("num = " + num);
 
     }
+
+    @Test
+    @DisplayName(value = "系统属性和环境")
+    public void testSystem() {
+        // user.dir是当前项目路径
+        System.out.println("System.getProperty(\"user.dir\") = " + System.getProperty("user.dir"));
+    }
 }
