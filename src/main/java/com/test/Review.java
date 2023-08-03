@@ -9,6 +9,8 @@ import java.math.BigInteger;
 import java.nio.file.Paths;
 import java.time.*;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 一些杂项
@@ -19,15 +21,23 @@ public class Review {
 
     @SneakyThrows
     public static void main(String[] args) {
-//        printSystemProperties();
-//        printSystemEnv();
+        // printSystemProperties();
+        // printSystemEnv();
+        //
+        // testRegexMatch();
+        //
+        // guess();
+    }
 
-        String[] split = "1|2||3".split("\\|");
-        for (int i = 0; i < split.length; i++) {
-            System.out.println(split[i].isEmpty());
-        }
+    private static void testRegexMatch() {
+        String str = "DB1201.DBD0";
+        String regex = "DB[0-9]+.";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(str);
 
-//        guess();
+        boolean find = matcher.find();
+        System.out.println("find = " + find);
+        System.out.println("matcher.group() = " + matcher.group());
     }
 
     /**
