@@ -24,6 +24,17 @@ public class Review {
         // testRegexMatch();
         //
         // guess();
+
+        testSplit();
+    }
+
+    private static void testSplit() {
+        String str1 = "ab.";
+        String str2 = "ab";
+        String[] split1 = str1.split("\\.");
+        String[] split2 = str2.split("\\.");
+        String[] split3 = str2.split("");
+        System.out.println();
     }
 
     private static void testRegexMatch() {
