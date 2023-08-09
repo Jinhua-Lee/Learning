@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /**
  * 一些杂项
@@ -25,7 +26,28 @@ public class Review {
         //
         // guess();
 
-        testSplit();
+        // testSplit();
+
+        testFlatMapOrder();
+    }
+
+    public static void testFlatMapOrder() {
+        List<List<Integer>> multiDimensionalList = List.of(
+                List.of(1, 2, 3),
+                List.of(4, 5, 6),
+                List.of(7, 8, 9)
+        );
+
+        Optional<Integer> firstOpt = multiDimensionalList.stream()
+                .flatMap(List::stream)
+                .findFirst();
+
+        System.out.println(firstOpt.orElseThrow());
+
+        List<Integer> collect = multiDimensionalList.stream()
+                .flatMap(List::stream)
+                .collect(Collectors.toList());
+        System.out.println("collect = " + collect);
     }
 
     private static void testSplit() {
