@@ -28,7 +28,16 @@ public class Review {
 
         // testSplit();
 
-        testFlatMapOrder();
+        testPrimitiveEq();
+
+        // testFlatMapOrder();
+    }
+
+    public static void testPrimitiveEq() {
+        List<Integer> integers = new ArrayList<>(Arrays.asList(1, 2));
+        int val = 1;
+        // true
+        System.out.println("integers.contains(val) = " + integers.contains(val));
     }
 
     public static void testFlatMapOrder() {
