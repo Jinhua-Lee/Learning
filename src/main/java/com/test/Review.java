@@ -28,9 +28,11 @@ public class Review {
 
         // testSplit();
 
-        testPrimitiveEq();
+        // testPrimitiveEq();
 
         // testFlatMapOrder();
+
+        // \u000d System.out.println("coder Jinhua");
     }
 
     public static void testPrimitiveEq() {
