@@ -1,6 +1,7 @@
 package cn.io.perf;
 
 import lombok.SneakyThrows;
+import org.apache.commons.lang3.SystemUtils;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -34,13 +35,31 @@ import java.nio.file.Paths;
 @SuppressWarnings("unused")
 public class IoCopyPerformanceTest {
 
-    public static final String FILE_IN = "/home/jinhua/io_test/perf/file_in.txt";
-    public static final String FILE_OUT = "/home/jinhua/io_test/perf/file_out.txt";
+    public static final String FILE_IN_LINUX = "/home/jinhua/io_test/perf/file_in.txt";
+    public static final String FILE_IN_WINDOWS = "D:/io_test/perf/file_in.txt";
+    public static final String FILE_OUT_LINUX = "/home/jinhua/io_test/perf/file_out.txt";
+    public static final String FILE_OUT_WINDOWS = "D:/io_test/perf/file_out.txt";
+
+    public static String fileInPath() {
+        if (SystemUtils.IS_OS_LINUX) {
+            return FILE_IN_LINUX;
+        } else {
+            return FILE_IN_WINDOWS;
+        }
+    }
+
+    public static String fileOutPath() {
+        if (SystemUtils.IS_OS_LINUX) {
+            return FILE_OUT_LINUX;
+        } else {
+            return FILE_OUT_WINDOWS;
+        }
+    }
 
     @SneakyThrows
     @BeforeAll
     public static void beforeAll() {
-        try (BufferedWriter bw = Files.newBufferedWriter(Paths.get(FILE_IN))) {
+        try (BufferedWriter bw = Files.newBufferedWriter(Paths.get(fileInPath()))) {
             for (int i = 0; i < 100_000; i++) {
                 for (int j = 0; j < 10; j++) {
                     bw.write(String.valueOf(j));
@@ -63,7 +82,7 @@ public class IoCopyPerformanceTest {
 
     @Benchmark
     public void readNormal() throws IOException {
-        try (BufferedReader br = Files.newBufferedReader(Paths.get(FILE_IN))) {
+        try (BufferedReader br = Files.newBufferedReader(Paths.get(fileInPath()))) {
             while ((br.read()) != -1) {
             }
         }
@@ -71,8 +90,8 @@ public class IoCopyPerformanceTest {
 
     @Benchmark
     public void readMmap() throws IOException {
-        File file = new File(FILE_IN);
-        try (FileChannel fc = new RandomAccessFile(new File(FILE_IN), "r").getChannel()) {
+        File file = new File(fileInPath());
+        try (FileChannel fc = new RandomAccessFile(new File(fileInPath()), "r").getChannel()) {
             MappedByteBuffer mapIn = fc.map(FileChannel.MapMode.READ_ONLY, 0, file.length()).load();
             while (mapIn.hasRemaining()) {
                 mapIn.get();
@@ -82,8 +101,8 @@ public class IoCopyPerformanceTest {
 
     @Benchmark
     public void readSendfile() throws IOException {
-        File file = new File(FILE_IN);
-        try (FileChannel fc = new RandomAccessFile(new File(FILE_IN), "r").getChannel()) {
+        File file = new File(fileInPath());
+        try (FileChannel fc = new RandomAccessFile(new File(fileInPath()), "r").getChannel()) {
             ByteBuffer buffer = ByteBuffer.allocate((int) file.length());
             fc.read(buffer);
             buffer.flip();
@@ -95,8 +114,8 @@ public class IoCopyPerformanceTest {
 
     @Benchmark
     public void readWriteNormal() throws IOException {
-        try (BufferedReader br = Files.newBufferedReader(Paths.get(FILE_IN));
-             BufferedWriter bw = Files.newBufferedWriter(Paths.get(FILE_OUT))) {
+        try (BufferedReader br = Files.newBufferedReader(Paths.get(fileInPath()));
+             BufferedWriter bw = Files.newBufferedWriter(Paths.get(fileOutPath()))) {
             int num;
             while ((num = br.read()) != -1) {
                 bw.write(num);
@@ -106,9 +125,9 @@ public class IoCopyPerformanceTest {
 
     @Benchmark
     public void readWriteMmap() throws IOException {
-        File file = new File(FILE_IN);
-        try (FileChannel fc = new RandomAccessFile(new File(FILE_IN), "r").getChannel();
-             FileChannel fo = new RandomAccessFile(new File(FILE_OUT), "rw").getChannel()) {
+        File file = new File(fileInPath());
+        try (FileChannel fc = new RandomAccessFile(new File(fileInPath()), "r").getChannel();
+             FileChannel fo = new RandomAccessFile(new File(fileOutPath()), "rw").getChannel()) {
             MappedByteBuffer mapIn = fc.map(FileChannel.MapMode.READ_ONLY, 0, file.length()).load();
             MappedByteBuffer mapOut = fo.map(FileChannel.MapMode.READ_WRITE, 0, file.length()).load();
             while (mapIn.hasRemaining()) {
@@ -119,9 +138,9 @@ public class IoCopyPerformanceTest {
 
     @Benchmark
     public void readWriteSendfile() throws IOException {
-        File file = new File(FILE_IN);
-        try (FileChannel fc = new RandomAccessFile(new File(FILE_IN), "r").getChannel();
-             FileChannel fo = new RandomAccessFile(new File(FILE_OUT), "rw").getChannel()) {
+        File file = new File(fileInPath());
+        try (FileChannel fc = new RandomAccessFile(new File(fileInPath()), "r").getChannel();
+             FileChannel fo = new RandomAccessFile(new File(fileOutPath()), "rw").getChannel()) {
             long transferred = 0;
             while (transferred < file.length()) {
                 transferred += fo.transferFrom(fc, 0, fc.size());
