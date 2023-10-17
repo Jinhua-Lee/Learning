@@ -23,15 +23,15 @@ public class SelectorProviderTest {
     public void testSystemPropertyConf() throws IOException {
         String providerKey = "java.nio.channels.spi.SelectorProvider";
 
+        String providerVal;
         if (SystemUtils.IS_OS_LINUX){
             // Linux 默认是 EPollSelectorProvider
-            String providerVal = "sun.nio.ch.PollSelectorProvider";
-            System.setProperty(providerKey, providerVal);
+            providerVal = "sun.nio.ch.PollSelectorProvider";
         } else {
             // Windows 默认是 WEPollSelectorProvider
-            String providerVal = "sun.nio.ch.WindowsSelectorProvider";
-            System.setProperty(providerKey, providerVal);
+            providerVal = "sun.nio.ch.WindowsSelectorProvider";
         }
+        System.setProperty(providerKey, providerVal);
 
         Selector selector = Selector.open();
         SelectorProvider provider = selector.provider();
