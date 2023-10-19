@@ -123,4 +123,13 @@ public class CommonTest {
         // user.dir是当前项目路径
         System.out.println("System.getProperty(\"user.dir\") = " + System.getProperty("user.dir"));
     }
+
+    @Test
+    @DisplayName(value = "测试双等号比较到Null对象")
+    public void testEqualNull() {
+        byte b = 1;
+        Byte by = null;
+
+        System.out.println("b == by = " + (b == by));
+    }
 }
