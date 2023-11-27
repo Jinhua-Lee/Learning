@@ -8,3 +8,4 @@ out/
 build
 *.hprof
 /*hprof*/*
+.fastRequest
