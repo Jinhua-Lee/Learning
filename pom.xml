@@ -70,7 +70,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.32</version>
+            <version>8.0.33</version>
         </dependency>
         <!--postgres JDBC-->
         <dependency>
@@ -158,7 +158,7 @@
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
-            <version>4.3.1</version>
+            <version>5.0.0-alpha2</version>
         </dependency>
 
         <!--excel工具-->
@@ -176,7 +176,7 @@
         <dependency>
             <groupId>org.apache.xmlbeans</groupId>
             <artifactId>xmlbeans</artifactId>
-            <version>3.1.0</version>
+            <version>5.0.3</version>
         </dependency>
         <!-- apache commons end -->
 
@@ -217,7 +217,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>5.3.26</version>
+            <version>6.0.6</version>
         </dependency>
 
         <!-- mybatis half-orm-->
