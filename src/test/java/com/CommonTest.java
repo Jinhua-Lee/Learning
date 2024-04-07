@@ -11,6 +11,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author Jinhua
@@ -131,5 +132,22 @@ public class CommonTest {
         Byte by = null;
 
         System.out.println("b == by = " + (b == by));
+    }
+
+    @Test
+    @DisplayName(value = "测试MapToInt方法对空元素的处理")
+    public void testMapToInt() {
+        @Getter
+        @AllArgsConstructor
+        class A {
+            Integer a;
+        }
+        List<A> as = new ArrayList<>();
+
+        as.add(new A(1));
+        as.add(null);
+
+        int maxA = as.stream().filter(Objects::nonNull).mapToInt(A::getA).max().orElse(0);
+        System.out.println("maxA = " + maxA);
     }
 }
