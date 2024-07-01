@@ -147,7 +147,30 @@ public class CommonTest {
         as.add(new A(1));
         as.add(null);
 
+        // 聚合操作必须过滤null元素
         int maxA = as.stream().filter(Objects::nonNull).mapToInt(A::getA).max().orElse(0);
         System.out.println("maxA = " + maxA);
+    }
+
+    @Test
+    @DisplayName(value = "测试null加上运算符")
+    public void testNullOp() {
+        Boolean aBool = null;
+        if (true && aBool) {
+            System.out.println("true && null");
+        }
+    }
+
+    @Test
+    @DisplayName(value = "测试聚合")
+    public void testAggregation() {
+        @Getter
+        @AllArgsConstructor
+        class A {
+            Integer a;
+        }
+        List<A> as = new ArrayList<>();
+        int i = as.parallelStream().mapToInt(A::getA).max().orElse(-1);
+        System.out.println("i = " + i);
     }
 }

@@ -31,7 +31,7 @@ import java.nio.file.Paths;
  * @date 2021/9/28
  */
 @Measurement(iterations = 5, time = 5)
-@BenchmarkMode(value = Mode.AverageTime)
+@BenchmarkMode(value = Mode.All)
 @SuppressWarnings("unused")
 public class IoCopyPerformanceTest {
 
@@ -81,8 +81,10 @@ public class IoCopyPerformanceTest {
     }
 
     @Benchmark
+    @SuppressWarnings(value = "all")
     public void readNormal() throws IOException {
         try (BufferedReader br = Files.newBufferedReader(Paths.get(fileInPath()))) {
+            // 只是看读取性能，忽略读取内容
             while ((br.read()) != -1) {
             }
         }
